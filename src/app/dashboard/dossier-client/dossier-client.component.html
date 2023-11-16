@@ -1,0 +1,145 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar">
+        <ul>
+          <img class="image" src="../../assets/images/el_maguiri_logo-removebg-preview.png" />
+          <hr class="sidebar-divider my-0"/>
+          <li class="rubrique">
+            <a [routerLink]="['/dashboard']"  class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true">
+           <span ><i class="bi bi-house-fill"></i> Tableau de bord</span>
+         </a>
+          </li>
+          <hr class="sidebar-divider my-0"/>
+          <li class="rubrique" dropdown>
+            <a  class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"   id="navbarDropdown" role="button" (click)="toggleDropdown1()" aria-haspopup="true" aria-expanded="isDropdownOpen1">
+            <span><i class="bi bi-people-fill" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"></i> Dossiers</span>
+          </a>
+          <div  class="list-group-item list-group-item-action py-2 ripple" *ngIf="isDropdownOpen1" aria-labelledby="navbarDropdown" style="border-top-left-radius: 0; border-top-right-radius: 0;height: 219px;">
+            <div class="list-group list-group-flush">
+              <a [routerLink]="['/ajout-societe']" class="list-group-item list-group-item-action">nouveau dossier</a>
+              <a [routerLink]="['/dossier']" class="list-group-item list-group-item-action">Liste des dossiers</a>
+              <a [routerLink]="['/dossier-client']"class="list-group-item list-group-item-action">Progrès du Dossier </a> 
+              <a [routerLink]="['/Prestation']" class="list-group-item list-group-item-action">Dossiers archivés</a>
+            </div>
+           
+         
+          </div> 
+        </li> 
+          <hr class="sidebar-divider my-0"/>
+          <li class="rubrique">
+            <a [routerLink]="['/Prestation']" class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+            >
+            <span> <i class="bi bi-list-task"></i> Missions</span>
+         </a>
+           
+          </li>
+          <hr class="sidebar-divider my-0" />
+          <li class="rubrique" dropdown>
+            <a  class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"   id="navbarDropdown" role="button" (click)="toggleDropdown()" aria-haspopup="true" aria-expanded="isDropdownOpen">
+            <span><i class="bi bi-people-fill" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false"></i> Collaborateurs</span>
+          </a>
+          <div  class="list-group-item list-group-item-action py-2 ripple" *ngIf="isDropdownOpen" aria-labelledby="navbarDropdown" style="border-top-left-radius: 0; border-top-right-radius: 0;height: 219px;">
+            <div class="list-group list-group-flush">
+              <a [routerLink]="['/nv-colab']" class="list-group-item list-group-item-action">Liste des Collaborateurs</a>
+              <a [routerLink]="['/list-colabs']" class="list-group-item list-group-item-action">Nouveaux Collaborateur</a>
+              <a [routerLink]="['/Prestation']"class="list-group-item list-group-item-action">Liste des Roles</a>
+              <a [routerLink]="['/Prestation']" class="list-group-item list-group-item-action">Affectation d'accès</a>
+            </div>
+           
+         
+          </div> 
+        </li>
+          <hr class="sidebar-divider my-0" />
+          <li class="rubrique">
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+            aria-current="true"
+            >
+          <span> <i class="bi bi-archive-fill"></i> archives</span>
+         </a>
+           
+          </li>
+          <hr class="sidebar-divider my-0" />
+        </ul>
+      </div>
+      <nav class="navbar bg-body-tertiary col-md-12"  style="position: fixed; margin-left: 239px; top: 0; 
+       z-index: 100;">
+       
+    </nav>
+    <body>
+        <main class="page payment-page">
+          <section class="payment-form dark">
+            <div class="container">
+              <div class="block-heading">
+                <h2>Dossier Client 1</h2>
+                <p>Etat d'avancement de dossier</p>
+              </div>
+              <form>
+                  <div class="card-details">
+                      <h3 class="title">Dossier :  IBM</h3>   
+                      <div class="row data">
+                        <div class="form-group col-sm-7">
+                          <label for="card-holder">Raison Social</label>
+                          <input id="card-holder" type="text" class="form-control" placeholder="Raison Social" aria-label="Card Holder" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="form-group col-sm-5">
+                          <label for="">Etat dossier</label>
+                          <div class="dropdown" style="    margin-top: -42px;">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align: center; width: 122px; height: 47px;">
+                                en cours
+                              </button>
+                              <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">En cours </button>
+                                <button class="dropdown-item" type="button">bloque</button>
+                                <button class="dropdown-item" type="button">cloturé</button>
+                              </div> -->
+                            </div>
+                          <!-- <div class="input-group expiration-date">
+                            <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
+                            <span class="date-separator">/</span>
+                            <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1">
+                          </div> -->
+                        </div>
+                    
+                      </div>
+                    </div>
+                <div class="products">
+                  <h3 class="title">Prestation : création de société <button class="btn btn-secondary"  [routerLink]="['/document-upload']" type="button" id="btn"   style="text-align: center; background-color: #5ea4f3; margin-top: -57px;
+                    margin-left: 400px; color: black; font-family:  sans-serif;">
+                      inserer des documents 
+                    </button> </h3>
+                  <div class="item">
+                    <span class="price"> <input type="checkbox" aria-label="Checkbox for following text input"></span> 
+                    <p class="item-name">Etape 1</p>
+                    <a class="item-description" >document : Demande Rc <span class="price" style="margin-left: 420px;"> <input type="checkbox" aria-label="Checkbox for following text input"></span></a><hr class="my-0"  />
+                    <a class="item-description" >document : Demande Rc<span class="price" style="margin-left: 420px;"> <input type="checkbox" aria-label="Checkbox for following text input"></span></a><hr class="my-0"  />
+                    <a class="item-description" >document : Demande Rc <span class="price" style="margin-left: 420px;"> <input type="checkbox" aria-label="Checkbox for following text input"></span></a><hr class="my-0"  />
+                    <a class="item-description" >document : Demande Rc <span class="price" style="margin-left: 420px;"> <input type="checkbox" aria-label="Checkbox for following text input"></span></a><hr class="my-0"  />
+                  </div>
+                  <div class="item">
+                    <span class="price"><input type="checkbox" aria-label="Checkbox for following text input"></span>  
+                    <p class="item-name">Etape 2</p>
+                    <a class="item-description" >document : Demande Rc <span class="price" style="margin-left: 420px;"> <input type="checkbox" aria-label="Checkbox for following text input"></span></a><hr class="my-0"  />
+                    <a class="item-description" >document : Demande certificat negatif   <span class="price" style="margin-left: 420px;"> <input type="checkbox" aria-label="Checkbox for following text input"></span></a><hr class="my-0"  />
+                  </div>
+                  <div class="total">Prestation : Session X<span class="price"> <input type="checkbox" aria-label="Checkbox for following text input"></span></div>
+                </div>
+                
+              </form>
+            </div>
+          </section>
+        </main>
+      </body>
+   
+    </div>
+</div>    
+
+
+
+ 
+ 
+ 
+ 

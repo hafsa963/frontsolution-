@@ -1,0 +1,45 @@
+
+@import '../../assets/css/styles.min.css';
+@import "../../assets/libs/simplebar/dist/simplebar.css";
+@import "../../assets/css/icons/tabler-icons/tabler-icons.css";
+ 
+   
+ @import "~bootstrap-icons/font/bootstrap-icons.css";
+ 
+ body {
+  display: block;
+  min-height: 100vh;
+  zoom: 90%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1rem; /* Set a standard font size */
+  font-weight: normal; /* Set a standard font weight */
+  line-height: 1.5; /* Set a standard line height */
+  color: #000; /* Set a standard text color */
+  text-align: left; /* Set a standard text alignment */
+  background-color: #fff; /* Set a standard background color */
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+  .navbar {
+    position: fixed;
+    width: 81%;
+    top: 0;
+    z-index: 1000;
+    background-color: aliceblue;
+    margin: 0;
+    padding: 0;
+  }
+
+  .app-header {
+    background-color: aliceblue;
+  }
+
+  .body-wrapper {
+    margin-top: 56px;  
+  }
+  
+   

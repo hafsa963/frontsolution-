@@ -1,0 +1,44 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+       @media (zoom: 80%) {
+  .table-responsive {
+    max-width: 80%;
+  }
+}
+  </style>
+</head>
+<body class="body1">
+    <div class="container">
+      <form   [formGroup]="form" (ngSubmit)="onSubmit()"> 
+        <div class="form-group">
+            <img class = "image"  src="../../assets/images/el_maguiri_logo-removebg-preview.png" />
+            <h4 class="form-label mt-3">Connexion</h4>
+            <div class="form-floating mb-3 mt-4">
+              <input type="text" class="form-control" id="username" formControlName="username" placeholder="exempleuser"  [ngClass]="{ 'is-invalid': submitted && f['username'].errors }">
+              <label for="username">Nom d'utilisateur</label>
+              <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                <div *ngIf="f['username'].errors && f['username'].errors['required']">Username is required</div>
+            </div>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="password" formControlName="password" autocomplete="off" placeholder="mot de passe" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+              <label for="password">Mot de passe</label>
+              <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div  *ngIf="f['password'].errors && f['password'].errors['required']">Password is required</div>
+            </div>
+            </div>
+            
+            <a >Mot de passe oublier</a>
+           
+            <div style="display: contents">
+                <button  [disabled]="loading" type="submit" class="btn btn1">se connecter  <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span></button>
+            </div>
+        </div>
+      </form>
+        
+    </div>
+</body>
+

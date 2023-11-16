@@ -1,0 +1,341 @@
+<head>
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  
+
+  <style>
+    /* .navbar {
+      position: fixed;
+      width: 80%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .search-form {
+      position: sticky;
+      top: 80px;
+      margin-top:80px; 
+      background: #ffffff;
+      z-index: 999;
+    }
+
+    .table-container {
+      margin-top: 120px;  
+    } */
+
+    @media (zoom: 80%) {
+  .table-responsive {
+    max-width: 80%;
+  }
+}
+ 
+
+
+
+
+
+
+ 
+  </style>
+</head>  
+<!-- style="background-color: #EDEDED; -->
+ 
+  <body>
+  
+  
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+  
+    <aside #sidebar class="left-sidebar" style="background-color: rgb(227, 236, 243)"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
+      <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.html" class="text-nowrap logo-img">
+            <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas" (click)="closesidebar()" data-bs-target="#sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div> 
+        </div>
+       
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Dashboard</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link"  [routerLink]="['/dashboard']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Tableau de bord</span>
+              </a>
+            </li>
+            <li class="nav-small-cap" routerLinkActive="active">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Dossiers</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/ajout-societe']" aria-expanded="false">
+                <span>
+                  <i class="bi bi-file-earmark-plus-fill"></i>
+                  <!-- <i class="ti ti-article"></i> -->
+                </span>
+                <span class="hide-menu">Nouveau dossier</span>
+              </a>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/dossier']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                
+                </span>
+                <span class="hide-menu">Liste des dossiers</span>
+              </a>
+            </li>
+            <!-- <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Progrès du Dossier</span>
+              </a>
+            </li> -->
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/dossier-archive']" aria-expanded="false">
+                <span>
+                   <i class="ti ti-alert-circle"></i> 
+                </span>
+                <span class="hide-menu">Dossiers archivés</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Prestations</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
+                <span>
+                  <i class="bi bi-plus-circle-fill"></i> 
+                  <!-- <i class="bi bi-list-task"></i>   -->
+                </span>
+                <span class="hide-menu">Nouvelle Mission</span>
+              </a>
+            
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+                  <!-- <i class="ti ti-article"></i> -->
+               
+              <a class="sidebar-link"  [routerLink]="['/Prestation']" aria-expanded="false">
+                <span>
+                  <i class="bi bi-card-checklist"></i> 
+                </span>
+                <span class="hide-menu"> Liste Des Missions</span>
+              </a>
+            </li>
+             
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">AUTH</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link"  aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Login</span>
+              </a>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user-plus"></i>
+                </span>
+                <span class="hide-menu">Register</span>
+              </a>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/list-colabs']" aria-expanded="false">
+                <span> 
+                  <i class="bi bi-people-fill"></i>
+                </span>
+                <span class="hide-menu">Liste de colaborateurs</span>
+              </a>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link"  aria-expanded="false">
+                <span>
+                  <i class="bi bi-person-fill-lock"></i>
+                </span>
+                <span class="hide-menu">affectation d'accès</span>
+              </a>
+            </li>
+           
+          
+          </ul>
+          
+        </nav>
+     
+      </div>
+      
+    </aside>
+    
+    <div class="body-wrapper">
+    
+      <header class="app-header" style="position: fixed; ">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="sidebarCollapseButton" data-bs-toggle="offcanvas" (click)="toggleSidebar()" data-bs-target="#sidebarCollapse">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-icon-hover">
+                <i class="ti ti-bell-ringing"></i>
+                <div class="notification bg-primary rounded-circle"></div>
+              </a>
+            </li>
+          </ul>
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Utilisateur</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" id="dropmenuuser" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <a  class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">Mon Profile</p>
+                    </a>
+                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Déconnecter</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <ng-content></ng-content>
+      <main style="margin-top: 30px;" >
+        <!-- style="width: 100%; max-width: 500px; margin: 0 auto; padding: 10px;"
+        style="width: 33%; margin-left: 200px; margin-top: 60px; z-index: 1001;" -->
+        <form   class="d-flex"   style="width: 100%; max-width: 500px; margin: 0 auto; padding: 10px;margin-top:90px;">
+          <input class="form-control me-2"   #searchInput type="search" placeholder="Raison Sociale\RC" aria-label="Search"  (input)="onInputChange($event)">
+          <button class="btn btn-outline-success" (click)="SearchBy(searchInput.value)" type="submit">Rechercher</button>
+        </form>
+        <!-- style="margin-left: 80px;margin-top: 60px; margin-right: 70px;" -->
+        <div class="table-responsive bg-white" style="margin: 30px; max-width: 100%;margin-top: 60px;"   >
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th class="large-column" scope="col">Raison Sociale</th>
+              <th class="small-column" scope="col">RC</th>
+              <th class="small-column" scope="col">Forme</th>
+              <th class="small-column" scope="col">Capitale</th>
+              <th class="small-column" scope="col">Siege</th>
+              <th class="small-column" scope="col">IF</th>
+              <th class="small-column" scope="col">ICE</th>
+              <th class="small-column" scope="col">IP</th>
+              <th class="small-column" scope="col">CNSS</th>
+              <th class="small-column" scope="col">état</th> 
+              <th class="small-column" scope="col" style="text-align: center;">Actions</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr   *ngFor="let societe of societe" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+              <td>
+                
+                {{societe.nom }} </td>
+                <td>{{societe.rc}}</td>
+                <td>{{societe.forme}}</td>
+                <td>{{societe.capitale}}</td>
+                <td>{{societe.siege}}</td>
+                <td>{{societe.i_f}}</td>
+                <td>{{societe.ice}}</td> 
+                <td>{{societe.ip}}</td>
+                <td>{{societe.cnss}}</td>
+                <td> <span class="badge bg-info px-2 py-2"> {{societe.etat}}</span></td> 
+                  
+                <td class="Actions"> 
+                 
+                  <a  *ngIf="societe.id" (click)="openModal(societe.id)"   data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-check2-circle" style="margin-left:20px ;"></i></a>
+                 
+                </td>
+            </tr>
+          </tbody>
+        </table>
+   
+      </div>
+  
+   
+  <div class="paginator-container">
+   
+    <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page"></mat-paginator>
+  
+  </div>
+   
+  </main> 
+    </div>
+
+  </div>
+  
+
+
+
+
+
+ 
+    
+</body> 
+ 
+ <!-- Archivage -->
+<div class="modal" tabindex="-1" id="modelarchive">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Message de confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="CloseModel()"></button>
+        </div>
+        <div class="modal-body">
+          <p>Etes-vous sûr de vouloir archiver ce dossier ? .</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()">Fermer</button>
+          <button type="button"  *ngIf="selectedSocieteId"   class="btn btn-primary">oui</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+ <!-- detail prestation -->
+
+ 
+
+ 
+
+
+
+
+
+
+  
+
+
+
+<div class="toast toast-success" role="alert" aria-live="assertive" id="toastsucces"  aria-atomic="true" style="text-align: center;">
+  <strong class="me-auto"></strong>
+  <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
+  <div class="toast-body">
+    Le dossier a été Desarchivé avec succès.
+  </div>
+</div>

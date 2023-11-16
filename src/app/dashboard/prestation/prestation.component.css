@@ -1,0 +1,219 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import '../../../assets/css/styles.min.css';
+@import "../../../assets/libs/simplebar/dist/simplebar.css";
+@import "../../../assets/css/icons/tabler-icons/tabler-icons.css";
+
+
+
+body{
+  display: block; min-height: 100vh; position: none;
+  zoom: 90%;
+     width: 100%;  
+  height: 100%;  
+
+}
+.container{
+    margin-top: 10px;
+    
+}
+ 
+  .intro {
+    height: 100%;
+  }
+  
+  .gradient-custom-1 {
+    
+    background: #cd9cf2;
+  
+    
+    background: -webkit-linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
+  
+   
+    background: linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
+  }
+  
+  table td,
+  table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  tbody td {
+    font-weight: 500;
+    /* color: #999999; */
+    color: #333;
+  }
+
+  .sortable-header{
+    justify-content: center;
+  } 
+  table.table.mb-0 {
+    width: 85%;
+    margin-left: 49px;
+}
+.Actions {
+    text-align:  center;
+    padding: 15px;
+    margin-right: 22px;
+  } 
+  .bi-pencil-square{
+    font-size: 1.5rem;
+    color: Green; 
+    
+  }
+  .bi-eye-fill{
+    font-size: 1.5rem;
+    color: blue;  
+    
+  }
+  .bi-eye-slash{
+    font-size: 1.5rem;
+    color: blue;   
+ 
+  }
+  .addButton{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius:  22px;
+    background-color:#008000;
+    padding:10px 17px;
+    color:#fff;
+    position: absolute; 
+    right: 0;
+    margin-right: 107px;
+    margin-top: 60px;
+  }
+  .bi-building-add{
+    font-size: 1rem;
+    color:#fff;
+    margin-left: 5px;
+  }
+.bi-caret-right-fill{
+    font-size: 1rem;
+    color: blue; 
+    margin-left: 8px; 
+}
+.bi-caret-down-fill{
+    padding: 2px;
+    margin-left: 29px;
+    font-size: 1rem;
+    color: blue; 
+}
+ 
+ 
+.paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.mat-paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ 
+ 
+ .Actions {
+   justify-content: center;
+ } 
+ .bi-pencil-square{
+   font-size: 1.5rem;
+   color: Green; 
+ }
+ .bi-eye{
+   font-size: 1.5rem;
+   color: blue;  
+ }
+ .addButton{
+   text-align: center;
+   font-family: Arial, Helvetica, sans-serif;
+   border-radius:  22px;
+   background-color:#006400;
+   padding:10px 17px;
+   color:#fff;
+   position: absolute; 
+   right: 0;
+   margin-right: 107px;
+   margin-top: 50px;
+ }
+ .bi-building-add{
+   font-size: 1rem;
+   color:#fff;
+   margin-left: 5px;
+ }
+.bi-caret-right-fill{
+   font-size: 1rem;
+   color: blue; 
+   margin-left: 8px; 
+}
+.bi-caret-down-fill{
+   padding: 2px;
+   margin-left: 29px;
+   font-size: 1rem;
+   color: blue; 
+}
+.btnbtn{
+   border: none;
+}
+.btn:hover{
+ border: none;
+ background-color: #333;
+ color: #fff;
+}
+.bi-archive{
+ font-size: 1.5rem;
+ color:#ff0505;  
+   margin-left: 8px;
+
+}
+
+
+.table[_ngcontent-ng-c2023197612] > [_ngcontent-ng-c2023197612]:not(caption) > *[_ngcontent-ng-c2023197612] > *[_ngcontent-ng-c2023197612] {
+  padding: 6px 4px 6px 4px;
+}
+/* TOASTER */
+.toast {
+  position: fixed;
+  top: 25%;
+  right: 0;
+  transform: translate(0, -25%);
+  background-color: #dff0d8;
+  border-color: #d0e9c6;
+  color: #3c763d;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: top 0.5s ease;
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 30%;
+  }
+  100% {
+    opacity: 1;
+    top: 25%;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 30%;
+  }
+}
+
+.show {
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
