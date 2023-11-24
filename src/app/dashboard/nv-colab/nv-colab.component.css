@@ -17,7 +17,7 @@ h2
     display:flex;
     justify-content:center;
     align-items:center;
-    background-color:#eee;
+    margin-top: 60px;
 }
 .colab .card{
     height:590px;
@@ -462,6 +462,9 @@ button.inactive
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
   animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+.row{
+    --bs-gutter-x: 3px;
 }
 
 @keyframes stroke {

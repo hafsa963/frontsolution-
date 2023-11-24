@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import {FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocieteService } from 'src/app/services/societe.service';
+import { UserService } from 'src/app/services/user.service';
  
 
 @Component({
@@ -18,6 +19,7 @@ export class AjoutSocieteComponent  implements OnInit{
  
  
   isSidebarExpanded: boolean = true;
+  username: any;
  
  
   @HostListener('window:resize', ['$event'])
@@ -73,11 +75,18 @@ export class AjoutSocieteComponent  implements OnInit{
   this.selectedData = history.state.selectedData;
   console.log(this.selectedData);
     console.log(this.societe);
+    
+    this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
+      if (response && response.username) {
+        this.username = response.username;
+        console.log('Username:', this.username);
+      }
+    });
     this.checkWindowSize();
    
   }
  
-  constructor(private appService : SocieteService, private router : Router){
+  constructor(private appService : SocieteService, private router : Router, private userService :UserService){
    
     this.registerForm = new FormGroup({
       propriete: new FormControl('', Validators.required),

@@ -23,7 +23,6 @@ import { AjoutPrestationComponent } from './dashboard/ajout-prestation/ajout-pre
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListColabsComponent } from './dashboard/list-colabs/list-colabs.component';
 import { NvColabComponent } from './dashboard/nv-colab/nv-colab.component';
-import { DossierClientComponent } from './dashboard/dossier-client/dossier-client.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 import { PrestationToDossierComponent } from './dashboard/prestation-to-dossier/prestation-to-dossier.component';
 import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-archive.component';
@@ -44,7 +43,6 @@ import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-arc
     AjoutPrestationComponent,
     NvColabComponent,
     ListColabsComponent,
-    DossierClientComponent,
     PrestationToDossierComponent,
     DossierArchiveComponent,
   

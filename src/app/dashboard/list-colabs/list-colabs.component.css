@@ -1,60 +1,43 @@
 @import '../../../assets/css/styles.min.css';
 @import "../../../assets/libs/simplebar/dist/simplebar.css";
 @import "../../../assets/css/icons/tabler-icons/tabler-icons.css";
-.body{
+body{
     display: block; min-height: 100vh; position: none;
+    zoom: 90%;
+       width: 100%;  
+    height: 100%;  
  }
    
  @import "~bootstrap-icons/font/bootstrap-icons.css";
-
-@media (max-width: 768px) {
  
-  body {
-      font-size: 14px;
+ 
+  
+ .table-responsive {
+  margin-left: 80px;
+  margin-top: 60px;
+  margin-right: 70px;
+  
+}
+
+/* Styles for smaller screens (less than 80% zoom) */
+@media (max-width: 800px) {
+  .table-responsive {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
-
+.table>thead {
+  font-weight: 300 500;
+}
  
-@media (min-width: 769px) and (max-width: 992px) {
-  
-  .container {
-      width: 80%;
-  }
-}
-
- 
-@media (min-width: 993px) {
- 
-  .container {
-      width: 60%;
-  }
-}
-  
-.container{
-    margin-top: 10px;
-    
-}
-.intro {
-  height: 100%;
-}
-
-.gradient-custom-1 {
-  
-  background: #cd9cf2;
-
-  
-  background: -webkit-linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
-
- 
-  background: linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
-}
-
-table td,
-table th {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
+ table td,
+ table th {
+  font-weight: 300 500;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+   font-weight: 300 500;
+ }
 tbody td {
   font-weight: 500;
   color: #999999;
@@ -123,7 +106,7 @@ tbody td {
   margin-right: 4px;
 }
  
-.paginator-container {
+/* .paginator-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,6 +117,6 @@ tbody td {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
  

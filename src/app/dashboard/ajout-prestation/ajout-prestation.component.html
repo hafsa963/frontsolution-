@@ -77,7 +77,7 @@
                   <i class="ti ti-file-description"></i>
                 
                 </span>
-                <span class="hide-menu">Liste des dossiers</span>
+                <span class="hide-menu">Liste Des Dossiers</span>
               </a>
             </li>
             <!-- <li class="sidebar-item">
@@ -93,12 +93,12 @@
                 <span>
                    <i class="ti ti-alert-circle"></i> 
                 </span>
-                <span class="hide-menu">Dossiers archivés</span>
+                <span class="hide-menu">Dossiers Archivés</span>
               </a>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Prestations</span>
+              <span class="hide-menu">Préstations</span>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
@@ -126,14 +126,7 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
             </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Login</span>
-              </a>
-            </li>
+            
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
                 <span>
@@ -147,7 +140,7 @@
                 <span> 
                   <i class="bi bi-people-fill"></i>
                 </span>
-                <span class="hide-menu">Liste de colaborateurs</span>
+                <span class="hide-menu">Colaborateurs</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
@@ -187,7 +180,7 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Utilisateur</a>
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Welcome, {{username}}</a>
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -212,13 +205,15 @@
          
          <a  class="btn btn-outline-primary mx-3 mt-2 d-block">ajouter une nouvelle Mission  :</a>
      
-         <form>
+         <form (ngSubmit)="onSubmit()">
      
      
            <div class="form-row">
              <div class="input-data">
                <label for="Mission">Titre de Mission : </label>
                <input type="text" [(ngModel)]="prestation.namePrestation" [ngModelOptions]="{standalone: true}" id="Mission"  required>
+               <input type="text" [(ngModel)]="prestation.Etat" [ngModelOptions]="{standalone: true}" id="Etatprestation" hidden>
+
                <div class="underline"></div>
                 
                 
@@ -238,7 +233,7 @@
      
      
            <div class="col-md-12 d-flex" style="margin-top: 44px;">
-             <button type="submit1" (click)="addEtape()" class="btn btn-info"  style="margin-left: 309px;">Ajouter une Etape</button>
+             <button type="button" (click)="addEtape()" class="btn btn-info"  style="margin-left: 309px;">Ajouter une Etape</button>
            </div>
            
            <div class="input-data" style="margin-top: 130px;" >
@@ -270,7 +265,7 @@
                  <div class="input-data">
    
                    <div class="inner"></div>
-                   <input type="submit" value="Enregister"   (click)="OnSubmit()">
+                   <input type="submit" value="Enregister">
                  
                    
                  </div>
@@ -297,6 +292,7 @@
               <div class="input-data">
                 <label for="namePrestation" style="margin-bottom: 30px;">Titre de Mission : </label>
                 <input   type="text" [(ngModel)]="selectedprestation.namePrestation" [ngModelOptions]="{standalone: true}" id="namePrestation"    required>
+              
                 <div class="underline"></div>
                  
                  
@@ -305,11 +301,19 @@
           
             
             <div class="col-md-6 d-flex flex-column align-items-center" style="margin-left: 130px;">
-            
-                <div *ngFor="let etape of prestation.etapeDtoList; let i = index">
-                  <label for="Etape{{i + 1}}" class="input-data" style="padding: 4px; font-size: 18px;margin-top: 20px; margin-bottom: 15px;" >Etape {{i + 1}}:</label>
-                   <input  type="text" [(ngModel)]="etape.nomEtape"  class="form-control" style=" padding: 10px; font-size: 20px;" name="nomEtape" id="Etape{{i + 1}}" [ngModelOptions]="{standalone: true}" placeholder="Nom Etape" />
+              <!-- style="padding: 4px; font-size: 18px;margin-top: 20px; margin-bottom: 15px;" -->
+                <div *ngFor="let etape of prestation.etapeDtoList; let i = index" class="input-group">
+                  
+                  <label for="Etape{{i + 1}}" class="input-data"   style="font-size: 18px;margin-top: 12px;
+                  margin-bottom: -30px; text-align: center; padding: 2px 4px 2px 4px;margin-right: 64px;">Etape {{i + 1}}:</label>
+                  <div class="input-container">
+                   <input  type="text" [(ngModel)]="etape.nomEtape"  class="form-control" style=" padding: 10px; font-size: 20px;margin-top: 10px; " name="nomEtape" id="Etape{{i + 1}}" [ngModelOptions]="{standalone: true}" placeholder="Nom Etape" />
+                   <button type="button" class="btn-close"   (click)="removeEtape(i)" >  
+                    <!-- <i class="bi bi-x-circle"></i> -->
+                  </button>
+                  </div>
                  </div>
+
                 <button type="submit1" (click)="addEtape()" class="btn btn-info"  style="    margin-left: 627px;
                 margin-top: -47px;">
                   <i class="bi bi-plus-circle"></i>

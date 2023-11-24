@@ -1,4 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-colabs',
@@ -8,8 +10,17 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 export class ListColabsComponent {
   isSidebarExpanded: boolean = true;
   @ViewChild('sidebar') sidebarElement!: ElementRef;
-
+  username: any;
+  constructor(private appService: UserService,private router: Router) {
+    // private userService: UserService, 
+  }
   ngOnInit() {
+    this.appService.getCurrentUserResponseEntity().subscribe((response: any) => {
+      if (response && response.username) {
+        this.username = response.username;
+        console.log('Username:', this.username);
+      }
+    });
  
       this.checkWindowSize();
   }

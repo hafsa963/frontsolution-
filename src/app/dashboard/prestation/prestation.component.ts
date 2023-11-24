@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { Router } from '@angular/router';
 import { Prestation } from 'src/app/model/prestation';
 import { ServicePrestationService } from 'src/app/services/service-prestation.service';
+import { UserService } from 'src/app/services/user.service';
  
 
 
@@ -17,6 +18,7 @@ export class PrestationComponent  {
   selectedprestationId: any;
   isSidebarExpanded: boolean = true;
   @ViewChild('sidebar') sidebarElement!: ElementRef;
+  username: any;
  
 
   // toggleDropdown() {
@@ -40,14 +42,22 @@ export class PrestationComponent  {
   ngOnInit(): void {
     this.getAllPrestations();
     this.checkWindowSize();
+    this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
+      if (response && response.username) {
+        this.username = response.username;
+        console.log('Username:', this.username);
+      }
+    });
   }
+ 
 
-  constructor(private appService: ServicePrestationService, private router: Router){}
+  constructor(private appService: ServicePrestationService, private router: Router , private userService : UserService ){}
 
   prestation: Prestation[] = [
    {
     namePrestation: '',
-    etapeDtoList: []
+    etapeDtoList: [],
+     Etat : '',
   } 
   ];
 

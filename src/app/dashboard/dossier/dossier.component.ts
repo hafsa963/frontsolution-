@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation ,OnInit, ElementRef, ViewChild, HostListen
 import { SocieteService } from 'src/app/services/societe.service';
 import { Router } from '@angular/router';
 import { Societe } from 'src/app/model/societe';
+import { UserService } from 'src/app/services/user.service';
  
  
 
@@ -17,7 +18,9 @@ export class DossierComponent implements OnInit  {
   selectedData: any; 
   isSidebarExpanded: boolean = true;
   @ViewChild('sidebar') sidebarElement!: ElementRef;
-  constructor(private appService :SocieteService, private router : Router){
+  username: any;
+  constructor(private appService: SocieteService, private userService: UserService, private router: Router) {
+ 
   }
   
   // societe : Societe[]  =[
@@ -45,6 +48,13 @@ export class DossierComponent implements OnInit  {
       this.societe = Array.isArray(response) ? response : [response];
 
       });
+      this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
+        if (response && response.username) {
+          this.username = response.username;
+          console.log('Username:', this.username);
+        }
+      });
+     
       this.checkWindowSize();
   }
 

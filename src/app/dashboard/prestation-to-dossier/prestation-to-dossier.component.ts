@@ -1,7 +1,8 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router , ParamMap } from '@angular/router';
 import { Prestation } from 'src/app/model/prestation';
 import { ServicePrestationService } from 'src/app/services/service-prestation.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-prestation-to-dossier',
@@ -11,29 +12,44 @@ import { ServicePrestationService } from 'src/app/services/service-prestation.se
 export class PrestationToDossierComponent {
   prestation: Prestation[] = []; 
   prestationNames: string[] = [];
-
+  username: any;
+  societeId!: number;
+  selectedPrestationId!: number; 
+  form: any;
   
-  constructor(private appService : ServicePrestationService, private router : Router){
+  
+  constructor(private appService : ServicePrestationService, private router : Router,private userservice : UserService,private route: ActivatedRoute){
   }
   isSidebarExpanded: boolean = true;
   @ViewChild('sidebar') sidebarElement!: ElementRef;
 
-  // prestation: Prestation[] = [
-  //   {
-  //    namePrestation: '',
-  //    etapeDtoList: []
-  //  } 
-  //  ];
+ 
   ngOnInit(): void {
+    
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id');
+      console.log('ID:', id);
+    });
+    
+ 
     this.appService.getAllPrestations().subscribe(
       (response: any) => {
-        this.prestation = response as Prestation[]; // Assuming the response is an array of Prestation objects
+        this.prestation = response as Prestation[];  
         this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
       },
       (error) => {
         console.error('Error fetching prestation data:', error);
       }
     );
+    this.userservice.getCurrentUserResponseEntity().subscribe((response: any) => {
+      if (response && response.username) {
+        this.username = response.username;
+        console.log('Username:', this.username);
+      }
+    });
+
+
+
     this.checkWindowSize();
   }
   
@@ -155,6 +171,25 @@ closesidebar() {
 
 }
 
+selectedPrestation(selectedPrestationId : number){
+  
+  console.log(selectedPrestationId);
+ this.appService.getalletapeByPrestation(selectedPrestationId).subscribe((response: any) => {  
+  this.prestation = Array.isArray(response) ? response : [response];
+  this.appService.getAllPrestations().subscribe(
+    (response: any) => {
+      this.prestation = response as Prestation[];  
+      this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
+    },
+    (error) => {
+      console.error('Error fetching prestation data:', error);
+    }
+  );
+
+  });
+  // this.selectedPrestationId = selectedPrestationId; 
 }
 
+}
 
+ 

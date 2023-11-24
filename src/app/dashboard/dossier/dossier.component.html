@@ -8,7 +8,7 @@
   <style>
     .navbar {
       position: fixed;
-      width: 80%;
+      width: 81%;
       top: 0;
       z-index: 1000;
     }
@@ -47,7 +47,7 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
   
-    <aside #sidebar class="left-sidebar" style="background-color: rgb(227, 236, 243)"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
+    <aside #sidebar class="left-sidebar" style="   background: linear-gradient(to bottom, #ffffff, #cccccc);"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
       <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -70,7 +70,7 @@
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Tableau de bord</span>
+                <span class="hide-menu">Tableau De Bord</span>
               </a>
             </li>
             <li class="nav-small-cap" routerLinkActive="active">
@@ -83,7 +83,7 @@
                   <i class="bi bi-file-earmark-plus-fill"></i>
                   <!-- <i class="ti ti-article"></i> -->
                 </span>
-                <span class="hide-menu">Nouveau dossier</span>
+                <span class="hide-menu">Nouveau Dossier</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
@@ -92,7 +92,7 @@
                   <i class="ti ti-file-description"></i>
                 
                 </span>
-                <span class="hide-menu">Liste des dossiers</span>
+                <span class="hide-menu">Liste Des Dossiers</span>
               </a>
             </li>
             <!-- <li class="sidebar-item">
@@ -108,7 +108,7 @@
                 <span>
                    <i class="ti ti-alert-circle"></i> 
                 </span>
-                <span class="hide-menu">Dossiers archivés</span>
+                <span class="hide-menu">Dossiers Archivés</span>
               </a>
             </li>
             <li class="nav-small-cap">
@@ -141,14 +141,7 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
             </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Login</span>
-              </a>
-            </li>
+        
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
                 <span>
@@ -162,7 +155,7 @@
                 <span> 
                   <i class="bi bi-people-fill"></i>
                 </span>
-                <span class="hide-menu">Liste de colaborateurs</span>
+                <span class="hide-menu">Colaborateurs</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
@@ -185,8 +178,8 @@
     
     <div class="body-wrapper">
     
-      <header class="app-header" style="position: fixed; ">
-        <nav class="navbar navbar-expand-lg navbar-light">
+      <header class="app-header" style="position: fixed;" >
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff; ">
           <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
               <a class="nav-link sidebartoggler nav-icon-hover" id="sidebarCollapseButton" data-bs-toggle="offcanvas" (click)="toggleSidebar()" data-bs-target="#sidebarCollapse">
@@ -202,7 +195,7 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Utilisateur</a>
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Welcome, {{username}}</a>
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -224,13 +217,10 @@
       </header>
       <ng-content></ng-content>
       <main style="margin-top: 30px;" >
-        <!-- style="width: 100%; max-width: 500px; margin: 0 auto; padding: 10px;"
-        style="width: 33%; margin-left: 200px; margin-top: 60px; z-index: 1001;" -->
         <form   class="d-flex"   style="width: 100%; max-width: 500px; margin: 0 auto; padding: 10px;margin-top:90px; ">
           <input class="form-control me-2"   #searchInput type="search" placeholder="Raison Sociale\RC" aria-label="Search"  (input)="onInputChange($event)">
           <button class="btn btn-outline-success" (click)="SearchBy(searchInput.value)" type="submit">Rechercher</button>
         </form>
-        <!-- style="margin-left: 80px;margin-top: 60px; margin-right: 70px;" -->
         <div class="table-responsive bg-white" style="margin: 30px; max-width: 100%;margin-top: 60px;"   >
         <table class="table mb-0">
           <thead>
@@ -245,7 +235,7 @@
               <th class="small-column" scope="col">IP</th>
               <th class="small-column" scope="col">CNSS</th>
               <th class="small-column" scope="col">état</th> 
-              <th class="small-column" scope="col" style="text-align: center;">Actions</th>
+              <th class="small-column" scope="col">Actions</th>
             </tr>
           </thead>
           <tbody> 
@@ -269,7 +259,7 @@
                     <i class="bi bi-pencil-square"></i>
                   </a>
                   <a   (click)="viseualise(societe)" data-toggle="tooltip" title="visualiser"  ><i class="bi bi-eye"></i></a> 
-                  <a    data-toggle="tooltip" title="ajouter une prestation " [routerLink]="['/prestation-to-dossier']"   ><i class="bi bi-plus-circle"></i></a>
+                  <a    data-toggle="tooltip" title="ajouter une prestation "  *ngIf="societe.id" [routerLink]="['/prestation-to-dossier',societe.id]"   ><i class="bi bi-plus-circle"></i></a>
                   <a  *ngIf="societe.id" (click)="openModal(societe.id)"   data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
                  
                 </td>
@@ -320,86 +310,98 @@
   </div>
 
   <!-- detail societe -->
- 
-<div class="modal" id="exampleModal" tabindex="-1" style="--bs-modal-width: 739px;"  >
-  <div class="modal-dialog"  style="width: 900px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Détail du societe</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="viseualiseModelclose()"></button>
-       
-      </div>
-      <div class="modal-body" *ngIf="selectedData">
-        <form class="row TT align-items-start">
-             <div class="col-md-4 form-group">
-              <label for="proprietaire" class="form-label">proprietaire : </label>
-              <input type="text" class="form-control" id="proprietaire" [(ngModel)]="selectedData.propriete" [ngModelOptions]="{standalone: true}" disabled  >
-            </div>
-            <div class="col-md-4 form-group">
-              <label for="Forme" class="form-label">Forme : </label>
-              <input type="text" class="form-control" id="Forme" [(ngModel)]="selectedData.forme" [ngModelOptions]="{standalone: true}" disabled>
-            </div>
-            <div class="col-4 form-group">
-              <label for="capitale" class="form-label">Capitale : </label>
-              <input type="text" class="form-control" id="capitale" [(ngModel)]="selectedData.capitale" [ngModelOptions]="{standalone: true}" disabled>
-            </div>
-            <div class="col-12 form-group">
-              <label for="Siege" class="form-label">Siege : </label>
-              <input type="text" class="form-control" id="Siege" [(ngModel)]="selectedData.siege" [ngModelOptions]="{standalone: true}"   disabled>
-            </div>
-            <div class="col-md-3 form-group">
-              <label for="RC" class="form-label">RC : </label>
-              <input type="text" class="form-control" id="RC" [(ngModel)]="selectedData.rc" [ngModelOptions]="{standalone: true}"  disabled>
-            </div>
-            <div class="col-md-3 form-group">
-                <label for="IF" class="form-label">IF : </label>
-                <input type="text" class="form-control" id="IF"  [(ngModel)]="selectedData.i_f" [ngModelOptions]="{standalone: true}" disabled>
+  
+  <div class="modal" id="exampleModal" tabindex="-1" style="--bs-modal-width: 739px;"  >
+    <div class="modal-dialog"  style="width: 900px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p  class="btn btn-outline-primary custom-btn mx-3 mt-2 d-block">Détail du societe</p>
+          <!-- <h5 class="modal-title" id="exampleModalLabel">Détail du societe</h5> -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="viseualiseModelclose()"></button>
+         
+        </div>
+        <div class="modal-body" *ngIf="selectedData">
+          <form class="row TT align-items-start">
+               <div class="col-md-4 form-group">
+                <label for="proprietaire" class="form-label">proprietaire : </label>
+                <input type="text" class="form-control" id="proprietaire" [(ngModel)]="selectedData.propriete" [ngModelOptions]="{standalone: true}" disabled  >
               </div>
-              <div class="col-md-3 form-group">
-                <label for="IC" class="form-label">IC : </label>
-                <input type="text" class="form-control" id="IC"  [(ngModel)]="selectedData.ice" [ngModelOptions]="{standalone: true}" disabled>
-              </div>
-              <div class="col-md-3 form-group">
-                <label for="IP" class="form-label">IP : </label>
-                <input type="text" class="form-control" id="IP"  [(ngModel)]="selectedData.ip" [ngModelOptions]="{standalone: true}"  disabled>
-              </div>
-            <div class="col-md-6 form-group">
-              <label for="Cnss" class="form-label">Cnss : </label>
-              <input type="text" class="form-control" id="Cnss" [(ngModel)]="selectedData.cnss" [ngModelOptions]="{standalone: true}"   disabled>
-            </div>
-               <h6>  les informations de gérant : </h6>
-            <div class="col-md-10 form-group">
-                <label for="gérant" class="form-label">Nom de gérant : </label>
-                <input type="text" class="form-control" id="gérant" [value]="selectedData?.managerVoList[0]?.nameManager"   disabled>
-            </div><br/>
               <div class="col-md-4 form-group">
-                <label for="datedebut" class="form-label">Date de début : </label>
-                <input type="date" class="form-control" id="datedebut"   [value]="selectedData?.managerVoList[0]?.datedebut"  disabled>
+                <label for="Forme" class="form-label">Forme : </label>
+                <input type="text" class="form-control" id="Forme" [(ngModel)]="selectedData.forme" [ngModelOptions]="{standalone: true}" disabled>
               </div>
               <div class="col-4 form-group">
-                <label for="datefin" class="form-label">Date de Fin : </label>
-                <input type="date" class="form-control" id="datefin"     [value]="selectedData?.managerVoList[0]?.dateFin"  disabled>
+                <label for="capitale" class="form-label">Capitale : </label>
+                <input type="text" class="form-control" id="capitale" [(ngModel)]="selectedData.capitale" [ngModelOptions]="{standalone: true}" disabled>
               </div>
-              
-              <div class="col-4 form-group">
-                <label for="mondat" class="form-label">mandat de gérance : </label>
-                <input type="text" class="form-control" id="mondat"    [value]="selectedData?.managerVoList[0]?.mandatGerance"  disabled>
+              <div class="col-12 form-group">
+                <label for="Siege" class="form-label">Siege : </label>
+                <input type="text" class="form-control" id="Siege" [(ngModel)]="selectedData.siege" [ngModelOptions]="{standalone: true}"   disabled>
               </div>
-             
-    </form>
-
-
-    <div class="table-responsive bg-white" style="margin-top: 40px;">
-      <table class="table mb-0">
-        <thead>
-          <tr>
-            <th class="large-column" scope="col">Prestation</th>
-            <th class="small-column" scope="col">Etat</th> 
-            <th class="small-column" scope="col" style="text-align: center;">Actions</th>
-          </tr>
-        </thead>
-        <tbody> 
-          <tr  class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+              <div class="col-md-3 form-group">
+                <label for="RC" class="form-label">RC : </label>
+                <input type="text" class="form-control" id="RC" [(ngModel)]="selectedData.rc" [ngModelOptions]="{standalone: true}"  disabled>
+              </div>
+              <div class="col-md-3 form-group">
+                  <label for="IF" class="form-label">IF : </label>
+                  <input type="text" class="form-control" id="IF"  [(ngModel)]="selectedData.i_f" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+                <div class="col-md-3 form-group">
+                  <label for="IC" class="form-label">IC : </label>
+                  <input type="text" class="form-control" id="IC"  [(ngModel)]="selectedData.ice" [ngModelOptions]="{standalone: true}" disabled>
+                </div>
+                <div class="col-md-3 form-group">
+                  <label for="IP" class="form-label">IP : </label>
+                  <input type="text" class="form-control" id="IP"  [(ngModel)]="selectedData.ip" [ngModelOptions]="{standalone: true}"  disabled>
+                </div>
+              <div class="col-md-6 form-group">
+                <label for="Cnss" class="form-label">Cnss : </label>
+                <input type="text" class="form-control" id="Cnss" [(ngModel)]="selectedData.cnss" [ngModelOptions]="{standalone: true}"   disabled>
+              </div>
+                 <p  class="btn btn-outline-primary custom-btn mx-2 mt-2 d-block">les informations de gérant :</p>
+              <div class="col-md-10 form-group">
+                  <label for="gérant" class="form-label">Nom de gérant : </label>
+                  <input type="text" class="form-control" id="gérant" [value]="selectedData?.managerVoList[0]?.nameManager"   disabled>
+              </div><br/>
+                <div class="col-md-4 form-group">
+                  <label for="datedebut" class="form-label">Date de début : </label>
+                  <input type="date" class="form-control" id="datedebut"   [value]="selectedData?.managerVoList[0]?.datedebut"  disabled>
+                </div>
+                <div class="col-4 form-group">
+                  <label for="datefin" class="form-label">Date de Fin : </label>
+                  <input type="date" class="form-control" id="datefin"     [value]="selectedData?.managerVoList[0]?.dateFin"  disabled>
+                </div>
+                
+                <div class="col-4 form-group">
+                  <label for="mondat" class="form-label">mandat de gérance : </label>
+                  <input type="text" class="form-control" id="mondat"    [value]="selectedData?.managerVoList[0]?.mandatGerance"  disabled>
+                </div>
+               
+      </form>
+  
+  
+      <div class="table-responsive bg-white" style="margin-top: 40px; margin-left: 2px;margin-right: 1px;">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th class="large-column" scope="col">Prestation</th>
+              <th class="small-column" scope="col">Etat</th> 
+              <th class="small-column" scope="col" style="text-align: center;">Actions</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr  class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+                <td> Creation du société</td>
+                <td> <span class="badge bg-success px-2 py-2"> Facturée</span></td> 
+                  
+                <td class="Actions">
+                 
+                  <a data-toggle="tooltip" title="visualiser"  ><i class="bi bi-eye" (click)="viseualiseModelPrestation()"></i></a> 
+                  <a    data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
+                 
+                </td>
+            </tr>
+            <tr  class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
               <td> Creation du société</td>
               <td> <span class="badge bg-success px-2 py-2"> Facturée</span></td> 
                 
@@ -416,30 +418,21 @@
               
             <td class="Actions">
              
-              <a data-toggle="tooltip" title="visualiser"  ><i class="bi bi-eye" (click)="viseualiseModelPrestation()"></i></a> 
+              <a data-toggle="tooltip" title="visualiser"  (click)="viseualiseModelPrestation()"><i class="bi bi-eye"></i></a> 
               <a    data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
              
             </td>
         </tr>
-        <tr  class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-          <td> Creation du société</td>
-          <td> <span class="badge bg-success px-2 py-2"> Facturée</span></td> 
-            
-          <td class="Actions">
-           
-            <a data-toggle="tooltip" title="visualiser"  (click)="viseualiseModelPrestation()"><i class="bi bi-eye"></i></a> 
-            <a    data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
-           
-          </td>
-      </tr>
-        </tbody>
-      </table>
- 
-    </div>
+          </tbody>
+        </table>
+   
+      </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>  
+  </div> 
+ 
+ 
 
 
  <!-- detail prestation -->

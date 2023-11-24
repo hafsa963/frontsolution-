@@ -5,30 +5,14 @@
   
 
   <style>
-    /* .navbar {
-      position: fixed;
-      width: 80%;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .search-form {
-      position: sticky;
-      top: 80px;
-      margin-top:80px; 
-      background: #ffffff;
-      z-index: 999;
-    }
-
-    .table-container {
-      margin-top: 120px;  
-    } */
+  
 
     @media (zoom: 80%) {
   .table-responsive {
     max-width: 80%;
   }
 }
+
  
 
 
@@ -47,7 +31,7 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
   
-    <aside #sidebar class="left-sidebar" style="background-color: rgb(227, 236, 243)"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
+    <aside #sidebar class="left-sidebar" style="background: linear-gradient(to bottom, #ffffff, #cccccc);"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
       <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -70,7 +54,7 @@
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Tableau de bord</span>
+                <span class="hide-menu">Tableau De Bord</span>
               </a>
             </li>
             <li class="nav-small-cap" routerLinkActive="active">
@@ -83,7 +67,7 @@
                   <i class="bi bi-file-earmark-plus-fill"></i>
                   <!-- <i class="ti ti-article"></i> -->
                 </span>
-                <span class="hide-menu">Nouveau dossier</span>
+                <span class="hide-menu">Nouveau Dossier</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
@@ -92,7 +76,7 @@
                   <i class="ti ti-file-description"></i>
                 
                 </span>
-                <span class="hide-menu">Liste des dossiers</span>
+                <span class="hide-menu">Liste Des Dossiers</span>
               </a>
             </li>
             <!-- <li class="sidebar-item">
@@ -113,7 +97,7 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Prestations</span>
+              <span class="hide-menu">Préstations</span>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
@@ -141,14 +125,7 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
             </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Login</span>
-              </a>
-            </li>
+          
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
                 <span>
@@ -162,7 +139,7 @@
                 <span> 
                   <i class="bi bi-people-fill"></i>
                 </span>
-                <span class="hide-menu">Liste de colaborateurs</span>
+                <span class="hide-menu">Colaborateurs</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
@@ -202,7 +179,7 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Utilisateur</a>
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Welcome, {{username}}</a>
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -224,8 +201,6 @@
       </header>
       <ng-content></ng-content>
       <main style="margin-top: 30px;" >
-        <!-- style="width: 100%; max-width: 500px; margin: 0 auto; padding: 10px;"
-        style="width: 33%; margin-left: 200px; margin-top: 60px; z-index: 1001;" -->
         <form   class="d-flex"   style="width: 100%; max-width: 500px; margin: 0 auto; padding: 10px;margin-top:90px;">
           <input class="form-control me-2"   #searchInput type="search" placeholder="Raison Sociale\RC" aria-label="Search"  (input)="onInputChange($event)">
           <button class="btn btn-outline-success" (click)="SearchBy(searchInput.value)" type="submit">Rechercher</button>
@@ -245,7 +220,7 @@
               <th class="small-column" scope="col">IP</th>
               <th class="small-column" scope="col">CNSS</th>
               <th class="small-column" scope="col">état</th> 
-              <th class="small-column" scope="col" style="text-align: center;">Actions</th>
+              <th class="small-column" scope="col">Actions</th>
             </tr>
           </thead>
           <tbody> 
@@ -261,7 +236,7 @@
                 <td>{{societe.ice}}</td> 
                 <td>{{societe.ip}}</td>
                 <td>{{societe.cnss}}</td>
-                <td> <span class="badge bg-info px-2 py-2"> {{societe.etat}}</span></td> 
+                <td> <span class="badge bg-info px-2 py-2" style="width: 152px ;"> {{societe.etat}}</span></td> 
                   
                 <td class="Actions"> 
                  

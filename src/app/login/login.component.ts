@@ -46,8 +46,9 @@ export class LoginComponent implements OnInit {
     this.appService.authenticateUser(this.f['username'].value, this.f['password'].value).subscribe({
       next: (token: any) => {
         localStorage.setItem(this.tokenKey, token);
-        console.log('Generated Token:', token);
-        const returnUrl = this.route.snapshot.queryParams['dossier'] || '/dossier';
+        localStorage.setItem('username', this.f['username'].value);
+        // console.log('Generated Token:', token);
+        const returnUrl = this.route.snapshot.queryParams['dashboard'] || '/dashboard';
         this.router.navigateByUrl(returnUrl);
       },
       error: (error: any) => {
@@ -59,13 +60,6 @@ export class LoginComponent implements OnInit {
 
 
 
-// onSubmit_(username: string, password: string) {
-    
-//     this.appService.authenticateUser(username, password).subscribe((token: any) => {
-//       localStorage.setItem(this.tokenKey, token);
-//       this.router.navigate(['/dossier']);
-//     });
-  
-//   }
+ 
 
 }

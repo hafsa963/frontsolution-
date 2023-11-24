@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Etape } from 'src/app/model/etape';
 import { Prestation } from 'src/app/model/prestation';
 import { ServicePrestationService } from 'src/app/services/service-prestation.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-ajout-prestation',
@@ -10,11 +11,23 @@ import { ServicePrestationService } from 'src/app/services/service-prestation.se
   styleUrls: ['./ajout-prestation.component.css']
 })
 export class AjoutPrestationComponent {
+
+  prestation: Prestation = {
+    namePrestation: '',
+    Etat: '',
+    etapeDtoList: []
+  };
+
+  newEtape: Etape = {
+    nomEtape: ''
+  };
+
     element: boolean = false;
   isSidebarExpanded: boolean = true;
   selectedprestation:any;
 
   @ViewChild('sidebar') sidebarElement!: ElementRef;
+  username: any;
 
 
   ngOnInit() {
@@ -30,40 +43,29 @@ export class AjoutPrestationComponent {
     this.prestation = this.selectedprestation || { namePrestation: '', etapeDtoList: [] };
   
     console.log(this.selectedprestation);
-    console.log(this.prestation);
+    // console.log(this.prestation);
+    this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
+      if (response && response.username) {
+        this.username = response.username;
+        console.log('Username:', this.username);
+      }
+    });
   
     this.checkWindowSize();
   }
   
 
 
-  // ngOnInit() {
-  //   this.checkWindowSize();
-    
-  // }
  
-  nomEtape: string = '';
-  prestation: Prestation = {
-    id: 0,
-    namePrestation: '',
-    etapeDtoList:   [],
-  };
-  newEtape: Etape = {
-    idEtape: 0,
-    nomEtape: '',
-  };
-  constructor(private appService :   ServicePrestationService, private router : Router){}
-
  
+  
+  constructor(private appService :   ServicePrestationService, private router : Router, private userService: UserService){}
 
-
-  OnSubmit() {
-     
-     
+  onSubmit() {
     this.appService.createPrestation(this.prestation).subscribe(
       (res) => {
-        console.log(this.prestation);
         console.log('Data has been successfully submitted:', res);
+        console.log(this.prestation);
         const Modeldiv = document.getElementById('toastsucces');
         if(Modeldiv != null){
           // Modeldiv.style.display = 'block';
@@ -73,25 +75,29 @@ export class AjoutPrestationComponent {
           }, 2000);
          
         }
-        
+     
       },
       (error) => {
-        console.log(this.prestation);
         console.error('Error in submitting data:', error);
-        
+         
       }
     );
-
-    console.log('Data has been sent for saving');
   }
+ 
 
+
+  
 
  
   addEtape() {
     this.prestation.etapeDtoList.push({ ...this.newEtape });
     this.newEtape.nomEtape = '';
   }  
-
+  removeEtape(index: number) {
+    if (index >= 0 && index < this.prestation.etapeDtoList.length) {
+      this.prestation.etapeDtoList.splice(index, 1);
+    }
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {

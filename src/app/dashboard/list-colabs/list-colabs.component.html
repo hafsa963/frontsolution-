@@ -1,11 +1,11 @@
 <head>
  
-  
-
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    .navbar {
+   .navbar {
       position: fixed;
-      width: 80%;
+      width: 81%;
       top: 0;
       z-index: 1000;
     }
@@ -20,6 +20,11 @@
     .table-container {
       margin-top: 120px;  
     }
+    @media (zoom: 80%) {
+  .table-responsive {
+    max-width: 80%;
+  }
+}
   </style>
 </head>  
  
@@ -29,18 +34,21 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
   
-    <aside #sidebar class="left-sidebar" style="background-color: rgb(227, 236, 243)"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
+    <aside #sidebar class="left-sidebar" style="background: linear-gradient(to bottom, #ffffff, #cccccc);"
+      [style.marginLeft]="isSidebarExpanded ? '0' : '270px'">
       <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80" alt="" />
+            <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80"
+              alt="" />
           </a>
-          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas" (click)="closesidebar()" data-bs-target="#sidebarCollapse">
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas"
+            (click)="closesidebar()" data-bs-target="#sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
-          </div> 
+          </div>
         </div>
-       
+
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
@@ -48,7 +56,7 @@
               <span class="hide-menu">Dashboard</span>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  [routerLink]="['/dashboard']" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/dashboard']" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -72,9 +80,9 @@
               <a class="sidebar-link" [routerLink]="['/dossier']" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
-                
+
                 </span>
-                <span class="hide-menu">Liste des dossiers</span>
+                <span class="hide-menu">Liste Des Dossiers</span>
               </a>
             </li>
             <!-- <li class="sidebar-item">
@@ -88,48 +96,40 @@
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" [routerLink]="['/dossier-archive']" aria-expanded="false">
                 <span>
-                   <i class="ti ti-alert-circle"></i> 
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Dossiers archivés</span>
+                <span class="hide-menu">Dossiers Archivés</span>
               </a>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Prestations</span>
+              <span class="hide-menu">Préstations</span>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/ajout-prestation']" aria-expanded="false">
                 <span>
-                  <i class="bi bi-plus-circle-fill"></i> 
+                  <i class="bi bi-plus-circle-fill"></i>
                   <!-- <i class="bi bi-list-task"></i>   -->
                 </span>
                 <span class="hide-menu">Nouvelle Mission</span>
               </a>
-            
+
             </li>
             <li class="sidebar-item" routerLinkActive="active">
-                  <!-- <i class="ti ti-article"></i> -->
-               
-              <a class="sidebar-link"  [routerLink]="['/Prestation']" aria-expanded="false">
+              <!-- <i class="ti ti-article"></i> -->
+
+              <a class="sidebar-link" [routerLink]="['/Prestation']" aria-expanded="false">
                 <span>
-                  <i class="bi bi-card-checklist"></i> 
+                  <i class="bi bi-card-checklist"></i>
                 </span>
                 <span class="hide-menu"> Liste Des Missions</span>
               </a>
             </li>
-             
+
 
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Login</span>
-              </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
@@ -141,28 +141,28 @@
             </li>
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" [routerLink]="['/list-colabs']" aria-expanded="false">
-                <span> 
+                <span>
                   <i class="bi bi-people-fill"></i>
                 </span>
-                <span class="hide-menu">Liste de colaborateurs</span>
+                <span class="hide-menu">Colaborateurs</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
+              <a class="sidebar-link" aria-expanded="false">
                 <span>
                   <i class="bi bi-person-fill-lock"></i>
                 </span>
                 <span class="hide-menu">affectation d'accès</span>
               </a>
             </li>
-           
-          
+
+
           </ul>
-          
+
         </nav>
-     
+
       </div>
-      
+
     </aside>
     
     <div class="body-wrapper">
@@ -184,7 +184,7 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Utilisateur</a>
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Welcome, {{username}}</a>
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -209,10 +209,7 @@
           <input class="form-control me-2" type="search" placeholder="identifiant" aria-label="Search">
           <button class="btn btn-outline-warning" type="submit">Rechercher</button>
         </form>
-        <div class="row justify-content-center">
-          <div class="col-12">
-            
-            <div class="table-responsive bg-white" style="margin-left: 80px;margin-top: 60px; margin-right: 70px;" >
+            <div class="table-responsive bg-white"  style="margin: 30px; max-width: 100%;margin-top: 60px;" >
             <table class="table mb-0">
               <thead>  
                 <tr>
@@ -227,14 +224,15 @@
                 </tr>
               </thead>
               <tbody> 
+                <tbody> 
                 <tr   class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td> 
-                  <td> </td>
-                  <td> </td>  
+                  <td>beniss</td>
+                  <td>reda</td>
+                  <td>adminbenis</td>
+                  <td>directeur</td>
+                  <td>admin</td> 
+                  <td>beniss@gmail</td>
+                  <td>adminadmin</td>  
                   <td class="Actions">
                     <div class="d-flex justify-content-center">
                     <a   class="text-decoration-none text-primary me-2" data-toggle="tooltip" title="modifier">
@@ -248,9 +246,7 @@
               </tbody>
             </table>
           </div>
-          </div>
-    
-        </div>
+ 
       <div class="paginator-container">
         <!-- (click)="openBottomSheet()" (click)="openModal()" -->
         <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page"></mat-paginator>

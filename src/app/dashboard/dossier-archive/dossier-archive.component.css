@@ -13,47 +13,8 @@ body{
  @import "~bootstrap-icons/font/bootstrap-icons.css";
  
  
- /* @media (max-width: 768px) {
   
-   body {
-       font-size: 14px;
-   }
- }
  
-  
- @media (min-width: 769px) and (max-width: 992px) {
-   
-   .container {
-       width: 80%;
-   }
- }
- 
-  
- @media (min-width: 993px) {
-  
-   .container {
-       width: 60%;
-   }
- } */
-   
- /* .container{
-     margin-top: 10px;
-     
- }
- .intro {
-   height: 100%;
- } */
- 
- .gradient-custom-1 {
-   
-   background: #cd9cf2;
- 
-   
-   background: -webkit-linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
- 
-  
-   background: linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
- }
  
  
  .table-responsive {

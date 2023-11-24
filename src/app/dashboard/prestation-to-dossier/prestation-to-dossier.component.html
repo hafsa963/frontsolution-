@@ -53,7 +53,7 @@
                   <span>
                     <i class="ti ti-layout-dashboard"></i>
                   </span>
-                  <span class="hide-menu">Tableau de bord</span>
+                  <span class="hide-menu">Tableau De Bord</span>
                 </a>
               </li>
               <li class="nav-small-cap" routerLinkActive="active">
@@ -66,7 +66,7 @@
                     <i class="bi bi-file-earmark-plus-fill"></i>
                     <!-- <i class="ti ti-article"></i> -->
                   </span>
-                  <span class="hide-menu">Nouveau dossier</span>
+                  <span class="hide-menu">Nouveau Dossier</span>
                 </a>
               </li>
               <li class="sidebar-item" routerLinkActive="active">
@@ -75,7 +75,7 @@
                     <i class="ti ti-file-description"></i>
                   
                   </span>
-                  <span class="hide-menu">Liste des dossiers</span>
+                  <span class="hide-menu">Liste Des Dossiers</span>
                 </a>
               </li>
               <!-- <li class="sidebar-item">
@@ -91,12 +91,12 @@
                   <span>
                      <i class="ti ti-alert-circle"></i> 
                   </span>
-                  <span class="hide-menu">Dossiers archivés</span>
+                  <span class="hide-menu">Dossiers Archivés</span>
                 </a>
               </li>
               <li class="nav-small-cap">
                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                <span class="hide-menu">Prestations</span>
+                <span class="hide-menu">Préstations</span>
               </li>
               <li class="sidebar-item" routerLinkActive="active">
                 <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
@@ -115,7 +115,7 @@
                   <span>
                     <i class="bi bi-card-checklist"></i> 
                   </span>
-                  <span class="hide-menu"> Liste Des Missions</span>
+                  <span class="hide-menu">Liste Des Missions</span>
                 </a>
               </li>
                
@@ -123,14 +123,6 @@
               <li class="nav-small-cap">
                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                 <span class="hide-menu">AUTH</span>
-              </li>
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link"  aria-expanded="false">
-                  <span>
-                    <i class="ti ti-login"></i>
-                  </span>
-                  <span class="hide-menu">Login</span>
-                </a>
               </li>
               <li class="sidebar-item" routerLinkActive="active">
                 <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
@@ -145,7 +137,7 @@
                   <span> 
                     <i class="bi bi-people-fill"></i>
                   </span>
-                  <span class="hide-menu">Liste de colaborateurs</span>
+                  <span class="hide-menu">Colaborateurs</span>
                 </a>
               </li>
               <li class="sidebar-item" routerLinkActive="active">
@@ -185,7 +177,7 @@
             </ul>
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
               <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Utilisateur</a>
+                <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Welcome, {{username}}</a>
                 <li class="nav-item dropdown">
                   <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -214,9 +206,9 @@
                 <div class="d-flex justify-content-between align-items-center">
                    
                   <div class="w-50" style="text-align: center;">
-                    <select id="optioname" class="form-select w-100">
-                      <option selected>choisir...</option>
-                      <option *ngFor="let presta of prestation" style="border-radius: 1px solid; font-size:18px; background-color:#ced4da;">{{presta.namePrestation}}</option>
+                    <select  [(ngModel)]="selectedPrestationId" (change)="selectedPrestation(selectedPrestationId)"class="form-select w-100">
+                      <!-- <option value="">choisir...</option> -->
+                      <option   *ngFor="let presta of prestation" style="border-radius: 1px solid; font-size:18px; background-color:#d7e9fa;"  [value]="presta.id">   <label class="form-check-label" for="Prestationfactured">choisir : </label> {{presta.namePrestation}}</option>
                     </select>
                   </div>
           
@@ -235,30 +227,34 @@
           
            
             <div class="table-responsive bg-white" style="margin-left: 60px;margin-top: 30px; margin-right: 100px;" >
-            <table class="table mb-0" style="padding: 2px 2px;">
-              <thead>
-                <tr>
-                  <th class="large-column" scope="col">Etape</th>
-                      <th class="large-column" scope="col">Etat</th>
-                      <th class="small-column" scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody> 
-                <tr class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-                  <td> certificat negatif</td>
-                    <td> en attente</td>
-
-                    <td class="Actions">
-                      <a  class="text-decoration-none text-primary me-2" (click)="viseualiseModelmodifier()" data-toggle="tooltip" title="modifier">
-                        <i class="bi bi-pencil-square"></i>
-                      </a>
-                      <a data-toggle="tooltip" title="visualiser"  (click)="viseualiseModel()" ><i class="bi bi-eye"></i></a> 
-                    </td>
-                     
-                     
-                </tr>
-              </tbody>
-            </table>
+              <table class="table mb-0" style="padding: 2px 2px;">
+                <thead>
+                  <tr>
+                    <th class="large-column" scope="col">Etape</th>
+                    <th class="large-column" scope="col">Etat</th>
+                    <th class="small-column" scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let presta of prestation ">
+                    <tr *ngFor="let Etape of presta.etapeDtoList" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+                      
+                        <td>{{ Etape.nomEtape }}</td>
+                        <td>En attente</td>
+                        <td class="Actions">
+                          <a class="text-decoration-none text-primary me-2" (click)="viseualiseModelmodifier()" data-toggle="tooltip" title="modifier">
+                            <i class="bi bi-pencil-square"></i>
+                          </a>
+                          <a data-toggle="tooltip" title="visualiser" (click)="viseualiseModel()">
+                            <i class="bi bi-eye"></i>
+                          </a>
+                        </td>
+                      
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+              
        
           </div>
           <div class="container">
@@ -273,26 +269,7 @@
               </div>
             </div>
           </div>
-          
         
-        
-         
-          <!-- <div class="submit-btn" >
-                    
-            <div class="input-data">
-
-              <div class="form-row submit-btn" >
-                <div class="inner"></div>
-                <input type="submit" value="Cloturer">
-                </div>
-            
-            
-              
-            </div>
-          </div> -->
-              
-           
-     
     </main> 
       </div>
   

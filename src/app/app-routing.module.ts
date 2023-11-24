@@ -11,7 +11,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AjoutPrestationComponent } from './dashboard/ajout-prestation/ajout-prestation.component';
 import { ListColabsComponent } from './dashboard/list-colabs/list-colabs.component';
 import { NvColabComponent } from './dashboard/nv-colab/nv-colab.component';
-import { DossierClientComponent } from './dashboard/dossier-client/dossier-client.component';
 import { PrestationToDossierComponent } from './dashboard/prestation-to-dossier/prestation-to-dossier.component';
 import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-archive.component';
  
@@ -34,8 +33,7 @@ const routes: Routes = [
   {path:"ajout-societe", component: AjoutSocieteComponent },
   { path: 'list-colabs', component: ListColabsComponent },
   { path: 'nv-colab', component: NvColabComponent },
-  {path: 'dossier-client',component : DossierClientComponent},
-  {path: 'prestation-to-dossier',component : PrestationToDossierComponent },
+  {path: 'prestation-to-dossier/:id',component : PrestationToDossierComponent },
   {path: 'dossier-archive',component : DossierArchiveComponent },
  
 
@@ -44,5 +42,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
+ 
 })
 export class AppRoutingModule { }

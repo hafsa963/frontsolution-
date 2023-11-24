@@ -1,7 +1,9 @@
 import { Etape } from "./etape";
 
 export interface Prestation {
-    id?: number,
-    namePrestation: string,
-    etapeDtoList: Etape[]
+    id?: number;
+    namePrestation: string;
+    etapeDtoList: Etape[];
+    Etat : string;
 }
+ 

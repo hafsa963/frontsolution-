@@ -1,4 +1,5 @@
 import { Manager } from "./Manager";
+import { Prestation } from "./prestation";
 
 
 export interface Societe{
@@ -14,6 +15,9 @@ export interface Societe{
     propriete : String,
     siege : string,
     etat : string,
+    prestationList : Prestation [],
     managerVoList: Manager[];
+
 }
+
  

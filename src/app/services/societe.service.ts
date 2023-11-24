@@ -48,4 +48,8 @@ export class SocieteService {
   sortByName(propriete : string){
     return this.http.delete(`${this.baseUrl}/societes/admin/societe/sort/${propriete}`)
   }
+  associateSocietePrestation(id :  number , id_prestation : number){
+    return this.http.delete(`${this.baseUrl}/societes/admin/associateSocietePrestation/{id}/{id_prestation}${id},${id_prestation}`)
+  }
+   
 }

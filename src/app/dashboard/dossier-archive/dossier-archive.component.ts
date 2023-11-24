@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocieteService } from 'src/app/services/societe.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-dossier-archive',
@@ -12,7 +13,7 @@ export class DossierArchiveComponent {
   selectedSocieteId: any;
   isSidebarExpanded: boolean = true;
   @ViewChild('sidebar') sidebarElement!: ElementRef;
-  constructor(private appService :SocieteService, private router : Router){
+  constructor(private appService :SocieteService, private router : Router , private userService :UserService){
   }
   
   // societe : Societe[]  =[
@@ -40,7 +41,16 @@ export class DossierArchiveComponent {
       this.societe = Array.isArray(response) ? response : [response];
 
       });
+      this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
+        if (response && response.username) {
+          this.username = response.username;
+          console.log('Username:', this.username);
+        }
+      });
       this.checkWindowSize();
+  }
+  username(arg0: string, username: any) {
+    throw new Error('Method not implemented.');
   }
 
  

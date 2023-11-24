@@ -12,8 +12,13 @@ export class ServicePrestationService {
 
   constructor(private http:HttpClient) { }
 
-  createPrestation(prestation:Prestation){
-    return this.http.post(`${this.baseUrl}/prestations/prestation`,prestation)
+  // createPrestation(prestation:Prestation){
+  //   return this.http.post(`${this.baseUrl}/prestations/prestation`,prestation)
+  // }
+
+  createPrestation(prestation: Prestation) {
+    return this.http.post(`${this.baseUrl}/prestations/prestation`, prestation)
+       
   }
 
   getAllPrestations(){
@@ -22,11 +27,7 @@ export class ServicePrestationService {
   getNamePrestations(){
     return this.http.get(`${this.baseUrl}/prestations/getAllNamePrestations`)
   }
-  
-  
-  // updatePrestationById(id: number, selectedprestation: any): Observable<any> {
-  //   return this.http.put(`${this.baseUrl}/prestations/admin/updatePrestation/${id}`, selectedprestation);
-  // }
+ 
 
   updatePrestation(id: number, selectedprestation : any): Observable<any> {
     return this.http.put(`${this.baseUrl}/prestations/admin/updatePrestation/${id}`, selectedprestation );
@@ -46,6 +47,10 @@ export class ServicePrestationService {
     return this.http.delete(`${this.baseUrl}/prestations/prestation/${id}`);
   }
 
+  getalletapeByPrestation(id: number){
+    return this.http.get(`${this.baseUrl}/prestations/prestationbyetape/id/${id}`)
+  }
+   
   
 
 }

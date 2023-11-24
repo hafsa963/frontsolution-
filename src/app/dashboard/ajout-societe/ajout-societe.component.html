@@ -28,7 +28,7 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
   
-    <aside #sidebar class="left-sidebar" style="background-color: rgb(227, 236, 243)"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
+    <aside #sidebar class="left-sidebar" style="background: linear-gradient(to bottom, #ffffff, #cccccc);"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
       <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -51,7 +51,7 @@
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Tableau de bord</span>
+                <span class="hide-menu">Tableau De Bord</span>
               </a>
             </li>
             <li class="nav-small-cap" routerLinkActive="active">
@@ -64,7 +64,7 @@
                   <i class="bi bi-file-earmark-plus-fill"></i>
                   <!-- <i class="ti ti-article"></i> -->
                 </span>
-                <span class="hide-menu">Nouveau dossier</span>
+                <span class="hide-menu">Nouveau Dossier</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
@@ -73,7 +73,7 @@
                   <i class="ti ti-file-description"></i>
                 
                 </span>
-                <span class="hide-menu">Liste des dossiers</span>
+                <span class="hide-menu">Liste Des Dossiers</span>
               </a>
             </li>
             <!-- <li class="sidebar-item">
@@ -89,12 +89,12 @@
                 <span>
                    <i class="ti ti-alert-circle"></i> 
                 </span>
-                <span class="hide-menu">Dossiers archivés</span>
+                <span class="hide-menu">Dossiers Archivés</span>
               </a>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Prestations</span>
+              <span class="hide-menu">Préstations</span>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
@@ -122,14 +122,7 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
             </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Login</span>
-              </a>
-            </li>
+           
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
                 <span>
@@ -143,7 +136,7 @@
                 <span> 
                   <i class="bi bi-people-fill"></i>
                 </span>
-                <span class="hide-menu">Liste de colaborateurs</span>
+                <span class="hide-menu">Colaborateurs</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
@@ -434,7 +427,13 @@
     
     
         <div class="container" *ngIf="element == true">
-          <a  class="btn btn-outline-primary mx-3 mt-2 d-block"> Modification D'une société</a>
+          <p  class="btn btn-outline-primary custom-btn mx-3 mt-2 d-block"> Modification D'une société</p>
+          <div class="alert alert-primary d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <div>
+              <p>Les informations telles que la raison sociale et le numéro d'immatriculation au Registre de Commerce doivent être uniques.</p>
+            </div>
+          </div>
           <form class="row" *ngIf="selectedData" #Societeupdat="ngForm" (ngSubmit)="OnUpdate(Societeupdat.value)">
             <div class="form-row">
               <div class="input-data">
@@ -462,7 +461,9 @@
                   [ngModelOptions]="{standalone: true}" placeholder=" ">
                 <div class="underline"></div>
                 <label for="Siege">Siege : </label>
-              </div>
+               </div>
+            </div>
+            <div class="form-row">
               <div class="input-data">
                 <input type="text" required id="capitale" [(ngModel)]="selectedData.capitale"
                   [ngModelOptions]="{standalone: true}" placeholder="">
@@ -474,9 +475,8 @@
                 <div class="underline"></div>
                 <label for="Siege">Cnss : </label>
               </div>
-    
             </div>
-            <div class="form-row">
+                <div class="form-row">
               <div class="input-data">
                 <input type="text" required [(ngModel)]="selectedData.rc" [ngModelOptions]="{standalone: true}" id="RC">
                 <div class="underline"></div>
@@ -487,6 +487,8 @@
                 <div class="underline"></div>
                 <label for="IF">IF : </label>
               </div>
+            </div>
+            <div class="form-row">
               <div class="input-data">
                 <input type="text" [(ngModel)]="selectedData.ice" [ngModelOptions]="{standalone: true}" required id="IC">
                 <div class="underline"></div>
@@ -497,13 +499,15 @@
                 <div class="underline"></div>
                 <label for="IP">IP : </label>
               </div>
+            </div>
+             
               <!-- <div class="input-data"  visible="false">
                 <input type="text" [(ngModel)]="selectedData.id" [ngModelOptions]="{standalone: true}" required id="id" disabled>
                 <div class="underline"></div>
                  <label for="id" >id : </label>
               </div> -->
               <!-- <h6> remplir les informations de votre gérant : </h6> -->
-            </div>
+          
             
     
             <div class="action" style="text-align: center;display: flex; gap: 10px; margin-left: 100px; margin-top: 33px;">

@@ -78,7 +78,7 @@
                   <i class="ti ti-file-description"></i>
                 
                 </span>
-                <span class="hide-menu">Liste des dossiers</span>
+                <span class="hide-menu">Liste Des Dossiers</span>
               </a>
             </li>
             <!-- <li class="sidebar-item">
@@ -94,12 +94,12 @@
                 <span>
                    <i class="ti ti-alert-circle"></i> 
                 </span>
-                <span class="hide-menu">Dossiers archivés</span>
+                <span class="hide-menu">Dossiers Archivés</span>
               </a>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Prestations</span>
+              <span class="hide-menu">Préstations</span>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
@@ -127,14 +127,7 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
             </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Login</span>
-              </a>
-            </li>
+         
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
                 <span>
@@ -148,7 +141,7 @@
                 <span> 
                   <i class="bi bi-people-fill"></i>
                 </span>
-                <span class="hide-menu">Liste de colaborateurs</span>
+                <span class="hide-menu">Colaborateurs</span>
               </a>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
@@ -188,7 +181,7 @@
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Utilisateur</a>
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Welcome, {{username}}</a>
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -229,9 +222,9 @@
                   <tbody>
                     <tr *ngFor="let presta of prestation" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
                       <td style="font-size: 20px;">{{ presta.namePrestation }}
-                          <ul *ngIf="showSteps[presta.namePrestation]" style="font-size: 18px;  max-width: 12px;  color: #6d6f70; margin-left: 22px; padding: 4px;">
-                              <li *ngFor="let etape of presta.etapeDtoList">{{etape.nomEtape }}</li>
-                          </ul>
+                          <ul *ngIf="showSteps[presta.namePrestation]" style="font-size: 19px;  max-width: 12px;  color: #6d6f70; margin-left: 102px; padding: 4px;">
+                              <li *ngFor="let etape of presta.etapeDtoList; let i=index "> <label style="color: #333;" for="Etape{{i + 1}}" > Etape {{i + 1}}:</label> {{etape.nomEtape }}</li>
+                          </ul> 
                       </td>
                       <td class="Actions">
                         <a   class="text-decoration-none text-primary me-2"  *ngIf="presta.id" (click)="modifypresta(presta)" data-toggle="tooltip" title="modifier">
