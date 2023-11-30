@@ -1,0 +1,19 @@
+@import '../../../assets/css/styles.min.css';
+@import "../../../assets/libs/simplebar/dist/simplebar.css";
+@import "../../../assets/css/icons/tabler-icons/tabler-icons.css";
+body{
+    display: block; min-height: 100vh; position: none;
+    zoom: 90%;
+       width: 100%;  
+    height: 100%;  
+ }
+   
+ @import "~bootstrap-icons/font/bootstrap-icons.css";
+ 
+ 
+@media (max-width: 800px) {
+  .table-responsive {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
