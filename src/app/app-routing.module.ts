@@ -13,6 +13,8 @@ import { ListColabsComponent } from './dashboard/list-colabs/list-colabs.compone
 import { NvColabComponent } from './dashboard/nv-colab/nv-colab.component';
 import { PrestationToDossierComponent } from './dashboard/prestation-to-dossier/prestation-to-dossier.component';
 import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-archive.component';
+import { ListClientComponent } from './dashboard/list-client/list-client.component';
+import { NvClientComponent } from './dashboard/nv-client/nv-client.component';
  
 
  
@@ -20,8 +22,8 @@ import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-arc
 
 
 const routes: Routes = [
-  {path:"", component: OptionsComponent},
-  {path:"Login", component: LoginComponent},
+  // {path:"", component: OptionsComponent},
+  {path:"", component: LoginComponent},
   {path:"Departement", component: DepartementComponent},
   {path:"MDPOublier", component: MDPOublierComponent},
   {path:"dossier", component: DossierComponent},
@@ -35,8 +37,8 @@ const routes: Routes = [
   { path: 'nv-colab', component: NvColabComponent },
   {path: 'prestation-to-dossier/:id',component : PrestationToDossierComponent },
   {path: 'dossier-archive',component : DossierArchiveComponent },
- 
-
+  {path: 'list-client',component : ListClientComponent },
+  {path: 'nv-client',component : NvClientComponent },
 ];
 
 @NgModule({

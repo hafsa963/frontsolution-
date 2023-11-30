@@ -1,0 +1,517 @@
+ 
+ <head>
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  
+
+  <style>
+    .navbar {
+      position: fixed;
+      width: 81%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .search-form {
+      position: sticky;
+      top: 80px;  
+      background: #ffffff;
+      z-index: 999;
+    }
+
+    .table-container {
+      margin-top: 120px;  
+    }
+
+    @media (zoom: 80%) {
+  .table-responsive {
+    max-width: 80%;
+  }
+}
+ 
+
+
+
+
+
+
+ 
+  </style>
+</head>  
+<!-- style="background-color: #EDEDED; -->
+ 
+  <body>
+  
+  
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+  
+    <aside #sidebar class="left-sidebar" style="   background: linear-gradient(to bottom, #ffffff, #cccccc);"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
+      <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.html" class="text-nowrap logo-img">
+            <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas" (click)="closesidebar()" data-bs-target="#sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div> 
+        </div>
+       
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Dashboard</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link"  [routerLink]="['/dashboard']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Tableau De Bord</span>
+              </a>
+            </li>
+            <li class="nav-small-cap" routerLinkActive="active">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Dossiers</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/ajout-societe']" aria-expanded="false">
+                <span>
+                  <i class="bi bi-file-earmark-plus-fill"></i>
+                  <!-- <i class="ti ti-article"></i> -->
+                </span>
+                <span class="hide-menu">Nouveau Dossier</span>
+              </a>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/dossier']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                
+                </span>
+                <span class="hide-menu">Liste Des Dossiers</span>
+              </a>
+            </li>
+            <!-- <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Progrès du Dossier</span>
+              </a>
+            </li> -->
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/dossier-archive']" aria-expanded="false">
+                <span>
+                   <i class="ti ti-alert-circle"></i> 
+                </span>
+                <span class="hide-menu">Dossiers Archivés</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Prestations</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
+                <span>
+                  <i class="bi bi-plus-circle-fill"></i> 
+                  <!-- <i class="bi bi-list-task"></i>   -->
+                </span>
+                <span class="hide-menu">Nouvelle Mission</span>
+              </a>
+            
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+                  <!-- <i class="ti ti-article"></i> -->
+               
+              <a class="sidebar-link"  [routerLink]="['/Prestation']" aria-expanded="false">
+                <span>
+                  <i class="bi bi-card-checklist"></i> 
+                </span>
+                <span class="hide-menu"> Liste Des Missions</span>
+              </a>
+            </li>
+             
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">AUTH</span>
+            </li>
+        
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user-plus"></i>
+                </span>
+                <span class="hide-menu">Register</span>
+              </a>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/list-colabs']" aria-expanded="false">
+                <span> 
+                  <i class="bi bi-people-fill"></i>
+                </span>
+                <span class="hide-menu">Colaborateurs</span>
+              </a>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link"  aria-expanded="false">
+                <span>
+                  <i class="bi bi-person-fill-lock"></i>
+                </span>
+                <span class="hide-menu">affectation d'accès</span>
+              </a>
+            </li>
+           
+          
+          </ul>
+          
+        </nav>
+     
+      </div>
+      
+    </aside>
+    
+    <div class="body-wrapper">
+    
+      <header class="app-header" style="position: fixed;" >
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff; ">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="sidebarCollapseButton" data-bs-toggle="offcanvas" (click)="toggleSidebar()" data-bs-target="#sidebarCollapse">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-icon-hover">
+                <i class="ti ti-bell-ringing"></i>
+                <div class="notification bg-primary rounded-circle"></div>
+              </a>
+            </li>
+          </ul>
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Welcome, {{username}}</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" id="dropmenuuser" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <a  class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">Mon Profile</p>
+                    </a>
+                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Déconnecter</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <ng-content></ng-content>
+
+      <div class="container">
+        <div class="row">
+            <form   *ngIf="selectedData"> 
+            <div class="col-md-12 mb-3">
+              <div class="card dossier-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Identification</h5>
+                  <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+
+                  <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="rs" class="label rs">Raison Sociale :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="text" class="form-control custom-sinput" id="rs"  [(ngModel)]="selectedData.rs" [ngModelOptions]="{standalone: true}" disabled>
+                      </div>
+                    </div>
+
+
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="propriete" class="label rs" style="margin-left: 44px;">Propriétaire :</label>
+                      </div>
+                      <div style="width: 200px;">
+                        <input type="text" class="form-control custom-sinput" id="propriete" [(ngModel)]="selectedData.propriete" [ngModelOptions]="{standalone: true}" disabled>
+                      </div>
+                    </div>
+ 
+
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="ctNum" class="label rs me-3">Numéro client :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="text" class="form-control custom-sinput" id="ctNum"
+                        [(ngModel)]="selectedData.ctNum" [ngModelOptions]="{standalone: true}" disabled>
+                      </div>
+
+                    </div>
+                    
+
+                    
+                    <div class="mb-3 d-flex" style="margin-top: 12px">
+                      <div class="me-3" style="width: 150px">
+                        <label for="Qualite" style="margin-left: 50px;" class="label rs me-3">Qualité :</label>
+                      </div>
+                      <div style="width: 200px;">
+                        <input type="text" class="form-control custom-sinput" [(ngModel)]="selectedData.qualite" [ngModelOptions]="{standalone: true}" disabled>
+                      </div>
+
+                    </div>
+
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="cmt" class="label rs me-3">Commentaire :</label>
+                      </div>
+                      <div style="width: 765px;">
+                        <input type="text" class="form-control custom-sinput" id="cmt"   [(ngModel)]="selectedData.cmt" [ngModelOptions]="{standalone: true}" disabled>
+                      </div>
+
+                    </div>
+                    
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+              <div class="col-md-12 mb-3">
+              <div class="card dossier-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Coordonnées</h5>
+                  <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+
+                  <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="Adresse" class="label rs me-3">Adresse:</label>
+                      </div>
+                      <div style="width: 765px;">
+                        <input type="text" class="form-control custom-sinput" id="Adresse"  [(ngModel)]="selectedData.adresse" [ngModelOptions]="{standalone: true}" disabled>
+                      </div>
+
+                    </div>
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="Complement" class="label rs me-3">Complément:</label>
+                      </div>
+                      <div style="width: 765px;">
+                        <input type="text" class="form-control custom-sinput" id="complement" [(ngModel)]="selectedData.complement" [ngModelOptions]="{standalone: true}" disabled>
+                      </div>
+
+                    </div>
+                    <div class="mb-3 d-flex">
+                        <div class="me-3" style="width: 150px;">
+                          <label for="Siège" class="label rs" style="margin-left: 20px;">Siège :</label>
+                        </div>
+                        <div style="width: 765px;">
+                          <input type="text" class="form-control custom-sinput" id="Siège" [(ngModel)]="selectedData.siege" [ngModelOptions]="{standalone: true}" disabled
+>
+                        </div>
+                      </div>
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="CodePostal" class="label rs">Code Postal :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="text" class="form-control custom-sinput" id="CodePostal" [(ngModel)]="selectedData.codepostal" [ngModelOptions]="{standalone: true}"disabled>
+                      </div>
+                    </div>
+
+
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="ville" class="label rs" style="margin-left: 44px;">Ville :</label>
+                      </div>
+                      <div style="width: 200px;">
+                        <input type="text" class="form-control custom-sinput" id="ville" [(ngModel)]="selectedData.ville" [ngModelOptions]="{standalone: true}" disabled >
+                      </div>
+                    </div>
+
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="CodeRegion" class="label rs">Région :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="text" class="form-control custom-sinput" id="CodeRegion"  [(ngModel)]="selectedData.coderegion" [ngModelOptions]="{standalone: true}"disabled>
+                      </div>
+                    </div>
+
+
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="Pays" class="label rs" style="margin-left: 44px;">Pays:</label>
+                      </div>
+                      <div style="width: 200px;">
+                        <input type="text" class="form-control custom-sinput" id="Pays"  [(ngModel)]="selectedData.pays" [ngModelOptions]="{standalone: true}" disabled>
+                      </div>
+                    </div>
+                       
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                        <div class="me-3" style="width: 150px;">
+                          <label for="Email" class="label rs me-3">Email:</label>
+                        </div>
+                        <div style="width: 765px;">
+                          <input type="Email" class="form-control custom-sinput" id="Email" [(ngModel)]="selectedData.email" [ngModelOptions]="{standalone: true}" disabled>
+                        </div>
+                      </div>
+                      <div class="mb-3 d-flex">
+                        <div class="me-3" style="width: 150px;">
+                          <label for="Telephone" class="label rs">Téléphone :</label>
+                        </div>
+                        <div style="width: 400px;">
+                          <input type="text" class="form-control custom-sinput" id="tel" [(ngModel)]="selectedData.tel" [ngModelOptions]="{standalone: true}"disabled>
+                        </div>
+                      </div>
+  
+  
+                      <div class="mb-3 d-flex">
+                        <div class="me-3" style="width: 150px;">
+                          <label for="Telecopie " class="label rs" style="margin-left: 44px;">Télécopie :</label>
+                        </div>
+                        <div style="width: 200px;">
+                          <input type="text" class="form-control custom-sinput" id="Telecopie"  [(ngModel)]="selectedData.telcopie" [ngModelOptions]="{standalone: true}"disabled >
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           <div class="col-md-12 mb-3">
+              <div class="card dossier-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Immatriculation</h5>
+                  <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+
+                  <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                      
+                   
+                     
+                    <div class="d-flex flex-wrap mb-3" style="margin-top: 16px;">
+                        <div class="mb-3 d-flex">
+                          <div class="me-3" style="width: 150px;">
+                            <label for="forme" class="label rs">Forme :</label>
+                          </div>
+                          <div style="width:300px;">
+                            <input type="text" class="form-control custom-sinput" id="forme"    [(ngModel)]="selectedData.forme" [ngModelOptions]="{standalone: true}" disabled>
+                          </div>
+                        </div>
+    
+    
+                        <div class="mb-3 d-flex">
+                          <div class="me-3" style="width: 150px;">
+                            <label for="capitale" class="label rs" style="margin-left: 50px;">Capitale :</label>
+                          </div>
+                          <div style="width: 300px;">
+                            <input type="text" class="form-control custom-sinput" id="capitale"  [(ngModel)]="selectedData.capitale" [ngModelOptions]="{standalone: true}"disabled
+                              placeholder="Capitale">
+                          </div>
+                        </div>
+                       
+                      </div>
+ 
+                      <div class="d-flex flex-wrap mb-3">
+                        <div class="mb-3 d-flex">
+                          <div class="me-3" style="width: 80px;">
+                            <label for="rc" class="label rs">RC :</label>
+                          </div>
+                          <div style="width: 200px; margin-left: 71px;">
+                            <input type="text" class="form-control custom-sinput" id="rc" [(ngModel)]="selectedData.rc" [ngModelOptions]="{standalone: true}" disabled>
+                          </div>
+                        </div>
+    
+    
+                        <div class="mb-3 d-flex">
+                          <div class="me-3" style="width: 80px;">
+                            <label for="if" class="label rs" style="margin-left: 20px;">IF :</label>
+                          </div>
+                          <div style="width: 200px;">
+                            <input type="text" class="form-control custom-sinput" id="if" [(ngModel)]="selectedData.i_f" [ngModelOptions]="{standalone: true}"disabled>
+                          </div>
+                        </div>
+                        <div class="mb-3 d-flex">
+                          <div class="me-3" style="width: 80px;margin-left: -22px;">
+                            <label for="ice" class="label rs" style="margin-left: 30px;">ICE :</label>
+                          </div>
+                          <div style="width: 200px;">
+                            <input type="text" class="form-control custom-sinput" id="ice" [(ngModel)]="selectedData.ice" [ngModelOptions]="{standalone: true}"disabled
+                              placeholder="ice">
+                          </div>
+                        </div>
+
+                        <div class="mb-3 d-flex" style="margin-top: 12px;">
+                            <div class="me-3" style="width: 150px;">
+                              <label for="IP" class="label rs me-3" >IP :</label>
+                            </div>
+                            <div style="width: 200px;">
+                              <input type="text" class="form-control custom-sinput" id="ip" [(ngModel)]="selectedData.ip" [ngModelOptions]="{standalone: true}" disabled>
+                            </div>
+      
+                          </div>
+                          <div class="mb-3 d-flex" style="margin-top: 12px;">
+                            <div class="me-3" style="width: 150px;">
+                              <label for="cnss" class="label rs me-3" style="margin-left: 20px;">CNSS :</label>
+                            </div>
+                            <div style="width: 300px;">
+                              <input type="text" class="form-control custom-sinput" id="cnss" [(ngModel)]="selectedData.cnss" [ngModelOptions]="{standalone: true}" disabled>
+                            </div>
+      
+                          </div>
+                          <!-- [(ngModel)]="selectedTypeSociete" name="typesociete" *ngFor="let type of typesocietes {{ type.nom }}  [value]="type.id"" -->
+                          <div class="mb-3 d-flex" style="margin-top: 12px;">
+                            <div class="me-3" style="width: 150px;">
+                              <label for="IP" class="label rs me-3">Type Entreprise :</label>
+                            </div>
+                            <div style="width: 600px;">
+                              <select id="typesociete" [(ngModel)]="selectedData.typesociete" [ngModelOptions]="{standalone: true}"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                <!-- <option  value="" disabled selected>Choose TypeSociete</option>
+                                <option *ngFor="let name of typesocieteNames" [value]="name">{{ name }}</option> -->
+       
+                              </select>
+                            </div>
+      
+                          </div>
+                      </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div> 
+ 
+          
+          </form>
+        </div>
+     </div> 
+
+   
+    </div>
+
+  </div>
+  
+
+
+
+
+
+ 
+    
+</body> 
+ 
+ 
+
+  

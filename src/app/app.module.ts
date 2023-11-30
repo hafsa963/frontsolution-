@@ -15,7 +15,7 @@ import { MDPOublierComponent } from './mdp-oublier/mdp-oublier.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DossierComponent } from './dashboard/dossier/dossier.component';
 import { PrestationComponent } from './dashboard/prestation/prestation.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
+ 
 import { AjoutSocieteComponent } from './dashboard/ajout-societe/ajout-societe.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +26,9 @@ import { NvColabComponent } from './dashboard/nv-colab/nv-colab.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
 import { PrestationToDossierComponent } from './dashboard/prestation-to-dossier/prestation-to-dossier.component';
 import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-archive.component';
+import { ListClientComponent } from './dashboard/list-client/list-client.component';
+import { NvClientComponent } from './dashboard/nv-client/nv-client.component';
+import { DataclientComponent } from './dashboard/dataclient/dataclient.component';
  
  
  
@@ -45,6 +48,9 @@ import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-arc
     ListColabsComponent,
     PrestationToDossierComponent,
     DossierArchiveComponent,
+    ListClientComponent,
+    NvClientComponent,
+    DataclientComponent,
   
      
      
@@ -56,7 +62,7 @@ import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-arc
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatPaginatorModule,
+  //  MatPaginatorModule,
     ReactiveFormsModule,
     BrowserModule,
      HttpClientModule,
