@@ -20,14 +20,11 @@
 
 
 <body>
-  <!-- background-color: rgb(227, 236, 243) -->
-  <!-- style="background-color: #EDEDED;"  -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
 
-    <aside #sidebar class="left-sidebar" style="background: linear-gradient(to bottom, #ffffff, #cccccc);"
+    <aside #sidebar class="left-sidebar" 
       [style.marginLeft]="isSidebarExpanded ? '0' : '270px'">
-      <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
@@ -56,24 +53,16 @@
             </li>
             <li class="nav-small-cap" routerLinkActive="active">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Dossiers</span>
+              <span class="hide-menu">Client</span>
             </li>
+           
             <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/ajout-societe']" aria-expanded="false">
-                <span>
-                  <i class="bi bi-file-earmark-plus-fill"></i>
-                  <!-- <i class="ti ti-article"></i> -->
-                </span>
-                <span class="hide-menu">Nouveau dossier</span>
-              </a>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/dossier']" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/list-client']" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
 
                 </span>
-                <span class="hide-menu">Liste Des Dossiers</span>
+                <span class="hide-menu">Clients</span>
               </a>
             </li>
             <!-- <li class="sidebar-item">
@@ -84,74 +73,48 @@
                 <span class="hide-menu">Progrès du Dossier</span>
               </a>
             </li> -->
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/dossier-archive']" aria-expanded="false">
-                <span>
-                  <i class="ti ti-alert-circle"></i>
-                </span>
-                <span class="hide-menu">Dossiers Archivés</span>
-              </a>
-            </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Préstations</span>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/ajout-prestation']" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/Prestation']" aria-expanded="false">
                 <span>
                   <i class="bi bi-plus-circle-fill"></i>
                   <!-- <i class="bi bi-list-task"></i>   -->
                 </span>
-                <span class="hide-menu">Nouvelle Mission</span>
+                <span class="hide-menu">Préstations</span>
               </a>
 
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Taches</span>
             </li>
             <li class="sidebar-item" routerLinkActive="active">
-              <!-- <i class="ti ti-article"></i> -->
-
-              <a class="sidebar-link" [routerLink]="['/Prestation']" aria-expanded="false">
+              <a class="sidebar-link"   aria-expanded="false">
                 <span>
-                  <i class="bi bi-card-checklist"></i>
+                  <i class="bi bi-plus-circle-fill"></i>
+                  <!-- <i class="bi bi-list-task"></i>   -->
                 </span>
-                <span class="hide-menu"> Liste Des Missions</span>
+                <span class="hide-menu">Tache</span>
               </a>
+
             </li>
+            
 
 
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">AUTH</span>
-            </li>
-            <!-- <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" aria-expanded="false">
-                <span>
-                  <i class="ti ti-login"></i>
-                </span>
-                <span class="hide-menu">Login</span>
-              </a>
-            </li> -->
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user-plus"></i>
-                </span>
-                <span class="hide-menu">Register</span>
-              </a>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/list-colabs']" aria-expanded="false">
-                <span>
-                  <i class="bi bi-people-fill"></i>
-                </span>
-                <span class="hide-menu">Colaborateurs</span>
-              </a>
-            </li>
+              <span class="hide-menu">Paramaitre</span>
+            </li> 
             <li class="sidebar-item" routerLinkActive="active">
               <a class="sidebar-link" aria-expanded="false">
                 <span>
                   <i class="bi bi-person-fill-lock"></i>
                 </span>
-                <span class="hide-menu">affectation d'accès</span>
+                <span class="hide-menu"> Types D'entreprises </span>
               </a>
             </li>
 
@@ -164,7 +127,7 @@
 
     </aside>
 
-    <div class="body-wrapper" style="background: linear-gradient(to bottom, #fceaea, #fff5f5);">
+    <div class="body-wrapper" >
 
       <header class="app-header" style="position: fixed;">
         <nav class="navbar navbar-expand-lg navbar-light" style="padding: 0px; margin: 0px;">

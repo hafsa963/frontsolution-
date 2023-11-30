@@ -120,3 +120,10 @@
     color: #28a745;  
     
   }
+  .fixed-button {
+    position: fixed;
+    position: fixed;
+    top: 32px;
+    right: 221px;
+  z-index: 1000; 
+  }

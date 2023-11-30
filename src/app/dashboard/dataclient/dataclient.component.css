@@ -17,3 +17,73 @@ body{
     margin-right: 10px;
   }
 }
+.container{
+  /* zoom: 90%; */
+  justify-content: center;
+   /* min-height: 50vh;   */
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  overflow-x:hidden;  
+   /* max-width:800px;  */
+   /* background: rgb(225, 225, 250);   */
+   background: rgb(230, 230, 255);  
+    
+  /* width: 800px;   */
+  /* padding: 25px 10px 10px 40px;  */
+   box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
+    /* margin-left: 120px;
+  margin-top: 120px;  */
+} 
+.label{
+  display: inline-block;
+  margin-bottom: 8px; 
+  /* font-weight: bold;   */
+  color: rgb(117, 117, 163);
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+ 
+
+.dossier-card {
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease-in-out;
+}
+
+.dossier-card:hover {
+transform: scale(1.05);
+}
+
+.dossier-card .card-title {
+color: #007bff;
+font-size: 1.5rem;
+margin-bottom: 0.5rem;
+}
+
+.dossier-card .btn-primary {
+background-color: #007bff;
+border-color: #007bff;
+}
+
+.dossier-card .btn-primary:hover {
+background-color: #0056b3;
+border-color: #0056b3;
+}
+
+/* .mb-3{
+  margin-top: 28px;
+  margin-left: 42px;
+} */
+.card{
+
+  background: linear-gradient(to bottom, #ffffff, rgb(245, 250, 255));
+}
+ 
+.custom-number {
+  font-size: 1.8rem;  
+  font-weight: bold;  
+  color: #28a745;  
+  
+}

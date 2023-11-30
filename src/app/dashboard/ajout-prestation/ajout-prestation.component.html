@@ -32,134 +32,109 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
   
-    <aside #sidebar class="left-sidebar" style="background-color: rgb(227, 236, 243)"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
-      <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
-      <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80" alt="" />
-          </a>
-          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas" (click)="closesidebar()" data-bs-target="#sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
-          </div> 
+    <aside #sidebar class="left-sidebar" 
+    [style.marginLeft]="isSidebarExpanded ? '0' : '270px'">
+    <div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+        <a href="./index.html" class="text-nowrap logo-img">
+          <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80"
+            alt="" />
+        </a>
+        <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas"
+          (click)="closesidebar()" data-bs-target="#sidebarCollapse">
+          <i class="ti ti-x fs-8"></i>
         </div>
-       
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-          <ul id="sidebarnav">
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Dashboard</span>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  [routerLink]="['/dashboard']" aria-expanded="false">
-                <span>
-                  <i class="ti ti-layout-dashboard"></i>
-                </span>
-                <span class="hide-menu">Tableau de bord</span>
-              </a>
-            </li>
-            <li class="nav-small-cap" routerLinkActive="active">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Dossiers</span>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/ajout-societe']" aria-expanded="false">
-                <span>
-                  <i class="bi bi-file-earmark-plus-fill"></i>
-                  <!-- <i class="ti ti-article"></i> -->
-                </span>
-                <span class="hide-menu">Nouveau dossier</span>
-              </a>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/dossier']" aria-expanded="false">
-                <span>
-                  <i class="ti ti-file-description"></i>
-                
-                </span>
-                <span class="hide-menu">Liste Des Dossiers</span>
-              </a>
-            </li>
-            <!-- <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-cards"></i>
-                </span>
-                <span class="hide-menu">Progrès du Dossier</span>
-              </a>
-            </li> -->
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/dossier-archive']" aria-expanded="false">
-                <span>
-                   <i class="ti ti-alert-circle"></i> 
-                </span>
-                <span class="hide-menu">Dossiers Archivés</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Préstations</span>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
-                <span>
-                  <i class="bi bi-plus-circle-fill"></i> 
-                  <!-- <i class="bi bi-list-task"></i>   -->
-                </span>
-                <span class="hide-menu">Nouvelle Mission</span>
-              </a>
-            
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-                  <!-- <i class="ti ti-article"></i> -->
-               
-              <a class="sidebar-link"  [routerLink]="['/Prestation']" aria-expanded="false">
-                <span>
-                  <i class="bi bi-card-checklist"></i> 
-                </span>
-                <span class="hide-menu"> Liste Des Missions</span>
-              </a>
-            </li>
-             
-
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">AUTH</span>
-            </li>
-            
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user-plus"></i>
-                </span>
-                <span class="hide-menu">Register</span>
-              </a>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/list-colabs']" aria-expanded="false">
-                <span> 
-                  <i class="bi bi-people-fill"></i>
-                </span>
-                <span class="hide-menu">Colaborateurs</span>
-              </a>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
-                <span>
-                  <i class="bi bi-person-fill-lock"></i>
-                </span>
-                <span class="hide-menu">affectation d'accès</span>
-              </a>
-            </li>
-           
-          
-          </ul>
-          
-        </nav>
-     
       </div>
-      
-    </aside>
+
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <ul id="sidebarnav">
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Dashboard</span>
+          </li>
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" [routerLink]="['/dashboard']" aria-expanded="false">
+              <span>
+                <i class="ti ti-layout-dashboard"></i>
+              </span>
+              <span class="hide-menu">Tableau de bord</span>
+            </a>
+          </li>
+          <li class="nav-small-cap" routerLinkActive="active">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Client</span>
+          </li>
+         
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" [routerLink]="['/list-client']" aria-expanded="false">
+              <span>
+                <i class="ti ti-file-description"></i>
+
+              </span>
+              <span class="hide-menu">Clients</span>
+            </a>
+          </li>
+          <!-- <li class="sidebar-item">
+            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+              <span>
+                <i class="ti ti-cards"></i>
+              </span>
+              <span class="hide-menu">Progrès du Dossier</span>
+            </a>
+          </li> -->
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Préstations</span>
+          </li>
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" [routerLink]="['/Prestation']" aria-expanded="false">
+              <span>
+                <i class="bi bi-plus-circle-fill"></i>
+                <!-- <i class="bi bi-list-task"></i>   -->
+              </span>
+              <span class="hide-menu">Préstations</span>
+            </a>
+
+          </li>
+
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Taches</span>
+          </li>
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link"   aria-expanded="false">
+              <span>
+                <i class="bi bi-plus-circle-fill"></i>
+                <!-- <i class="bi bi-list-task"></i>   -->
+              </span>
+              <span class="hide-menu">Tache</span>
+            </a>
+
+          </li>
+          
+
+
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Paramaitre</span>
+          </li> 
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" aria-expanded="false">
+              <span>
+                <i class="bi bi-person-fill-lock"></i>
+              </span>
+              <span class="hide-menu"> Types D'entreprises </span>
+            </a>
+          </li>
+
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+  </aside>
     
     <div class="body-wrapper">
     

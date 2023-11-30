@@ -13,7 +13,7 @@ export class ListClientComponent {
   client: any;
   selectedclientId: any;
   selectedData: any; 
-  isSidebarExpanded: boolean = true;
+  isSidebarExpanded: boolean = false;
   @ViewChild('sidebar') sidebarElement!: ElementRef;
   username: any;
   constructor(private appService: GestionClientService, private userService: UserService, private router: Router) {
@@ -67,7 +67,7 @@ export class ListClientComponent {
 passData(client: Client){
   console.log(client);
   if (client && client.id) {
-    this.router.navigate(['/dataclient'], { state: { selectedData: client, element: true } });
+    this.router.navigate(['/dataclient'], { state: { selectedData: client} });
   } else {
     
     console.error("ID is undefined for the selected societe");
@@ -78,12 +78,12 @@ passData(client: Client){
 passDataModifier(client: Client){
   console.log(client);
   if (client && client.id) {  
-    this.router.navigate(['/nv-client'], { state: { selectedData: client, element: true } });
+    this.router.navigate(['/nv-client'], { state: { selectedData: client,element: true } });
   } else {
     console.error("ID is undefined for the selected societe");
   }  
 }
-
+ 
 
 
 
@@ -197,6 +197,6 @@ closesidebar() {
 
 }
 
-
+ 
 
 }

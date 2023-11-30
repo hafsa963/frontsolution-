@@ -23,144 +23,109 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
       data-sidebar-position="fixed" data-header-position="fixed">
   
-      <aside #sidebar class="left-sidebar"
-        [style.marginLeft]="isSidebarExpanded ? '0' : '270px'">
-        <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
-        <div>
-          <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img">
-              <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80"
-                alt="" />
-            </a>
-            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas"
-              (click)="closesidebar()" data-bs-target="#sidebarCollapse">
-              <i class="ti ti-x fs-8"></i>
-            </div>
+      <aside #sidebar class="left-sidebar" 
+      [style.marginLeft]="isSidebarExpanded ? '0' : '270px'">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.html" class="text-nowrap logo-img">
+            <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80"
+              alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas"
+            (click)="closesidebar()" data-bs-target="#sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
           </div>
-  
-          <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-            <ul id="sidebarnav">
-              <li class="nav-small-cap">
-                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                <span class="hide-menu">Dashboard</span>
-              </li>
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" [routerLink]="['/dashboard']" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-layout-dashboard"></i>
-                  </span>
-                  <span class="hide-menu">Tableau de bord</span>
-                </a>
-              </li>
-              <li class="nav-small-cap" routerLinkActive="active">
-                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                <span class="hide-menu">Dossiers</span>
-              </li>
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" [routerLink]="['/ajout-societe']" aria-expanded="false">
-                  <span>
-                    <i class="bi bi-file-earmark-plus-fill"></i>
-                    <!-- <i class="ti ti-article"></i> -->
-                  </span>
-                  <span class="hide-menu">Nouveau dossier</span>
-                </a>
-              </li>
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" [routerLink]="['/dossier']" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-file-description"></i>
-  
-                  </span>
-                  <span class="hide-menu">Liste Des Dossiers</span>
-                </a>
-              </li>
-              <!-- <li class="sidebar-item">
-                <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-cards"></i>
-                  </span>
-                  <span class="hide-menu">Progrès du Dossier</span>
-                </a>
-              </li> -->
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" [routerLink]="['/dossier-archive']" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-alert-circle"></i>
-                  </span>
-                  <span class="hide-menu">Dossiers Archivés</span>
-                </a>
-              </li>
-              <li class="nav-small-cap">
-                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                <span class="hide-menu">Préstations</span>
-              </li>
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" [routerLink]="['/ajout-prestation']" aria-expanded="false">
-                  <span>
-                    <i class="bi bi-plus-circle-fill"></i>
-                    <!-- <i class="bi bi-list-task"></i>   -->
-                  </span>
-                  <span class="hide-menu">Nouvelle Mission</span>
-                </a>
-  
-              </li>
-              <li class="sidebar-item" routerLinkActive="active">
-                <!-- <i class="ti ti-article"></i> -->
-  
-                <a class="sidebar-link" [routerLink]="['/Prestation']" aria-expanded="false">
-                  <span>
-                    <i class="bi bi-card-checklist"></i>
-                  </span>
-                  <span class="hide-menu"> Liste Des Missions</span>
-                </a>
-              </li>
-  
-  
-              <li class="nav-small-cap">
-                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                <span class="hide-menu">AUTH</span>
-              </li>
-              <!-- <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-login"></i>
-                  </span>
-                  <span class="hide-menu">Login</span>
-                </a>
-              </li> -->
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-user-plus"></i>
-                  </span>
-                  <span class="hide-menu">Register</span>
-                </a>
-              </li>
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" [routerLink]="['/list-colabs']" aria-expanded="false">
-                  <span>
-                    <i class="bi bi-people-fill"></i>
-                  </span>
-                  <span class="hide-menu">Colaborateurs</span>
-                </a>
-              </li>
-              <li class="sidebar-item" routerLinkActive="active">
-                <a class="sidebar-link" aria-expanded="false">
-                  <span>
-                    <i class="bi bi-person-fill-lock"></i>
-                  </span>
-                  <span class="hide-menu">affectation d'accès</span>
-                </a>
-              </li>
-  
-  
-            </ul>
-  
-          </nav>
-  
         </div>
-  
-      </aside>
+
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Dashboard</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/dashboard']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Tableau de bord</span>
+              </a>
+            </li>
+            <li class="nav-small-cap" routerLinkActive="active">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Client</span>
+            </li>
+           
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/list-client']" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+
+                </span>
+                <span class="hide-menu">Clients</span>
+              </a>
+            </li>
+            <!-- <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Progrès du Dossier</span>
+              </a>
+            </li> -->
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Préstations</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" [routerLink]="['/Prestation']" aria-expanded="false">
+                <span>
+                  <i class="bi bi-plus-circle-fill"></i>
+                  <!-- <i class="bi bi-list-task"></i>   -->
+                </span>
+                <span class="hide-menu">Préstations</span>
+              </a>
+
+            </li>
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Taches</span>
+            </li>
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link"   aria-expanded="false">
+                <span>
+                  <i class="bi bi-plus-circle-fill"></i>
+                  <!-- <i class="bi bi-list-task"></i>   -->
+                </span>
+                <span class="hide-menu">Tache</span>
+              </a>
+
+            </li>
+            
+
+
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Paramaitre</span>
+            </li> 
+            <li class="sidebar-item" routerLinkActive="active">
+              <a class="sidebar-link" aria-expanded="false">
+                <span>
+                  <i class="bi bi-person-fill-lock"></i>
+                </span>
+                <span class="hide-menu"> Types D'entreprises </span>
+              </a>
+            </li>
+
+
+          </ul>
+
+        </nav>
+
+      </div>
+
+    </aside>
   
       <div class="body-wrapper" >
   
@@ -238,9 +203,19 @@
   
         <main style="margin-top: 90px;">
   
-             <div class="container" *ngIf="element == true">
+             <div class="container" *ngIf="!element">
                 <div class="row">
-                    <form [formGroup]="ClientForm"  > 
+                    <form [formGroup]="ClientForm">
+                      <div class="row justify-content-center align-items-center" style="margin-left: 600px;">
+                        <div class="col-6">
+                          <div class="action text-center"  [ngClass]="{'fixed-button': showFixedButton}" style="display: flex; gap: 10px; font-size: 18px;margin-top: -20px;">
+                            <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']">Annuler</a>
+                            <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" (click)="OnSubmit()">
+                              <i class="bi bi-check-circle"></i> Enregistrer Client
+                            </button>
+                          </div> 
+                        </div>
+                      </div>  
                     <div class="col-md-12 mb-3">
                       <div class="card dossier-card">
                         <div class="card-body">
@@ -256,6 +231,11 @@
                                 <input type="text" class="form-control custom-sinput" id="rs" formControlName="rs"
                                   placeholder="Raison Sociale">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('rs')?.hasError('required') && (ClientForm.get('rs')?.touched ||ClientForm.get('rs')?.dirty)"
+                              class="text-danger">
+                              registre Commerce  est obligatoire.
+                            </div>
                             </div>
         
         
@@ -267,6 +247,11 @@
                                 <input type="text" class="form-control custom-sinput" id="propriete" formControlName="propriete"
                                   placeholder="Propriétaire">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('propriete')?.hasError('required') && (ClientForm.get('propriete')?.touched ||ClientForm.get('propriete')?.dirty)"
+                              class="text-danger">
+                              Propriétaire  est obligatoire.
+                            </div>
                             </div>
          
         
@@ -278,6 +263,11 @@
                                 <input type="text" class="form-control custom-sinput" id="ctNum"
                                   formControlName="ctNum" placeholder="Numéro client ">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('ctNum')?.hasError('required') && (ClientForm.get('ctNum')?.touched ||ClientForm.get('ctNum')?.dirty)"
+                              class="text-danger">
+                              Numero de client  est obligatoire.
+                            </div>
         
                             </div>
                             
@@ -291,6 +281,11 @@
                                 <input type="text" class="form-control custom-sinput" id="qualite"
                                   formControlName="qualite" >
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('qualite')?.hasError('required') && (ClientForm.get('qualite')?.touched ||ClientForm.get('qualite')?.dirty)"
+                              class="text-danger">
+                              Qualité  est obligatoire.
+                            </div>
         
                             </div>
         
@@ -302,6 +297,11 @@
                                 <input type="text" class="form-control custom-sinput" id="cmt" formControlName="cmt"
                                   placeholder="">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('cmt')?.hasError('required') && (ClientForm.get('cmt')?.touched ||ClientForm.get('cmt')?.dirty)"
+                              class="text-danger">
+                              commentaire  est obligatoire.
+                            </div>
         
                             </div>
                             
@@ -327,6 +327,11 @@
                                 <input type="text" class="form-control custom-sinput" id="Adresse" formControlName="adresse"
                                   placeholder="83, Boulevard Hassan 2">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('adresse')?.hasError('adresse') && (ClientForm.get('adresse')?.touched ||ClientForm.get('adresse')?.dirty)"
+                              class="text-danger">
+                              Adresse  est obligatoire.
+                            </div>
         
                             </div>
                             <div class="mb-3 d-flex" style="margin-top: 12px;">
@@ -334,9 +339,13 @@
                                 <label for="Complement" class="label rs me-3">Complément:</label>
                               </div>
                               <div style="width: 765px;">
-                                <input type="text" class="form-control custom-sinput" id="complement" formControlName="complement"
-                                    >
+                                <input type="text" class="form-control custom-sinput" id="complement" formControlName="complement">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('complement')?.hasError('complement') && (ClientForm.get('complement')?.touched ||ClientForm.get('complement')?.dirty)"
+                              class="text-danger">
+                              Complément  est obligatoire.
+                            </div>
         
                             </div>
                             <div class="mb-3 d-flex">
@@ -347,6 +356,11 @@
                                   <input type="text" class="form-control custom-sinput" id="Siège" formControlName="siege"
                                     placeholder="Siège">
                                 </div>
+                                <div
+                              *ngIf="ClientForm.get('siege')?.hasError('siege') && (ClientForm.get('siege')?.touched ||ClientForm.get('siege')?.dirty)"
+                              class="text-danger">
+                              Siège  est obligatoire.
+                            </div>
                               </div>
                             <div class="mb-3 d-flex">
                               <div class="me-3" style="width: 150px;">
@@ -356,6 +370,11 @@
                                 <input type="text" class="form-control custom-sinput" id="CodePostal" formControlName="codepostal"
                                   placeholder="13000">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('codepostal')?.hasError('codepostal') && (ClientForm.get('codepostal')?.touched ||ClientForm.get('codepostal')?.dirty)"
+                              class="text-danger">
+                              Code Postal  est obligatoire.
+                            </div>
                             </div>
         
         
@@ -367,6 +386,11 @@
                                 <input type="text" class="form-control custom-sinput" id="ville" formControlName="ville"
                                   placeholder="Casablanca">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('ville')?.hasError('ville') && (ClientForm.get('ville')?.touched ||ClientForm.get('ville')?.dirty)"
+                              class="text-danger">
+                              ville est obligatoire.
+                            </div>
                             </div>
         
                             <div class="mb-3 d-flex">
@@ -377,6 +401,11 @@
                                 <input type="text" class="form-control custom-sinput" id="CodeRegion" formControlName="coderegion"
                                   placeholder="1233">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('coderegion')?.hasError('coderegion') && (ClientForm.get('coderegion')?.touched ||ClientForm.get('coderegion')?.dirty)"
+                              class="text-danger">
+                              Région est obligatoire.
+                            </div>
                             </div>
         
         
@@ -388,6 +417,11 @@
                                 <input type="text" class="form-control custom-sinput" id="Pays" formControlName="pays"
                                   placeholder="Maroc">
                               </div>
+                              <div
+                              *ngIf="ClientForm.get('pays')?.hasError('pays') && (ClientForm.get('pays')?.touched ||ClientForm.get('pays')?.dirty)"
+                              class="text-danger">
+                              Pays est obligatoire.
+                            </div>
                             </div>
                                
                             <div class="mb-3 d-flex" style="margin-top: 12px;">
@@ -398,6 +432,11 @@
                                   <input type="Email" class="form-control custom-sinput" id="Email" formControlName="email"
                                     placeholder="@example.com">
                                 </div>
+                                <div
+                                *ngIf="ClientForm.get('email')?.hasError('email') && (ClientForm.get('email')?.touched ||ClientForm.get('email')?.dirty)"
+                                class="text-danger">
+                                Email est obligatoire.
+                              </div>
                               </div>
                               <div class="mb-3 d-flex">
                                 <div class="me-3" style="width: 150px;">
@@ -407,17 +446,27 @@
                                   <input type="text" class="form-control custom-sinput" id="tel" formControlName="tel"
                                     placeholder="05 46 66 77 77 ">
                                 </div>
+                                <div
+                                *ngIf="ClientForm.get('tel')?.hasError('tel') && (ClientForm.get('tel')?.touched ||ClientForm.get('tel')?.dirty)"
+                                class="text-danger">
+                                Téléphone est obligatoire.
+                              </div>
                               </div>
           
           
                               <div class="mb-3 d-flex">
                                 <div class="me-3" style="width: 150px;">
-                                  <label for="Telecopie " class="label rs" style="margin-left: 44px;">Télécopie :</label>
+                                  <label for="telcopie " class="label rs" style="margin-left: 44px;">Télécopie :</label>
                                 </div>
                                 <div style="width: 200px;">
                                   <input type="text" class="form-control custom-sinput" id="Telecopie" formControlName="telcopie"
                                     placeholder="05 46 66 77 77">
                                 </div>
+                                <div
+                                *ngIf="ClientForm.get('telcopie')?.hasError('telcopie') && (ClientForm.get('telcopie')?.touched ||ClientForm.get('telcopie')?.dirty)"
+                                class="text-danger">
+                                Telecopie est obligatoire.
+                              </div>
                               </div>
         
                           </div>
@@ -444,6 +493,11 @@
                                     <input type="text" class="form-control custom-sinput" id="forme" formControlName="forme"
                                       placeholder="Forme">
                                   </div>
+                                  <div
+                                *ngIf="ClientForm.get('forme')?.hasError('forme') && (ClientForm.get('forme')?.touched ||ClientForm.get('forme')?.dirty)"
+                                class="text-danger">
+                                Forme est obligatoire.
+                              </div>
                                 </div>
             
             
@@ -455,6 +509,11 @@
                                     <input type="text" class="form-control custom-sinput" id="capitale" formControlName="capitale"
                                       placeholder="Capitale">
                                   </div>
+                                  <div
+                                *ngIf="ClientForm.get('capitale')?.hasError('capitale') && (ClientForm.get('capitale')?.touched ||ClientForm.get('capitale')?.dirty)"
+                                class="text-danger">
+                                Forme est obligatoire.
+                              </div>
                                 </div>
                                
                               </div>
@@ -468,6 +527,11 @@
                                     <input type="text" class="form-control custom-sinput" id="rc" formControlName="rc"
                                       placeholder="rc">
                                   </div>
+                                  <div
+                                  *ngIf="ClientForm.get('rc')?.hasError('rc') && (ClientForm.get('rc')?.touched ||ClientForm.get('rc')?.dirty)"
+                                  class="text-danger">
+                                  rc est obligatoire.
+                                </div>
                                 </div>
             
             
@@ -479,6 +543,11 @@
                                     <input type="text" class="form-control custom-sinput" id="if" formControlName="i_f"
                                       placeholder="if">
                                   </div>
+                                  <div
+                                  *ngIf="ClientForm.get('i_f')?.hasError('i_f') && (ClientForm.get('i_f')?.touched ||ClientForm.get('i_f')?.dirty)"
+                                  class="text-danger">
+                                  i_f est obligatoire.
+                                </div>
                                 </div>
                                 <div class="mb-3 d-flex">
                                   <div class="me-3" style="width: 80px;margin-left: -22px;">
@@ -488,6 +557,11 @@
                                     <input type="text" class="form-control custom-sinput" id="ice" formControlName="ice"
                                       placeholder="ice">
                                   </div>
+                                  <div
+                                  *ngIf="ClientForm.get('ice')?.hasError('ice') && (ClientForm.get('ice')?.touched ||ClientForm.get('ice')?.dirty)"
+                                  class="text-danger">
+                                  ice est obligatoire.
+                                </div>
                                 </div>
 
                                 <div class="mb-3 d-flex" style="margin-top: 12px;">
@@ -498,6 +572,11 @@
                                       <input type="text" class="form-control custom-sinput" id="IP"
                                         formControlName="ip" placeholder="IP">
                                     </div>
+                                    <div
+                                    *ngIf="ClientForm.get('ip')?.hasError('ip') && (ClientForm.get('ip')?.touched ||ClientForm.get('ip')?.dirty)"
+                                    class="text-danger">
+                                    ip est obligatoire.
+                                  </div>
               
                                   </div>
                                   <div class="mb-3 d-flex" style="margin-top: 12px;">
@@ -508,6 +587,11 @@
                                       <input type="text" class="form-control custom-sinput" id="cnss"
                                         formControlName="cnss" placeholder="CNSS">
                                     </div>
+                                    <div
+                                    *ngIf="ClientForm.get('cnss')?.hasError('cnss') && (ClientForm.get('cnss')?.touched ||ClientForm.get('cnss')?.dirty)"
+                                    class="text-danger">
+                                    cnss est obligatoire.
+                                  </div>
               
                                   </div>
                                   <!-- [(ngModel)]="selectedTypeSociete" name="typesociete" *ngFor="let type of typesocietes {{ type.nom }}  [value]="type.id"" -->
@@ -522,6 +606,11 @@
                
                                       </select>
                                     </div>
+                                    <div
+                                    *ngIf="ClientForm.get('typesociete')?.hasError('typesociete') && (ClientForm.get('typesociete')?.touched || ClientForm.get('typesociete')?.dirty)"
+                                    class="text-danger">
+                                    type De Societe est obligatoire.
+                                  </div>
               
                                   </div>
                               </div>
@@ -532,16 +621,7 @@
                       </div>
                     </div> 
         
-                    <div class="row justify-content-center align-items-center" style="margin-left: 600px;">
-                      <div class="col-6">
-                        <div class="action text-center" style="display: flex; gap: 10px; font-size: 18px;">
-                          <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']">Annuler</a>
-                          <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" (click)="OnSubmit()">
-                            <i class="bi bi-check-circle"></i> Enregistrer Client
-                          </button>
-                        </div> 
-                      </div>
-                    </div>
+                   
                   
                   </form>
                 </div>
@@ -551,9 +631,20 @@
 
 
               <!-- form of update -->
-              <div class="container" *ngIf="element == false">
+              <div class="container" *ngIf="element">
                 <div class="row">
                     <form   *ngIf="selectedData" #clientupdate="ngForm" (ngSubmit)="OnUpdate(clientupdate.value)"   > 
+                      <div class="row justify-content-center align-items-center" style="margin-left: 600px; margin-top: -20px;
+                      margin-bottom: 1px;">
+                        <div class="col-6">
+                          <div class="action text-center" [ngClass]="{'fixed-button': showFixedButton}" style="display: flex; gap: 10px; font-size: 18px;">
+                            <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']">Annuler</a>
+                            <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" (click)="OnSubmit()">
+                              <i class="bi bi-check-circle"></i> Modifier Client
+                            </button>
+                          </div> 
+                        </div>
+                      </div>
                     <div class="col-md-12 mb-3">
                       <div class="card dossier-card">
                         <div class="card-body">
@@ -827,16 +918,7 @@
                       </div>
                     </div> 
         
-                    <div class="row justify-content-center align-items-center" style="margin-left: 600px;">
-                      <div class="col-6">
-                        <div class="action text-center" style="display: flex; gap: 10px; font-size: 18px;">
-                          <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']">Annuler</a>
-                          <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" (click)="OnSubmit()">
-                            <i class="bi bi-check-circle"></i> Modifier Client
-                          </button>
-                        </div> 
-                      </div>
-                    </div>
+                   
                   
                   </form>
                 </div>

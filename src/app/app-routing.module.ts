@@ -15,6 +15,7 @@ import { PrestationToDossierComponent } from './dashboard/prestation-to-dossier/
 import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-archive.component';
 import { ListClientComponent } from './dashboard/list-client/list-client.component';
 import { NvClientComponent } from './dashboard/nv-client/nv-client.component';
+import { DataclientComponent } from './dashboard/dataclient/dataclient.component';
  
 
  
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'dossier-archive',component : DossierArchiveComponent },
   {path: 'list-client',component : ListClientComponent },
   {path: 'nv-client',component : NvClientComponent },
+  {path: 'dataclient',component :  DataclientComponent },
 ];
 
 @NgModule({

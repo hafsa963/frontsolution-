@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Typesociete } from 'src/app/model/TypeSociete';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
@@ -27,33 +27,32 @@ export class NvClientComponent {
   constructor(private appService : GestionClientService, private router : Router, private userService :UserService){
    
     this.ClientForm = new FormGroup({
-      propriete: new FormControl('' ),
-      rs: new FormControl(''),
-      forme: new FormControl(''),
-      capitale: new FormControl(''),
-      siege: new FormControl(''),
-      rc: new FormControl(''),
-      i_f: new FormControl(''),
-      ice: new FormControl(''),
-      ip: new FormControl(''),
-      cnss: new FormControl(''),
+      propriete: new FormControl('',[Validators.required]),
+      rs: new FormControl('',[Validators.required]),
+      forme: new FormControl('',[Validators.required]),
+      capitale: new FormControl('',[Validators.required]),
+      siege: new FormControl('',[Validators.required]),
+      rc: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((5)),Validators.maxLength((6))]),
+      i_f: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((7)),Validators.maxLength((8))]),
+      ice: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((15)),Validators.maxLength((15))]),
+      ip: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((5)),Validators.maxLength((6))]),
+      cnss: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((9)),Validators.maxLength((9))]),
 
-      ctNum: new FormControl(''),
-      qualite: new FormControl(''),
-      adresse: new FormControl(''),
-      complement: new FormControl(''),
-      codepostal: new FormControl(''),
-      ville: new FormControl(''),
-      coderegion: new FormControl(''),
-      pays: new FormControl(''),
-
-      tel: new FormControl(''),
-      telcopie: new FormControl(''),
-      email: new FormControl(''),
+      ctNum: new FormControl('',[Validators.required]),
+      qualite: new FormControl('',[Validators.required]),
+      adresse: new FormControl('',[Validators.required]),
+      complement: new FormControl('',[Validators.required]),
+      codepostal: new FormControl('',[Validators.required]),
+      ville: new FormControl('',[Validators.required]),
+      coderegion: new FormControl('',[Validators.required]),
+      pays: new FormControl('',[Validators.required]),
+      tel: new FormControl('',[Validators.required]),
+      telcopie: new FormControl('',[Validators.required]),
+      email: new FormControl('',[Validators.required]),
     
-      cmt: new FormControl(''),
+      cmt: new FormControl('',[Validators.required]),
       etat: new FormControl(''),
-      typesociete: new FormControl(''),
+      typesociete: new FormControl('',[Validators.required]),
  
       // cnss: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
       // managerVoList: new FormArray([
@@ -69,7 +68,13 @@ export class NvClientComponent {
     });
     
   }
+  showFixedButton: boolean = false;
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event): void {
+ 
+    this.showFixedButton = window.scrollY > 100;
+  }
  
   logout() {     
        
@@ -83,6 +88,9 @@ export class NvClientComponent {
 
  
   ngOnInit(): void {
+    if (history.state.element !== undefined) {
+      this.element = history.state.element;
+    }
     this.checkWindowSize();
     this.selectedData = history.state.selectedData;
     console.log(this.selectedData);
@@ -113,7 +121,7 @@ export class NvClientComponent {
 
 
   OnSubmit() {
-    // if (this.registerForm.valid) {
+    if (this.ClientForm.valid) {
       
       const client = {
         propriete: this.ClientForm.value.propriete,
@@ -193,14 +201,14 @@ export class NvClientComponent {
         }
       );
       console.log('Form submitted:', client);
-    // }
-    //  else {
-    //   Object.keys(this.registerForm.controls).forEach((field) => {
-    //     const control = this.registerForm.get(field);
-    //     control?.markAsTouched({ onlySelf: true });
-    //   });
-    //   console.log('Form is invalid');
-    // }
+    }
+     else {
+      Object.keys(this.ClientForm.controls).forEach((field) => {
+        const control = this.ClientForm.get(field);
+        control?.markAsTouched({ onlySelf: true });
+      });
+      console.log('Form is invalid');
+    }
   }
 
 
