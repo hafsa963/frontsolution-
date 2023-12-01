@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Typesociete } from 'src/app/model/TypeSociete';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
@@ -24,47 +24,34 @@ export class NvClientComponent {
  
 
   @ViewChild('sidebar') sidebarElement!: ElementRef;
-  constructor(private appService : GestionClientService, private router : Router, private userService :UserService){
+  constructor(private appService : GestionClientService, private router : Router, private userService :UserService , private fb: FormBuilder){
    
-    this.ClientForm = new FormGroup({
-      propriete: new FormControl('',[Validators.required]),
-      rs: new FormControl('',[Validators.required]),
-      forme: new FormControl('',[Validators.required]),
-      capitale: new FormControl('',[Validators.required]),
-      siege: new FormControl('',[Validators.required]),
-      rc: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((5)),Validators.maxLength((6))]),
-      i_f: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((7)),Validators.maxLength((8))]),
-      ice: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((15)),Validators.maxLength((15))]),
-      ip: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((5)),Validators.maxLength((6))]),
-      cnss: new FormControl('',[Validators.pattern('^[0-9]+$'),Validators.pattern('^[0-9]+$'),Validators.minLength((9)),Validators.maxLength((9))]),
-
-      ctNum: new FormControl('',[Validators.required]),
-      qualite: new FormControl('',[Validators.required]),
-      adresse: new FormControl('',[Validators.required]),
-      complement: new FormControl('',[Validators.required]),
-      codepostal: new FormControl('',[Validators.required]),
-      ville: new FormControl('',[Validators.required]),
-      coderegion: new FormControl('',[Validators.required]),
-      pays: new FormControl('',[Validators.required]),
-      tel: new FormControl('',[Validators.required]),
-      telcopie: new FormControl('',[Validators.required]),
-      email: new FormControl('',[Validators.required]),
+    this.ClientForm = this.fb.group({
+      propriete: ['', [Validators.required]],
+      rs: ['', [Validators.required]],
+      forme: ['', [Validators.required]],
+      capitale: ['', [Validators.required]],
+      siege: ['', [Validators.required]],
+      rc: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(6)]],
+      i_f: ['', [Validators.required,Validators.minLength(7), Validators.maxLength(8)]],
+      ice: ['', [Validators.required,Validators.minLength(15), Validators.maxLength(15)]],
+      ip: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(6)]],
+      cnss: ['', [Validators.required,Validators.minLength(9), Validators.maxLength(9)]],
     
-      cmt: new FormControl('',[Validators.required]),
+      ctNum: ['', [Validators.required]],
+      qualite: ['', [Validators.required]],
+      adresse: ['', [Validators.required]],
+      complement: ['', [Validators.required]],
+      codepostal: ['', [Validators.required]],
+      ville: ['', [Validators.required]],
+      coderegion: ['', [Validators.required]],
+      pays: ['', [Validators.required]],
+      tel: ['', [Validators.required]],
+      telcopie: new FormControl(''),
+      email: ['', [Validators.required]],
+      cmt: new FormControl(''),
       etat: new FormControl(''),
-      typesociete: new FormControl('',[Validators.required]),
- 
-      // cnss: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-      // managerVoList: new FormArray([
-      //   new FormGroup({
-      //     nameManager: new FormControl('', Validators.required),
-      //     Datedebut: new FormControl(''),
-      //     dateFin: new FormControl('')
-      //   }),
-     
-      //  ])
-     
-      
+      typesociete: ['', [Validators.required]],
     });
     
   }
@@ -120,10 +107,103 @@ export class NvClientComponent {
   
 
 
-  OnSubmit() {
-    if (this.ClientForm.valid) {
+  // OnSubmit() {
+  //   if (this.ClientForm.valid) {
       
-      const client = {
+  //     const client = {
+  //       propriete: this.ClientForm.value.propriete,
+  //       rs: this.ClientForm.value.rs,
+  //       forme: this.ClientForm.value.forme,
+  //       capitale: this.ClientForm.value.capitale,
+  //       siege: this.ClientForm.value.siege,
+  //       rc: this.ClientForm.value.rc,
+  //       i_f: this.ClientForm.value.i_f,
+  //       ice: this.ClientForm.value.ice,
+  //       ip: this.ClientForm.value.ip,
+  //       cnss: this.ClientForm.value.cnss,
+  //       etat: 'en cours de traitement',
+
+  //       ctNum: this.ClientForm.value.ctNum,
+  //       qualite: this.ClientForm.value.qualite,
+  //       adresse: this.ClientForm.value.adresse,
+  //       complement: this.ClientForm.value.complement,
+  //       codepostal: this.ClientForm.value.codepostal,
+  //       ville: this.ClientForm.value.ville,
+  //       coderegion: this.ClientForm.value.coderegion,
+  //       pays: this.ClientForm.value.pays,
+  //       tel: this.ClientForm.value.tel,
+  //       telcopie: this.ClientForm.value.telcopie,
+
+  //       email: this.ClientForm.value.email,
+  //       cmt: this.ClientForm.value.cmt,
+  //       typesociete: this.ClientForm.value.typesociete,
+       
+      
+        
+  //     };
+         // managerVoList: this.registerForm.value.managerVoList.map((manager: any) => {
+        //   return {
+        //     nameManager: manager.nameManager,
+        //     Datedebut: manager.Datedebut,
+        //     dateFin: manager.dateFin
+        //   };
+        // })
+
+      
+      
+  //     this.appService.createClient(client).subscribe(
+  //       (res) => {
+          
+  //         console.log('Data has been successfully submitted:', res);
+  //         const Modeldiv = document.getElementById('toastsucces');
+  //         if(Modeldiv != null){
+  //           // Modeldiv.style.display = 'block';
+  //           Modeldiv.classList.add('show');
+  //           setTimeout(() => {
+  //             Modeldiv.classList.remove('show');
+  //           }, 2000);
+           
+  //         }
+  //       },
+  //       (error) => {
+  //         if (error.error instanceof ErrorEvent) {
+ 
+  //           console.error('An error occurred:', error.error.message);
+  //         } else {
+ 
+  //           console.error(
+  //             `Backend returned code ${error.status}, ` +
+  //             `body was: ${JSON.stringify(error.error)}`
+              
+  //           );
+       
+  //         }
+  //       }
+  //     );
+  //     console.log('Form submitted:', client);
+  //   }
+  //    else {
+  //     Object.keys(this.ClientForm.controls).forEach((field) => {
+  //       const control = this.ClientForm.get(field);
+  //       control?.markAsTouched({ onlySelf: true });
+        
+  //     });
+  
+      
+  //     console.log('Form is invalid');
+  //   }
+  // }
+  get f() { return this.ClientForm.controls; }
+
+  OnSubmit() {
+    Object.keys(this.ClientForm.controls).forEach((field) => {
+      const control = this.ClientForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  
+    if (this.ClientForm.valid) {
+      // Your existing code for handling the submission when the form is valid
+         const client = {
         propriete: this.ClientForm.value.propriete,
         rs: this.ClientForm.value.rs,
         forme: this.ClientForm.value.forme,
@@ -150,66 +230,37 @@ export class NvClientComponent {
         email: this.ClientForm.value.email,
         cmt: this.ClientForm.value.cmt,
         typesociete: this.ClientForm.value.typesociete,
-       
-        // managerVoList: this.registerForm.value.managerVoList.map((manager: any) => {
-        //   return {
-        //     nameManager: manager.nameManager,
-        //     Datedebut: manager.Datedebut,
-        //     dateFin: manager.dateFin
-        //   };
-        // })
-        
-      };
+       };
 
-      
-      
       this.appService.createClient(client).subscribe(
         (res) => {
-          
           console.log('Data has been successfully submitted:', res);
           const Modeldiv = document.getElementById('toastsucces');
-          if(Modeldiv != null){
-            // Modeldiv.style.display = 'block';
+          if (Modeldiv != null) {
             Modeldiv.classList.add('show');
             setTimeout(() => {
               Modeldiv.classList.remove('show');
             }, 2000);
-           
           }
         },
         (error) => {
           if (error.error instanceof ErrorEvent) {
- 
             console.error('An error occurred:', error.error.message);
           } else {
- 
             console.error(
               `Backend returned code ${error.status}, ` +
               `body was: ${JSON.stringify(error.error)}`
-              
             );
-            const Modeldiv = document.getElementById('toastsucces');
-            if(Modeldiv != null){
-              // Modeldiv.style.display = 'block';
-              Modeldiv.classList.add('show');
-              setTimeout(() => {
-                Modeldiv.classList.remove('show');
-              }, 2000);
-             
-            }
           }
         }
       );
       console.log('Form submitted:', client);
-    }
-     else {
-      Object.keys(this.ClientForm.controls).forEach((field) => {
-        const control = this.ClientForm.get(field);
-        control?.markAsTouched({ onlySelf: true });
-      });
+    } else {
       console.log('Form is invalid');
+      // Add your code here to display a message or perform any other action
     }
   }
+  
 
 
 

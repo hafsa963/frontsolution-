@@ -16,6 +16,10 @@ import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-arc
 import { ListClientComponent } from './dashboard/list-client/list-client.component';
 import { NvClientComponent } from './dashboard/nv-client/nv-client.component';
 import { DataclientComponent } from './dashboard/dataclient/dataclient.component';
+import { ListTypeSocieteComponent } from './dashboard/list-type-societe/list-type-societe.component';
+import { NvTypeComponent } from './dashboard/nv-type/nv-type.component';
+import { TestmenuComponent } from './dashboard/testmenu/testmenu.component';
+
  
 
  
@@ -41,6 +45,9 @@ const routes: Routes = [
   {path: 'list-client',component : ListClientComponent },
   {path: 'nv-client',component : NvClientComponent },
   {path: 'dataclient',component :  DataclientComponent },
+  {path: 'list-type-societe',component :  ListTypeSocieteComponent },
+  {path: 'nv-type',component  : NvTypeComponent },
+  {path: 'testmenu',component  :  TestmenuComponent },
 ];
 
 @NgModule({

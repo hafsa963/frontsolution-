@@ -127,7 +127,7 @@
               <span class="hide-menu">Paramaitre</span>
             </li> 
             <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/list-type-societe']"  aria-expanded="false">
                 <span>
                   <i class="bi bi-person-fill-lock"></i>
                 </span>
@@ -467,6 +467,7 @@
        </div> 
       </main>
     
+      <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/list-client" style="cursor: pointer;"/>
 
    
     </div>

@@ -120,7 +120,7 @@
             <span class="hide-menu">Paramaitre</span>
           </li> 
           <li class="sidebar-item" routerLinkActive="active">
-            <a class="sidebar-link" aria-expanded="false">
+            <a class="sidebar-link" [routerLink]="['/list-type-societe']"  aria-expanded="false">
               <span>
                 <i class="bi bi-person-fill-lock"></i>
               </span>
@@ -179,7 +179,7 @@
       <ng-content></ng-content>  
       <main style="margin-top: 30px;" >
         <div class="col-md-12">
-          <button [routerLink]="['/ajout-prestation']" type="button" class="btn addButton"><i class="bi bi-building-add"></i> Ajouter une Mission</button>
+          <button [routerLink]="['/ajout-prestation']" type="button" class="btn addButton" ><i class="bi bi-building-add"></i> Ajouter une Mission</button>
           <form class="d-flex" style="width: 33%; margin-left: 350px; margin-top: 90px; ">
             <input class="form-control me-2"  #nameManager type="search" type="search" placeholder="Mission" aria-label="Search">
             <button class="btn btn-outline-success"  (click)="SearchBynameprestation(nameManager.value)"  type="submit">Rechercher</button>
@@ -226,6 +226,8 @@
         </div> 
    
   </main> 
+  <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/dashboard" style="cursor: pointer;"/>
+
     </div>
 
   </div>

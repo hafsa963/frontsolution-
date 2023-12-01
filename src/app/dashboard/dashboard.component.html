@@ -104,17 +104,17 @@
             </li>
             
 
-
+            
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Paramaitre</span>
             </li> 
             <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/list-type-societe']" aria-expanded="false">
                 <span>
                   <i class="bi bi-person-fill-lock"></i>
                 </span>
-                <span class="hide-menu"> Types D'entreprises </span>
+                <span class="hide-menu"> Types D'entreprises</span>
               </a>
             </li>
 
@@ -164,7 +164,7 @@
           </form>
 
           <!-- Traduction -->
-          <div class="flex items-center gap-2 h-16 ml-auto" style="margin-left: 380px;">
+          <div class="flex items-center gap-2 h-16 ml-auto" style="margin-left: 300px;">
             <div class="dropdown-item">
               <a class="dropdown-toggle" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                 <i class="flag-united-kingdom flag m-0"></i>
@@ -173,11 +173,11 @@
               </a>
             </div>
           </div>
-
+          
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
               <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank"
-                class="btn btn-primary"> Welcome, {{username}}</a>
+                class="btn btn-primary" style="width: 175px;padding: 6px;margin-left: -55px;"> Welcome, {{username}}</a>
             
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"

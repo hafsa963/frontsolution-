@@ -343,3 +343,20 @@ body{
 .show {
   animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
 }
+
+ /* retour  */
+ .bottom-link {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;  
+  width: 60px;
+  background-color: rgb(235 235 255);
+  border-radius: 7px;
+  padding: 10px;
+  text-align: center;
+}
+
+.bottom-link a {
+  text-decoration: none;
+  color: #fff;  
+}

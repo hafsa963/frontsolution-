@@ -119,7 +119,7 @@
             <span class="hide-menu">Paramaitre</span>
           </li> 
           <li class="sidebar-item" routerLinkActive="active">
-            <a class="sidebar-link" aria-expanded="false">
+            <a class="sidebar-link" [routerLink]="['/list-type-societe']"  aria-expanded="false">
               <span>
                 <i class="bi bi-person-fill-lock"></i>
               </span>
@@ -176,7 +176,7 @@
         </nav>
       </header>
       <main style="margin-top: 30px;" >
-        <div class="container" *ngIf="element == false">
+        <!-- <div class="container" *ngIf="element == false">
          
          <a  class="btn btn-outline-primary mx-3 mt-2 d-block">ajouter une nouvelle Mission  :</a>
      
@@ -193,10 +193,7 @@
                 
                 
              </div>
-     
-           
-              
-             
+      
            </div>
             
             <div *ngFor="let etape of prestation.etapeDtoList; let i = index">
@@ -251,7 +248,71 @@
      
            </form>
     
-        </div>
+        </div> -->
+
+
+        <div class="container" *ngIf="element == false">
+          <div class="row">
+              <form (ngSubmit)="onSubmit()">
+                <div class="row justify-content-center align-items-center" style="margin-left: 600px;">
+                  <div class="col-6">
+                    <div class="action text-center"   style="display: flex; gap: 10px; font-size: 18px;margin-top: -20px;">
+                      <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/Prestation']">Annuler</a>
+                      <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer">
+                        <i class="bi bi-check-circle"></i> Enregistrer Préstation
+                      </button>
+                    </div> 
+                  </div>
+                </div>  
+              <div class="col-md-12 mb-3">
+                <div class="card dossier-card">
+                  <div class="card-body">
+                    <h5 class="card-title mb-0">Nouvelle Préstation</h5>
+                    <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+  
+                    <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                      <div class="mb-3 d-flex">
+                        <div class="me-3" style="width: 150px;">
+                          <label for="rs" class="label rs"> Nom Préstation :</label>
+                        </div>
+                        <div style="width: 400px;">
+                          <input type="text" class="form-control custom-sinput" [(ngModel)]="prestation.namePrestation" [ngModelOptions]="{standalone: true}" id="Mission" 
+                            placeholder="Préstation">
+                        </div>
+                        <!-- <div
+                        *ngIf="ClientForm.get('rs')?.hasError('required') && (ClientForm.get('rs')?.touched ||ClientForm.get('rs')?.dirty)"
+                        class="text-danger">
+                        Préstation est obligatoire.
+                      </div> -->
+                      <input type="text" [(ngModel)]="prestation.Etat" [ngModelOptions]="{standalone: true}" id="Etatprestation" hidden>
+                      </div>
+  
+                      <div *ngFor="let etape of prestation.etapeDtoList; let i = index">
+                         
+                        <label for="Etape{{i + 1}}" class="label rs" style="margin-left: 8px; padding: 4px; font-size: 18px;margin-top:6px; width: 150px;">Etape {{i + 1}}:</label>
+                        <div  style="margin-left: 87px; padding: 4px; font-size: 20px;width: 400px; margin-top: -52px;"> 
+                         <input  type="text" [(ngModel)]="etape.nomEtape"  class="form-control custom-sinput"   name="nomEtape" id="Etape{{i + 1}}" [ngModelOptions]="{standalone: true}" placeholder="Nom Etape" />
+                        </div>
+                       </div>
+ 
+                         
+                       
+                         <div class="col-md-12 d-flex" style="margin-top: 44px;">
+                            <button type="button" (click)="addEtape()" class="btn btn-info"  style="margin-left: 309px;">Ajouter une Etape</button>
+                         </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+   
+  
+             
+  
+             
+            
+            </form>
+          </div>
+       </div> 
         
         
 
@@ -390,6 +451,8 @@
 
     
    </main> 
+   <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/Prestation" style="cursor: pointer;"/>
+
       
     </div>
     

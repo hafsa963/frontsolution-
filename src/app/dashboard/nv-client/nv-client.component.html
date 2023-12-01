@@ -110,7 +110,7 @@
               <span class="hide-menu">Paramaitre</span>
             </li> 
             <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" aria-expanded="false">
+              <a class="sidebar-link" [routerLink]="['/list-type-societe']"  aria-expanded="false">
                 <span>
                   <i class="bi bi-person-fill-lock"></i>
                 </span>
@@ -234,7 +234,7 @@
                               <div
                               *ngIf="ClientForm.get('rs')?.hasError('required') && (ClientForm.get('rs')?.touched ||ClientForm.get('rs')?.dirty)"
                               class="text-danger">
-                              registre Commerce  est obligatoire.
+                              Raison Sociale  est obligatoire.
                             </div>
                             </div>
         
@@ -253,8 +253,7 @@
                               Propriétaire  est obligatoire.
                             </div>
                             </div>
-         
-        
+                            
                             <div class="mb-3 d-flex" style="margin-top: 12px;">
                               <div class="me-3" style="width: 150px;">
                                 <label for="ctNum" class="label rs me-3">Numéro client :</label>
@@ -275,7 +274,7 @@
                             
                             <div class="mb-3 d-flex" style="margin-top: 12px">
                               <div class="me-3" style="width: 150px">
-                                <label for="Qualite" style="margin-left: 50px;" class="label rs me-3">Qualité :</label>
+                                <label for="qualite" style="margin-left: 50px;" class="label rs me-3">Qualité :</label>
                               </div>
                               <div style="width: 200px;">
                                 <input type="text" class="form-control custom-sinput" id="qualite"
@@ -297,11 +296,11 @@
                                 <input type="text" class="form-control custom-sinput" id="cmt" formControlName="cmt"
                                   placeholder="">
                               </div>
-                              <div
+                              <!-- <div
                               *ngIf="ClientForm.get('cmt')?.hasError('required') && (ClientForm.get('cmt')?.touched ||ClientForm.get('cmt')?.dirty)"
                               class="text-danger">
                               commentaire  est obligatoire.
-                            </div>
+                            </div> -->
         
                             </div>
                             
@@ -321,10 +320,10 @@
                           <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
                             <div class="mb-3 d-flex" style="margin-top: 12px;">
                               <div class="me-3" style="width: 150px;">
-                                <label for="Adresse" class="label rs me-3">Adresse:</label>
+                                <label for="adresse" class="label rs me-3">Adresse:</label>
                               </div>
                               <div style="width: 765px;">
-                                <input type="text" class="form-control custom-sinput" id="Adresse" formControlName="adresse"
+                                <input type="text" class="form-control custom-sinput" id="adresse" formControlName="adresse"
                                   placeholder="83, Boulevard Hassan 2">
                               </div>
                               <div
@@ -336,38 +335,39 @@
                             </div>
                             <div class="mb-3 d-flex" style="margin-top: 12px;">
                               <div class="me-3" style="width: 150px;">
-                                <label for="Complement" class="label rs me-3">Complément:</label>
+                                <label for="complement" class="label rs me-3">Complément:</label>
                               </div>
                               <div style="width: 765px;">
                                 <input type="text" class="form-control custom-sinput" id="complement" formControlName="complement">
                               </div>
-                              <div
+                              <!-- <div
                               *ngIf="ClientForm.get('complement')?.hasError('complement') && (ClientForm.get('complement')?.touched ||ClientForm.get('complement')?.dirty)"
                               class="text-danger">
                               Complément  est obligatoire.
-                            </div>
+                            </div> -->
         
                             </div>
                             <div class="mb-3 d-flex">
                                 <div class="me-3" style="width: 150px;">
-                                  <label for="Siège" class="label rs" style="margin-left: 20px;">Siège :</label>
+                                  <label for="siege" class="label rs" style="margin-left: 20px;">Siège :</label>
                                 </div>
                                 <div style="width: 765px;">
-                                  <input type="text" class="form-control custom-sinput" id="Siège" formControlName="siege"
+                                  <input type="text" class="form-control custom-sinput" id="siege" formControlName="siege"
                                     placeholder="Siège">
+                                    <div
+                                    *ngIf="ClientForm.get('siege')?.hasError('siege') && (ClientForm.get('siege')?.touched ||ClientForm.get('siege')?.dirty)"
+                                    class="text-danger">
+                                    Siège  est obligatoire.
+                                  </div>
                                 </div>
-                                <div
-                              *ngIf="ClientForm.get('siege')?.hasError('siege') && (ClientForm.get('siege')?.touched ||ClientForm.get('siege')?.dirty)"
-                              class="text-danger">
-                              Siège  est obligatoire.
-                            </div>
+                              
                               </div>
                             <div class="mb-3 d-flex">
                               <div class="me-3" style="width: 150px;">
-                                <label for="CodePostal" class="label rs">Code Postal :</label>
+                                <label for="codepostal" class="label rs">Code Postal :</label>
                               </div>
                               <div style="width: 400px;">
-                                <input type="text" class="form-control custom-sinput" id="CodePostal" formControlName="codepostal"
+                                <input type="text" class="form-control custom-sinput" id="codepostal" formControlName="codepostal"
                                   placeholder="13000">
                               </div>
                               <div
@@ -395,10 +395,10 @@
         
                             <div class="mb-3 d-flex">
                               <div class="me-3" style="width: 150px;">
-                                <label for="CodeRegion" class="label rs">Région :</label>
+                                <label for="coderegion" class="label rs">Région :</label>
                               </div>
                               <div style="width: 400px;">
-                                <input type="text" class="form-control custom-sinput" id="CodeRegion" formControlName="coderegion"
+                                <input type="text" class="form-control custom-sinput" id="coderegion" formControlName="coderegion"
                                   placeholder="1233">
                               </div>
                               <div
@@ -411,10 +411,10 @@
         
                             <div class="mb-3 d-flex">
                               <div class="me-3" style="width: 150px;">
-                                <label for="Pays" class="label rs" style="margin-left: 44px;">Pays:</label>
+                                <label for="pays" class="label rs" style="margin-left: 44px;">Pays:</label>
                               </div>
                               <div style="width: 200px;">
-                                <input type="text" class="form-control custom-sinput" id="Pays" formControlName="pays"
+                                <input type="text" class="form-control custom-sinput" id="pays" formControlName="pays"
                                   placeholder="Maroc">
                               </div>
                               <div
@@ -426,10 +426,10 @@
                                
                             <div class="mb-3 d-flex" style="margin-top: 12px;">
                                 <div class="me-3" style="width: 150px;">
-                                  <label for="Email" class="label rs me-3">Email:</label>
+                                  <label for="email" class="label rs me-3">Email:</label>
                                 </div>
                                 <div style="width: 765px;">
-                                  <input type="Email" class="form-control custom-sinput" id="Email" formControlName="email"
+                                  <input type="Email" class="form-control custom-sinput" id="email" formControlName="email"
                                     placeholder="@example.com">
                                 </div>
                                 <div
@@ -440,7 +440,7 @@
                               </div>
                               <div class="mb-3 d-flex">
                                 <div class="me-3" style="width: 150px;">
-                                  <label for="Telephone" class="label rs">Téléphone :</label>
+                                  <label for="tel" class="label rs">Téléphone :</label>
                                 </div>
                                 <div style="width: 400px;">
                                   <input type="text" class="form-control custom-sinput" id="tel" formControlName="tel"
@@ -459,14 +459,14 @@
                                   <label for="telcopie " class="label rs" style="margin-left: 44px;">Télécopie :</label>
                                 </div>
                                 <div style="width: 200px;">
-                                  <input type="text" class="form-control custom-sinput" id="Telecopie" formControlName="telcopie"
+                                  <input type="text" class="form-control custom-sinput" id="telcopie" formControlName="telcopie"
                                     placeholder="05 46 66 77 77">
                                 </div>
-                                <div
+                                <!-- <div
                                 *ngIf="ClientForm.get('telcopie')?.hasError('telcopie') && (ClientForm.get('telcopie')?.touched ||ClientForm.get('telcopie')?.dirty)"
                                 class="text-danger">
                                 Telecopie est obligatoire.
-                              </div>
+                              </div> -->
                               </div>
         
                           </div>
@@ -491,7 +491,7 @@
                                   </div>
                                   <div style="width:300px;">
                                     <input type="text" class="form-control custom-sinput" id="forme" formControlName="forme"
-                                      placeholder="Forme">
+                                      placeholder="forme">
                                   </div>
                                   <div
                                 *ngIf="ClientForm.get('forme')?.hasError('forme') && (ClientForm.get('forme')?.touched ||ClientForm.get('forme')?.dirty)"
@@ -507,7 +507,7 @@
                                   </div>
                                   <div style="width: 300px;">
                                     <input type="text" class="form-control custom-sinput" id="capitale" formControlName="capitale"
-                                      placeholder="Capitale">
+                                      placeholder="1500000">
                                   </div>
                                   <div
                                 *ngIf="ClientForm.get('capitale')?.hasError('capitale') && (ClientForm.get('capitale')?.touched ||ClientForm.get('capitale')?.dirty)"
@@ -525,23 +525,23 @@
                                   </div>
                                   <div style="width: 200px; margin-left: 71px;">
                                     <input type="text" class="form-control custom-sinput" id="rc" formControlName="rc"
-                                      placeholder="rc">
-                                  </div>
-                                  <div
-                                  *ngIf="ClientForm.get('rc')?.hasError('rc') && (ClientForm.get('rc')?.touched ||ClientForm.get('rc')?.dirty)"
+                                      placeholder="rc" required>
+                                      <div *ngIf="ClientForm.get('rc')?.hasError('rc') && (ClientForm.get('rc')?.touched || ClientForm.get('rc')?.dirty)"
                                   class="text-danger">
                                   rc est obligatoire.
                                 </div>
+                                  </div>
+                                 
                                 </div>
             
             
                                 <div class="mb-3 d-flex">
                                   <div class="me-3" style="width: 80px;">
-                                    <label for="if" class="label rs" style="margin-left: 20px;">IF :</label>
+                                    <label for="i_f" class="label rs" style="margin-left: 20px;">IF :</label>
                                   </div>
                                   <div style="width: 200px;">
-                                    <input type="text" class="form-control custom-sinput" id="if" formControlName="i_f"
-                                      placeholder="if">
+                                    <input type="text" class="form-control custom-sinput" id="i_f" formControlName="i_f"
+                                      placeholder="if" required>
                                   </div>
                                   <div
                                   *ngIf="ClientForm.get('i_f')?.hasError('i_f') && (ClientForm.get('i_f')?.touched ||ClientForm.get('i_f')?.dirty)"
@@ -555,7 +555,7 @@
                                   </div>
                                   <div style="width: 200px;">
                                     <input type="text" class="form-control custom-sinput" id="ice" formControlName="ice"
-                                      placeholder="ice">
+                                      placeholder="ice" required>
                                   </div>
                                   <div
                                   *ngIf="ClientForm.get('ice')?.hasError('ice') && (ClientForm.get('ice')?.touched ||ClientForm.get('ice')?.dirty)"
@@ -566,11 +566,11 @@
 
                                 <div class="mb-3 d-flex" style="margin-top: 12px;">
                                     <div class="me-3" style="width: 150px;">
-                                      <label for="IP" class="label rs me-3" >IP :</label>
+                                      <label for="ip" class="label rs me-3" >IP :</label>
                                     </div>
                                     <div style="width: 200px;">
-                                      <input type="text" class="form-control custom-sinput" id="IP"
-                                        formControlName="ip" placeholder="IP">
+                                      <input type="text" class="form-control custom-sinput" id="ip"
+                                        formControlName="ip" placeholder="IP" required>
                                     </div>
                                     <div
                                     *ngIf="ClientForm.get('ip')?.hasError('ip') && (ClientForm.get('ip')?.touched ||ClientForm.get('ip')?.dirty)"
@@ -585,7 +585,7 @@
                                     </div>
                                     <div style="width: 300px;">
                                       <input type="text" class="form-control custom-sinput" id="cnss"
-                                        formControlName="cnss" placeholder="CNSS">
+                                        formControlName="cnss" placeholder="CNSS" required>
                                     </div>
                                     <div
                                     *ngIf="ClientForm.get('cnss')?.hasError('cnss') && (ClientForm.get('cnss')?.touched ||ClientForm.get('cnss')?.dirty)"
@@ -597,7 +597,7 @@
                                   <!-- [(ngModel)]="selectedTypeSociete" name="typesociete" *ngFor="let type of typesocietes {{ type.nom }}  [value]="type.id"" -->
                                   <div class="mb-3 d-flex" style="margin-top: 12px;">
                                     <div class="me-3" style="width: 150px;">
-                                      <label for="IP" class="label rs me-3">Type Entreprise :</label>
+                                      <label for="typesociete" class="label rs me-3">Type Entreprise :</label>
                                     </div>
                                     <div style="width: 600px;">
                                       <select id="typesociete" formControlName="typesociete" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
@@ -932,7 +932,8 @@
   
   
         </main>
-  
+        <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/list-client" style="cursor: pointer;"/>
+
       </div>
   
     </div>

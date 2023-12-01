@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Typesociete } from '../model/TypeSociete';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +32,15 @@ export class GestionClientService {
   getclientByid(id: number){
     return this.http.get(`${this.baseUrl}/Clients/client/${id}`)
   }
+
+  //type societe
   getAll(): (Observable<any>){
     return this.http.get(`${this.baseUrl}/typesociete/admin/typesociete`)
   }
-
+ 
+  createTypeSociete(typesociete: Typesociete){
+    return this.http.post(`${this.baseUrl}/typesociete/admin/createTypeSociete`,typesociete)
+  }
    
  
 

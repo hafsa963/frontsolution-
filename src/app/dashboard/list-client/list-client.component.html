@@ -2,7 +2,7 @@
  <head>
    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <a  href="https://icons8.com/icon/12964/undo">Undo</a> icon by <a href="https://icons8.com">Icons8</a>
   
 
   <style>
@@ -133,8 +133,8 @@
             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
             <span class="hide-menu">Paramaitre</span>
           </li> 
-          <li class="sidebar-item" routerLinkActive="active">
-            <a class="sidebar-link" aria-expanded="false">
+          <li class="sidebar-item"  routerLinkActive="active">
+            <a class="sidebar-link"  [routerLink]="['/list-type-societe']"  aria-expanded="false">
               <span>
                 <i class="bi bi-person-fill-lock"></i>
               </span>
@@ -153,6 +153,7 @@
     
     <div class="body-wrapper">
     
+      
       <header class="app-header" style="position: fixed;" >
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff; ">
           <ul class="navbar-nav">
@@ -258,8 +259,10 @@
     <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page"></mat-paginator>
   
   </div> -->
-   
+    
   </main> 
+  <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/dashboard" style="cursor: pointer;"/>
+
     </div>
 
   </div>
