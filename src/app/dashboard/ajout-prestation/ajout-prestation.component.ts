@@ -23,14 +23,20 @@ export class AjoutPrestationComponent {
   };
 
     element: boolean = false;
-  isSidebarExpanded: boolean = true;
   selectedprestation:any;
 
-  @ViewChild('sidebar') sidebarElement!: ElementRef;
+  isSidebarOpen = false;
   username: any;
 
+  logout() {     
+       
+    this.router.navigate(["/"]); 
+    console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
+     window.sessionStorage.clear();  
+   }
 
   ngOnInit() {
+    this.sidebarDetail();
     if (history.state.element !== undefined) {
       this.element = history.state.element;
     }
@@ -51,11 +57,19 @@ export class AjoutPrestationComponent {
       }
     });
   
-    this.checkWindowSize();
+ 
   }
-  
+  showFixedButton: boolean = false;
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event): void {
+ 
+    this.showFixedButton = window.scrollY > 100;
+  }
 
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
  
  
   
@@ -99,34 +113,6 @@ export class AjoutPrestationComponent {
     }
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    
-    this.checkWindowSize();
-  }
- 
-  toggleSidebar(): void {
-    this.isSidebarExpanded = !this.isSidebarExpanded;
-
-    // const marginLeft = this.isSidebarExpanded ? '0' : '270px';
-
-    // this.renderer.setStyle(this.el.nativeElement, 'marginLeft', marginLeft);
-  }
-
-
-
-
-   private checkWindowSize(): void {
-    
-    const windowWidth = window.innerWidth;
-
-     
-    this.isSidebarExpanded = windowWidth >= 768;
-
-     
-    // const marginLeft = this.isSidebarExpanded ? '0' : '270px';
-    // this.renderer.setStyle(this.sidebarElement.nativeElement, 'marginLeft', marginLeft);
-  }
  
  
   displaydatauser() {
@@ -141,10 +127,7 @@ export class AjoutPrestationComponent {
   }
 
 
-  closesidebar() {
-    this.isSidebarExpanded = true;
- 
-  }
+  
 
   
 
@@ -178,6 +161,31 @@ OnUpdate(formData: any) {
   }
 }
 
+sidebarDetail(){ 
+  window.onload = () => {
+    const sidebar = document.querySelector(".sidebar") as HTMLElement;
+    const closeBtn = document.querySelector("#btn") as HTMLElement;
+    const searchBtn = document.querySelector(".bx-search") as HTMLElement;
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+
+    searchBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+
+    function menuBtnChange() {
+      if (sidebar.classList.contains("open")) {
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
+  };
+ }
 
 
 

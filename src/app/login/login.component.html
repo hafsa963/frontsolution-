@@ -16,7 +16,7 @@
         <div class="form-group">
           <img class = "image"  src="../../assets/images/el_maguiri_logo-removebg-preview.png" />
             <!-- <h4 class="form-label mt-3">Connexion</h4> -->
-            <label  class="label" style="margin-right: 282px;" for="username">Nom d'utilisateur</label>
+            <label  class="label" style="margin-right: 351px;" for="username">Nom d'utilisateur</label>
             <div class="form-floating mb-3 mt-4">
               <div style=" margin-top: -21px;" > 
               <input type="text" class="form-control" id="username" formControlName="username"   [ngClass]="{ 'is-invalid': submitted && f['username'].errors }">
@@ -25,7 +25,7 @@
               </div>
             </div>
             </div>
-            <label class="label"  style="margin-right: 304px;" for="password">Mot de passe</label>
+            <label class="label"  style="margin-right: 371px;" for="password">Mot de passe</label>
             <div class="form-floating">
                <div style=" margin-top: -16px;" > 
               <input type="password" class="form-control" id="password" formControlName="password" autocomplete="off"  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
@@ -47,7 +47,7 @@
             <br>
              </div>
              <div class="w0 links bt pt16 mb20">
-              <a id="forgot_password_link" class="fl small" href="#">Mot de passe oublié ?</a>
+              <a id="forgot_password_link" class="fl small" [routerLink]="['/MDPOublier']" >Mot de passe oublié ?</a>
              </div>
  
         </div>

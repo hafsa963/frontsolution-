@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./nv-client.component.css']
 })
 export class NvClientComponent {
-   
+  isSidebarOpen = false;
   element: boolean = false;
   selectedData: any; 
 
@@ -20,10 +20,7 @@ export class NvClientComponent {
   typesociete: Typesociete[] = [];
   typesocieteNames: string[] = [];
   username: any;
-  isSidebarExpanded: boolean = true;
  
-
-  @ViewChild('sidebar') sidebarElement!: ElementRef;
   constructor(private appService : GestionClientService, private router : Router, private userService :UserService , private fb: FormBuilder){
    
     this.ClientForm = this.fb.group({
@@ -55,17 +52,10 @@ export class NvClientComponent {
     });
     
   }
-  showFixedButton: boolean = false;
-
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event): void {
- 
-    this.showFixedButton = window.scrollY > 100;
-  }
  
   logout() {     
        
-    this.router.navigate(["Login"]); 
+    this.router.navigate(["/"]); 
     console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
      window.sessionStorage.clear();  
    }
@@ -75,10 +65,10 @@ export class NvClientComponent {
 
  
   ngOnInit(): void {
+    this.sidebarDetail();
     if (history.state.element !== undefined) {
       this.element = history.state.element;
     }
-    this.checkWindowSize();
     this.selectedData = history.state.selectedData;
     console.log(this.selectedData);
       console.log(this.client);
@@ -103,7 +93,13 @@ export class NvClientComponent {
     
   }
   
-  
+  showFixedButton: boolean = false;
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event): void {
+ 
+    this.showFixedButton = window.scrollY > 100;
+  }
   
 
 
@@ -193,7 +189,6 @@ export class NvClientComponent {
   //     console.log('Form is invalid');
   //   }
   // }
-  get f() { return this.ClientForm.controls; }
 
   OnSubmit() {
     Object.keys(this.ClientForm.controls).forEach((field) => {
@@ -202,7 +197,6 @@ export class NvClientComponent {
     });
   
     if (this.ClientForm.valid) {
-      // Your existing code for handling the submission when the form is valid
          const client = {
         propriete: this.ClientForm.value.propriete,
         rs: this.ClientForm.value.rs,
@@ -261,37 +255,11 @@ export class NvClientComponent {
     }
   }
   
-
-
-
- 
-@HostListener('window:resize', ['$event'])
-onResize(event: any) {
-  
-  this.checkWindowSize();
-}
-
-toggleSidebar(): void {
-  this.isSidebarExpanded = !this.isSidebarExpanded;
-
-  // const marginLeft = this.isSidebarExpanded ? '0' : '270px';
-
-  // this.renderer.setStyle(this.el.nativeElement, 'marginLeft', marginLeft);
-}
-
-
-
-
- private checkWindowSize(): void {
-  
-  const windowWidth = window.innerWidth;
-
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
    
-  this.isSidebarExpanded = windowWidth >= 768;
-
-  
-}
-
+ 
 
 displaydatauser() {
   const Modeldivview = document.getElementById('dropmenuuser');
@@ -304,11 +272,31 @@ displaydatauser() {
   }
 }
 
+ sidebarDetail(){ 
+  window.onload = () => {
+    const sidebar = document.querySelector(".sidebar") as HTMLElement;
+    const closeBtn = document.querySelector("#btn") as HTMLElement;
+    const searchBtn = document.querySelector(".bx-search") as HTMLElement;
 
-closesidebar() {
-  this.isSidebarExpanded = true;
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
 
-}
+    searchBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+
+    function menuBtnChange() {
+      if (sidebar.classList.contains("open")) {
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
+  };
+ }
 
 
 

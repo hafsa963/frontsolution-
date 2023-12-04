@@ -14,9 +14,9 @@ export class DataclientComponent {
   client: any;
   selectedclientteId: any;
   selectedData: any; 
-  isSidebarExpanded: boolean = true;
+  isSidebarOpen = false;
   username: string | undefined;
-  @ViewChild('sidebar') sidebarElement!: ElementRef;
+ 
  
   constructor(private appService: GestionClientService, private userService: UserService, private router: Router) {
  
@@ -25,8 +25,7 @@ export class DataclientComponent {
  
  
   ngOnInit() {
-    this.checkWindowSize();
-
+   this.sidebarDetail();
     this.selectedData = history.state.selectedData;
     console.log(this.selectedData);
       console.log(this.client);
@@ -44,32 +43,19 @@ export class DataclientComponent {
     console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
      window.sessionStorage.clear();  
    }
+   showFixedButton: boolean = false;
 
+   @HostListener('window:scroll', ['$event'])
+   onScroll(event: Event): void {
   
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    
-    this.checkWindowSize();
-  }
+     this.showFixedButton = window.scrollY > 100;
+   }
  
-  toggleSidebar(): void {
-    this.isSidebarExpanded = !this.isSidebarExpanded;
-
+   toggleSidebar() {
+     this.isSidebarOpen = !this.isSidebarOpen;
+   }
+  
  
-  }
-
-
-
-
-   private checkWindowSize(): void {
-    
-    const windowWidth = window.innerWidth;
-
-     
-    this.isSidebarExpanded = windowWidth >= 768;
- 
-  }
  
  
   displaydatauser() {
@@ -84,9 +70,32 @@ export class DataclientComponent {
   }
 
 
-  closesidebar() {
-    this.isSidebarExpanded = true;
- 
-  }
+  sidebarDetail(){ 
+    window.onload = () => {
+      const sidebar = document.querySelector(".sidebar") as HTMLElement;
+      const closeBtn = document.querySelector("#btn") as HTMLElement;
+      const searchBtn = document.querySelector(".bx-search") as HTMLElement;
+  
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange();
+      });
+  
+      searchBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        menuBtnChange();
+      });
+  
+      function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+          closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else {
+          closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        }
+      }
+    };
+   }
+  
+  
  
 }

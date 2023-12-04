@@ -1,17 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import '../../../assets/css/style.css';
+
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-@import '../../../assets/css/styles.min.css';
-@import "../../../assets/libs/simplebar/dist/simplebar.css";
 @import "../../../assets/css/icons/tabler-icons/tabler-icons.css";
-
-
-
-body{
-  display: block; min-height: 100vh; position: none;
-  zoom: 90%;
-     width: 100%;  
-  height: 100%;  
-
+ 
+.sidebar{
+  width: 69px;
+  margin-bottom: 17px;
+}      
+ /* body {
+  display: block;
+  min-height: 100vh;
+  position: none;
+  height: 100%;
+  min-height: 100vh;
+} */
+  /* zoom: 90%; */
+  /* width: 100%; */
+@media (min-width: 992px){
+  .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
 }
+}
+body {
+  display: block;
+    min-height: 100vh;
+    position: none;
+    /* zoom: 85%; */
+    width: 100%;
+    height: 100%;
+ 
+}
+
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+    left: 0;
+  }
+ 
+ 
 .container{
     margin-top: 10px;
     
@@ -20,17 +52,7 @@ body{
   .intro {
     height: 100%;
   }
-  
-  .gradient-custom-1 {
-    
-    background: #cd9cf2;
-  
-    
-    background: -webkit-linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
-  
-   
-    background: linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
-  }
+ 
   
   table td,
   table th {
@@ -114,9 +136,8 @@ body{
    padding:10px 17px;
    color:#fff;
    position: absolute; 
-   /* margin-right: 500px; */
-    margin-left: 20px;
-   margin-top: 50px;
+   margin-left: 116px;
+    margin-top: 36px;
  }
  
 .btnbtn{
@@ -134,10 +155,14 @@ body{
 
 }
 
-.table[_ngcontent-ng-c4241076701] > [_ngcontent-ng-c4241076701]:not(caption) > *[_ngcontent-ng-c4241076701] > *[_ngcontent-ng-c4241076701] {
-    padding: 5px;
- 
+.table>:not(caption)>*>* {
+  padding: 10px;
+   
 }
+input{
+  padding: 8px;
+}
+
 /* TOASTER */
 .toast {
   position: fixed;

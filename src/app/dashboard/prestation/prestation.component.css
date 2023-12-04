@@ -1,17 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import '../../../assets/css/style.css';
+
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-@import '../../../assets/css/styles.min.css';
-@import "../../../assets/libs/simplebar/dist/simplebar.css";
 @import "../../../assets/css/icons/tabler-icons/tabler-icons.css";
+ 
+.sidebar{
+  width: 69px;
+  margin-bottom: 17px;
+}      
+ 
+@media (min-width: 992px){
+  .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+}
+}
+ body {
+  display: block;
+    min-height: 100vh;
+    position: none;
+    /* zoom: 85%; */
+    width: 100%;
+    height: 100%;
+ 
+}
 
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+    left: 0;
+  }
 
-
-body{
+/* body{
   display: block; min-height: 100vh; position: none;
   zoom: 90%;
      width: 100%;  
   height: 100%;  
 
-}
+} */
 .container{
     margin-top: 10px;
     
@@ -115,7 +145,7 @@ body{
    color:#fff;
    position: absolute; 
    /* margin-right: 500px; */
-    margin-left: 20px;
+    margin-left: 120px;
    margin-top: 50px;
  }
  
@@ -195,4 +225,7 @@ body{
 .bottom-link a {
   text-decoration: none;
   color: #fff;  
+}
+input{
+  padding: 8px;
 }
