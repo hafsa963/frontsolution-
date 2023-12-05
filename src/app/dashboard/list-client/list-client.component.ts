@@ -379,16 +379,7 @@ listclick(id: any) {
   console.log(id);
 }
 
-
- private checkWindowSize(): void {
-  
-  const windowWidth = window.innerWidth;
-
-   
-  this.isSidebarExpanded = windowWidth >= 768;
-
  
-}
 changeUpload(event:any){
  
   const file:File = event.target.files[0];

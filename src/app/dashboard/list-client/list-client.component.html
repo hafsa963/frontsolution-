@@ -259,13 +259,15 @@
               <td style="padding-top: 8px; padding-bottom: 6px;"> <span class="badge bg-info px-2 py-2"> {{client.etat}}</span></td>
                   
                 <td class="Actions">
-                 
+                  
+
                   <a   class="text-decoration-none text-primary me-2"  *ngIf="client.id"  (click)="passDataModifier(client)"  data-toggle="tooltip" title="modifier">
                     <i class="bi bi-pencil-square"></i>
                   </a>
                   <a   (click)="passData(client)" data-toggle="tooltip" title="visualiser"  ><i class="bi bi-eye"></i></a> 
                   <a  *ngIf="client.id" (click)="openModal(client.id)"   data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
                  
+                  <a  data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></a> 
                 </td>
            
             </tr>

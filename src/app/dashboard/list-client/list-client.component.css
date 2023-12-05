@@ -159,6 +159,12 @@
     margin-left: 8px;
     color: blue;
 }
+.bi-download{
+  font-size: 1.5rem;
+    
+  margin-left: 8px;
+  color: blue;
+}
  .paginator-container {
    display: flex;
    align-items: center;
