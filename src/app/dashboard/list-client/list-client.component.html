@@ -196,11 +196,13 @@
             <li class="nav-item">
  
 
-                <div style="margin-left: 799px; margin-top: 12px;">
-                    <button class="btn btn-outline-primary mx-3 mt-2 d- " >Parcourir</button>
-                </div>
-                  
+                <div *ngIf="id" style="margin-left: 799px; margin-top: 12px;">
+                    <!-- <button class="btn btn-outline-primary mx-3 mt-2 d- " >Parcourir</button>  -->
+                    <input type="file" name="file" class="file-upload" (change)="changeUpload($event)">
+                    <!-- <input type="file" (change)="uploadFile($event)"> -->
 
+
+                </div>
               </li>
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
@@ -247,10 +249,13 @@
               <th class="small-column" scope="col">CNSS</th>
               <th class="small-column" scope="col">état</th> 
               <th class="small-column" scope="col">Actions</th>
+
+
             </tr>
           </thead>
           <tbody> 
-            <tr   *ngFor="let client  of client" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+            <tr    *ngFor="let client  of client" (click) ="listclick(client.id)" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+
                 <td>{{client.rs}} </td>
                 <td>{{client.rc}}</td>
                 <td>{{client.forme}}</td>
@@ -260,6 +265,7 @@
                 <td>{{client.ice}}</td> 
                 <td>{{client.ip}}</td>
                 <td>{{client.cnss}}</td>
+                <td>{{client.attachmentVo}}</td>
                 <td> <span class="badge bg-info px-2 py-2"> {{client.etat}}</span></td> 
                   
                 <td class="Actions">
@@ -271,6 +277,7 @@
                   <a  *ngIf="client.id" (click)="openModal(client.id)"   data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
                  
                 </td>
+           
             </tr>
           </tbody>
         </table>
