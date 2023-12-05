@@ -346,3 +346,11 @@ body{
 .show {
   animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
 }
+
+.foler_upload {
+  position: relative;
+   right: 250px;
+   display: flex;
+  
+}
+

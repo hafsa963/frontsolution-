@@ -1,3 +1,4 @@
+import { Attachment } from "./attachment";
 
 export interface Client{
     id?: number,
@@ -25,7 +26,8 @@ export interface Client{
     cmt:  string,
     etat:  string,
     typesociete:  string,
-  
+    attachment: Attachment;
+     
 }
 
 

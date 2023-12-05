@@ -1,6 +1,9 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Router } from '@angular/router';
 import { Client } from 'src/app/model/Client';
+import { AttachmentService } from 'src/app/services/attachment.service';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,13 +13,20 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./list-client.component.css']
 })
 export class ListClientComponent {
-  isSidebarOpen = false;
+
   client: any;
   selectedclientId: any;
   selectedData: any; 
+  isSidebarExpanded: boolean = true;
+  
+  
+  @ViewChild('sidebar') sidebarElement!: ElementRef;
+  isSidebarOpen = false;
+
  
   username: any;
-  constructor(private appService: GestionClientService, private userService: UserService, private router: Router) {
+id: any;
+  constructor(private appService: GestionClientService, private userService: UserService, private router: Router, private attachment:AttachmentService,private http:HttpClient) {
  
   }
   logout() {     
@@ -361,6 +371,51 @@ showFixedButton: boolean = false;
 onScroll(event: Event): void {
 
   this.showFixedButton = window.scrollY > 100;
+}
+
+listclick(id: any) {
+  console.log(id);
+  this.id = id;
+  console.log(id);
+}
+
+
+ private checkWindowSize(): void {
+  
+  const windowWidth = window.innerWidth;
+
+   
+  this.isSidebarExpanded = windowWidth >= 768;
+
+ 
+}
+changeUpload(event:any){
+ 
+  const file:File = event.target.files[0];
+  if (file) {
+  
+    this.attachment.uploadFile(file, this.id)
+
+ 
+}    
+}
+
+// uploadFile(event: any) {
+//   const file = event.target.files[0];
+//   const formData = new FormData();
+//   formData.append('file', file);
+//   // Perform the HTTP request
+//   this.http.post('http://localhost:8080/client/upload/1', formData).subscribe((response) => {
+//   console.log('File uploaded successfully');
+//   },(error) => {
+//   console.error('Error uploading file:', error);
+//   });
+//   }
+onSubmit(event?: Event) {
+  if (event) {
+    event.preventDefault();
+  }
+  // Your form handling logic here
 }
 
 displaydatauser() {
