@@ -135,36 +135,46 @@ SearchBy(searchInput: string) {
 
   if (isNumeric) {
     this.callApi(this.appService.getSocieteByRc, +searchInput);
-    this.callApi(this.appService.getByIp, +searchInput);
-    this.callApi(this.appService.getSocieteByIce, +searchInput);
-  } else {
-    switch (searchInput.toLowerCase()) {
-      case 'name':
-        this.callApi(this.appService.getSocieteByName, searchInput);
-        break;
-      case 'propriete':
-        this.callApi(this.appService.getByPropriete, searchInput);
-        break;
-      case 'typesociete':
-        this.callApi(this.appService.getBytypesociete, searchInput);
-        break;
-      case 'capitale':
-        this.callApi(this.appService.getBycapitale, searchInput);
-        break;
-      case 'forme':
-        this.callApi(this.appService.getByforme, searchInput);
-        break;
-      case 'siege':
-        this.callApi(this.appService.getBysiege, searchInput);
-        break;
-      case 'ctnum':
-        this.callApi(this.appService.getByCtNum, searchInput);
-        break;
-      default:
-        console.error('Invalid property name:', searchInput);
-        break;
-    }
+    // this.callApi(this.appService.getByIp, +searchInput);
+    // this.callApi(this.appService.getSocieteByIce, +searchInput);
   }
+  //  else {
+  //   const lowerCaseInput = searchInput.toLowerCase();
+
+  //   switch (lowerCaseInput) {
+  //     case 'name':
+  //     case 'NAME':
+  //       this.callApi(this.appService.getSocieteByName, searchInput);
+  //       break;
+  //     case 'propriete':
+  //     case 'PROPRIETE':
+  //       this.callApi(this.appService.getByPropriete, searchInput);
+  //       break;
+  //     case 'typesociete':
+  //     case 'TYPESOCIETE':
+  //       this.callApi(this.appService.getBytypesociete, searchInput);
+  //       break;
+  //     case 'capitale':
+  //     case 'CAPITALE':
+  //       this.callApi(this.appService.getBycapitale, searchInput);
+  //       break;
+  //     case 'forme':
+  //     case 'FORME':
+  //       this.callApi(this.appService.getByforme, searchInput);
+  //       break;
+  //     case 'siege':
+  //     case 'SIEGE':
+  //       this.callApi(this.appService.getBysiege, searchInput);
+  //       break;
+  //     case 'ctnum':
+  //     case 'CTNUM':
+  //       this.callApi(this.appService.getByCtNum, searchInput);
+  //       break;
+  //     default:
+  //       console.error('Invalid property name:', searchInput);
+  //       break;
+  //   }
+  // }
 }
 
 private callApi(apiFunction: Function, value: any) {
@@ -173,6 +183,7 @@ private callApi(apiFunction: Function, value: any) {
     console.log(this.client);
   });
 }
+
 
 
  
