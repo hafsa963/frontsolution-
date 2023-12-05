@@ -1,47 +1,58 @@
-<!-- <body class="body1">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+       @media (zoom: 80%) {
+  .table-responsive {
+    max-width: 80%;
+  }
+}
+  </style>
+</head>
+<body class="body1">
     <div class="container">
+      <form> 
         <div class="form-group">
+          <img class = "image"  src="../../assets/images/el_maguiri_logo-removebg-preview.png" />
+            <!-- <h4 class="form-label mt-3">Connexion</h4> -->
+            <p class="mb16">Vous n’arrivez pas à vous connecter ?</p>
+            <div class="message">
+              <ul>
+                <li class="mb8">
+                  Les noms d'utilisateur se présenter sous la forme d'une adresse e-mail.
+                </li>
+                <li class="mb8">
+                  Les mots de passe sont sensibles à la casse.
+                </li>
+              </ul>
+            </div> 
+             <p class="username">
+              Pour réinitialiser votre mot de passe, saisissez votre nom d'utilisateur EL MAGUIRI & ASSOCIES.
+             </p> 
+            <label  class="label" style="margin-right: 351px;" for="username">Nom d'utilisateur</label>
             <div class="form-floating mb-3 mt-4">
-              <input type="email" class="form-control" id="floatingInput" placeholder="exemple@exemple.ma">
-              <label for="floatingInput">Nom d'utilisateur</label>
+              <div style=" margin-top: -21px;" > 
+              <input type="text" class="form-control" id="username" formControlName="username" >
+              <!-- <div *ngIf="submitted && f['username'].errors" class="invalid-feedback"  [ngClass]="{ 'is-invalid': submitted && f['username'].errors }">
+                <div *ngIf="f['username'].errors && f['username'].errors['required']">Username is required</div>
+              </div> -->
             </div>
-            <div style="display: contents">
-                <button type="button" class="btn btn1">se connecter</button>
             </div>
+            
+            
+            <!-- <a >Mot de passe oublier</a> -->
+           
+            <div class="row justify-content-center align-items-center">
+              <button   type="submit" class="button r4 wide primary" style="background-color: rgb(111 111 255); width: 200px;">Annuler<span  class="spinner-border spinner-border-sm me-1"></span></button>
+
+                <button   type="submit" class="button r4 wide primary" style=" width: 200px;">Continuer<span   class="spinner-border spinner-border-sm me-1"></span></button>
+ 
+            </div>
+  
+ 
         </div>
+      </form>
         
     </div>
-</body> -->
-<!-- 
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <div class="modal-dialog modal-dialog-centered" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="1">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Show a second modal and hide this one with the button below.
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
-      </div>
-    </div>
-  </div>
+</body>

@@ -21,11 +21,20 @@ export class ListClientComponent {
   
   
   @ViewChild('sidebar') sidebarElement!: ElementRef;
+  isSidebarOpen = false;
+
+ 
   username: any;
 id: any;
   constructor(private appService: GestionClientService, private userService: UserService, private router: Router, private attachment:AttachmentService,private http:HttpClient) {
  
   }
+  logout() {     
+       
+    this.router.navigate(["/"]); 
+    console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
+     window.sessionStorage.clear();  
+   }
 
      
   ngOnInit() {
@@ -40,8 +49,8 @@ id: any;
           console.log('Username:', this.username);
         }
       });
-       console.log(this.client)
-      this.checkWindowSize();
+     
+      this.sidebarDetail();
   }
   onDelete(id:any) {
   
@@ -70,11 +79,138 @@ id: any;
    
 }
 
+// SearchBy(searchInput: string) {
+//   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
+//   if (isNumeric) {
+//     this.appService.getSocieteByRc(+searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+//     this.appService.getByIp(+searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+//     this.appService.getSocieteByIce(+searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+   
+//   } else {
+//     this.appService.getSocieteByName(searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+//     this.appService.getByPropriete(searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+//     this.appService.getBytypesociete(searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+//     this.appService.getBycapitale(searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+//     this.appService.getByforme(searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+//     this.appService.getBysiege(searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+//     this.appService.getByCtNum(searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
+    
+//   }
+  
+// }
+
+ 
+SearchBy(searchInput: string) {
+  const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
+
+  if (isNumeric) {
+    this.callApi(this.appService.getSocieteByRc, +searchInput);
+    // this.callApi(this.appService.getByIp, +searchInput);
+    // this.callApi(this.appService.getSocieteByIce, +searchInput);
+  }
+  //  else {
+  //   const lowerCaseInput = searchInput.toLowerCase();
+
+  //   switch (lowerCaseInput) {
+  //     case 'name':
+  //     case 'NAME':
+  //       this.callApi(this.appService.getSocieteByName, searchInput);
+  //       break;
+  //     case 'propriete':
+  //     case 'PROPRIETE':
+  //       this.callApi(this.appService.getByPropriete, searchInput);
+  //       break;
+  //     case 'typesociete':
+  //     case 'TYPESOCIETE':
+  //       this.callApi(this.appService.getBytypesociete, searchInput);
+  //       break;
+  //     case 'capitale':
+  //     case 'CAPITALE':
+  //       this.callApi(this.appService.getBycapitale, searchInput);
+  //       break;
+  //     case 'forme':
+  //     case 'FORME':
+  //       this.callApi(this.appService.getByforme, searchInput);
+  //       break;
+  //     case 'siege':
+  //     case 'SIEGE':
+  //       this.callApi(this.appService.getBysiege, searchInput);
+  //       break;
+  //     case 'ctnum':
+  //     case 'CTNUM':
+  //       this.callApi(this.appService.getByCtNum, searchInput);
+  //       break;
+  //     default:
+  //       console.error('Invalid property name:', searchInput);
+  //       break;
+  //   }
+  // }
+}
+
+private callApi(apiFunction: Function, value: any) {
+  apiFunction.call(this.appService, value).subscribe((response: any) => {
+    this.client = Array.isArray(response) ? response : [response];
+    console.log(this.client);
+  });
+}
+
+
+
+ 
+onInputChange(event: Event) {
+  const inputValue = (event.target as HTMLInputElement).value;
+ 
+  if (!inputValue.trim()) {
+    this.appService.getAllClient().subscribe((response: any) => {  
+      this.client = Array.isArray(response) ? response : [response];
+    });
+  }
+}
 
 passData(client: Client){
   console.log(client);
   if (client && client.id) {
-    this.router.navigate(['/dataclient'], { state: { selectedData: client, element: true } });
+    this.router.navigate(['/dataclient'], { state: { selectedData: client} });
   } else {
     
     console.error("ID is undefined for the selected societe");
@@ -85,12 +221,12 @@ passData(client: Client){
 passDataModifier(client: Client){
   console.log(client);
   if (client && client.id) {  
-    this.router.navigate(['/nv-client'], { state: { selectedData: client, element: true } });
+    this.router.navigate(['/nv-client'], { state: { selectedData: client,element: true } });
   } else {
     console.error("ID is undefined for the selected societe");
   }  
 }
-
+ 
 
 
 
@@ -162,15 +298,13 @@ if(Modeldivview != null){
 
 }
 
-@HostListener('window:resize', ['$event'])
-onResize(event: any) {
-  
-  this.checkWindowSize();
-}
-
-toggleSidebar(): void {
-  this.isSidebarExpanded = !this.isSidebarExpanded;
  
+showFixedButton: boolean = false;
+
+@HostListener('window:scroll', ['$event'])
+onScroll(event: Event): void {
+
+  this.showFixedButton = window.scrollY > 100;
 }
 
 listclick(id: any) {
@@ -230,11 +364,41 @@ displaydatauser() {
 }
 
 
-closesidebar() {
-  this.isSidebarExpanded = true;
+toggleSidebar() {
+  this.isSidebarOpen = !this.isSidebarOpen;
+}
+ 
 
+
+ 
+
+sidebarDetail(){ 
+window.onload = () => {
+  const sidebar = document.querySelector(".sidebar") as HTMLElement;
+  const closeBtn = document.querySelector("#btn") as HTMLElement;
+  const searchBtn = document.querySelector(".bx-search") as HTMLElement;
+
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    menuBtnChange();
+  });
+
+  searchBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    menuBtnChange();
+  });
+
+  function menuBtnChange() {
+    if (sidebar.classList.contains("open")) {
+      closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+    } else {
+      closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  }
+};
 }
 
 
+ 
 
 }

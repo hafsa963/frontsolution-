@@ -13,22 +13,17 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PrestationComponent  {
       
-  // isDropdownOpen: boolean = false;
+  isSidebarOpen = false;
   isDropdownOpen1: boolean = false;
   selectedprestationId: any;
-  isSidebarExpanded: boolean = true;
-  @ViewChild('sidebar') sidebarElement!: ElementRef;
+ 
   username: any;
  
-
-  // toggleDropdown() {
-  //   this.isDropdownOpen = !this.isDropdownOpen;
-     
-  // }
-  toggleDropdown1() {
-    this.isDropdownOpen1 = !this.isDropdownOpen1;
+ 
+  // toggleDropdown1() {
+  //   this.isDropdownOpen1 = !this.isDropdownOpen1;
     
-  }
+  // }
  
 
   onMouseEnter(event: any) {
@@ -40,8 +35,9 @@ export class PrestationComponent  {
   }
 
   ngOnInit(): void {
+    this.sidebarDetail();
     this.getAllPrestations();
-    this.checkWindowSize();
+ 
     this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
       if (response && response.username) {
         this.username = response.username;
@@ -80,15 +76,10 @@ export class PrestationComponent  {
     this.showSteps[prestation.namePrestation] = !this.showSteps[prestation.namePrestation];
   }
 
-  
-
-  // SearchByMission(mission: string){
-  //   return this.appService.
+ 
+  // toggleDropdown() {
+  //   this.isDropdownOpen = !this.isDropdownOpen;
   // }
-  isDropdownOpen: boolean = false;
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
 
 
   SearchBynameprestation(nameManager: string) {
@@ -152,35 +143,8 @@ onDelete(selectedprestationId : any){
  
 }
  
-
-@HostListener('window:resize', ['$event'])
-onResize(event: any) {
-  
-  this.checkWindowSize();
-}
-
-toggleSidebar(): void {
-  this.isSidebarExpanded = !this.isSidebarExpanded;
-
-  // const marginLeft = this.isSidebarExpanded ? '0' : '270px';
-
-  // this.renderer.setStyle(this.el.nativeElement, 'marginLeft', marginLeft);
-}
-
-
-
-
- private checkWindowSize(): void {
-  
-  const windowWidth = window.innerWidth;
-
-   
-  this.isSidebarExpanded = windowWidth >= 768;
-
-   
-  // const marginLeft = this.isSidebarExpanded ? '0' : '270px';
-  // this.renderer.setStyle(this.sidebarElement.nativeElement, 'marginLeft', marginLeft);
-}
+ 
+ 
 
 
 displaydatauser() {
@@ -194,11 +158,7 @@ displaydatauser() {
   }
 }
 
-
-closesidebar() {
-  this.isSidebarExpanded = true;
-
-}
+ 
 
 modifypresta(presta : Prestation){
   if (presta && presta.id){
@@ -212,6 +172,52 @@ modifypresta(presta : Prestation){
   
 }
 
+showFixedButton: boolean = false;
 
+@HostListener('window:scroll', ['$event'])
+onScroll(event: Event): void {
+
+  this.showFixedButton = window.scrollY > 100;
+}
+toggleSidebar() {
+  this.isSidebarOpen = !this.isSidebarOpen;
+}
+ 
+
+ 
+
+sidebarDetail(){ 
+window.onload = () => {
+  const sidebar = document.querySelector(".sidebar") as HTMLElement;
+  const closeBtn = document.querySelector("#btn") as HTMLElement;
+  const searchBtn = document.querySelector(".bx-search") as HTMLElement;
+
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    menuBtnChange();
+  });
+
+  searchBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    menuBtnChange();
+  });
+
+  function menuBtnChange() {
+    if (sidebar.classList.contains("open")) {
+      closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+    } else {
+      closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  }
+};
+}
+
+
+logout() {     
+       
+  this.router.navigate(["/"]); 
+  console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
+   window.sessionStorage.clear();  
+ }
 
 }

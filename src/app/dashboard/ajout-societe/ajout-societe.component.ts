@@ -94,7 +94,7 @@ export class AjoutSocieteComponent  implements OnInit{
       forme: new FormControl('', Validators.required),
       capitale: new FormControl('', Validators.required),
       siege: new FormControl('', Validators.required),
-      rc: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+      rc: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(4)]),
       i_f: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
       ice: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
       ip: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
@@ -146,7 +146,7 @@ export class AjoutSocieteComponent  implements OnInit{
 
 
   OnSubmit() {
-    // if (this.registerForm.valid) {
+     if (this.registerForm.valid) {
       
       const societe = {
         propriete: this.registerForm.value.propriete,
@@ -211,14 +211,14 @@ export class AjoutSocieteComponent  implements OnInit{
         }
       );
       console.log('Form submitted:', societe);
-    // }
-    //  else {
-    //   Object.keys(this.registerForm.controls).forEach((field) => {
-    //     const control = this.registerForm.get(field);
-    //     control?.markAsTouched({ onlySelf: true });
-    //   });
-    //   console.log('Form is invalid');
-    // }
+     }
+      else {
+      Object.keys(this.registerForm.controls).forEach((field) => {
+        const control = this.registerForm.get(field);
+        control?.markAsTouched({ onlySelf: true });
+      });
+      console.log('Form is invalid');
+    }
   }
     
 

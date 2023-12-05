@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Typesociete } from '../model/TypeSociete';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class GestionClientService {
 
   
 
-  getAllClient(){
+  getAllClient() : (Observable<any>){
     return this.http.get(`${this.baseUrl}/Clients/admin/client`)
 
   }
@@ -31,12 +32,54 @@ export class GestionClientService {
   getclientByid(id: number){
     return this.http.get(`${this.baseUrl}/Clients/client/${id}`)
   }
+
+  //type societe
   getAll(): (Observable<any>){
     return this.http.get(`${this.baseUrl}/typesociete/admin/typesociete`)
   }
-
-   
  
+  createTypeSociete(typesociete: Typesociete){
+    return this.http.post(`${this.baseUrl}/typesociete/admin/createTypeSociete`,typesociete)
+  }
+  getSocieteByName(rs : string){
 
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/rs/${rs}`)
+  }
+
+  getSocieteByRc(rc:number){
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/rc/${rc}`)
+  }
+  getBycapitale(capitale​ : string){
+    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/capitale​/${capitale}`)
+  }
+  getSocieteByCnss(cnss : string){
+    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/cnss​/${cnss}`)
+  }
+
+  getByCtNum(ctNum : string){
+    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/ctNum​/${ctNum}`)
+  }
+  getByforme(forme : string){
+    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/forme​/${forme}`)
+  } 
+  getSocieteByIce(ice : number){
+    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/ice​/${ice}`)
+  }
+  getByIp(ip : number){
+    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/ip​/${ip}`)
+  }
+  getByPropriete(propriete : string){
+    return this.http.get(`${this.baseUrl}/Clients​/admin​/client​/propriete​/${propriete}`)
+  }
+  getBysiege(siege : string){
+    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/siege​/${siege}`)
+
+  }
+  
+  getBytypesociete(typesociete : string){
+    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/typesociete​/${typesociete}`)
+  }
+ 
+ 
 
 }

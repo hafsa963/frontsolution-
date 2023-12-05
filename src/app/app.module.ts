@@ -29,6 +29,9 @@ import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-arc
 import { ListClientComponent } from './dashboard/list-client/list-client.component';
 import { NvClientComponent } from './dashboard/nv-client/nv-client.component';
 import { DataclientComponent } from './dashboard/dataclient/dataclient.component';
+import { ListTypeSocieteComponent } from './dashboard/list-type-societe/list-type-societe.component';
+import { NvTypeComponent } from './dashboard/nv-type/nv-type.component';
+import { TestmenuComponent } from './dashboard/testmenu/testmenu.component';
  
  
  
@@ -51,6 +54,9 @@ import { DataclientComponent } from './dashboard/dataclient/dataclient.component
     ListClientComponent,
     NvClientComponent,
     DataclientComponent,
+    ListTypeSocieteComponent,
+    NvTypeComponent,
+    TestmenuComponent,
   
      
      

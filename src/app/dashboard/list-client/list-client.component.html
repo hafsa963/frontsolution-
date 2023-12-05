@@ -2,11 +2,12 @@
  <head>
    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <a  href="https://icons8.com/icon/12964/undo">Undo</a> icon by <a href="https://icons8.com">Icons8</a>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
 
   <style>
-    .navbar {
+    /* .navbar {
       position: fixed;
       width: 81%;
       top: 0;
@@ -30,7 +31,7 @@
   }
 }
  
-
+ */
 
 
 
@@ -44,145 +45,88 @@
   <body>
   
   
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-  
-    <aside #sidebar class="left-sidebar" style="   background: linear-gradient(to bottom, #ffffff, #cccccc);"  [style.marginLeft]="isSidebarExpanded ? '0' : '270px'" >
-      <!-- [@sidebarToggle]="isSidebarExpanded ? 'expanded' : 'collapsed'" -->
-      <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/el_maguiri_logo-removebg-preview.png" style="margin-left: 71px;" width="80" alt="" />
-          </a>
-          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" data-bs-toggle="offcanvas" (click)="closesidebar()" data-bs-target="#sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
-          </div> 
-        </div>
-       
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-          <ul id="sidebarnav">
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Dashboard</span>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  [routerLink]="['/dashboard']" aria-expanded="false">
-                <span>
-                  <i class="ti ti-layout-dashboard"></i>
-                </span>
-                <span class="hide-menu">Tableau De Bord</span>
-              </a>
-            </li>
-            <li class="nav-small-cap" routerLinkActive="active">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Dossiers</span>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/ajout-societe']" aria-expanded="false">
-                <span>
-                  <i class="bi bi-file-earmark-plus-fill"></i>
-                  <!-- <i class="ti ti-article"></i> -->
-                </span>
-                <span class="hide-menu">Nouveau Dossier</span>
-              </a>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/dossier']" aria-expanded="false">
-                <span>
-                  <i class="ti ti-file-description"></i>
-                
-                </span>
-                <span class="hide-menu">Liste Des Dossiers</span>
-              </a>
-            </li>
-            <!-- <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-cards"></i>
-                </span>
-                <span class="hide-menu">Progrès du Dossier</span>
-              </a>
-            </li> -->
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/dossier-archive']" aria-expanded="false">
-                <span>
-                   <i class="ti ti-alert-circle"></i> 
-                </span>
-                <span class="hide-menu">Dossiers Archivés</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Prestations</span>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  [routerLink]="['/ajout-prestation']" aria-expanded="false">
-                <span>
-                  <i class="bi bi-plus-circle-fill"></i> 
-                  <!-- <i class="bi bi-list-task"></i>   -->
-                </span>
-                <span class="hide-menu">Nouvelle Mission</span>
-              </a>
-            
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-                  <!-- <i class="ti ti-article"></i> -->
-               
-              <a class="sidebar-link"  [routerLink]="['/Prestation']" aria-expanded="false">
-                <span>
-                  <i class="bi bi-card-checklist"></i> 
-                </span>
-                <span class="hide-menu"> Liste Des Missions</span>
-              </a>
-            </li>
-             
-
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">AUTH</span>
-            </li>
-        
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/nv-colab']" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user-plus"></i>
-                </span>
-                <span class="hide-menu">Register</span>
-              </a>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link" [routerLink]="['/list-colabs']" aria-expanded="false">
-                <span> 
-                  <i class="bi bi-people-fill"></i>
-                </span>
-                <span class="hide-menu">Colaborateurs</span>
-              </a>
-            </li>
-            <li class="sidebar-item" routerLinkActive="active">
-              <a class="sidebar-link"  aria-expanded="false">
-                <span>
-                  <i class="bi bi-person-fill-lock"></i>
-                </span>
-                <span class="hide-menu">affectation d'accès</span>
-              </a>
-            </li>
-           
-          
-          </ul>
-          
-        </nav>
-     
+    <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
+      <div class="logo_details">
+        <!-- <i class="bx bxl-audible icon"></i> -->
+        <div class="logo_name"> </div>
+        <i class="bx bx-menu" id="btn"></i>
       </div>
-      
-    </aside>
+      <ul class="nav-list">
+        <li>
+          <i class="bx bx-search"></i>
+          <input type="text" placeholder="Search...">
+           <span class="tooltip">Search</span>
+        </li>
+        <li>
+          <a  [routerLink]="['/dashboard']" >
+            <i class="bx bx-grid-alt"></i>
+            <span class="link_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a [routerLink]="['/list-client']" >
+            <i class="bx bx-user"></i>
+            <span class="link_name">Client</span>
+          </a>
+          <span class="tooltip">Client</span>
+        </li>
+        <li>
+          <a  [routerLink]="['/Prestation']" >
+            <i class="bx bx-chat"></i>
+            <span class="link_name">Préstation</span>
+          </a>
+          <span class="tooltip">Préstation</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-pie-chart-alt-2"></i>
+            <span class="link_name">Tache</span>
+          </a>
+          <span class="tooltip">Tache</span>
+        </li>
+        <li>
+          <a [routerLink]="['/list-type-societe']" >
+            <i class="bx bx-folder"></i>
+            <span class="link_name">Type Societe</span>
+          </a>
+          <span class="tooltip">Types D'entreprises</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cart-alt"></i>
+            <span class="link_name">Order</span>
+          </a>
+          <span class="tooltip">Order</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span class="link_name">Settings</span>
+          </a>
+          <span class="tooltip">Settings</span>
+        </li>
+        <li class="profile">
+          <div class="profile_details">
+            <!-- <img src="profile.jpeg" alt="profile image"> -->
+            <div class="profile_content">
+              <div class="name">Anna Jhon</div>
+              <div class="designation">Admin</div>
+            </div>
+          </div>
+          <i class="bx bx-log-out" id="log_out"></i>
+        </li>
+      </ul>
+    </div>
     
     <div class="body-wrapper">
     
-      <header class="app-header" style="position: fixed;" >
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff; ">
+      <header class="app-header" style="position: fixed;">
+        <nav class="navbar navbar-expand-lg navbar-light" >
           <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
-              <a class="nav-link sidebartoggler nav-icon-hover" id="sidebarCollapseButton" data-bs-toggle="offcanvas" (click)="toggleSidebar()" data-bs-target="#sidebarCollapse">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="sidebarCollapseButton" data-bs-toggle="offcanvas"
+                (click)="toggleSidebar()" data-bs-target="#sidebarCollapse">
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
@@ -191,35 +135,78 @@
                 <i class="ti ti-bell-ringing"></i>
                 <div class="notification bg-primary rounded-circle"></div>
               </a>
+
             </li>
-
-            <li class="nav-item">
- 
-
-                <div *ngIf="id" style="margin-left: 799px; margin-top: 12px;">
-                    <!-- <button class="btn btn-outline-primary mx-3 mt-2 d- " >Parcourir</button>  -->
-                    <input type="file" name="file" class="file-upload" (change)="changeUpload($event)">
-                    <!-- <input type="file" (change)="uploadFile($event)"> -->
-
-
-                </div>
-              </li>
+           <li class="">
+              <div *ngIf="id" style="margin-left: 500px; margin-top: 6px;">
+            <input type="file" name="file" class="btn btn-outline-primary mx-3 mt-2 d-" (change)="changeUpload($event)">
+              </div>
+            </li>
           </ul>
+  
+          <!-- <div *ngIf="id" style="margin-left: 799px; margin-top: 12px;" class="btn btn-primary" >
+            <button class="btn btn-outline-primary mx-3 mt-2 d- " >Parcourir</button> 
+            <input type="file" name="file" class="file-upload" (change)="changeUpload($event)">
+            <input type="file" (change)="uploadFile($event)">
+
+
+        </div> -->
+          <!-- RECHERCHE BAR -->
+          <!-- <form class="position-relative text-center">
+            <div class="input-group"
+              style="width: 600px; margin-left: 20px; margin-top: 12px; background-color: ghostwhite;">
+              <input placeholder="Search..." aria-label="Search" type="search" class="rounded-pill form-control">
+              <div class="input-group-prepend">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="svg-inline--fa fa-search fa-w-16 text-400 search-box-icon"
+                  style="margin-left: -34px;text-align:center;margin-top: 8px;">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+            </div>
+          </form> -->
+  
+          <!-- Traduction -->
+          <!-- <div class="flex items-center gap-2 h-16 ml-auto" style="margin-left: 400px;">
+            <div class="dropdown-item">
+              <a class="dropdown-toggle" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <i class="flag-united-kingdom flag m-0"></i>
+                <img class="thumb" data-pin-no-hover="true" fetchpriority="high"
+                  src="../../assets/images/flagfrance.png" style="width: 38px; height: 36px;">
+              </a>
+            </div>
+          </div> -->
+
+
+          <li>
+  
+
+        
+          </li>
+       
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Welcome, {{username}}</a>
+              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank"
+                class="btn btn-primary"  style="width: 221px;padding: 6px">Welcome, {{username}}</a>
+                <!-- (click)="displaydatauser()" -->
               <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
+                <a class="nav-link nav-icon-hover"  (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
                 </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" id="dropmenuuser" aria-labelledby="drop2">
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" id="dropmenuuser"
+                  aria-labelledby="drop2">
                   <div class="message-body">
-                    <a  class="d-flex align-items-center gap-2 dropdown-item">
+                    <a class="d-flex align-items-center gap-2 dropdown-item" style="margin-left: 18px;">
                       <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">Mon Profile</p>
+                      <p class="mb-0 fs-3" style="font-size: 0.875rem!important;
+                        margin-bottom: 0!important;margin-left: -7px;margin-top: 10px;">Mon Profile</p>
                     </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Déconnecter</a>
+                    <!-- (click)="logout()" -->
+                    <a  (click)="logout()" style="margin-bottom: 12px;"
+                      class="btn btn-outline-primary mx-3 mt-2 d-block">Déconnecter</a>
                   </div>
                 </div>
               </li>
@@ -227,15 +214,19 @@
           </div>
         </nav>
       </header>
-      <ng-content></ng-content>
-      <main style="margin-top: 30px;" >
+       
+      <div style="margin-top: 30px;" >
         <form   class="d-flex"   style="width: 100%; max-width: 500px; margin: 0 auto; padding: 10px;margin-top:90px; ">
-          <input class="form-control me-2"   #searchInput type="search" placeholder="Raison Sociale\RC" aria-label="Search" >
-          <button class="btn btn-outline-success"   type="submit">Rechercher</button>
-          <!-- (click)="SearchBy(searchInput.value)"   (input)="onInputChange($event)" -->
+          <input class="form-control me-2"   #searchInput type="search" placeholder="Raison Sociale\RC" aria-label="Search"  (input)="onInputChange($event)">
+          <button class="btn btn-outline-success" (click)="SearchBy(searchInput.value)" type="submit">Rechercher</button>
+         
         </form>
-        <div class="table-responsive bg-white" style="margin: 30px; max-width: 100%;margin-top: 60px;"   >
-        <table class="table mb-0">
+
+        <div style="margin-left: 95px;margin-top: 12px;">
+          <button class="btn btn-outline-primary mx-3 mt-2 d-" [routerLink]="['/nv-client']">Ajouter Client</button>
+      </div>
+        <div class="table-responsive bg-white">
+        <table class="table mb-0" style="padding: 0px;">
           <thead>
             <tr>
               <th class="large-column" scope="col">Raison Sociale</th>
@@ -256,17 +247,16 @@
           <tbody> 
             <tr    *ngFor="let client  of client" (click) ="listclick(client.id)" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
 
-                <td>{{client.rs}} </td>
-                <td>{{client.rc}}</td>
-                <td>{{client.forme}}</td>
-                <td>{{client.capitale}}</td>
-                <td>{{client.siege}}</td>
-                <td>{{client.i_f}}</td>
-                <td>{{client.ice}}</td> 
-                <td>{{client.ip}}</td>
-                <td>{{client.cnss}}</td>
-                <td>{{client.attachmentVo}}</td>
-                <td> <span class="badge bg-info px-2 py-2"> {{client.etat}}</span></td> 
+              <td style="padding-top: 8px; padding-bottom: 6px;">{{client.rs}} </td>
+              <td  style="padding-top: 8px; padding-bottom: 6px;">{{client.rc}}</td>
+              <td style="padding-top: 8px; padding-bottom: 6px;">{{client.forme}}</td>
+              <td style="padding-top: 8px; padding-bottom: 6px;">{{client.capitale}}</td>
+              <td style="padding-top: 8px; padding-bottom: 6px;">{{client.siege}}</td>
+              <td  style="padding-top: 8px; padding-bottom: 6px;">{{client.i_f}}</td>
+              <td  style="padding-top: 8px; padding-bottom: 6px;">{{client.ice}}</td> 
+              <td  style="padding-top: 8px; padding-bottom: 6px;">{{client.ip}}</td>
+              <td style="padding-top: 8px; padding-bottom: 6px;">{{client.cnss}}</td>
+              <td style="padding-top: 8px; padding-bottom: 6px;"> <span class="badge bg-info px-2 py-2"> {{client.etat}}</span></td>
                   
                 <td class="Actions">
                  
@@ -290,19 +280,12 @@
     <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page"></mat-paginator>
   
   </div> -->
-   
-  </main> 
-    </div>
-
-  </div>
-  
-
-
-
-
-
- 
     
+      </div> 
+  <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/dashboard" style="cursor: pointer;"/>
+
+    </div>
+ 
 </body> 
  
  <!-- Archivage -->
@@ -318,7 +301,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()">Fermer</button>
-          <!-- <button type="button"  *ngIf="selectedSocieteId" (click)="onDelete(selectedSocieteId)" class="btn btn-primary">oui</button> -->
+          <button type="button"  *ngIf="selectedclientId" (click)="onDelete(selectedclientId)" class="btn btn-primary">oui</button>
         </div>
       </div>
     </div>
