@@ -68,10 +68,25 @@ export class ListClientComponent {
     );
    
 }
-
+// this.appService.getSocieteByRc(+searchInput).subscribe((response: any) => {  
+    //   this.client = Array.isArray(response) ? response : [response];
+    //   console.log(this.client);
+       
+    // });
+    // this.appService.getByIp(+searchInput).subscribe((response: any) => {  
+    //   this.client = Array.isArray(response) ? response : [response];
+    //   console.log(this.client);
+       
+    // });
 // SearchBy(searchInput: string) {
 //   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
 //   if (isNumeric) {
+     
+//     this.appService.getSocieteByIce(+searchInput).subscribe((response: any) => {  
+//       this.client = Array.isArray(response) ? response : [response];
+//       console.log(this.client);
+       
+//     });
 //     this.appService.getSocieteByRc(+searchInput).subscribe((response: any) => {  
 //       this.client = Array.isArray(response) ? response : [response];
 //       console.log(this.client);
@@ -82,13 +97,9 @@ export class ListClientComponent {
 //       console.log(this.client);
        
 //     });
-//     this.appService.getSocieteByIce(+searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
    
-//   } else {
+//   } 
+//   else {
 //     this.appService.getSocieteByName(searchInput).subscribe((response: any) => {  
 //       this.client = Array.isArray(response) ? response : [response];
 //       console.log(this.client);
@@ -130,62 +141,117 @@ export class ListClientComponent {
 // }
 
  
+// SearchBy(searchInput: string) {
+//   debugger;
+//   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
+
+//   if (isNumeric) {
+//     this.callApi(this.appService.getSocieteByRc, +searchInput);
+//     this.callApi(this.appService.getByIp, +searchInput);
+//     this.callApi(this.appService.getSocieteByIce, +searchInput);
+//   } else {
+//     const lowerCaseInput = searchInput.toLowerCase();
+
+//     switch (lowerCaseInput) {
+//       case 'name':
+//       case 'NAME':
+//         this.callApi(this.appService.getSocieteByName, searchInput);
+//         break;
+//       case 'propriete':
+//       case 'PROPRIETE':
+//         this.callApi(this.appService.getByPropriete, searchInput);
+//         break;
+//       case 'typesociete':
+//       case 'TYPESOCIETE':
+//         this.callApi(this.appService.getBytypesociete, searchInput);
+//         break;
+//       case 'capitale':
+//       case 'CAPITALE':
+//         this.callApi(this.appService.getBycapitale, searchInput);
+//         break;
+//       case 'forme':
+//       case 'FORME':
+//         this.callApi(this.appService.getByforme, searchInput);
+//         break;
+//       case 'siege':
+//       case 'SIEGE':
+//         this.callApi(this.appService.getBysiege, searchInput);
+//         break;
+//       case 'ctnum':
+//       case 'CTNUM':
+//         this.callApi(this.appService.getByCtNum, searchInput);
+//         break;
+//       default:
+//         console.error('Invalid property name:', searchInput);
+//         break;
+//     }
+//   }
+// }
+
+// private callApi(apiFunction: Function, value: any) {
+//   apiFunction.call(this.appService, value).subscribe(
+//     (response: any) => {
+//       if (Array.isArray(response) && response.length > 0) {
+//         // If data is found, use it
+//         this.client = response;
+//         console.log(this.client);
+//       } else {
+//         // If no data is found, proceed to the next case or log an error
+//         console.log(`No data found for ${value}. Proceeding to the next case.`);
+//       }
+//     },
+//     (error: any) => {
+//       console.error(`Error while fetching data for ${value}:`, error);
+//     }
+//   );
+// }
+
 SearchBy(searchInput: string) {
+  debugger;
   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
 
   if (isNumeric) {
-    this.callApi(this.appService.getSocieteByRc, +searchInput);
-    // this.callApi(this.appService.getByIp, +searchInput);
-    // this.callApi(this.appService.getSocieteByIce, +searchInput);
-  }
-  //  else {
-  //   const lowerCaseInput = searchInput.toLowerCase();
+    // Numeric search, execute only the getSocieteByRc API
+    this.callApi(this.appService.getSocieteByIce, +searchInput);
+    this.callApi(this.appService.getByrc, +searchInput);
+    this.callApi(this.appService.getByIp, +searchInput);
+    this.callApi(this.appService.getSocieteByCnss, +searchInput);
+  } else {
+     
+    const lowerCaseInput = searchInput.toLowerCase();
 
-  //   switch (lowerCaseInput) {
-  //     case 'name':
-  //     case 'NAME':
-  //       this.callApi(this.appService.getSocieteByName, searchInput);
-  //       break;
-  //     case 'propriete':
-  //     case 'PROPRIETE':
-  //       this.callApi(this.appService.getByPropriete, searchInput);
-  //       break;
-  //     case 'typesociete':
-  //     case 'TYPESOCIETE':
-  //       this.callApi(this.appService.getBytypesociete, searchInput);
-  //       break;
-  //     case 'capitale':
-  //     case 'CAPITALE':
-  //       this.callApi(this.appService.getBycapitale, searchInput);
-  //       break;
-  //     case 'forme':
-  //     case 'FORME':
-  //       this.callApi(this.appService.getByforme, searchInput);
-  //       break;
-  //     case 'siege':
-  //     case 'SIEGE':
-  //       this.callApi(this.appService.getBysiege, searchInput);
-  //       break;
-  //     case 'ctnum':
-  //     case 'CTNUM':
-  //       this.callApi(this.appService.getByCtNum, searchInput);
-  //       break;
-  //     default:
-  //       console.error('Invalid property name:', searchInput);
-  //       break;
-  //   }
-  // }
+    switch (lowerCaseInput) {
+      case 'name':
+        this.callApi(this.appService.getByPropriete, searchInput);
+        break;
+      // case 'propriete':
+      //   this.callApi(this.appService.getByPropriete, searchInput);
+      //   break;
+       
+
+      default:
+        console.error('Invalid property name:', searchInput);
+        break;
+    }
+  }
 }
+ 
 
 private callApi(apiFunction: Function, value: any) {
-  apiFunction.call(this.appService, value).subscribe((response: any) => {
-    this.client = Array.isArray(response) ? response : [response];
-    console.log(this.client);
-  });
+  apiFunction.call(this.appService, value).subscribe(
+    (response: any) => {
+      this.client = Array.isArray(response) ? response : [response];
+      console.log(this.client);
+   
+    },
+    (error: any) => {
+      console.error('Error while fetching data:', error);
+    }
+  );
 }
 
 
-
+ 
  
 onInputChange(event: Event) {
   const inputValue = (event.target as HTMLInputElement).value;

@@ -65,7 +65,7 @@ export class NvClientComponent {
 
  
   ngOnInit(): void {
-    this.sidebarDetail();
+     
     if (history.state.element !== undefined) {
       this.element = history.state.element;
     }
@@ -90,7 +90,7 @@ export class NvClientComponent {
       }
     });
   
-    
+    this.sidebarDetail();
   }
   
   showFixedButton: boolean = false;

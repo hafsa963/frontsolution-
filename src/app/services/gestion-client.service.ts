@@ -32,7 +32,13 @@ export class GestionClientService {
   getclientByid(id: number){
     return this.http.get(`${this.baseUrl}/Clients/client/${id}`)
   }
-
+  // const apiUrl = `http://localhost:8080/Clients/admin/client/rc/${ice}`;
+  // return this.http.get(apiUrl);
+  // getSocieteByIce(ice : number){
+  //   return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/ice​/${ice}`)
+  // }
+  
+  
   //type societe
   getAll(): (Observable<any>){
     return this.http.get(`${this.baseUrl}/typesociete/admin/typesociete`)
@@ -46,38 +52,39 @@ export class GestionClientService {
     return this.http.get(`${this.baseUrl}/Clients/admin/client/rs/${rs}`)
   }
 
-  getSocieteByRc(rc:number){
+  getByrc(rc:number){
     return this.http.get(`${this.baseUrl}/Clients/admin/client/rc/${rc}`)
   }
+  getSocieteByIce(ice: number) {
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/ice/${ice}`);
+  }
   getBycapitale(capitale​ : string){
-    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/capitale​/${capitale}`)
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/capitale/${capitale}`)
   }
   getSocieteByCnss(cnss : string){
-    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/cnss​/${cnss}`)
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/cnss/${cnss}`)
   }
 
   getByCtNum(ctNum : string){
-    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/ctNum​/${ctNum}`)
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/ctNum/${ctNum}`)
   }
   getByforme(forme : string){
-    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/forme​/${forme}`)
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/forme/${forme}`)
   } 
-  getSocieteByIce(ice : number){
-    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/ice​/${ice}`)
-  }
+  
   getByIp(ip : number){
-    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/ip​/${ip}`)
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/ip/${ip}`)
   }
   getByPropriete(propriete : string){
-    return this.http.get(`${this.baseUrl}/Clients​/admin​/client​/propriete​/${propriete}`)
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/propriete/${propriete}`)
   }
   getBysiege(siege : string){
-    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/siege​/${siege}`)
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/siege/${siege}`)
 
   }
   
   getBytypesociete(typesociete : string){
-    return this.http.get(`${this.baseUrl}​/Clients​/admin​/client​/typesociete​/${typesociete}`)
+    return this.http.get(`${this.baseUrl}/Clients/admin/client/typesociete/${typesociete}`)
   }
  
  
