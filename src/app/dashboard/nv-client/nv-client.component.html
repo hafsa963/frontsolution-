@@ -2,19 +2,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-      /* body {
-        zoom: 90%;
-      } */
-/*   
-      @media (max-width: 767px) {
-        body {
-          zoom: 85%;
-        }
-  
-        .left-sidebar {
-          margin-left: 0;
-        }
-      } */
+ 
     </style>
   </head>
   
@@ -65,9 +53,16 @@
         <li>
           <a [routerLink]="['/list-type-societe']" >
             <i class="bx bx-folder"></i>
-            <span class="link_name">File Manger</span>
+            <span class="link_name">Types société</span>
           </a>
           <span class="tooltip">Types D'entreprises</span>
+        </li>
+        <li>
+          <a [routerLink]="['/list-colabs']" >
+            <i class='bx bx-user-plus'></i>
+            <span class="link_name">Colaborateur</span>
+          </a>
+          <span class="tooltip">Colaborateur</span>
         </li>
         <li>
           <a href="#">
@@ -179,8 +174,8 @@
                   <div class="row justify-content-center align-items-center" style="margin-left: 550px;">
                     <div class="col-6">
                       <div class="action text-center"  [ngClass]="{'fixed-button': showFixedButton}" style="display: flex; gap: 10px; font-size: 18px;">
-                        <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']" style=" padding-top: 4px; margin-bottom: 4px;padding-right: 10px;padding-left: 10px;">Annuler</a>
-                        <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" (click)="OnSubmit()" style="padding-top: 4px; margin-bottom: 4px;padding-right: 10px;padding-left: 10px;">
+                        <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']" style=" padding-top: 3px; margin-bottom: 2px;padding-right: 10px;padding-left: 7px;">Annuler</a>
+                        <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" (click)="OnSubmit()" style="padding-top: 3px; margin-bottom: 4px;padding-right: 10px;padding-left: 10px;">
                           <i class="bi bi-check-circle"></i> Enregistrer Client
                         </button>
                       </div> 
@@ -204,7 +199,8 @@
                           <div
                           *ngIf="ClientForm.get('rs')?.hasError('required') && (ClientForm.get('rs')?.touched ||ClientForm.get('rs')?.dirty)"
                           class="text-danger">
-                          Raison Sociale  est obligatoire.
+                          *
+                          <!-- Raison Sociale  est obligatoire. -->
                         </div>
                         </div>
     
@@ -220,7 +216,8 @@
                           <div
                           *ngIf="ClientForm.get('propriete')?.hasError('required') && (ClientForm.get('propriete')?.touched ||ClientForm.get('propriete')?.dirty)"
                           class="text-danger">
-                          Propriétaire  est obligatoire.
+                          *
+                          <!-- Propriétaire  est obligatoire. -->
                         </div>
                         </div>
                         
@@ -235,7 +232,8 @@
                           <div
                           *ngIf="ClientForm.get('ctNum')?.hasError('required') && (ClientForm.get('ctNum')?.touched ||ClientForm.get('ctNum')?.dirty)"
                           class="text-danger">
-                          Numero de client  est obligatoire.
+                          *
+                          <!-- Numero de client  est obligatoire. -->
                         </div>
     
                         </div>
@@ -253,7 +251,8 @@
                           <div
                           *ngIf="ClientForm.get('qualite')?.hasError('required') && (ClientForm.get('qualite')?.touched ||ClientForm.get('qualite')?.dirty)"
                           class="text-danger">
-                          Qualité  est obligatoire.
+                          *
+                          <!-- Qualité  est obligatoire. -->
                         </div>
     
                         </div>
@@ -297,9 +296,10 @@
                               placeholder="83, Boulevard Hassan 2">
                           </div>
                           <div
-                          *ngIf="ClientForm.get('adresse')?.hasError('adresse') && (ClientForm.get('adresse')?.touched ||ClientForm.get('adresse')?.dirty)"
+                          *ngIf="ClientForm.get('adresse')?.hasError('required') && (ClientForm.get('adresse')?.touched ||ClientForm.get('adresse')?.dirty)"
                           class="text-danger">
-                          Adresse  est obligatoire.
+                          *
+                          <!-- Adresse  est obligatoire. -->
                         </div>
     
                         </div>
@@ -325,9 +325,10 @@
                               <input type="text" class="form-control custom-sinput" id="siege" formControlName="siege"
                                 placeholder="Siège">
                                 <div
-                                *ngIf="ClientForm.get('siege')?.hasError('siege') && (ClientForm.get('siege')?.touched ||ClientForm.get('siege')?.dirty)"
+                                *ngIf="ClientForm.get('siege')?.hasError('required') && (ClientForm.get('siege')?.touched ||ClientForm.get('siege')?.dirty)"
                                 class="text-danger">
-                                Siège  est obligatoire.
+                                *
+                                <!-- Siège  est obligatoire. -->
                               </div>
                             </div>
                           
@@ -341,9 +342,10 @@
                               placeholder="13000">
                           </div>
                           <div
-                          *ngIf="ClientForm.get('codepostal')?.hasError('codepostal') && (ClientForm.get('codepostal')?.touched ||ClientForm.get('codepostal')?.dirty)"
+                          *ngIf="ClientForm.get('codepostal')?.hasError('required') && (ClientForm.get('codepostal')?.touched ||ClientForm.get('codepostal')?.dirty)"
                           class="text-danger">
-                          Code Postal  est obligatoire.
+                          *
+                          <!-- Code Postal  est obligatoire. -->
                         </div>
                         </div>
     
@@ -357,9 +359,10 @@
                               placeholder="Casablanca">
                           </div>
                           <div
-                          *ngIf="ClientForm.get('ville')?.hasError('ville') && (ClientForm.get('ville')?.touched ||ClientForm.get('ville')?.dirty)"
+                          *ngIf="ClientForm.get('ville')?.hasError('required') && (ClientForm.get('ville')?.touched ||ClientForm.get('ville')?.dirty)"
                           class="text-danger">
-                          ville est obligatoire.
+                          *
+                          <!-- ville est obligatoire. -->
                         </div>
                         </div>
     
@@ -372,9 +375,10 @@
                               placeholder="1233">
                           </div>
                           <div
-                          *ngIf="ClientForm.get('coderegion')?.hasError('coderegion') && (ClientForm.get('coderegion')?.touched ||ClientForm.get('coderegion')?.dirty)"
+                          *ngIf="ClientForm.get('coderegion')?.hasError('required') && (ClientForm.get('coderegion')?.touched ||ClientForm.get('coderegion')?.dirty)"
                           class="text-danger">
-                          Région est obligatoire.
+                          *
+                          <!-- Région est obligatoire. -->
                         </div>
                         </div>
     
@@ -388,9 +392,10 @@
                               placeholder="Maroc">
                           </div>
                           <div
-                          *ngIf="ClientForm.get('pays')?.hasError('pays') && (ClientForm.get('pays')?.touched ||ClientForm.get('pays')?.dirty)"
+                          *ngIf="ClientForm.get('pays')?.hasError('required') && (ClientForm.get('pays')?.touched ||ClientForm.get('pays')?.dirty)"
                           class="text-danger">
-                          Pays est obligatoire.
+                          *
+                          <!-- Pays est obligatoire. -->
                         </div>
                         </div>
                            
@@ -403,9 +408,10 @@
                                 placeholder="@example.com">
                             </div>
                             <div
-                            *ngIf="ClientForm.get('email')?.hasError('email') && (ClientForm.get('email')?.touched ||ClientForm.get('email')?.dirty)"
+                            *ngIf="ClientForm.get('email')?.hasError('required') && (ClientForm.get('email')?.touched ||ClientForm.get('email')?.dirty)"
                             class="text-danger">
-                            Email est obligatoire.
+                            *
+                            <!-- Email est obligatoire. -->
                           </div>
                           </div>
                           <div class="mb-3 d-flex">
@@ -417,9 +423,10 @@
                                 placeholder="05 46 66 77 77 ">
                             </div>
                             <div
-                            *ngIf="ClientForm.get('tel')?.hasError('tel') && (ClientForm.get('tel')?.touched ||ClientForm.get('tel')?.dirty)"
+                            *ngIf="ClientForm.get('tel')?.hasError('required') && (ClientForm.get('tel')?.touched ||ClientForm.get('tel')?.dirty)"
                             class="text-danger">
-                            Téléphone est obligatoire.
+                            *
+                            <!-- Téléphone est obligatoire. -->
                           </div>
                           </div>
       
@@ -462,9 +469,10 @@
                                   placeholder="forme">
                               </div>
                               <div
-                            *ngIf="ClientForm.get('forme')?.hasError('forme') && (ClientForm.get('forme')?.touched ||ClientForm.get('forme')?.dirty)"
+                            *ngIf="ClientForm.get('forme')?.hasError('required') && (ClientForm.get('forme')?.touched ||ClientForm.get('forme')?.dirty)"
                             class="text-danger">
-                            Forme est obligatoire.
+                            *
+                            <!-- Forme est obligatoire. -->
                           </div>
                             </div>
         
@@ -478,9 +486,10 @@
                                   placeholder="1500000">
                               </div>
                               <div
-                            *ngIf="ClientForm.get('capitale')?.hasError('capitale') && (ClientForm.get('capitale')?.touched ||ClientForm.get('capitale')?.dirty)"
+                            *ngIf="ClientForm.get('capitale')?.hasError('required') && (ClientForm.get('capitale')?.touched ||ClientForm.get('capitale')?.dirty)"
                             class="text-danger">
-                            Forme est obligatoire.
+                            *
+                            <!-- capitale est obligatoire. -->
                           </div>
                             </div>
                            
@@ -492,10 +501,15 @@
                               </div>
                               <div style="width: 200px; margin-left: 71px;">
                                 <input type="text" class="form-control custom-sinput" id="rc" formControlName="rc"
-                                  placeholder="rc" required>
-                                  <div *ngIf="ClientForm.get('rc')?.hasError('rc') && (ClientForm.get('rc')?.touched || ClientForm.get('rc')?.dirty)"
-                              class="text-danger">
-                              rc est obligatoire.
+                                  placeholder="rc" required  minlength="5"  maxlength="6">
+                                  <div *ngIf="ClientForm.get('rc')?.hasError('required') && (ClientForm.get('rc')?.touched || ClientForm.get('rc')?.dirty)"class="text-danger">
+                              <!-- rc est obligatoire. -->*
+                               </div>
+                            <div *ngIf="rc?.hasError('minlength') && (rc?.touched || rc?.dirty)" class="text-danger">
+                              rc doit avoir au moins 5 caractères.
+                            </div>
+                            <div *ngIf="rc?.hasError('maxlength') && (rc?.touched || rc?.dirty)" class="text-danger">
+                              rc ne peut pas avoir plus de 6 caractères.
                             </div>
                               </div>
                              
@@ -508,12 +522,18 @@
                               </div>
                               <div style="width: 200px;">
                                 <input type="text" class="form-control custom-sinput" id="i_f" formControlName="i_f"
-                                  placeholder="if" required>
+                                  placeholder="if" required  minlength="7"  maxlength="8">
                               </div>
                               <div
-                              *ngIf="ClientForm.get('i_f')?.hasError('i_f') && (ClientForm.get('i_f')?.touched ||ClientForm.get('i_f')?.dirty)"
+                              *ngIf="ClientForm.get('i_f')?.hasError('required') && (ClientForm.get('i_f')?.touched ||ClientForm.get('i_f')?.dirty)"
                               class="text-danger">
-                              i_f est obligatoire.
+                              <!-- if est obligatoire. -->*
+                            </div>
+                            <div *ngIf="i_f?.hasError('minlength') && (i_f?.touched || i_f?.dirty)" class="text-danger">
+                              if doit avoir au moins 7 caractères.
+                            </div>
+                            <div *ngIf="i_f?.hasError('maxlength') && (i_f?.touched || i_f?.dirty)" class="text-danger">
+                              if ne peut pas avoir plus de 8 caractères.
                             </div>
                             </div>
                             <div class="mb-3 d-flex">
@@ -522,12 +542,19 @@
                               </div>
                               <div style="width: 200px;">
                                 <input type="text" class="form-control custom-sinput" id="ice" formControlName="ice"
-                                  placeholder="ice" required>
+                                  placeholder="ice"   required  minlength="15"  maxlength="15">
                               </div>
                               <div
-                              *ngIf="ClientForm.get('ice')?.hasError('ice') && (ClientForm.get('ice')?.touched ||ClientForm.get('ice')?.dirty)"
+                              *ngIf="ClientForm.get('ice')?.hasError('required') && (ClientForm.get('ice')?.touched ||ClientForm.get('ice')?.dirty)"
                               class="text-danger">
-                              ice est obligatoire.
+                              *
+                              <!-- ice est obligatoire. -->
+                            </div>
+                            <div *ngIf="ice?.hasError('minlength') && (ice?.touched || ice?.dirty)" class="text-danger">
+                              ice doit avoir au moins 15 caractères.
+                            </div>
+                            <div *ngIf="ice?.hasError('maxlength') && (ice?.touched || ice?.dirty)" class="text-danger">
+                              ice ne peut pas avoir plus de 15 caractères.
                             </div>
                             </div>
 
@@ -537,12 +564,19 @@
                                 </div>
                                 <div style="width: 200px;">
                                   <input type="text" class="form-control custom-sinput" id="ip"
-                                    formControlName="ip" placeholder="IP" required>
+                                    formControlName="ip" placeholder="IP" required  minlength="5"  maxlength="6">
                                 </div>
                                 <div
-                                *ngIf="ClientForm.get('ip')?.hasError('ip') && (ClientForm.get('ip')?.touched ||ClientForm.get('ip')?.dirty)"
+                                *ngIf="ClientForm.get('ip')?.hasError('required') && (ClientForm.get('ip')?.touched ||ClientForm.get('ip')?.dirty)"
                                 class="text-danger">
-                                ip est obligatoire.
+                                *
+                                <!-- ip est obligatoire. -->
+                              </div>
+                              <div *ngIf="ip?.hasError('minlength') && (ip?.touched || ip?.dirty)" class="text-danger">
+                                ip doit avoir au moins 5 caractères.
+                              </div>
+                              <div *ngIf="ip?.hasError('maxlength') && (ip?.touched || ip?.dirty)" class="text-danger">
+                                ip ne peut pas avoir plus de 6 caractères.
                               </div>
           
                               </div>
@@ -552,16 +586,23 @@
                                 </div>
                                 <div style="width: 300px;">
                                   <input type="text" class="form-control custom-sinput" id="cnss"
-                                    formControlName="cnss" placeholder="CNSS" required>
+                                    formControlName="cnss" placeholder="CNSS" required  minlength="9"  maxlength="9">
                                 </div>
                                 <div
-                                *ngIf="ClientForm.get('cnss')?.hasError('cnss') && (ClientForm.get('cnss')?.touched ||ClientForm.get('cnss')?.dirty)"
+                                *ngIf="ClientForm.get('cnss')?.hasError('required') && (ClientForm.get('cnss')?.touched ||ClientForm.get('cnss')?.dirty)"
                                 class="text-danger">
-                                cnss est obligatoire.
+                                *
+                                <!-- cnss est obligatoire. -->
+                              </div>
+                              <div *ngIf="cnss?.hasError('minlength') && (cnss?.touched || cnss?.dirty)" class="text-danger">
+                                cnss doit avoir au moins 9 caractères.
+                              </div>
+                              <div *ngIf="cnss?.hasError('maxlength') && (cnss?.touched || cnss?.dirty)" class="text-danger">
+                                cnss ne peut pas avoir plus de 9 caractères.
                               </div>
           
                               </div>
-                              <!-- [(ngModel)]="selectedTypeSociete" name="typesociete" *ngFor="let type of typesocietes {{ type.nom }}  [value]="type.id"" -->
+                               
                               <div class="mb-3 d-flex" style="margin-top: 12px;">
                                 <div class="me-3" style="width: 150px;">
                                   <label for="typesociete" class="label rs me-3">Type Entreprise :</label>
@@ -574,9 +615,10 @@
                                   </select>
                                 </div>
                                 <div
-                                *ngIf="ClientForm.get('typesociete')?.hasError('typesociete') && (ClientForm.get('typesociete')?.touched || ClientForm.get('typesociete')?.dirty)"
+                                *ngIf="ClientForm.get('typesociete')?.hasError('required') && (ClientForm.get('typesociete')?.touched || ClientForm.get('typesociete')?.dirty)"
                                 class="text-danger">
-                                type De Societe est obligatoire.
+                                *
+                                <!-- type De Societe est obligatoire. -->
                               </div>
           
                               </div>
@@ -595,18 +637,16 @@
          </div> 
         
 
-
-
           <!-- form of update -->
           <div class="container" *ngIf="element">
             <div class="row">
                 <form   *ngIf="selectedData" #clientupdate="ngForm" (ngSubmit)="OnUpdate(clientupdate.value)"   > 
-                  <div class="row justify-content-center align-items-center" style="margin-left: 600px; margin-top: -20px;
-                  margin-bottom: 1px;">
+                  <div class="row justify-content-center align-items-center" style="margin-left: 600px; margin-top: 0px;
+                  margin-bottom: 2px;">
                     <div class="col-6">
                       <div class="action text-center" [ngClass]="{'fixed-button': showFixedButton}" style="display: flex; gap: 10px; font-size: 18px;">
                         <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']">Annuler</a>
-                        <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" (click)="OnSubmit()">
+                        <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" (click)="OnSubmit()" style="padding-left: 12px;padding-right: 10px;padding-top: 2px;">
                           <i class="bi bi-check-circle"></i> Modifier Client
                         </button>
                       </div> 
@@ -905,3 +945,19 @@
   
   
   </body>
+ 
+  <div class="toast toast-success" role="alert" aria-live="assertive" id="toastsucces"  aria-atomic="true" style="text-align: center;">
+    <strong class="me-auto"></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
+    <div class="toast-body">
+      la société a été ajouté avec succès 
+    </div>
+  </div>
+  
+  <div class="toast toast-success" role="alert" aria-live="assertive" id="toastsuccesModify"  aria-atomic="true" style="text-align: center;">
+    <strong class="me-auto"></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
+    <div class="toast-body">
+      la société a été Modifié avec succès 
+    </div>
+  </div>

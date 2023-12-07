@@ -30,13 +30,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* .app-header{
-  width:100%;
-  background:#fff;
-   position: fixed; 
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding:0 25px} */
+ 
 
   .navbar {
     position: fixed;
@@ -55,12 +49,11 @@
     overflow-x:hidden;  
  
      background: rgb(230, 230, 255);  
-     /* padding-top: 20px; */
       padding-left: 10px;
   padding-right: 10px;
      box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
       margin-left: 60px;
-    /* margin-top: 120px;  */
+  
   } 
   .label{
     display: inline-block;
@@ -71,14 +64,8 @@
     font-weight: 400;
     word-wrap: break-word;
   }
-  /* .rs{
-    margin: 12px 12px 12px 12px;
-
-  } */
-
-  /* .body-wrapper {
-    margin-top: 56px;  
-  } */
+ 
+ 
   /* Add these styles to your CSS file or style section */
 
 .dossier-card {
@@ -99,7 +86,7 @@
 }
 
 .dossier-card .card-title {
-  color: #007bff;
+  color: #6d8eb1;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   padding-top: 12px;
@@ -116,21 +103,12 @@
   background-color: #0056b3;
   border-color: #0056b3;
 }
-
-  /* .mb-3{
-    margin-top: 28px;
-    margin-left: 42px;
-  } */
+ 
   .card{
  
     background: linear-gradient(to bottom, #ffffff, rgb(245, 250, 255));
   }
-  /* .table{
-    width: 83%;
-    margin-left: 115px;
-    margin-top: 20px;
-  
-  } */
+ 
   .custom-number {
     font-size: 1.8rem;  
     font-weight: bold;  
@@ -169,6 +147,10 @@
 h5.card-title.mb-0 {
   padding: 10px;
 }
+h5.modal-title {
+  margin-left: 10px;
+  margin-top: 4px;
+}
 .action.text-center {
   padding-bottom: 6px;
   padding-top: 9px;
@@ -176,5 +158,56 @@ h5.card-title.mb-0 {
 input{
   padding: 8px;
 }
+i.bi.bi-check-circle {
+  margin-left: -7px;
+}
+a#btnannuler {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #fff;
+  padding-top: 1px;
+}
  
+/* TOASTER */
+.toast {
+  position: fixed;
+  top: 25%;
+  right: 0;
+  transform: translate(0, -25%);
+  background-color: #dff0d8;
+  border-color: #d0e9c6;
+  color: #3c763d;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: top 0.5s ease;
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 30%;
+  }
+  100% {
+    opacity: 1;
+    top: 25%;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 30%;
+  }
+}
+
+.show {
+  animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+}
+
  

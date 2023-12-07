@@ -181,7 +181,9 @@
    align-items: center;
    justify-content: center;
  }
- 
+ li {
+  list-style: none;
+}
 
 /* / model container  */
 
@@ -421,4 +423,28 @@ span.badge.bg-info.px-2.py-2 {
 [type=submit]:not(:disabled), button:not(:disabled) {
   cursor: pointer;
   padding: 10px;
+}
+/* model of delete */
+div#modelarchive {
+  margin-left: 521px;
+  margin-top: 86px;
+  padding: 0px;
+}
+.modal-content {
+  padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 10px;
+    padding-top: 4px;
+}
+.modal-body {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 16px;
+}
+.modal-footer {
+  padding-top: 11px;
+  padding-right: 10px;
+}
+button.btn.btn-secondary {
+  margin-right: 17px;
 }

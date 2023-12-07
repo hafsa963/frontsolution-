@@ -29,7 +29,7 @@ export class NvClientComponent {
       forme: ['', [Validators.required]],
       capitale: ['', [Validators.required]],
       siege: ['', [Validators.required]],
-      rc: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(6)]],
+      rc: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
       i_f: ['', [Validators.required,Validators.minLength(7), Validators.maxLength(8)]],
       ice: ['', [Validators.required,Validators.minLength(15), Validators.maxLength(15)]],
       ip: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(6)]],
@@ -38,7 +38,7 @@ export class NvClientComponent {
       ctNum: ['', [Validators.required]],
       qualite: ['', [Validators.required]],
       adresse: ['', [Validators.required]],
-      complement: ['', [Validators.required]],
+      complement: [''],
       codepostal: ['', [Validators.required]],
       ville: ['', [Validators.required]],
       coderegion: ['', [Validators.required]],
@@ -50,9 +50,27 @@ export class NvClientComponent {
       etat: new FormControl(''),
       typesociete: ['', [Validators.required]],
     });
+   
     
   }
- 
+  get rc() {
+    return this.ClientForm.get('rc');
+  }
+  get i_f() {
+    return this.ClientForm.get('i_f');
+  }
+
+  get ice() {
+    return this.ClientForm.get('ice');
+  }
+  get ip() {
+    return this.ClientForm.get('ip');
+  }
+  get cnss() {
+    return this.ClientForm.get('cnss');
+  }
+
+
   logout() {     
        
     this.router.navigate(["/"]); 
@@ -230,28 +248,31 @@ export class NvClientComponent {
         (res) => {
           console.log('Data has been successfully submitted:', res);
           const Modeldiv = document.getElementById('toastsucces');
-          if (Modeldiv != null) {
+          if(Modeldiv != null){
             Modeldiv.classList.add('show');
             setTimeout(() => {
               Modeldiv.classList.remove('show');
             }, 2000);
+           
           }
         },
         (error) => {
-          if (error.error instanceof ErrorEvent) {
-            console.error('An error occurred:', error.error.message);
-          } else {
-            console.error(
-              `Backend returned code ${error.status}, ` +
-              `body was: ${JSON.stringify(error.error)}`
-            );
-          }
+          console.error('An error occurred:', error);
         }
+        
       );
       console.log('Form submitted:', client);
+      const Modeldiv = document.getElementById('toastsucces');
+      if(Modeldiv != null){
+        Modeldiv.classList.add('show');
+        setTimeout(() => {
+          Modeldiv.classList.remove('show');
+        }, 2000);
+       
+      }
     } else {
       console.log('Form is invalid');
-      // Add your code here to display a message or perform any other action
+       
     }
   }
   

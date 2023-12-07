@@ -8,11 +8,10 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./list-colabs.component.css']
 })
 export class ListColabsComponent {
-  isSidebarExpanded: boolean = true;
-  @ViewChild('sidebar') sidebarElement!: ElementRef;
+  isSidebarOpen =  false;
+  colab: any;
   username: any;
   constructor(private appService: UserService,private router: Router) {
-    // private userService: UserService, 
   }
   ngOnInit() {
     this.appService.getCurrentUserResponseEntity().subscribe((response: any) => {
@@ -21,10 +20,20 @@ export class ListColabsComponent {
         console.log('Username:', this.username);
       }
     });
+    this.appService.getAllUsers()
+      .subscribe((response: any) => {  
+      this.colab = Array.isArray(response) ? response : [response];
+      console.log(this.colab);
+      });
  
-      this.checkWindowSize();
+      this.sidebarDetail();
   }
-  
+  logout() {     
+       
+    this.router.navigate(["/"]); 
+    console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
+     window.sessionStorage.clear();  
+   }
   onMouseEnter(event: any) {
     event.currentTarget.classList.add('table-primary');  
   }
@@ -54,37 +63,7 @@ CloseModel(){
   }
 }
 
-
-
-
-@HostListener('window:resize', ['$event'])
-onResize(event: any) {
-  
-  this.checkWindowSize();
-}
-
-toggleSidebar(): void {
-  this.isSidebarExpanded = !this.isSidebarExpanded;
-
-  // const marginLeft = this.isSidebarExpanded ? '0' : '270px';
-
-  // this.renderer.setStyle(this.el.nativeElement, 'marginLeft', marginLeft);
-}
-
-
-
-
- private checkWindowSize(): void {
-  
-  const windowWidth = window.innerWidth;
-
-   
-  this.isSidebarExpanded = windowWidth >= 768;
-
-   
-  // const marginLeft = this.isSidebarExpanded ? '0' : '270px';
-  // this.renderer.setStyle(this.sidebarElement.nativeElement, 'marginLeft', marginLeft);
-}
+ 
 
 
 displaydatauser() {
@@ -98,9 +77,41 @@ displaydatauser() {
   }
 }
 
-
-closesidebar() {
-  this.isSidebarExpanded = true;
-
+toggleSidebar() {
+  this.isSidebarOpen = !this.isSidebarOpen;
 }
+ 
+
+showFixedButton: boolean = false;
+
+@HostListener('window:scroll', ['$event'])
+onScroll(event: Event): void {
+
+  this.showFixedButton = window.scrollY > 100;
+}
+sidebarDetail(){ 
+  window.onload = () => {
+    const sidebar = document.querySelector(".sidebar") as HTMLElement;
+    const closeBtn = document.querySelector("#btn") as HTMLElement;
+    const searchBtn = document.querySelector(".bx-search") as HTMLElement;
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+
+    searchBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+
+    function menuBtnChange() {
+      if (sidebar.classList.contains("open")) {
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
+  };
+ }
 }
