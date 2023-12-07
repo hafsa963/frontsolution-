@@ -102,7 +102,10 @@
      color: blue;  
      
    }
-  
+   .bi-file-earmark-fill {
+    font-size: 1.4rem;
+    color: blue;  
+  }
    /* .addButton{
      text-align: center;
      font-family: Arial, Helvetica, sans-serif;

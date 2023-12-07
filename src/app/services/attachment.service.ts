@@ -35,12 +35,10 @@ export class AttachmentService {
   // downloadFile(fileName:string) {
   //   return this.http.get(`${this.baseUrl}/client/download/${fileName}`)
   // }
-  downloadFile(fileName: string): Observable<Blob> {
-    const url = `${this.baseUrl}/attachment/download/${fileName}`;
-
-    return this.http.get(url, {
-      responseType: 'blob',
-    });
+  downloadFile(fileId: number): Observable<Blob> {
+    const url = `${this.baseUrl}/attachment/download/${fileId}`;
+    return this.http.get(url, { responseType: 'blob' });
   }
-}
 
+
+}
