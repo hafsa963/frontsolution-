@@ -1,8 +1,9 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
-import { SocieteService } from 'src/app/services/societe.service';
 import { UserService } from 'src/app/services/user.service';
+import { ServicePrestationService } from 'src/app/services/service-prestation.service';
+import { Prestation } from 'src/app/model/prestation';
 
 @Component({
   selector: 'app-dataclient',
@@ -16,9 +17,12 @@ export class DataclientComponent {
   selectedData: any; 
   isSidebarOpen = false;
   username: string | undefined;
+  prestation: Prestation[] = []; 
+  prestationNames: string[] = [];
+  selectedPrestationId!: number; 
  
  
-  constructor(private appService: GestionClientService, private userService: UserService, private router: Router) {
+  constructor(private appService: GestionClientService, private userService: UserService,private serviceprestation: ServicePrestationService, private router: Router) {
  
   }
  
@@ -35,6 +39,15 @@ export class DataclientComponent {
         console.log('Username:', this.username);
       }
     });
+    this.serviceprestation.getAllPrestations().subscribe(
+      (response: any) => {
+        this.prestation = response as Prestation[];  
+        this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
+      },
+      (error) => {
+        console.error('Error fetching prestation data:', error);
+      }
+    );
     
   }
   logout() {     
