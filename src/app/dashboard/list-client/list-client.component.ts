@@ -6,6 +6,7 @@ import { Client } from 'src/app/model/Client';
 import { AttachmentService } from 'src/app/services/attachment.service';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
 import { UserService } from 'src/app/services/user.service';
+import { Attachment } from 'src/app/model/attachment';
 
 @Component({
   selector: 'app-list-client',
@@ -18,6 +19,8 @@ export class ListClientComponent {
   selectedclientId: any;
   selectedData: any; 
   isSidebarExpanded: boolean = true;
+  attachments: Attachment[] = [];
+
   
   
   @ViewChild('sidebar') sidebarElement!: ElementRef;
@@ -51,6 +54,8 @@ id: any;
       });
      
       this.sidebarDetail();
+      this.getAttachments();
+
   }
   onDelete(id:any) {
   
@@ -218,7 +223,6 @@ openModal(clientId: any){
   
 }
 
-
 CloseModel(){
 const Modeldiv = document.getElementById('modelarchive');
 if(Modeldiv != null){
@@ -226,6 +230,16 @@ if(Modeldiv != null){
   Modeldiv.style.display = 'none';
 }
 }
+getAttachments(): void {
+  this.attachment.getAllFiles().subscribe(
+    (attachments) => {
+      this.attachments = attachments;
+    },
+    (error) => {
+      console.error('Error fetching attachments', error);
+    }
+  );
+  }
 
 
 viseualiseModel(){

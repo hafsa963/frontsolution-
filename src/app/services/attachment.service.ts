@@ -40,5 +40,7 @@ export class AttachmentService {
     return this.http.get(url, { responseType: 'blob' });
   }
 
-
+  getAllFiles(): Observable<Attachment[]> {
+    return this.http.get<Attachment[]>(`${this.baseUrl}/attachment/allFiles`);
+  }
 }
