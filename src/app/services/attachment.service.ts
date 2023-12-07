@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent, HttpHeaders,HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders,HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Attachment } from '../model/attachment';
 import { Observable } from 'rxjs';
@@ -32,7 +32,13 @@ export class AttachmentService {
 
    }
 
-  downloadFile(fileName:string) {
-    return this.http.get(`${this.baseUrl}/client/download/${fileName}`)
+  // downloadFile(fileName:string) {
+  //   return this.http.get(`${this.baseUrl}/client/download/${fileName}`)
+  // }
+  downloadFile(fileId: number): Observable<Blob> {
+    const url = `${this.baseUrl}/attachment/download/${fileId}`;
+    return this.http.get(url, { responseType: 'blob' });
   }
+
+
 }

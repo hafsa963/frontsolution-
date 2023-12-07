@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 import { Client } from 'src/app/model/Client';
@@ -265,9 +265,7 @@ onScroll(event: Event): void {
 }
 
 listclick(id: any) {
-  console.log(id);
   this.id = id;
-  console.log(id);
 }
 
  
@@ -281,6 +279,37 @@ changeUpload(event:any){
  
 }    
 }
+
+downloadFile(fileId: number) {
+  this.attachment.downloadFile(fileId).subscribe(
+    (response: any) => {
+      const contentType = response.headers.get('Content-Type');
+      const contentDisposition = response.headers.get('Content-Disposition');
+      const filenameMatch = contentDisposition && contentDisposition.match(/filename="(.+)"$/);
+
+      let filename = 'file'; // Default filename if not found
+      if (filenameMatch) {
+        filename = filenameMatch[1];
+      }
+
+      const blob = new Blob([response.body], { type: contentType || 'application/octet-stream' });
+
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    },
+    error => {
+      console.error('Error downloading file:', error);
+      // Handle error, e.g., show a notification to the user
+    }
+  );
+}
+
+
+
 
 // uploadFile(event: any) {
 //   const file = event.target.files[0];
