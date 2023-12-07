@@ -199,6 +199,28 @@
         <div class="container">
           <div class="row">
               <form   *ngIf="selectedData"> 
+                <div class="col-md-12 mb-3">
+                  <div class="card dossier-card">
+                    <div class="card-body">
+                      <h5 class="card-title mb-0">Préstation</h5>
+                      <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+    
+                      <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                        <div class="mb-3 d-flex">
+                          <div class="me-3" style="width: 250px;">
+                            <label for="rs" class="label rs" style="margin-top: 10px;margin-left: 20px;">Choisir une Prestation:</label>
+                          </div>
+                          <div style="width: 400px;">
+                            <select  [(ngModel)]="selectedPrestationId" class="form-select w-100" style="padding: 10px;">
+                              <option   *ngFor="let presta of prestation" style="border-radius: 1px solid; font-size:18px; background-color:#d7e9fa;"  [value]="presta.id">   <label class="form-check-label" for="Prestationfactured">choisir : </label> {{presta.namePrestation}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <!-- (change)="selectedPrestation(selectedPrestationId)" -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <div class="col-md-12 mb-3">
                 <div class="card dossier-card">
                   <div class="card-body">
