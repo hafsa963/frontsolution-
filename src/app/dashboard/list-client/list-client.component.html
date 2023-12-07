@@ -88,9 +88,16 @@
         <li>
           <a [routerLink]="['/list-type-societe']" >
             <i class="bx bx-folder"></i>
-            <span class="link_name">Type Societe</span>
+            <span class="link_name">Types société</span>
           </a>
           <span class="tooltip">Types D'entreprises</span>
+        </li>
+        <li>
+          <a [routerLink]="['/list-colabs']" >
+            <i class='bx bx-user-plus'></i>
+            <span class="link_name">Colaborateur</span>
+          </a>
+          <span class="tooltip">Colaborateur</span>
         </li>
         <li>
           <a href="#">
@@ -137,7 +144,7 @@
               </a>
 
             </li>
-           <li class="">
+           <li class="nav-item">
               <div *ngIf="id" style="margin-left: 500px; margin-top: 6px;">
             <input type="file" name="file" class="btn btn-outline-primary mx-3 mt-2 d-" (change)="changeUpload($event)">
               </div>
@@ -217,7 +224,7 @@
        
       <div style="margin-top: 30px;" >
         <form   class="d-flex"   style="width: 100%; max-width: 500px; margin: 0 auto; padding: 10px;margin-top:90px; ">
-          <input class="form-control me-2"   #searchInput type="search" placeholder="Raison Sociale\RC" aria-label="Search"  (input)="onInputChange($event)">
+          <input class="form-control me-2"   #searchInput type="search" placeholder="Tous" aria-label="Search"  (input)="onInputChange($event)">
           <button class="btn btn-outline-success" (click)="SearchBy(searchInput.value)" type="submit">Rechercher</button>
          
         </form>
@@ -302,8 +309,8 @@
           <p>Etes-vous sûr de vouloir archiver ce dossier ? .</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()">Fermer</button>
-          <button type="button"  *ngIf="selectedclientId" (click)="onDelete(selectedclientId)" class="btn btn-primary">oui</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()" style="padding: 6px;width: 70px;">Fermer</button>
+          <button type="button"  *ngIf="selectedclientId" (click)="onDelete(selectedclientId)" class="btn btn-primary" style="padding: 6px;width: 70px;">oui</button>
         </div>
       </div>
     </div>

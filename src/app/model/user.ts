@@ -5,16 +5,23 @@ export interface user{
     id? : number,
     username : string,
     prenom : string,
-    Nom : string,
+    nom : string,
     password : string,
     ConfirmPassword : string,
     EmailPro : string,
     poste : string,
+    role :string,
     accountNonLocked : boolean,
     credentialsNonExpired : boolean,
     enabled : boolean,
-    accounaccountNonExpiredtNonLocked : boolean,
-    /* RoleVo : roles[] */
+    accountNonExpired: boolean,
+    // accounaccountNonExpiredtNonLocked : boolean,
+
+    // accountNonExpired: true,
+    // accountNonLocked: true,v
+    // credentialsNonExpired: true,v
+    //   enabled: true,v
+   
 
 } 
 

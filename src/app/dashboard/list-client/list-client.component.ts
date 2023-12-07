@@ -66,6 +66,15 @@ id: any;
          this.client = responseData;
         });
         this.CloseModel();
+        const Modeldiv = document.getElementById('toastsucces');
+        if(Modeldiv != null){
+          // Modeldiv.style.display = 'block';
+          Modeldiv.classList.add('show');
+          setTimeout(() => {
+            Modeldiv.classList.remove('show');
+          }, 2000);
+         
+        }
       },
       (error:any) => {
         console.error('An error occurred:', error);
@@ -78,171 +87,53 @@ id: any;
     );
    
 }
-// this.appService.getSocieteByRc(+searchInput).subscribe((response: any) => {  
-    //   this.client = Array.isArray(response) ? response : [response];
-    //   console.log(this.client);
-       
-    // });
-    // this.appService.getByIp(+searchInput).subscribe((response: any) => {  
-    //   this.client = Array.isArray(response) ? response : [response];
-    //   console.log(this.client);
-       
-    // });
-// SearchBy(searchInput: string) {
-//   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
-//   if (isNumeric) {
-     
-//     this.appService.getSocieteByIce(+searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-//     this.appService.getSocieteByRc(+searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-//     this.appService.getByIp(+searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-   
-//   } 
-//   else {
-//     this.appService.getSocieteByName(searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-//     this.appService.getByPropriete(searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-//     this.appService.getBytypesociete(searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-//     this.appService.getBycapitale(searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-//     this.appService.getByforme(searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-//     this.appService.getBysiege(searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-//     this.appService.getByCtNum(searchInput).subscribe((response: any) => {  
-//       this.client = Array.isArray(response) ? response : [response];
-//       console.log(this.client);
-       
-//     });
-    
-//   }
-  
-// }
-
- 
-// SearchBy(searchInput: string) {
-//   debugger;
-//   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
-
-//   if (isNumeric) {
-//     this.callApi(this.appService.getSocieteByRc, +searchInput);
-//     this.callApi(this.appService.getByIp, +searchInput);
-//     this.callApi(this.appService.getSocieteByIce, +searchInput);
-//   } else {
-//     const lowerCaseInput = searchInput.toLowerCase();
-
-//     switch (lowerCaseInput) {
-//       case 'name':
-//       case 'NAME':
-//         this.callApi(this.appService.getSocieteByName, searchInput);
-//         break;
-//       case 'propriete':
-//       case 'PROPRIETE':
-//         this.callApi(this.appService.getByPropriete, searchInput);
-//         break;
-//       case 'typesociete':
-//       case 'TYPESOCIETE':
-//         this.callApi(this.appService.getBytypesociete, searchInput);
-//         break;
-//       case 'capitale':
-//       case 'CAPITALE':
-//         this.callApi(this.appService.getBycapitale, searchInput);
-//         break;
-//       case 'forme':
-//       case 'FORME':
-//         this.callApi(this.appService.getByforme, searchInput);
-//         break;
-//       case 'siege':
-//       case 'SIEGE':
-//         this.callApi(this.appService.getBysiege, searchInput);
-//         break;
-//       case 'ctnum':
-//       case 'CTNUM':
-//         this.callApi(this.appService.getByCtNum, searchInput);
-//         break;
-//       default:
-//         console.error('Invalid property name:', searchInput);
-//         break;
-//     }
-//   }
-// }
-
-// private callApi(apiFunction: Function, value: any) {
-//   apiFunction.call(this.appService, value).subscribe(
-//     (response: any) => {
-//       if (Array.isArray(response) && response.length > 0) {
-//         // If data is found, use it
-//         this.client = response;
-//         console.log(this.client);
-//       } else {
-//         // If no data is found, proceed to the next case or log an error
-//         console.log(`No data found for ${value}. Proceeding to the next case.`);
-//       }
-//     },
-//     (error: any) => {
-//       console.error(`Error while fetching data for ${value}:`, error);
-//     }
-//   );
-// }
 
 SearchBy(searchInput: string) {
   debugger;
   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
 
   if (isNumeric) {
-    // Numeric search, execute only the getSocieteByRc API
-    this.callApi(this.appService.getSocieteByIce, +searchInput);
-    this.callApi(this.appService.getByrc, +searchInput);
-    this.callApi(this.appService.getByIp, +searchInput);
-    this.callApi(this.appService.getSocieteByCnss, +searchInput);
-  } else {
+
+    this.callApi(this.appService.getSocieteByIce,+searchInput);
+    this.callApi(this.appService.getByrc,+searchInput);
+    this.callApi(this.appService.getByIp,+searchInput); 
+    this.callApi(this.appService.getSocieteByCnss,+searchInput);
+    this.callApi(this.appService.getBycapitale,+searchInput);
+    this.callApi(this.appService.getByCtNum,+searchInput);
+  } 
+  else {
+
+    this.callApi(this.appService.getSocieteByName,searchInput);
+    this.callApi(this.appService.getByPropriete,searchInput);
+    this.callApi(this.appService.getBytypesociete,searchInput); 
+    this.callApi(this.appService.getByforme,searchInput);
+    this.callApi(this.appService.getByforme,searchInput);
+    this.callApi(this.appService.getBysiege,searchInput);
+    // const lowerCaseInput = searchInput.toLowerCase();
+    // const upperCaseInput = searchInput.toUpperCase();
+
+    // switch (searchInput) {
+    //   case 'name':
+    //     this.callApi(this.appService.getSocieteByName, searchInput);
+    //     break;
+    //   case 'propriete':
+    //     this.callApi(this.appService.getByPropriete, searchInput);
+    //     break;
+    //   case 'typesociete':
+    //     this.callApi(this.appService.getBytypesociete, searchInput);
+    //     break;
+      
+    //   case 'forme':
+    //     this.callApi(this.appService.getByforme, searchInput);
+    //     break;
+    //   case 'siege':
+    //     this.callApi(this.appService.getBysiege, searchInput);
+    //     break;
      
-    const lowerCaseInput = searchInput.toLowerCase();
-
-    switch (lowerCaseInput) {
-      case 'name':
-        this.callApi(this.appService.getByPropriete, searchInput);
-        break;
-      // case 'propriete':
-      //   this.callApi(this.appService.getByPropriete, searchInput);
-      //   break;
-       
-
-      default:
-        console.error('Invalid property name:', searchInput);
-        break;
-    }
+    //   default:
+    //     console.error('Invalid property name:', searchInput);
+    //     break;
+    // }
   }
 }
  

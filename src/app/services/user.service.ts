@@ -38,7 +38,16 @@ export class UserService {
 
   }
 
-
+  createcolab(colab : any){
+    return this.http.post(`${this.baseUrl}/Admin/saveuser`,colab)
+  }
+  
+  getAll(): (Observable<any>){
+    return this.http.get(`${this.baseUrl}/Admin/admin/roles`)
+  }
+  getAllUsers(): (Observable<any>){
+    return this.http.get(`${this.baseUrl}/Admin/admin/colab`)
+  }
 
 
 }
