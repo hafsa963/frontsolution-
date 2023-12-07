@@ -274,7 +274,7 @@
                   <a   (click)="passData(client)" data-toggle="tooltip" title="visualiser"  ><i class="bi bi-eye"></i></a> 
                   <a  *ngIf="client.id" (click)="openModal(client.id)"   data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
                  
-                  <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-file-earmark-fill"></i></button> 
+                  <button class="download" data-toggle="tooltip" (click)="openModalfiles()"    title="telecharger"  > <i class="bi bi-file-earmark-fill"></i></button> 
                 </td>
            
             </tr>
@@ -316,9 +316,87 @@
     </div>
   </div>
 
-  <!-- detail societe -->
+  <!-- detail files telecharger -->
  
- 
+ <div class="modal" tabindex="-1" id="modelfiles">
+    <div class="modal-dialog" style="text-align: center;margin-left: 298px;margin-top: 90px;">
+      <div class="modal-content" style="width: 900px;padding: 10px;">
+        <div class="modal-header" style="padding: 10px;">
+          <h5 class="modal-title">Télechargement des fichiers</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="CloseModelfiles()" ></button>
+        </div>
+      
+          <div class="modal-body" style="padding: 10px;">
+            <table class="table mb-0" style="padding: 10px;">
+              <thead>
+                <tr>
+                  <th class="large-column" scope="col">Nom fichier</th>
+                  <th class="small-column" scope="col">chemin de fichier</th>
+                 
+    
+    
+                </tr>
+              </thead>
+              <tbody style="padding: 10px;"> 
+                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+    
+                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
+                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
+                  
+                       
+                    <td class="Actions">
+                      
+    
+                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
+                        <i class="bi bi-eye"></i>
+                      </a>
+                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
+                    </td>
+               
+                </tr>
+                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+    
+                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
+                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
+                  
+                       
+                    <td class="Actions">
+                      
+    
+                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
+                        <i class="bi bi-eye"></i>
+                      </a>
+                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
+                    </td>
+               
+                </tr>
+                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+    
+                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
+                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
+                  
+                       
+                    <td class="Actions">
+                      
+    
+                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
+                        <i class="bi bi-eye"></i>
+                      </a>
+                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
+                    </td>
+               
+                </tr>
+              </tbody>
+            </table>
+          </div>
+       
+        <div class="modal-footer" style="margin-top: 30px;">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()" style="padding: 6px;width: 70px;">Fermer</button> -->
+          <button type="button" (click)="CloseModelfiles()"   class="btn btn-primary" style="padding: 6px;width: 70px;">OK</button> 
+        </div>
+      </div>
+    </div>
+  </div>
  
 
 

@@ -35,8 +35,24 @@ id: any;
     console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
      window.sessionStorage.clear();  
    }
-
+ 
      
+   openModalfiles(){
+    const Modeldiv = document.getElementById('modelfiles');
+    if(Modeldiv != null){
+       
+      Modeldiv.style.display = 'block';
+    }
+    
+  }
+
+  CloseModelfiles(){
+    const Modeldiv = document.getElementById('modelfiles');
+    if(Modeldiv != null){
+    
+      Modeldiv.style.display = 'none';
+    }
+    }
   ngOnInit() {
     this.appService.getAllClient()
       .subscribe((response: any) => {  

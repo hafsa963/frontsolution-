@@ -172,6 +172,12 @@
   margin-left: 8px;
   color: blue;
 }
+.bi-download{ 
+  font-size: 1.4rem;
+    
+  margin-left: 8px;
+  color: blue;
+}
  .paginator-container {
    display: flex;
    align-items: center;
@@ -450,4 +456,15 @@ div#modelarchive {
 }
 button.btn.btn-secondary {
   margin-right: 17px;
+}
+/* .modal-content-f{
+  max-width: 300px;
+
+} */
+.modal-content[_ngcontent-ng-c3395172406] {
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-bottom: 10px;
+  padding-top: 4px;
+  width: 889px;
 }
