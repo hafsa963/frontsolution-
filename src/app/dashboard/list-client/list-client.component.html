@@ -47,7 +47,6 @@
   
     <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
       <div class="logo_details">
-        <!-- <i class="bx bxl-audible icon"></i> -->
         <div class="logo_name"> </div>
         <i class="bx bx-menu" id="btn"></i>
       </div>
@@ -145,8 +144,8 @@
 
             </li>
            <li class="nav-item">
-              <div *ngIf="id" style="margin-left: 500px; margin-top: 6px;">
-            <input type="file" name="file" class="btn btn-outline-primary mx-3 mt-2 d-" (change)="changeUpload($event)">
+              <div  style="margin-left: 500px; margin-top: 6px;">
+            <input [class.disabled]="!id" type="file" id="upload" name="file" class=" btn btn-outline-primary mx-3 mt-2 d-" (change)="changeUpload($event)">
               </div>
             </li>
           </ul>
@@ -338,55 +337,72 @@
                 </tr>
               </thead>
               <tbody style="padding: 10px;"> 
-                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-    
-                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
-                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
-                  
-                       
-                    <td class="Actions">
-                      
-    
-                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
-                    </td>
-               
-                </tr>
-                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-    
-                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
-                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
-                  
-                       
-                    <td class="Actions">
-                      
-    
-                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
-                    </td>
-               
-                </tr>
-                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-    
-                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
-                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
-                  
-                       
-                    <td class="Actions">
-                      
-    
-                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
-                    </td>
-               
+
+                <tr *ngFor="let attachment of attachments" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+                  <td style="padding-top: 8px; padding-bottom: 6px;">{{ attachment.name }}</td>
+                  <td style="padding-top: 8px; padding-bottom: 6px;">{{ attachment.imagePath }}</td>
+                  <td class="Actions">
+                    <!-- <a class="text-decoration-none text-primary me-2" data-toggle="tooltip" title="afficher">
+                      <i class="bi bi-eye"></i>
+                    </a> -->
+                    <button class="download" data-toggle="tooltip" title="telecharger" (click)="downloadFileById(attachment)">
+                      <i class="bi bi-download"></i>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
+              <!-- <tbody style="padding: 10px;"> 
+
+                
+                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+    
+                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
+                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
+                  
+                       
+                    <td class="Actions">
+                      
+    
+                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
+                        <i class="bi bi-eye"></i>
+                      </a>
+                      <button class="download" data-toggle="tooltip" title="telecharger"  (click)="downloadFile(10)" > <i class="bi bi-download"></i></button> 
+                    </td>
+               
+                </tr>
+                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+    
+                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
+                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
+                  
+                       
+                    <td class="Actions">
+                      
+    
+                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
+                        <i class="bi bi-eye"></i>
+                      </a>
+                      <button class="download" data-toggle="tooltip" title="telecharger"> <i class="bi bi-download"></i></button> 
+                    </td>
+               
+                </tr>
+                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+    
+                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
+                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
+                  
+                       
+                    <td class="Actions">
+                      
+    
+                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
+                        <i class="bi bi-eye"></i>
+                      </a>
+                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
+                    </td>
+               
+                </tr>
+              </tbody> -->
             </table>
           </div>
        

@@ -9,11 +9,13 @@ import { environment } from 'src/environment';
 })
 export class AttachmentService {
   baseUrl = 'http://localhost:8080'
+  uploaded: boolean = false;
 
 
   constructor(private http:HttpClient) { }
    
   uploadFile(file: File , id:number){
+    this.uploaded = false;
     const formData: FormData = new FormData();
     formData.append('file', file);
     const url = `${this.baseUrl}/attachment/upload/${id}`
@@ -21,6 +23,7 @@ export class AttachmentService {
     xhr.onreadystatechange = (e) => {
 
       if (xhr.status === 200) {
+        this.uploaded=true;
         console.log('SUCCESS', xhr.responseText);
       } else {
         console.warn('request_error');

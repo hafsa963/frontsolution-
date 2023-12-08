@@ -29,6 +29,7 @@ export class ListClientComponent {
  
   username: any;
 id: any;
+  idInterval: any;
   constructor(private appService: GestionClientService, private userService: UserService, private router: Router, private attachment:AttachmentService,private http:HttpClient) {
  
   }
@@ -304,38 +305,39 @@ changeUpload(event:any){
   const file:File = event.target.files[0];
   if (file) {
   
-    this.attachment.uploadFile(file, this.id)
+    this.attachment.uploadFile(file, this.id);
+    this.idInterval= setInterval(() => {
+      if(this.attachment.uploaded){
+      clearInterval(this.idInterval);
+      this.ngOnInit();
+      this.id=null;
+      }
+      
 
- 
+    }, 1000);
+
 }    
 }
 
-downloadFile(fileId: number) {
-  this.attachment.downloadFile(fileId).subscribe(
-    (response: any) => {
-      const contentType = response.headers.get('Content-Type');
-      const contentDisposition = response.headers.get('Content-Disposition');
-      const filenameMatch = contentDisposition && contentDisposition.match(/filename="(.+)"$/);
-
-      let filename = 'file'; // Default filename if not found
-      if (filenameMatch) {
-        filename = filenameMatch[1];
+downloadFileById(attachment: Attachment): void {
+  if (attachment.id !== undefined && attachment.id !== null) {
+    this.attachment.downloadFile(attachment.id).subscribe(
+      (blob: Blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        document.body.appendChild(a);
+        a.href = url;
+        a.download = attachment.name || 'downloaded_file'; // Provide a default name if 'name' is undefined
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      (error) => {
+        console.error('Error downloading file', error);
       }
-
-      const blob = new Blob([response.body], { type: contentType || 'application/octet-stream' });
-
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    },
-    error => {
-      console.error('Error downloading file:', error);
-      // Handle error, e.g., show a notification to the user
-    }
-  );
+    );
+  } else {
+    console.error('Invalid attachment ID');
+  }
 }
 
 
