@@ -16,6 +16,7 @@ import { Attachment } from 'src/app/model/attachment';
 export class ListClientComponent {
 
   client: any;
+  attachmentId: any;
   selectedclientId: any;
   selectedData: any; 
   isSidebarExpanded: boolean = true;
@@ -41,12 +42,14 @@ id: any;
    }
  
      
-   openModalfiles(){
+   openModalfiles(client:any){
     const Modeldiv = document.getElementById('modelfiles');
     if(Modeldiv != null){
        
       Modeldiv.style.display = 'block';
     }
+    this.getAttachments(client.attachment);
+
     
   }
 
@@ -71,7 +74,7 @@ id: any;
       });
      
       this.sidebarDetail();
-      this.getAttachments();
+      this.loadData(25)
 
   }
   onDelete(id:any) {
@@ -247,15 +250,11 @@ if(Modeldiv != null){
   Modeldiv.style.display = 'none';
 }
 }
-getAttachments(): void {
-  this.attachment.getAllFiles().subscribe(
-    (attachments) => {
-      this.attachments = attachments;
-    },
-    (error) => {
-      console.error('Error fetching attachments', error);
-    }
-  );
+getAttachments(attachment:any[]): void {
+  this.attachments= [];
+  if(attachment && attachment.length) {
+      this.attachments = attachment;
+  }
   }
 
 
@@ -407,7 +406,17 @@ window.onload = () => {
 };
 }
 
-
+loadData(attachmentId: number): void {
+  this.attachment.getAttachmentById(attachmentId).subscribe(
+    (data) => {
+      this.attachment = data;
+      console.log('Attachment:', this.attachment);
+    },
+    (error) => {
+      console.error('Error:', error);
+    }
+  );
+}
  
 
 }

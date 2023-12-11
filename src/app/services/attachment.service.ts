@@ -44,6 +44,12 @@ export class AttachmentService {
   }
 
   getAllFiles(): Observable<Attachment[]> {
+
     return this.http.get<Attachment[]>(`${this.baseUrl}/attachment/allFiles`);
+  }
+  getAttachmentById(id: number): Observable<any> {
+    const url = `${this.baseUrl}/attachment/getAttachment/${id}`;
+    
+    return this.http.get(url);
   }
 }
