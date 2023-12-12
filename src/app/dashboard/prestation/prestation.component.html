@@ -4,28 +4,7 @@
   <a  href="https://icons8.com/icon/12964/undo">Undo</a> icon by <a href="https://icons8.com">Icons8</a>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <style>
-    /* .navbar {
-      position: fixed;
-      width: 80%;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .search-form {
-      position: sticky;
-      top: 60px;  
-      background: #ffffff;
-      z-index: 999;
-    }
-
-    .table-container {
-      margin-top: 120px;  
-    }
-    @media (zoom: 80%) {
-  .table-responsive {
-    max-width: 80%;
-  }
-} */
+ 
   </style>
 </head>  
  
@@ -190,7 +169,7 @@
       <div style="margin-top: 30px;" >
         <div class="col-md-12">
           <button [routerLink]="['/ajout-prestation']" type="button" class="btn addButton" ><i class="bi bi-building-add"></i> Ajouter une Mission</button>
-          <form class="d-flex" style="width: 33%; margin-left: 350px; margin-top: 90px; ">
+          <form class="d-flex" style="width: 33%; margin-left: 450px; margin-top: 90px; ">
             <input class="form-control me-2"  #nameManager type="search" type="search" placeholder="Mission" aria-label="Search">
             <button class="btn btn-outline-success"  (click)="SearchBynameprestation(nameManager.value)"  type="submit">Rechercher</button>
           </form>
@@ -268,8 +247,8 @@
         <p>Etes-vous sûr de vouloir archiver cette Prestation ? .</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()">Fermer</button>
-        <button type="button"  *ngIf="selectedprestationId" (click)="onDelete(selectedprestationId)" class="btn btn-primary">oui</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="CloseModel()" style=" width: 70px;">Fermer</button>
+        <button type="button"  *ngIf="selectedprestationId" (click)="onDelete(selectedprestationId)" class="btn btn-primary" style=" width: 70px;">oui</button>
       </div>
     </div>
   </div>

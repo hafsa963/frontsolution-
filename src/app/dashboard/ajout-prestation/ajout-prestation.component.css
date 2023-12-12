@@ -80,8 +80,7 @@
     word-wrap: break-word;
   }
  
- 
-  /* Add these styles to your CSS file or style section */
+
 
 .dossier-card {
   background-color: #fff;
@@ -140,13 +139,14 @@
  padding: 10px;
  font-family: 'Poppins', sans-serif;
  overflow-x:hidden;  
-  max-width:700px; 
+  /* max-width:700px;  */
   background: #fff;
- width: 700px;
+ /* width: 700px; */
  padding: 25px 40px 10px 40px; 
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
-  margin-left: 220px;
- margin-top: 120px; 
+  margin-left:100px;
+ margin-top: 93px;
+    margin-right: 12px;
 }
 .formModify form .form-row{
   
@@ -167,109 +167,19 @@ select#Prestation {
   font-family: Arial, sans-serif;
   font-size: 16px;
 }
-.container form .form-row{
-  display: flex;
-  margin: 32px 0;
-  
-}
-
-form .form-row .input-data{
-  width: 100%;
-  /* height: 40px; */
-  height: 60px;
-  margin: 0 20px;
-  width: 502px;
-  position: relative;
-}
-form .form-row .input-data-b{
-  width: 100%;
-  height: 40px;
-  margin: 0 20px;
-  position: relative;
-  width: 320px;
-  margin-top: 22px;
-  color: #fff;
-  background-color:#424c53;
-   
-}
-form .form-row .input-data-b:hover{
-  width: 100%;
-  height: 40px;
-  margin: 0 20px;
-  position: relative;
-  width: 320px;
-  color: #fff;
-  background-color: #424c53;
-  /* transition: all 0.2s; */
-}
+ 
  
 .form-control{
   font-size: 1.1rem;
 }
  
-form .form-row .textarea{
-  height: 70px;
-}
  
 .formADD {
   margin-left:100px;
   width: 600px;
 }
 
-.input-data input,
-.textarea textarea{
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: none;
-  font-size: 17px;
-  border-bottom: 2px solid rgba(0,0,0, 0.12);
-}
-.input-data input:focus ~ label, .textarea textarea:focus ~ label,
-.input-data input:valid ~ label, .textarea textarea:valid ~ label{
-  transform: translateY(-20px);
-  font-size: 14px;
-  color: #3498db;
-}
-.textarea textarea{
-  resize: none;
-  padding-top: 10px;
-}
-.input-data label{
-  position: absolute;
-  pointer-events: none;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  margin-left: 15px;
-}
-.textarea label{
-  width: 100%;
-  bottom: 40px;
-  background: #fff;
-}
-.input-data .underline{
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  width: 100%;
-}
-.input-data .underline:before{
-  position: absolute;
-  content: "";
-  height: 2px;
-  width: 100%;
-  background: #3498db;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
  
-.input-data input:focus ~ .underline:before,
-.input-data input:valid ~ .underline:before,
-.textarea textarea:focus ~ .underline:before,
-.textarea textarea:valid ~ .underline:before{
-  transform: scale(1);
-}
 
  
 .btn-info{
@@ -284,6 +194,7 @@ form .form-row .textarea{
   cursor: pointer;
   /* position: relative; */
   z-index: 2;
+  padding: 3px;
 }
 
 

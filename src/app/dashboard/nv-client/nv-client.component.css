@@ -69,6 +69,9 @@
   /* Add these styles to your CSS file or style section */
 
 .dossier-card {
+  margin-top: 12px;
+  margin-left: 25px;
+  margin-right: 25px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -115,8 +118,7 @@
     
   }
   .fixed-button {
-    position: fixed;
-    position: fixed;
+    position: fixed; 
     top: 32px;
     right: 221px;
   z-index: 1000; 
@@ -164,7 +166,7 @@ i.bi.bi-check-circle {
 a#btnannuler {
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   padding-top: 1px;
 }
  

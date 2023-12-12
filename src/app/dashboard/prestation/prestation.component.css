@@ -81,7 +81,7 @@
   } 
   table.table.mb-0 {
     width: 85%;
-    margin-left: 49px;
+    margin-left: 110px;
 }
 .Actions {
     text-align:  center;
@@ -168,6 +168,51 @@
 .table[_ngcontent-ng-c1597065123] > [_ngcontent-ng-c1597065123]:not(caption) > *[_ngcontent-ng-c1597065123] > *[_ngcontent-ng-c1597065123] {
   padding: 6px;
  
+}
+
+input{
+  padding: 8px;
+}
+span.badge.bg-info.px-2.py-2 {
+  padding: 2px;
+  font-size: 12px;
+}
+[type=submit]:not(:disabled), button:not(:disabled) {
+  cursor: pointer;
+  padding: 10px;
+  
+}
+/* model of delete */
+div#modelarchive {
+  margin-left: 521px;
+  margin-top: 86px;
+  padding: 0px;
+}
+.modal-content {
+  padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 10px;
+    padding-top: 4px;
+}
+.modal-body {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 16px;
+}
+.modal-footer {
+  padding-top: 11px;
+  padding-right: 10px;
+}
+button.btn.btn-secondary {
+  margin-right: 17px;
+}
+ 
+.modal-content[_ngcontent-ng-c3395172406] {
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-bottom: 10px;
+  padding-top: 4px;
+  width: 889px;
 }
 /* TOASTER */
 .toast {

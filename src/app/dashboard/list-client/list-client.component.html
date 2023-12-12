@@ -146,18 +146,12 @@
             </li>
            <li class="nav-item">
               <div *ngIf="id" style="margin-left: 500px; margin-top: 6px;">
-            <input type="file" name="file" class="btn btn-outline-primary mx-3 mt-2 d-" (change)="changeUpload($event)">
-              </div>
+                <input type="file"   name="file" (change)="changeUpload($event)" class="inp__file" id="inpFile" data-name="select-- file" />
+               </div>
             </li>
           </ul>
   
-          <!-- <div *ngIf="id" style="margin-left: 799px; margin-top: 12px;" class="btn btn-primary" >
-            <button class="btn btn-outline-primary mx-3 mt-2 d- " >Parcourir</button> 
-            <input type="file" name="file" class="file-upload" (change)="changeUpload($event)">
-            <input type="file" (change)="uploadFile($event)">
-
-
-        </div> -->
+        
           <!-- RECHERCHE BAR -->
           <!-- <form class="position-relative text-center">
             <div class="input-group"

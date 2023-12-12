@@ -58,7 +58,7 @@ export class PrestationComponent  {
   ];
 
   getAllPrestations() {
-    return this.appService.getAllPrestations().subscribe(
+    return this.appService.getAll().subscribe(
       (results: any) => {
         this.prestation = results;
         console.log(results)

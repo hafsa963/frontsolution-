@@ -21,7 +21,7 @@ export class ServicePrestationService {
        
   }
 
-  getAllPrestations(){
+   getAll(){
     return this.http.get(`${this.baseUrl}/prestations/getAll`)
   }
   getNamePrestations(){
@@ -47,10 +47,18 @@ export class ServicePrestationService {
     return this.http.delete(`${this.baseUrl}/prestations/prestation/${id}`);
   }
 
+  deleteEtape(id : number){
+    return this.http.delete(`${this.baseUrl}/prestations/admin/deleteEtape/${id}`);
+  }
+  
+
   getalletapeByPrestation(id: number){
     return this.http.get(`${this.baseUrl}/prestations/prestationbyetape/id/${id}`)
   }
-   
+
+associateSocietePrestation(id: number ,id_client: number){
+  return this.http.put(`${this.baseUrl}/Clients/admin/client/update/${id_client}/${id}`, {})
+}
   
 
 }

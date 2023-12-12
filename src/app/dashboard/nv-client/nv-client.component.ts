@@ -117,6 +117,7 @@ export class NvClientComponent {
   onScroll(event: Event): void {
  
     this.showFixedButton = window.scrollY > 100;
+    
   }
   
 

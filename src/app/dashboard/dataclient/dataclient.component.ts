@@ -39,7 +39,7 @@ export class DataclientComponent {
         console.log('Username:', this.username);
       }
     });
-    this.serviceprestation.getAllPrestations().subscribe(
+    this.serviceprestation.getAll().subscribe(
       (response: any) => {
         this.prestation = response as Prestation[];  
         this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
@@ -56,6 +56,47 @@ export class DataclientComponent {
     console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
      window.sessionStorage.clear();  
    }
+
+   selectedPrestation(selectedPrestationId : number){
+  
+    console.log(selectedPrestationId);
+    // this.serviceprestation.getAllPrestations().subscribe(
+    //   (response: any) => {
+    //     this.prestation = response as Prestation[];  
+    //     this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
+    //   },
+    //   (error) => {
+    //     console.error('Error fetching prestation data:', error);
+    //   }
+    // );
+  
+    
+    
+  }
+
+
+  affectedprestation(){
+    // console.log(selectedPrestationId);
+    // console.log(id);
+    console.log('Selected Prestation ID:', this.selectedPrestationId);
+    console.log('Selected Data ID:', this.selectedData.id);
+
+    this.serviceprestation.associateSocietePrestation(this.selectedData.id,this.selectedPrestationId).subscribe(
+      (res: any) => {
+        console.log('Selected Prestation ID:', this.selectedPrestationId);
+        console.log('Selected Data ID:', this.selectedData.id);
+        console.log(this.client);
+
+        console.log('Data has been successfully submitted:', res);
+      },
+      (error) => {
+        console.error('Error fetching prestation data:', error);
+      }
+    );
+
+  }
+
+
    showFixedButton: boolean = false;
 
    @HostListener('window:scroll', ['$event'])

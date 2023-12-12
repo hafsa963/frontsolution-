@@ -79,6 +79,9 @@ input{
  
 
 .dossier-card {
+  margin-top: 12px;
+  margin-left: 25px;
+  margin-right: 25px;
 background-color: #fff;
 border-radius: 10px;
 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

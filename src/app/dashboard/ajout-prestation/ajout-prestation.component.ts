@@ -11,12 +11,16 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./ajout-prestation.component.css']
 })
 export class AjoutPrestationComponent {
+  ngModelOptions: any = { standalone: true };
+
 
   prestation: Prestation = {
+    
     namePrestation: '',
     Etat: '',
     etapeDtoList: []
   };
+ // idEtape : 0, 
 
   newEtape: Etape = {
     nomEtape: ''
@@ -107,9 +111,30 @@ export class AjoutPrestationComponent {
     this.prestation.etapeDtoList.push({ ...this.newEtape });
     this.newEtape.nomEtape = '';
   }  
-  removeEtape(index: number) {
+  removeEtape(index: number,idEtape?: number) {
+    const etapeId = idEtape !== undefined ? idEtape : 0;
     if (index >= 0 && index < this.prestation.etapeDtoList.length) {
       this.prestation.etapeDtoList.splice(index, 1);
+       
+      this.appService.deleteEtape(etapeId).subscribe(
+        (res) => {
+          console.log('Data has been successfully deleted:', res);
+          console.log(etapeId);
+          // const Modeldiv = document.getElementById('toastsucces');
+          // if(Modeldiv != null){
+          //   Modeldiv.classList.add('show');
+          //   setTimeout(() => {
+          //     Modeldiv.classList.remove('show');
+          //   }, 2000);
+           
+          // }
+       
+        },
+        (error) => {
+          console.error('Error in submitting data:', error);
+           
+        }
+      );
     }
   }
 

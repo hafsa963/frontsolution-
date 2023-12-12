@@ -32,7 +32,7 @@ export class PrestationToDossierComponent {
     });
     
  
-    this.appService.getAllPrestations().subscribe(
+    this.appService.getAll().subscribe(
       (response: any) => {
         this.prestation = response as Prestation[];  
         this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
@@ -174,19 +174,19 @@ closesidebar() {
 selectedPrestation(selectedPrestationId : number){
   
   console.log(selectedPrestationId);
- this.appService.getalletapeByPrestation(selectedPrestationId).subscribe((response: any) => {  
-  this.prestation = Array.isArray(response) ? response : [response];
-  this.appService.getAllPrestations().subscribe(
-    (response: any) => {
-      this.prestation = response as Prestation[];  
-      this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
-    },
-    (error) => {
-      console.error('Error fetching prestation data:', error);
-    }
-  );
+//  this.appService.getalletapeByPrestation(selectedPrestationId).subscribe((response: any) => {  
+//   this.prestation = Array.isArray(response) ? response : [response];
+  // this.appService.getAll().subscribe(
+  //   (response: any) => {
+  //     this.prestation = response as Prestation[];  
+  //     this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
+  //   },
+  //   (error) => {
+  //     console.error('Error fetching prestation data:', error);
+  //   }
+  // );
 
-  });
+  // });
   // this.selectedPrestationId = selectedPrestationId; 
 }
 

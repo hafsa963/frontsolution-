@@ -211,12 +211,19 @@
                             <label for="rs" class="label rs" style="margin-top: 10px;margin-left: 20px;">Choisir une Prestation:</label>
                           </div>
                           <div style="width: 400px;">
-                            <select  [(ngModel)]="selectedPrestationId" class="form-select w-100" style="padding: 10px;">
-                              <option   *ngFor="let presta of prestation" style="border-radius: 1px solid; font-size:18px; background-color:#d7e9fa;"  [value]="presta.id">   <label class="form-check-label" for="Prestationfactured">choisir : </label> {{presta.namePrestation}}</option>
+                            <select  [(ngModel)]="selectedPrestationId" [ngModelOptions]="{standalone: true}" (change)="selectedPrestation(selectedPrestationId)" class="form-select w-100" style="padding: 10px;">
+                              <option   *ngFor="let presta of prestation" style="border-radius: 1px solid; font-size:18px; background-color:#d7e9fa;"  [value]="presta.id">   <label class="form-check-label" for="selectedPrestationId">choisir : </label> {{presta.namePrestation}}</option>
                             </select>
                           </div>
+                          <div>
+                            <input type="text" class="form-control custom-sinput" id="id" [(ngModel)]="selectedData.id" [ngModelOptions]="{standalone: true}" hidden>
+
+                          </div>
+                          <button type="button"   class="btn btn-primary" style="padding: 6px;width: 170px;margin-left: 30px;" (click)="affectedprestation()">Confirmer</button> 
                         </div>
-                        <!-- (change)="selectedPrestation(selectedPrestationId)" -->
+                        
+
+                        
                       </div>
                     </div>
                   </div>

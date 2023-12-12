@@ -363,6 +363,73 @@
   border-color: #0056b3;  
   background-color: transparent; 
 }
+/* file*/
+.inp__file{
+  width: 419px;
+  height: 56px;
+  border: 0px;
+  overflow: visible;
+  background: 0;
+  text-indent: -1000000px;
+  color: transparent;
+  box-sizing: border-box;
+  position: absolute;
+  left: 60%;
+  top: 44%;
+  padding: 4px 0px 0px 8px;
+  transform: translate(-50%,-50%);
+}
+.inp__file::before {
+  content: " select";
+  position: absolute;
+  text-indent: 10px;
+  color: #fff;
+  opacity: 1;
+  font-size: 130%;
+  padding: 12px 0px 0px 5px;
+  border: solid 2px #09ace6;
+  text-shadow: 1px 1px 1px #999;
+  box-sizing: border-box;
+  background-image: linear-gradient(#0971e6, #0971e6);
+  border-radius: 40px;
+  display: block;
+  width: 406px;
+  height: 50px;
+  left: 0px;
+}
+.inp__file::after {
+  padding-top: 4px;
+  content: attr(data-name);
+  color: #999;
+  box-sizing: border-box;
+  /* padding: 8px 0px 0px 8px; */
+  position: absolute;
+  display: block;
+  width: 300px;
+  height: 30px;
+  text-indent: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: #e5f9fe;
+  border-top: solid 1px #228db2;
+  border-left: solid 1px #228db2;
+  border-right: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+  right: 30px;
+  bottom: 11px;
+}
+.inp__file:hover{
+  cursor:pointer;
+}
+
+.inp__file:hover::before {
+  box-shadow: 1px 1px 1px #ccc;
+  cursor: pointer;
+  background-image: linear-gradient(#09ace6, #63d9f3);
+  transition: all 0.1s ease;
+}
+
 
 /* TOASTER */
 .toast {
@@ -457,10 +524,7 @@ div#modelarchive {
 button.btn.btn-secondary {
   margin-right: 17px;
 }
-/* .modal-content-f{
-  max-width: 300px;
-
-} */
+ 
 .modal-content[_ngcontent-ng-c3395172406] {
   padding-left: 13px;
   padding-right: 13px;
