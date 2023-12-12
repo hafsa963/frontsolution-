@@ -29,7 +29,7 @@ export class ListClientComponent {
 
  
   username: any;
-id: any;
+   id: any;
   idInterval: any;
   constructor(private appService: GestionClientService, private userService: UserService, private router: Router, private attachment:AttachmentService,private http:HttpClient) {
  
