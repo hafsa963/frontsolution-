@@ -48,7 +48,8 @@ export class ListClientComponent {
        
       Modeldiv.style.display = 'block';
     }
-    this.getAttachments(client.attachment);
+    debugger
+    this.getAttachments(client.attachmentEntity);
 
     
   }
@@ -74,7 +75,6 @@ export class ListClientComponent {
       });
      
       this.sidebarDetail();
-      this.loadData(25)
 
   }
   onDelete(id:any) {
@@ -254,7 +254,7 @@ getAttachments(attachment:any[]): void {
   this.attachments= [];
   if(attachment && attachment.length) {
       this.attachments = attachment;
-  }
+   }
   }
 
 

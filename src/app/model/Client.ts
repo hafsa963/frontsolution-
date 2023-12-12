@@ -26,7 +26,7 @@ export interface Client{
     cmt:  string,
     etat:  string,
     typesociete:  string,
-    attachment: Attachment;
+    attachmentEntity: Attachment;
      
 }
 
