@@ -5,49 +5,14 @@
     <a  href="https://icons8.com/icon/12964/undo">Undo</a> icon by <a href="https://icons8.com">Icons8</a>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
-
-  <style>
-    /* .navbar {
-      position: fixed;
-      width: 81%;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .search-form {
-      position: sticky;
-      top: 80px;  
-      background: #ffffff;
-      z-index: 999;
-    }
-
-    .table-container {
-      margin-top: 120px;  
-    }
-
-    @media (zoom: 80%) {
-  .table-responsive {
-    max-width: 80%;
-  }
-}
- 
- */
-
-
-
-
-
- 
-  </style>
 </head>  
-<!-- style="background-color: #EDEDED; -->
+ 
  
   <body>
   
   
     <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
       <div class="logo_details">
-        <!-- <i class="bx bxl-audible icon"></i> -->
         <div class="logo_name"> </div>
         <i class="bx bx-menu" id="btn"></i>
       </div>
@@ -100,14 +65,14 @@
           <span class="tooltip">Colaborateur</span>
         </li>
         <li>
-          <a href="#">
-            <i class="bx bx-cart-alt"></i>
-            <span class="link_name">Order</span>
+          <a [routerLink]="['/listmanager']">
+            <i class="bx bxs-group"></i>
+            <span class="link_name">Associé</span>
           </a>
-          <span class="tooltip">Order</span>
+          <span class="tooltip">Associé</span>
         </li>
         <li>
-          <a href="#">
+          <a [routerLink]="['/myprofile']">
             <i class="bx bx-cog"></i>
             <span class="link_name">Settings</span>
           </a>
@@ -115,7 +80,6 @@
         </li>
         <li class="profile">
           <div class="profile_details">
-            <!-- <img src="profile.jpeg" alt="profile image"> -->
             <div class="profile_content">
               <div class="name">Anna Jhon</div>
               <div class="designation">Admin</div>
@@ -146,11 +110,11 @@
             </li>
            <li class="nav-item">
               <div *ngIf="id" style="margin-left: 500px; margin-top: 6px;">
-                <input type="file"   name="file" (change)="changeUpload($event)" class="inp__file" id="inpFile" data-name="select-- file" />
+                 <input type="file"   [class.disabled]="!id" id="upload"    name="file"  class="inp__file" (change)="changeUpload($event)"   />
                </div>
             </li>
           </ul>
-  
+          <!-- class="inp__file"  data-name="select-- file" -->
         
           <!-- RECHERCHE BAR -->
           <!-- <form class="position-relative text-center">
@@ -268,8 +232,8 @@
                   <a   (click)="passData(client)" data-toggle="tooltip" title="visualiser"  ><i class="bi bi-eye"></i></a> 
                   <a  *ngIf="client.id" (click)="openModal(client.id)"   data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
                  
-                  <button class="download" data-toggle="tooltip" (click)="openModalfiles()"    title="telecharger"  > <i class="bi bi-file-earmark-fill"></i></button> 
-                </td>
+                  <button class="download" data-toggle="tooltip" (click)="openModalfiles(client)"    title="telecharger"  > <i class="bi bi-file-earmark-fill"></i></button> 
+                </td> 
            
             </tr>
           </tbody>
@@ -331,56 +295,23 @@
     
                 </tr>
               </thead>
-              <tbody style="padding: 10px;"> 
-                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-    
-                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
-                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
-                  
-                       
+              
+                <tbody style="padding: 10px;"> 
+                
+                  <tr *ngFor="let attachment of attachments" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+                    <ng-container>
+                    <td style="padding-top: 8px; padding-bottom: 6px;">{{attachment.name }}</td>
+                    <td style="padding-top: 8px; padding-bottom: 6px;">{{attachment.imagePath }}</td>
                     <td class="Actions">
-                      
-    
-                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
-                    </td>
                
-                </tr>
-                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-    
-                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
-                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
-                  
-                       
-                    <td class="Actions">
-                      
-    
-                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
+                      <button class="download" data-toggle="tooltip" title="telecharger" (click)="downloadFileById(attachment)">
+                        <i class="bi bi-download"></i>
+                      </button>
+              
                     </td>
-               
-                </tr>
-                <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-    
-                  <td style="padding-top: 8px; padding-bottom: 6px;">document demande rc</td>
-                  <td  style="padding-top: 8px; padding-bottom: 6px;">file/doc/document.pdf</td>
-                  
-                       
-                    <td class="Actions">
-                      
-    
-                      <a   class="text-decoration-none text-primary me-2"  data-toggle="tooltip" title="afficher">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      <button class="download" data-toggle="tooltip" title="telecharger"  > <i class="bi bi-download"></i></button> 
-                    </td>
-               
-                </tr>
-              </tbody>
+                  </ng-container>
+              
+                </tbody>
             </table>
           </div>
        

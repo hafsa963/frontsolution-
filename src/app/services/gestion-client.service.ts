@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Typesociete } from '../model/TypeSociete';
+import { Manager } from '../model/Manager';
 
 @Injectable({
   providedIn: 'root'
@@ -86,7 +87,19 @@ export class GestionClientService {
   getBytypesociete(typesociete : string){
     return this.http.get(`${this.baseUrl}/Clients/admin/client/typesociete/${typesociete}`)
   }
- 
+  
  
 
+  CreateManager(manager: Manager){
+    return this.http.post(`${this.baseUrl}/Clients/admin/createManager`,manager)
+  }
+  
+  getAllManager(): (Observable<any>){
+    return this.http.get(`${this.baseUrl}/Clients/admin/getall`)
+  }
+
+  updatemanager(id: number, updatedData: any){
+     
+    return this.http.put(`${this.baseUrl}/Clients/admin/updatemanager/${id}`,updatedData)
+  }
 }

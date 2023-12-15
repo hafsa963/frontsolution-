@@ -6,6 +6,7 @@ import { Client } from 'src/app/model/Client';
 import { AttachmentService } from 'src/app/services/attachment.service';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
 import { UserService } from 'src/app/services/user.service';
+import { Attachment } from 'src/app/model/attachment';
 
 @Component({
   selector: 'app-list-client',
@@ -15,9 +16,12 @@ import { UserService } from 'src/app/services/user.service';
 export class ListClientComponent {
 
   client: any;
+  attachmentId: any;
   selectedclientId: any;
   selectedData: any; 
   isSidebarExpanded: boolean = true;
+  attachments: Attachment[] = [];
+
   
   
   @ViewChild('sidebar') sidebarElement!: ElementRef;
@@ -25,7 +29,8 @@ export class ListClientComponent {
 
  
   username: any;
-id: any;
+   id: any;
+  idInterval: any;
   constructor(private appService: GestionClientService, private userService: UserService, private router: Router, private attachment:AttachmentService,private http:HttpClient) {
  
   }
@@ -37,12 +42,14 @@ id: any;
    }
  
      
-   openModalfiles(){
+   openModalfiles(client:any){
     const Modeldiv = document.getElementById('modelfiles');
     if(Modeldiv != null){
        
       Modeldiv.style.display = 'block';
     }
+    this.getAttachments(client.attachment);
+
     
   }
 
@@ -67,6 +74,9 @@ id: any;
       });
      
       this.sidebarDetail();
+      //this.loadData(25)
+     
+
   }
   onDelete(id:any) {
   
@@ -125,31 +135,7 @@ SearchBy(searchInput: string) {
     this.callApi(this.appService.getByforme,searchInput);
     this.callApi(this.appService.getByforme,searchInput);
     this.callApi(this.appService.getBysiege,searchInput);
-    // const lowerCaseInput = searchInput.toLowerCase();
-    // const upperCaseInput = searchInput.toUpperCase();
-
-    // switch (searchInput) {
-    //   case 'name':
-    //     this.callApi(this.appService.getSocieteByName, searchInput);
-    //     break;
-    //   case 'propriete':
-    //     this.callApi(this.appService.getByPropriete, searchInput);
-    //     break;
-    //   case 'typesociete':
-    //     this.callApi(this.appService.getBytypesociete, searchInput);
-    //     break;
-      
-    //   case 'forme':
-    //     this.callApi(this.appService.getByforme, searchInput);
-    //     break;
-    //   case 'siege':
-    //     this.callApi(this.appService.getBysiege, searchInput);
-    //     break;
-     
-    //   default:
-    //     console.error('Invalid property name:', searchInput);
-    //     break;
-    // }
+  
   }
 }
  
@@ -234,7 +220,6 @@ openModal(clientId: any){
   
 }
 
-
 CloseModel(){
 const Modeldiv = document.getElementById('modelarchive');
 if(Modeldiv != null){
@@ -242,6 +227,12 @@ if(Modeldiv != null){
   Modeldiv.style.display = 'none';
 }
 }
+getAttachments(attachment:any[]): void {
+  this.attachments= [];
+  if(attachment && attachment.length) {
+      this.attachments = attachment;
+  }
+  }
 
 
 viseualiseModel(){
@@ -290,38 +281,39 @@ changeUpload(event:any){
   const file:File = event.target.files[0];
   if (file) {
   
-    this.attachment.uploadFile(file, this.id)
+    this.attachment.uploadFile(file, this.id);
+    this.idInterval= setInterval(() => {
+      if(this.attachment.uploaded){
+      clearInterval(this.idInterval);
+      this.ngOnInit();
+      this.id=null;
+      }
+      
 
- 
+    }, 1000);
+
 }    
 }
 
-downloadFile(fileId: number) {
-  this.attachment.downloadFile(fileId).subscribe(
-    (response: any) => {
-      const contentType = response.headers.get('Content-Type');
-      const contentDisposition = response.headers.get('Content-Disposition');
-      const filenameMatch = contentDisposition && contentDisposition.match(/filename="(.+)"$/);
-
-      let filename = 'file'; // Default filename if not found
-      if (filenameMatch) {
-        filename = filenameMatch[1];
+downloadFileById(attachment: Attachment): void {
+  if (attachment.id !== undefined && attachment.id !== null) {
+    this.attachment.downloadFile(attachment.id).subscribe(
+      (blob: Blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        document.body.appendChild(a);
+        a.href = url;
+        a.download = attachment.name || 'downloaded_file'; // Provide a default name if 'name' is undefined
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      (error) => {
+        console.error('Error downloading file', error);
       }
-
-      const blob = new Blob([response.body], { type: contentType || 'application/octet-stream' });
-
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    },
-    error => {
-      console.error('Error downloading file:', error);
-      // Handle error, e.g., show a notification to the user
-    }
-  );
+    );
+  } else {
+    console.error('Invalid attachment ID');
+  }
 }
 
 
@@ -391,7 +383,17 @@ window.onload = () => {
 };
 }
 
-
+loadData(attachmentId: number): void {
+  this.attachment.getAttachmentById(attachmentId).subscribe(
+    (data) => {
+      this.attachment = data;
+      console.log('Attachment:', this.attachment);
+    },
+    (error) => {
+      console.error('Error:', error);
+    }
+  );
+}
  
 
 }

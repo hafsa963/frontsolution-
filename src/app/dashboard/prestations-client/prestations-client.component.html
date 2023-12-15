@@ -1,0 +1,333 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+    rel="stylesheet"
+    href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+  />
+    <style>
+ 
+    </style>
+  </head>
+  
+  
+
+  <body>
+ 
+    <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
+      <div class="logo_details">
+        <!-- <i class="bx bxl-audible icon"></i> -->
+        <div class="logo_name"> </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <i class="bx bx-search"></i>
+          <input type="text" placeholder="Search...">
+           <span class="tooltip">Search</span>
+        </li>
+        <li>
+          <a  [routerLink]="['/dashboard']" >
+            <i class="bx bx-grid-alt"></i>
+            <span class="link_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a [routerLink]="['/list-client']" >
+            <i class="bx bx-user"></i>
+            <span class="link_name">Client</span>
+          </a>
+          <span class="tooltip">Client</span>
+        </li>
+        <li>
+          <a  [routerLink]="['/Prestation']" >
+            <i class="bx bx-chat"></i>
+            <span class="link_name">Préstation</span>
+          </a>
+          <span class="tooltip">Préstation</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-pie-chart-alt-2"></i>
+            <span class="link_name">Tache</span>
+          </a>
+          <span class="tooltip">Tache</span>
+        </li>
+        <li>
+          <a [routerLink]="['/list-type-societe']" >
+            <i class="bx bx-folder"></i>
+            <span class="link_name">Types société</span>
+          </a>
+          <span class="tooltip">Types D'entreprises</span>
+        </li>
+        <li>
+          <a [routerLink]="['/list-colabs']" >
+            <i class='bx bx-user-plus'></i>
+            <span class="link_name">Colaborateur</span>
+          </a>
+          <span class="tooltip">Colaborateur</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cart-alt"></i>
+            <span class="link_name">Order</span>
+          </a>
+          <span class="tooltip">Order</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-cog"></i>
+            <span class="link_name">Settings</span>
+          </a>
+          <span class="tooltip">Settings</span>
+        </li>
+        <li class="profile">
+          <div class="profile_details">
+            <!-- <img src="profile.jpeg" alt="profile image"> -->
+            <div class="profile_content">
+              <div class="name">Anna Jhon</div>
+              <div class="designation">Admin</div>
+            </div>
+          </div>
+          <i class="bx bx-log-out" id="log_out"></i>
+        </li>
+      </ul>
+    </div>
+  
+      <div class="body-wrapper" >
+        <!-- //header2 -->
+
+        <header class="app-header" style="position: fixed;">
+          <nav class="navbar navbar-expand-lg navbar-light" >
+            <ul class="navbar-nav">
+              <li class="nav-item d-block d-xl-none">
+                <a class="nav-link sidebartoggler nav-icon-hover" id="sidebarCollapseButton" data-bs-toggle="offcanvas"
+                  (click)="toggleSidebar()" data-bs-target="#sidebarCollapse">
+                  <i class="ti ti-menu-2"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-icon-hover">
+                  <i class="ti ti-bell-ringing"></i>
+                  <div class="notification bg-primary rounded-circle"></div>
+                </a>
+              </li>
+            </ul>
+    
+            <!-- RECHERCHE BAR -->
+            <!-- <form class="position-relative text-center">
+              <div class="input-group"
+                style="width: 600px; margin-left: 20px; margin-top: 12px; background-color: ghostwhite;">
+                <input placeholder="Search..." aria-label="Search" type="search" class="rounded-pill form-control">
+                <div class="input-group-prepend">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="svg-inline--fa fa-search fa-w-16 text-400 search-box-icon"
+                    style="margin-left: -34px;text-align:center;margin-top: 8px;">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </div>
+              </div>
+            </form> -->
+    
+            <!-- Traduction -->
+            <!-- <div class="flex items-center gap-2 h-16 ml-auto" style="margin-left: 400px;">
+              <div class="dropdown-item">
+                <a class="dropdown-toggle" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                  <i class="flag-united-kingdom flag m-0"></i>
+                  <img class="thumb" data-pin-no-hover="true" fetchpriority="high"
+                    src="../../assets/images/flagfrance.png" style="width: 38px; height: 36px;">
+                </a>
+              </div>
+            </div> -->
+            
+            <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+              <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank"
+                  class="btn btn-primary"  style="width: 221px;padding: 6px">Welcome, {{username}}</a>
+                  <!-- (click)="displaydatauser()" -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link nav-icon-hover"  (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" id="dropmenuuser"
+                    aria-labelledby="drop2">
+                    <div class="message-body">
+                      <a class="d-flex align-items-center gap-2 dropdown-item" style="margin-left: 18px;">
+                        <i class="ti ti-user fs-6"></i>
+                        <p class="mb-0 fs-3" style="font-size: 0.875rem!important;
+                          margin-bottom: 0!important;margin-left: -7px;margin-top: 10px;">Mon Profile</p>
+                      </a>
+                      <!-- (click)="logout()" -->
+                      <a  (click)="logout()" style="margin-bottom: 12px;"
+                        class="btn btn-outline-primary mx-3 mt-2 d-block">Déconnecter</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+        <div style="background-color: #ffff;margin-left: 100px;margin-top: 90px;" >
+          
+        
+
+          <!-- form of update  *ngIf="selectedData" #clientupdate="ngForm" (ngSubmit)="OnUpdate(clientupdate.value)"  (click)="OnSubmit()"  -->
+          <div class="container" *ngIf="!element">
+            <div class="row">
+                <form [formGroup]="rechercheForm" > 
+                  <div class="row justify-content-center align-items-center" style="margin-left: 600px; margin-top: 0px;
+                  margin-bottom: 2px;">
+                    <div class="col-6">
+                      <!-- <div class="action text-center" [ngClass]="{'fixed-button': showFixedButton}" style="display: flex; gap: 10px; font-size: 18px;">
+                        <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']">Annuler</a>
+                        <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer"   style="padding-left: 12px;padding-right: 10px;padding-top: 2px;">
+                          <i class="bi bi-check-circle"></i> Modifier Client
+                        </button>
+                      </div>  -->
+                    </div>
+                  </div>
+                <div class="col-md-12 mb-3">
+                  <div class="card dossier-card">
+                    <div class="card-body">
+                      <h5 class="card-title mb-0">Recherche des prestations</h5>
+                      <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+                      <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                        <div class="mb-3 d-flex" style="margin-top: 12px;">
+                            <div class="me-3" style="width: 150px;">
+                              <label for="IP" class="label rs me-3">Société:</label>
+                            </div>
+                            <div style="width: 350px;">
+                              <select id="rs" formControlName="rs" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option  value="" disabled selected>Choose Société</option>
+                                <option *ngFor="let rs of clientrs" [value]="rs">{{ rs }}</option>
+       
+                              </select>
+                            </div>
+      
+                          </div>
+                          <div class="mb-3 d-flex" style="margin-top: 12px;">
+                            <div class="me-3" style="width: 250px;">
+                              <label for="IP" class="label rs me-3" style="margin-left: 10px;">Registre De Commerce   :</label>
+                            </div>
+                            <div style="width: 350px;">
+                              <select id="rc" formControlName="rc" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px ;margin-left: -52px;">
+                                <option  value="" disabled selected>Choose rc</option>
+                                <option *ngFor="let rc of clientrc" [value]="rc">{{ rc }}</option>
+       
+                              </select>
+                            </div>
+      
+                          </div>
+                          <div class="mb-3 d-flex" style="margin-top: 12px;margin-left: -81px;">
+                            
+                            <div style="width: 30px;" >
+                                <!-- <a  data-toggle="tooltip" title="visualiser" > <i class="bx bx-search"></i> </a> -->
+                                <div class="input-box">
+                                    <!-- <input type="text" placeholder="Search..." /> -->
+                                    <span class="search">
+                                       
+                                      <a> <i class="uil uil-search search-icon"></i> </a>
+                                    </span>
+                                    
+                                  </div>
+                            </div>
+                             
+                          </div>
+                          <div class="mb-3 d-flex" style="margin-top: 12px;">
+                            <div class="me-3" style="width: 150px;">
+                              <label for="IP" class="label rs me-3">Proprietaire :</label>
+                            </div>
+                            <div style="width: 350px;">
+                              <select id="propriete" formControlName="propriete" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option  value="" disabled selected>Choose Proprietaire</option>
+                                <option *ngFor="let propriete of clientpropriete" [value]="propriete">{{ propriete }}</option>
+       
+                              </select>
+                            </div>
+                            
+      
+                          </div>
+                        
+                           
+                     </div>
+                     <div class="table-responsive bg-white" style="margin-bottom: 30px;">
+                        <table class="table mb-0">
+                          <thead>  
+                            <tr>
+                              <th class="large-column" scope="col">Prestation</th>
+                              <th class="small-column" scope="col">Etat</th>
+                               
+                              <th class="small-column" scope="col" style="text-align: center;">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody> 
+                            <tbody> 
+                            <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+                              <td>création societe</td>
+                              <td>en cours de traitment</td>
+                              <td class="Actions">
+                                <div class="d-flex justify-content-center">
+                               
+                                <a  data-toggle="tooltip" title="visualiser" >details </a>
+                                </div>                  
+                                <!--  *ngFor="let manager of manager"(click)="openModal()"(click)="passData(colab)"  -->
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+ 
+
+
+
+                      <br/>
+                      
+                    </div>
+                  </div>
+                </div>
+    
+    
+               
+    
+               
+    
+               
+              
+              </form>
+            </div>
+         </div> 
+
+
+
+
+
+      <br />
+        </div>
+ 
+        <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/list-client" style="cursor: pointer;"/>
+
+      </div>
+  
+  
+  
+  </body>
+ 
+  <div class="toast toast-success" role="alert" aria-live="assertive" id="toastsucces"  aria-atomic="true" style="text-align: center;">
+    <strong class="me-auto"></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
+    <div class="toast-body">
+      la société a été ajouté avec succès 
+    </div>
+  </div>
+  
+  <div class="toast toast-success" role="alert" aria-live="assertive" id="toastsuccesModify"  aria-atomic="true" style="text-align: center;">
+    <strong class="me-auto"></strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
+    <div class="toast-body">
+      la société a été Modifié avec succès 
+    </div>
+  </div>

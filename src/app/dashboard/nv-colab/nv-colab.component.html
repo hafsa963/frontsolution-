@@ -254,14 +254,14 @@
                       
                         <div class="mb-3 d-flex" style="margin-top: 12px">
                         <div class="me-3" style="width: 150px">
-                          <label for="EmailPro" style="margin-left: 50px;" class="label rs me-3">Email :</label>
+                          <label for="emailPro" style="margin-left: 50px;" class="label rs me-3">Email :</label>
                         </div>
                         <div style="width: 400px;">
-                          <input type="email" class="form-control custom-sinput" id="EmailPro"
-                            formControlName="EmailPro" placeholder="exemple@email.com">
+                          <input type="email" class="form-control custom-sinput" id="emailPro"
+                            formControlName="emailPro" placeholder="exemple@email.com">
                         </div>
                         <div
-                        *ngIf="ColabForm.get('EmailPro')?.hasError('required') && (ColabForm.get('EmailPro')?.touched ||ColabForm.get('EmailPro')?.dirty)"
+                        *ngIf="ColabForm.get('emailPro')?.hasError('required') && (ColabForm.get('emailPro')?.touched ||ColabForm.get('emailPro')?.dirty)"
                         class="text-danger">
                         *
                         <!-- Email est obligatoire. -->
@@ -289,14 +289,14 @@
 
                       <div class="mb-3 d-flex" style="margin-top: 12px;">
                         <div class="me-3" style="width: 223px;margin-left: 18px;">
-                          <label for="ConfirmPassword" class="label rs me-3">Confirmation Mot De Passe:</label>
+                          <label for="confirmPassword" class="label rs me-3">Confirmation Mot De Passe:</label>
                         </div>
                         <div style="width: 300px;">
-                          <input type="password" class="form-control custom-sinput" id="ConfirmPassword" formControlName="ConfirmPassword"
+                          <input type="password" class="form-control custom-sinput" id="confirmPassword" formControlName="confirmPassword"
                             placeholder="">
                             <input type="checkbox" (click)="showpassword()">Afficher Confirmation Mot De Passe
                         </div>
-                        <div *ngIf="ColabForm.get('ConfirmPassword')?.hasError('required') && (ColabForm.get('ConfirmPassword')?.touched || ColabForm.get('ConfirmPassword')?.dirty)" class="text-danger">
+                        <div *ngIf="ColabForm.get('confirmPassword')?.hasError('required') && (ColabForm.get('confirmPassword')?.touched || ColabForm.get('confirmPassword')?.dirty)" class="text-danger">
                         *
                       </div>
   
@@ -322,11 +322,17 @@
                           <label for="typesociete" class="label rs me-3">Accès:</label>
                         </div>
                         <div style="width: 600px;">
-                          <select id="role" formControlName="role" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                          <!-- <select id="role" formControlName="role" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                             <option  value="" disabled selected>choisir un Accès </option>
                             <option *ngFor="let role of rolesNames" [value]="role">{{ role }}</option>
    
+                          </select> -->
+                          <div formGroupName="roles">
+                          <select id="role" formControlName="role">
+                            <option value="" disabled>Select a Role</option>
+                            <option *ngFor="let role of roles" [value]="role.id">{{ role.role }}</option>
                           </select>
+                        </div>
                         </div>
                         <div
                         *ngIf="ColabForm.get('role')?.hasError('required') && (ColabForm.get('role')?.touched || ColabForm.get('role')?.dirty)"
@@ -349,6 +355,168 @@
        </div> 
       
  
+       <!-- Modifier colaborateur form -->
+       <div class="container" *ngIf="element">
+        <div class="row">
+            <form  *ngIf="selectedData"   #updateColab="ngForm" (ngSubmit)="OnUpdate(updateColab.value)"  >
+              <div class="row justify-content-center align-items-center" style="margin-left: 400px;">
+                <div class="col-6">
+                  <div class="action text-center"  [ngClass]="{'fixed-button': showFixedButton}" style="display: flex; gap: 10px; font-size: 18px;">
+                    <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-colabs']" style=" padding-top: 3px; margin-bottom: 2px;padding-right: 10px;padding-left: 7px;">Annuler</a>
+                    <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer"   (click)="OnSubmit()" style="padding-top: 3px; margin-bottom: 4px;padding-right: 10px;padding-left: 10px;">
+                      <i class="bi bi-check-circle"></i> Modifier Colaborateur
+                    </button>
+                  </div> 
+                </div>
+              </div>  
+            <div class="col-md-12 mb-3">
+              <div class="card dossier-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Identification</h5>
+                  <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+
+                  <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                  <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="nom" class="label rs">Nom:</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="text" class="form-control custom-sinput" id="nom"  [(ngModel)]="selectedData.nom" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <!-- <div
+                      *ngIf="ColabForm.get('nom')?.hasError('required') && (ColabForm.get('nom')?.touched ||ColabForm.get('nom')?.dirty)"
+                      class="text-danger">
+                      * </div> -->
+                      <!-- Nom est obligatoire. -->
+                    
+                    </div>  
+
+
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="prenom" class="label rs" style="margin-left: 44px;">Prénom :</label>
+                      </div>
+                      <div style="width: 200px;">
+                        <input type="text" class="form-control custom-sinput" id="prenom"  [(ngModel)]="selectedData.prenom" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <!-- <div
+                      *ngIf="ColabForm.get('prenom')?.hasError('required') && (ColabForm.get('prenom')?.touched ||ColabForm.get('prenom')?.dirty)"
+                      class="text-danger">
+                      *  </div> -->
+                      <!-- Prénom  est obligatoire. -->
+                   
+                    </div> 
+                    
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="username" class="label rs me-3">Nom d'utilisateur:</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="text" class="form-control custom-sinput" id="username" [(ngModel)]="selectedData.username" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <!-- <div
+                      *ngIf="ColabForm.get('username')?.hasError('required') && (ColabForm.get('username')?.touched ||ColabForm.get('username')?.dirty)"
+                      class="text-danger">
+                      * </div> -->
+                      <!-- Nom d'utilisateur est obligatoire. -->
+                    
+
+                    </div>  
+                    
+
+                    
+                      <div class="mb-3 d-flex" style="margin-top: 12px">
+                      <div class="me-3" style="width: 150px">
+                        <label for="EmailPro" style="margin-left: 50px;" class="label rs me-3">Email :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="email" class="form-control custom-sinput" id="EmailPro" [(ngModel)]="selectedData.emailPro" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <!-- <div
+                      *ngIf="ColabForm.get('EmailPro')?.hasError('required') && (ColabForm.get('EmailPro')?.touched ||ColabForm.get('EmailPro')?.dirty)"
+                      class="text-danger">
+                      *
+                      
+                    </div> -->
+                     <!-- Email est obligatoire. -->
+
+                    </div>  
+
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="mdp" class="label rs me-3">Mot De Passe :</label>
+                      </div>
+                      <div style="width: 300px;">
+                        <input type="password" class="form-control custom-sinput" id="password" [(ngModel)]="selectedData.password" [ngModelOptions]="{standalone: true}">
+                          <input type="checkbox" (click)="showpassword()">Afficher Mot De Passe
+
+                      </div>
+                      <!-- <div *ngIf="ColabForm.get('password')?.hasError('required') && (ColabForm.get('password')?.touched || ColabForm.get('password')?.dirty)" class="text-danger">
+                         
+                        *
+                      </div> -->
+                    <!-- Mot De Passe est obligatoire. -->
+
+                    </div>
+
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 223px;margin-left: 18px;">
+                        <label for="ConfirmPassword" class="label rs me-3">Confirmation Mot De Passe:</label>
+                      </div>
+                      <div style="width: 414px;">
+                        <input type="password" class="form-control custom-sinput" id="ConfirmPassword" [(ngModel)]="selectedData.confirmPassword" [ngModelOptions]="{standalone: true}">
+                          <input type="checkbox" (click)="showpassword()">Afficher Confirmation Mot De Passe
+                      </div>
+                      <!-- <div *ngIf="ColabForm.get('ConfirmPassword')?.hasError('required') && (ColabForm.get('ConfirmPassword')?.touched || ColabForm.get('ConfirmPassword')?.dirty)" class="text-danger">
+                      *
+                    </div> -->
+
+                    </div>
+
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="poste" class="label rs me-3">Poste:</label>
+                      </div>
+                      <div style="width: 300px;">
+                        <input type="text" class="form-control custom-sinput" id="poste" [(ngModel)]="selectedData.poste" [ngModelOptions]="{standalone: true}">
+                      </div>
+                    <!-- <div *ngIf="ColabForm.get('poste')?.hasError('required') && (ColabForm.get('poste')?.touched || ColabForm.get('poste')?.dirty)" class="text-danger">
+                      *
+                    </div> -->
+ 
+                    </div>
+
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="role" class="label rs me-3">Accès:</label>
+                      </div>
+                      <div style="width: 600px;"  >
+                        <!-- <select id="role"  [(ngModel)]="selectedData.role" [ngModelOptions]="{standalone: true}" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                          <option  value="" disabled selected>choisir un Accès </option>
+                          <option *ngFor="let role of rolesNames" [value]="role">{{ role }}</option>
+ 
+                        </select> -->
+                        
+                      </div>
+                      <!-- <div
+                      *ngIf="ColabForm.get('role')?.hasError('required') && (ColabForm.get('role')?.touched || ColabForm.get('role')?.dirty)"
+                      class="text-danger">
+                      *
+                    </div> -->
+
+                    </div>
+                     
+                    
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+ 
+          </form>
+        </div>
+     </div> 
 
     <br />
       </div>

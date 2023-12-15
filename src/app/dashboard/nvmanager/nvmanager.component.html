@@ -1,0 +1,425 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+
+
+<body>
+
+  <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
+    <div class="logo_details">
+      <!-- <i class="bx bxl-audible icon"></i> -->
+      <div class="logo_name"> </div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <i class="bx bx-search"></i>
+        <input type="text" placeholder="Search...">
+        <span class="tooltip">Search</span>
+      </li>
+      <li>
+        <a [routerLink]="['/dashboard']">
+          <i class="bx bx-grid-alt"></i>
+          <span class="link_name">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a [routerLink]="['/list-client']">
+          <i class="bx bx-user"></i>
+          <span class="link_name">Client</span>
+        </a>
+        <span class="tooltip">Client</span>
+      </li>
+      <li>
+        <a [routerLink]="['/Prestation']">
+          <i class="bx bx-chat"></i>
+          <span class="link_name">Préstation</span>
+        </a>
+        <span class="tooltip">Préstation</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-pie-chart-alt-2"></i>
+          <span class="link_name">Tache</span>
+        </a>
+        <span class="tooltip">Tache</span>
+      </li>
+      <li>
+        <a [routerLink]="['/list-type-societe']">
+          <i class="bx bx-folder"></i>
+          <span class="link_name">Types société</span>
+        </a>
+        <span class="tooltip">Types D'entreprises</span>
+      </li>
+      <li>
+        <a [routerLink]="['/list-colabs']">
+          <i class='bx bx-user-plus'></i>
+          <span class="link_name">Colaborateur</span>
+        </a>
+        <span class="tooltip">Colaborateur</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-cart-alt"></i>
+          <span class="link_name">Order</span>
+        </a>
+        <span class="tooltip">Order</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-cog"></i>
+          <span class="link_name">Settings</span>
+        </a>
+        <span class="tooltip">Settings</span>
+      </li>
+      <li class="profile">
+        <div class="profile_details">
+          <!-- <img src="profile.jpeg" alt="profile image"> -->
+          <div class="profile_content">
+            <div class="name">Anna Jhon</div>
+            <div class="designation">Admin</div>
+          </div>
+        </div>
+        <i class="bx bx-log-out" id="log_out"></i>
+      </li>
+    </ul>
+  </div>
+
+  <div class="body-wrapper">
+    <!-- //header2 -->
+
+    <header class="app-header" style="position: fixed;">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <ul class="navbar-nav">
+          <li class="nav-item d-block d-xl-none">
+            <a class="nav-link sidebartoggler nav-icon-hover" id="sidebarCollapseButton" data-bs-toggle="offcanvas"
+              (click)="toggleSidebar()" data-bs-target="#sidebarCollapse">
+              <i class="ti ti-menu-2"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-icon-hover">
+              <i class="ti ti-bell-ringing"></i>
+              <div class="notification bg-primary rounded-circle"></div>
+            </a>
+          </li>
+        </ul>
+
+        <!-- RECHERCHE BAR -->
+        <!-- <form class="position-relative text-center">
+              <div class="input-group"
+                style="width: 600px; margin-left: 20px; margin-top: 12px; background-color: ghostwhite;">
+                <input placeholder="Search..." aria-label="Search" type="search" class="rounded-pill form-control">
+                <div class="input-group-prepend">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="svg-inline--fa fa-search fa-w-16 text-400 search-box-icon"
+                    style="margin-left: -34px;text-align:center;margin-top: 8px;">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </div>
+              </div>
+            </form> -->
+
+        <!-- Traduction -->
+        <!-- <div class="flex items-center gap-2 h-16 ml-auto" style="margin-left: 400px;">
+              <div class="dropdown-item">
+                <a class="dropdown-toggle" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                  <i class="flag-united-kingdom flag m-0"></i>
+                  <img class="thumb" data-pin-no-hover="true" fetchpriority="high"
+                    src="../../assets/images/flagfrance.png" style="width: 38px; height: 36px;">
+                </a>
+              </div>
+            </div> -->
+
+        <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+          <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+            <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank"
+              class="btn btn-primary" style="width: 221px;padding: 6px">Welcome, {{username}}</a>
+            <!-- (click)="displaydatauser()" -->
+            <li class="nav-item dropdown">
+              <a class="nav-link nav-icon-hover" (click)="displaydatauser()" id="drop2" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+              </a>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" id="dropmenuuser"
+                aria-labelledby="drop2">
+                <div class="message-body">
+                  <a class="d-flex align-items-center gap-2 dropdown-item" style="margin-left: 18px;">
+                    <i class="ti ti-user fs-6"></i>
+                    <p class="mb-0 fs-3" style="font-size: 0.875rem!important;
+                          margin-bottom: 0!important;margin-left: -7px;margin-top: 10px;">Mon Profile</p>
+                  </a>
+                  <!-- (click)="logout()" -->
+                  <a (click)="logout()" style="margin-bottom: 12px;"
+                    class="btn btn-outline-primary mx-3 mt-2 d-block">Déconnecter</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div style="background-color: #ffff;margin-left: 100px;margin-top: 110px;">
+      <div class="container" *ngIf="!element">
+        <div class="row">
+          <form [formGroup]="ManagerForm">
+            <div class="row justify-content-center align-items-center" style="margin-left: 400px;">
+              <div class="col-6">
+                <div class="action text-center" [ngClass]="{'fixed-button': showFixedButton}"
+                  style="display: flex; gap: 10px; font-size: 18px;">
+                  <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/listmanager']"
+                    style=" padding-top: 3px; margin-bottom: 2px;padding-right: 10px;padding-left: 7px;">Annuler</a>
+                  <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer"
+                    (click)="OnSubmit()"
+                    style="padding-top: 3px; margin-bottom: 4px;padding-right: 10px;padding-left: 10px;">
+                    <i class="bi bi-check-circle"></i> Enregistrer associé
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mb-3">
+              <div class="card dossier-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Identification</h5>
+                  <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+
+                  <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="nameManager" class="label rs">Nom Complet:</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="text" class="form-control custom-sinput" id="nameManager"
+                          formControlName="nameManager" placeholder="Nom">
+                      </div>
+                      <div
+                        *ngIf="ManagerForm.get('nameManager')?.hasError('required') && (ManagerForm.get('nameManager')?.touched ||ManagerForm.get('nameManager')?.dirty)"
+                        class="text-danger">
+                        *
+                        <!-- Nom est obligatoire. -->
+                      </div>
+                    </div>
+
+                    <!-- Prénom  est obligatoire. -->
+                    <!-- Nom d'utilisateur est obligatoire. -->
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="datedebut" class="label rs" style="margin-left: 44px;">Date Début :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="date" class="form-control custom-sinput" id="datedebut"
+                          formControlName="datedebut">
+                      </div>
+                      <div
+                        *ngIf="ManagerForm.get('datedebut')?.hasError('required') && (ManagerForm.get('datedebut')?.touched ||ManagerForm.get('datedebut')?.dirty)"
+                        class="text-danger">
+                        *
+
+                      </div>
+                    </div>
+
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="DateFin" class="label rs me-3">Date Fin :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="date" class="form-control custom-sinput" id="dateFin" formControlName="dateFin">
+                      </div>
+                      <div
+                        *ngIf="ManagerForm.get('dateFin')?.hasError('required') && (ManagerForm.get('dateFin')?.touched ||ManagerForm.get('dateFin')?.dirty)"
+                        class="text-danger">
+                        *
+
+                      </div>
+
+                    </div>
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 200px;">
+                        <label for="client" class="label rs me-3">Choisir La Société :</label>
+                      </div>
+                      <div style="width: 600px;">
+                        <div>
+                          <select id="societe" id="idsociete" formControlName="selectedSociete"
+                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                            <option value="" disabled selected>Select a Société</option>
+                            <option *ngFor="let client of clients" [value]="client.rs">{{client.rs}}</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div
+                        *ngIf="ManagerForm.get('dateFin')?.hasError('required') && (ManagerForm.get('dateFin')?.touched ||ManagerForm.get('dateFin')?.dirty)"
+                        class="text-danger">
+                        *
+
+                      </div>
+
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+        </div>
+      </div>
+
+
+      <!-- Modifier Mnager form -->
+      <div class="container" *ngIf="element" style="background-color: #ffff;margin-left: 165px;margin-top: 110px;">
+         
+        <div class="row">
+          <form *ngIf="selectedData"  #updateManager="ngForm"  (ngSubmit)="OnUpdate(updateManager.value)" >
+            <div class="row justify-content-center align-items-center" style="margin-left: 400px;">
+              <div class="col-6">
+                <div class="action text-center" [ngClass]="{'fixed-button': showFixedButton}"
+                  style="display: flex; gap: 10px; font-size: 18px;">
+                  <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/listmanager']"
+                    style=" padding-top: 3px; margin-bottom: 2px;padding-right: 10px;padding-left: 7px;">Annuler</a>
+                  <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer"
+                    (click)="OnSubmit()"
+                    style="padding-top: 3px; margin-bottom: 4px;padding-right: 10px;padding-left: 10px;">
+                    <i class="bi bi-check-circle"></i> Modifier associé
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mb-3">
+              <div class="card dossier-card">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">Identification</h5>
+                  <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+
+                  <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="nameManager" class="label rs">Nom Complet:</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="text" class="form-control custom-sinput" id="nameManager"
+                        [(ngModel)]="selectedData.nameManager" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <!-- <div
+                        *ngIf="ManagerForm.get('nameManager')?.hasError('required') && (ManagerForm.get('nameManager')?.touched ||ManagerForm.get('nameManager')?.dirty)"
+                        class="text-danger"> -->
+                        <!-- * -->
+                        <!-- Nom est obligatoire. -->
+                      <!-- </div> -->
+                    </div>
+
+                    <!-- Prénom  est obligatoire. -->
+                    <!-- Nom d'utilisateur est obligatoire. -->
+                    <div class="mb-3 d-flex">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="datedebut" class="label rs" style="margin-left: 44px;">Date Début :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="date" class="form-control custom-sinput" id="datedebut"
+                        [(ngModel)]="selectedData.datedebut" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <div *ngIf="ManagerForm.get('datedebut')?.hasError('required') && (ManagerForm.get('datedebut')?.touched || ManagerForm.get('datedebut')?.dirty)"
+                      class="text-danger">
+                      *
+                    </div>
+                    </div>
+
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 150px;">
+                        <label for="DateFin" class="label rs me-3">Date Fin :</label>
+                      </div>
+                      <div style="width: 400px;">
+                        <input type="date" class="form-control custom-sinput" id="dateFin"   [(ngModel)]="selectedData.dateFin" [ngModelOptions]="{standalone: true}">
+                      </div>
+                      <div
+                        *ngIf="ManagerForm.get('dateFin')?.hasError('required') && (ManagerForm.get('dateFin')?.touched ||ManagerForm.get('dateFin')?.dirty)"
+                        class="text-danger">
+                        *
+
+                      </div>
+
+                    </div>
+                    <div class="mb-3 d-flex" style="margin-top: 12px;">
+                      <div class="me-3" style="width: 200px;">
+                        <label for="client" class="label rs me-3">Choisir La Société :</label>
+                      </div>
+                      <div style="width: 600px;">
+                        <div>
+                          <select id="societe" id="idsociete" formControlName="selectedSociete"
+                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                            <option value="" disabled selected>Select a Société</option>
+                            <option *ngFor="let client of clients" [value]="client.rs">{{client.rs}}</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div
+                        *ngIf="ManagerForm.get('dateFin')?.hasError('required') && (ManagerForm.get('dateFin')?.touched ||ManagerForm.get('dateFin')?.dirty)"
+                        class="text-danger">
+                        *
+
+                      </div>
+
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+
+        <br />
+      </div>
+
+      <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link" alt="undo"
+        routerLink="/list-client" style="cursor: pointer;" />
+
+    </div>
+
+
+
+</body>
+
+
+
+
+
+
+
+
+<div class="toast toast-success" role="alert" aria-live="assertive" id="toastsucces" aria-atomic="true"
+  style="text-align: center;">
+  <strong class="me-auto"></strong>
+  <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;"
+    aria-label="Close"></button>
+  <div class="toast-body">
+    Votre associé a été ajouté avec succès
+  </div>
+</div>
+
+<div class="toast toast-success" role="alert" aria-live="assertive" id="toastsuccesModify" aria-atomic="true"
+  style="text-align: center;">
+  <strong class="me-auto"></strong>
+  <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;"
+    aria-label="Close"></button>
+  <div class="toast-body">
+    Votre associé a été Modifié avec succès
+  </div>
+</div>

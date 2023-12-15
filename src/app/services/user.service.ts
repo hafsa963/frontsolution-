@@ -48,8 +48,14 @@ export class UserService {
   getAllUsers(): (Observable<any>){
     return this.http.get(`${this.baseUrl}/Admin/admin/colab`)
   }
+  
+  update(id:number ,updateColab : any ): (Observable<any>) {
+    return this.http.put(`${this.baseUrl}/Admin/admin/updateColab/${id}`,updateColab)
+  }
 
 
+
+  
 }
 
  

@@ -15,8 +15,6 @@ import { MDPOublierComponent } from './mdp-oublier/mdp-oublier.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DossierComponent } from './dashboard/dossier/dossier.component';
 import { PrestationComponent } from './dashboard/prestation/prestation.component';
- 
-import { AjoutSocieteComponent } from './dashboard/ajout-societe/ajout-societe.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AjoutPrestationComponent } from './dashboard/ajout-prestation/ajout-prestation.component';
@@ -24,14 +22,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListColabsComponent } from './dashboard/list-colabs/list-colabs.component';
 import { NvColabComponent } from './dashboard/nv-colab/nv-colab.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
-import { PrestationToDossierComponent } from './dashboard/prestation-to-dossier/prestation-to-dossier.component';
-import { DossierArchiveComponent } from './dashboard/dossier-archive/dossier-archive.component';
 import { ListClientComponent } from './dashboard/list-client/list-client.component';
 import { NvClientComponent } from './dashboard/nv-client/nv-client.component';
 import { DataclientComponent } from './dashboard/dataclient/dataclient.component';
 import { ListTypeSocieteComponent } from './dashboard/list-type-societe/list-type-societe.component';
 import { NvTypeComponent } from './dashboard/nv-type/nv-type.component';
 import { TestmenuComponent } from './dashboard/testmenu/testmenu.component';
+import { NvmanagerComponent } from './dashboard/nvmanager/nvmanager.component';
+import { ListmanagerComponent } from './dashboard/listmanager/listmanager.component';
+import { MyprofileComponent } from './dashboard/myprofile/myprofile.component';
+import { PrestationsClientComponent } from './dashboard/prestations-client/prestations-client.component';
  
  
  
@@ -45,18 +45,19 @@ import { TestmenuComponent } from './dashboard/testmenu/testmenu.component';
     DashboardComponent,
     DossierComponent,
     PrestationComponent,
-    AjoutSocieteComponent,
     AjoutPrestationComponent,
     NvColabComponent,
     ListColabsComponent,
-    PrestationToDossierComponent,
-    DossierArchiveComponent,
     ListClientComponent,
     NvClientComponent,
     DataclientComponent,
     ListTypeSocieteComponent,
     NvTypeComponent,
     TestmenuComponent,
+    NvmanagerComponent,
+    ListmanagerComponent,
+    MyprofileComponent,
+    PrestationsClientComponent,
   
      
      

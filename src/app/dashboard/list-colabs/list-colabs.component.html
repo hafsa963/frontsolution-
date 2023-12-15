@@ -200,12 +200,13 @@
                   <!-- <td>{{colab.password}}</td>   -->
                   <td class="Actions">
                     <div class="d-flex justify-content-center">
-                    <a   class="text-decoration-none text-primary me-2" data-toggle="tooltip" title="modifier">
+                    <a   class="text-decoration-none text-primary me-2" data-toggle="tooltip" (click)="passData(colab)"  *ngIf="colab.id"   title="modifier">
                       <i class="bi bi-pencil-square"></i>
                     </a>
-                    <a  data-toggle="tooltip" title="visualiser"  ><i class="bi bi-eye"></i></a>
+                    <a  data-toggle="tooltip" title="visualiser" ><i class="bi bi-eye"></i></a>
                     <a   (click)="openModal()"  data-toggle="tooltip"  data-bs-placement="top"  title="archiver"><i class="bi bi-archive"></i></a>
-                    </div>
+                    </div>                  
+
                   </td>
                 </tr>
               </tbody>

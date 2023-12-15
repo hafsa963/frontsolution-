@@ -1,19 +1,20 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { user } from 'src/app/model/user';
+import { Manager } from 'src/app/model/Manager';
+import { GestionClientService } from 'src/app/services/gestion-client.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-list-colabs',
-  templateUrl: './list-colabs.component.html',
-  styleUrls: ['./list-colabs.component.css']
+  selector: 'app-listmanager',
+  templateUrl: './listmanager.component.html',
+  styleUrls: ['./listmanager.component.css']
 })
-export class ListColabsComponent {
+export class ListmanagerComponent {
   isSidebarOpen =  false;
-  colab: any;
+  manager: any;
   username: any;
   selectedData: any; 
-  constructor(private appService: UserService,private router: Router) {
+  constructor(private appService: UserService,private router: Router,private gestionclient: GestionClientService,) {
   }
   ngOnInit() {
     this.appService.getCurrentUserResponseEntity().subscribe((response: any) => {
@@ -22,10 +23,10 @@ export class ListColabsComponent {
         console.log('Username:', this.username);
       }
     });
-    this.appService.getAllUsers()
+    this.gestionclient.getAllManager()
       .subscribe((response: any) => {  
-      this.colab = Array.isArray(response) ? response : [response];
-      console.log(this.colab);
+      this.manager = Array.isArray(response) ? response : [response];
+      console.log(this.manager);
       });
  
       this.sidebarDetail();
@@ -48,34 +49,20 @@ export class ListColabsComponent {
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
-  openModal(){
+ 
+ /* modifier*/
+ passData(manager :  Manager){
 
-    const Modeldiv = document.getElementById('modelarchive');
-    if(Modeldiv != null){
-
-      Modeldiv.style.display = 'block';
-    }
-    
-  }
-CloseModel(){
-  const Modeldiv = document.getElementById('modelarchive');
-  if(Modeldiv != null){
-
-    Modeldiv.style.display = 'none';
-  }
-}
-
- /* modifier colaborateur */
- passData(colab : user ){
-  console.log(colab);
-  if (colab && colab.id) {
-    this.router.navigate(['/nv-colab'], { state: { selectedData: colab,element: true} });
+  console.log(manager);
+  if (manager && manager.id) {
+    this.router.navigate(['/nvmanager'], { state: { selectedData: manager,element: true} });
   } else {
     
-    console.error("ID is undefined for the selected colab");
+    console.error("ID is undefined for the selected nvmanager");
   } 
-
  }
+
+ 
 
 
 displaydatauser() {
@@ -126,4 +113,5 @@ sidebarDetail(){
     }
   };
  }
+
 }
