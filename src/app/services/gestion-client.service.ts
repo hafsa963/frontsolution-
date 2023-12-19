@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Typesociete } from '../model/TypeSociete';
 import { Manager } from '../model/Manager';
 
@@ -10,14 +10,19 @@ import { Manager } from '../model/Manager';
 export class GestionClientService {
 
   baseUrl = 'http://localhost:8080'
+  
+  // private allClients: any[] = [];
+  // private clientsSubject = new BehaviorSubject<any[]>([]);
+  // clients$ = this.clientsSubject.asObservable();
   constructor(private http:HttpClient) { }
-
+  
   
 
-  getAllClient() : (Observable<any>){
-    return this.http.get(`${this.baseUrl}/Clients/admin/client`)
-
+  getAllClient(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/Clients/admin/client`);
   }
+
+  
   
   createClient(client : any){
     return this.http.post(`${this.baseUrl}/Clients/admin/createClient`,client)
@@ -25,10 +30,12 @@ export class GestionClientService {
   deleteclient(id : number){
     return this.http.delete(`${this.baseUrl}/Clients/admin/deleteclient/${id}`)
   }
-  
+
+    
+
   updateClient(id: number, updatedData: any): (Observable<any>){
-    return this.http.put(`${this.baseUrl}/Clients/admin/updateSociete/${id}`,updatedData)
-  }
+    return this.http.put(`${this.baseUrl}/Clients/admin/updateClient/${id}`,updatedData)
+  } 
 
   getclientByid(id: number){
     return this.http.get(`${this.baseUrl}/Clients/client/${id}`)
@@ -102,4 +109,14 @@ export class GestionClientService {
      
     return this.http.put(`${this.baseUrl}/Clients/admin/updatemanager/${id}`,updatedData)
   }
-}
+
+  updateClientUser(id: number): Observable<any> {
+    const url = `${this.baseUrl}/Clients/admin/updateClientUser/${id}`;
+    return this.http.put(url, {}); 
+  }
+
+  updateTypeSociete(id: number, typeUpdate: any){
+    return this.http.put(`${this.baseUrl}/typesociete/admin/updateTypeSociete/${id}`,typeUpdate)
+  }
+} 
+ 

@@ -33,7 +33,7 @@
  
 
   .navbar {
-    position: fixed;
+   position: fixed; 
     width: 100%;
     top: 0;
     margin: 0;
@@ -48,10 +48,10 @@
     font-family: 'Poppins', sans-serif;
     overflow-x:hidden;  
  
-     background: rgb(230, 230, 255);  
+     /* background: rgb(230, 230, 255);   */
       padding-left: 10px;
   padding-right: 10px;
-     box-shadow: 0px 0px 10px rgba(0,0,0,0.1); 
+     /* box-shadow: 0px 0px 10px rgba(0,0,0,0.1);  */
       margin-left: 60px;
   
   } 
@@ -84,9 +84,7 @@
   padding-left: 22px;
  
 }
-.dossier-card:hover {
-  transform: scale(1.05);
-}
+ 
 
 .dossier-card .card-title {
   color: #6d8eb1;

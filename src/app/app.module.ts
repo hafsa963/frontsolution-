@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 
@@ -69,7 +70,7 @@ import { PrestationsClientComponent } from './dashboard/prestations-client/prest
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
-  //  MatPaginatorModule,
+   MatPaginatorModule,
     ReactiveFormsModule,
     BrowserModule,
      HttpClientModule,

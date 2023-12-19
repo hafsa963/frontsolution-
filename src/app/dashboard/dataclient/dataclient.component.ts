@@ -20,7 +20,10 @@ export class DataclientComponent {
   prestation: Prestation[] = []; 
   prestationNames: string[] = [];
   selectedPrestationId!: number; 
- 
+  namesprestation: string[] = [];
+  prestations: { name: string }[] = [];
+  
+
  
   constructor(private appService: GestionClientService, private userService: UserService,private serviceprestation: ServicePrestationService, private router: Router) {
  
@@ -48,6 +51,19 @@ export class DataclientComponent {
         console.error('Error fetching prestation data:', error);
       }
     );
+    console.log('Selected Data ID:', this.selectedData.id);
+
+    this.serviceprestation.getPrestationsClientByID(this.selectedData.id).subscribe(
+      (res: any) => {
+        this.prestations = res.map((prestationName: string) => ({
+          name: prestationName,
+        
+        }));
+      },
+      (error) => {
+        console.error('Error fetching prestation data:', error);
+      }
+    );
     
   }
   logout() {     
@@ -60,16 +76,7 @@ export class DataclientComponent {
    selectedPrestation(selectedPrestationId : number){
   
     console.log(selectedPrestationId);
-    // this.serviceprestation.getAllPrestations().subscribe(
-    //   (response: any) => {
-    //     this.prestation = response as Prestation[];  
-    //     this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching prestation data:', error);
-    //   }
-    // );
-  
+ 
     
     
   }
@@ -86,6 +93,14 @@ export class DataclientComponent {
         console.log('Selected Prestation ID:', this.selectedPrestationId);
         console.log('Selected Data ID:', this.selectedData.id);
         console.log(this.client);
+        const Modeldiv = document.getElementById('toastsucces');
+        if(Modeldiv != null){
+          Modeldiv.classList.add('show');
+          setTimeout(() => {
+            Modeldiv.classList.remove('show');
+          }, 2000);
+         
+        }
 
         console.log('Data has been successfully submitted:', res);
       },
@@ -95,7 +110,8 @@ export class DataclientComponent {
     );
 
   }
-
+ 
+  
 
    showFixedButton: boolean = false;
 

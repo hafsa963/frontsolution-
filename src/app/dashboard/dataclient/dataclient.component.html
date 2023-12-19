@@ -221,6 +221,34 @@
                           </div>
                           <button type="button"   class="btn btn-primary" style="padding: 6px;width: 170px;margin-left: 30px;" (click)="affectedprestation()">Confirmer</button> 
                         </div>
+
+                        <div class="flex-wrap mb-3" style="margin-top: 30px;">
+      
+                          <!-- <div *ngFor="let presta of prestation; let i = index">
+                         
+                            <label for="presta" class="label rs"
+                              style="margin-left: 8px; padding: 4px; font-size: 18px;margin-top:6px; width: 150px;margin-right: 50px;">Prestation{{i + 1}}</label>
+                         
+                            <div style="padding: 4px; font-size: 20px;width: 400px; margin-top: -52px;margin-left: 110px;">
+                              <input type="text"   class="form-control custom-sinput"  name="namePrestation" [(ngModel)]="namesprestation" id="prestation{{i + 1}}" [ngModelOptions]="{standalone: true}"/>
+                               
+                            </div>
+                          </div>  -->
+                          <div *ngFor="let prestation of prestations; let i = index">
+                            <label for="presta" class="label rs"
+                              style="margin-left: 8px; padding: 4px; font-size: 18px; margin-top: 6px; width: 150px; margin-right: 50px;">
+                              Prestation{{i + 1}}
+                            </label>
+                            <div style="padding: 4px; font-size: 20px; width: 400px; margin-top: -52px; margin-left: 110px;">
+                              <input type="text" class="form-control custom-sinput" name="namePrestation" [(ngModel)]="prestation.name"
+                                id="namePrestation{{i + 1}}" [ngModelOptions]="{ standalone: true }"    />  
+                            </div>
+                          </div>
+          
+       
+      
+      
+                        </div>
                         
 
                         
@@ -511,6 +539,21 @@
    
     </div>
 
+    <div class="toast toast-success" role="alert" aria-live="assertive" id="toastsucces"  aria-atomic="true" style="text-align: center;">
+      <strong class="me-auto"></strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
+      <div class="toast-body">
+        la Préstation  a été effectué avec succès 
+      </div>
+    </div>
+    
+    <div class="toast toast-success" role="alert" aria-live="assertive" id="toastsuccesModify"  aria-atomic="true" style="text-align: center;">
+      <strong class="me-auto"></strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
+      <div class="toast-body">
+        la Préstation  a été effectué avec succès 
+      </div>
+    </div>
  
   
 

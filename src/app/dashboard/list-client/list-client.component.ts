@@ -31,6 +31,11 @@ export class ListClientComponent {
   username: any;
    id: any;
   idInterval: any;
+
+  response: any[] = [];   
+  pageSize = 10;
+  currentPage = 1;
+  page: any;
   constructor(private appService: GestionClientService, private userService: UserService, private router: Router, private attachment:AttachmentService,private http:HttpClient) {
  
   }
@@ -48,7 +53,8 @@ export class ListClientComponent {
        
       Modeldiv.style.display = 'block';
     }
-    this.getAttachments(client.attachment);
+   
+    this.getAttachments(client.attachmentEntity);
 
     
   }
@@ -60,12 +66,9 @@ export class ListClientComponent {
       Modeldiv.style.display = 'none';
     }
     }
-  ngOnInit() {
-    this.appService.getAllClient()
-      .subscribe((response: any) => {  
-      this.client = Array.isArray(response) ? response : [response];
 
-      });
+  ngOnInit() {
+    this.loadDataClient();
       this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
         if (response && response.username) {
           this.username = response.username;
@@ -74,23 +77,34 @@ export class ListClientComponent {
       });
      
       this.sidebarDetail();
-      //this.loadData(25)
-     
 
   }
+
+  loadDataClient(): void {
+    this.appService.getAllClient()
+    .subscribe((response: any) => {  
+      this.client = Array.isArray(response) ? response : [response];
+      });
+  }
+
+ 
+  onPageChange(event: any) {
+    // event.pageIndex is zero-based, so add 1 to make it one-based
+    this.page = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
+  }
+
   onDelete(id:any) {
   
      
-    this.appService.deleteclient(id).subscribe(
+    this.appService.updateClientUser(id).subscribe(
       (response: any) => {
         // console.log('Data has been successfully deleted:', response);
         const responseObject = { message: response };
         console.log('Data has been successfully deleted:', responseObject);
-        
-        this.appService.getAllClient()
-        .subscribe((responseData: any) => {  
-         this.client = responseData;
-        });
+
+        this.loadDataClient();
         this.CloseModel();
         const Modeldiv = document.getElementById('toastsucces');
         if(Modeldiv != null){
@@ -104,9 +118,7 @@ export class ListClientComponent {
       },
       (error:any) => {
         console.error('An error occurred:', error);
-        this.appService.getAllClient().subscribe((response: any) => {  
-          this.client = response;
-        });
+        this.loadDataClient();
         this.CloseModel();
       }
       
@@ -135,7 +147,7 @@ SearchBy(searchInput: string) {
     this.callApi(this.appService.getByforme,searchInput);
     this.callApi(this.appService.getByforme,searchInput);
     this.callApi(this.appService.getBysiege,searchInput);
-  
+   
   }
 }
  
@@ -160,9 +172,10 @@ onInputChange(event: Event) {
   const inputValue = (event.target as HTMLInputElement).value;
  
   if (!inputValue.trim()) {
-    this.appService.getAllClient().subscribe((response: any) => {  
-      this.client = Array.isArray(response) ? response : [response];
-    });
+    // this.appService.getAllClient().subscribe((response: any) => {  
+    //   this.client = Array.isArray(response) ? response : [response];
+    // });
+    this.loadDataClient();
   }
 }
 
@@ -231,7 +244,7 @@ getAttachments(attachment:any[]): void {
   this.attachments= [];
   if(attachment && attachment.length) {
       this.attachments = attachment;
-  }
+   }
   }
 
 

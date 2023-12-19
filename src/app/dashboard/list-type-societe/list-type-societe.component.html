@@ -208,16 +208,15 @@
                       <tr *ngFor="let type of typesociete" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
                         <td style="font-size: 20px;">{{type.nom }}</td>
                         <td class="Actions">
-                          <a   class="text-decoration-none text-primary me-2"   data-toggle="tooltip" title="modifier">
+                          <a   class="text-decoration-none text-primary me-2"  *ngIf="type.id"  (click)="TypeModifier(type)"  data-toggle="tooltip" title="modifier">
                             <i class="bi bi-pencil-square"></i>
                           </a>
                           <!-- <a class="btnbtn"  data-toggle="tooltip" title="visualiser" (click)="toggleSteps(presta)">
                             <i [ngClass]="{'bi bi-eye-fill': !showSteps[presta.namePrestation], 'bi bi-eye-slash': showSteps[presta.namePrestation]}"   ></i> 
                           </a> -->
-                        <a><i class="bi bi-archive"  ></i></a>
+                        <!-- <a><i class="bi bi-archive"  ></i></a> -->
                         </td>
-                        <!-- (click)="openModal(presta.id)" -->
-                        <!-- *ngIf="presta.id" (click)="modifypresta(presta)" -->
+                        
                       </tr>
                     </tbody>
                   </table>

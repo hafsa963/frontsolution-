@@ -328,7 +328,7 @@
    
                           </select> -->
                           <div formGroupName="roles">
-                          <select id="role" formControlName="role">
+                          <select id="role" formControlName="role" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                             <option value="" disabled>Select a Role</option>
                             <option *ngFor="let role of roles" [value]="role.id">{{ role.role }}</option>
                           </select>

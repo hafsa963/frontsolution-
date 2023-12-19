@@ -242,6 +242,62 @@
      <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/list-type-societe" style="cursor: pointer;"/>
 
       </div>
+
+      <div style="margin-top: 30px;">
+        <div class="container" *ngIf="element == true">
+          <div class="row">
+              <form *ngIf="selectedData" #typeUpdate="ngForm" (ngSubmit)="OnUpdate(typeUpdate.value)">
+                <div class="row justify-content-center align-items-center" style="margin-left: 600px;">
+                  <div class="col-6">
+                    <div class="action text-center"   style="display: flex; gap: 10px; font-size: 18px;margin-top: 20px;margin-bottom: 12px;">
+                      <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-type-societe']" style="padding-top: 4px; margin-bottom: 4px;padding-right: 10px;padding-left: 10px;">Annuler</a>
+                      <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer" style="padding-top: 1px; margin-bottom: 4px;padding-right: 10px;padding-left: 10px;">
+                        <i class="bi bi-check-circle"></i> Modifier 
+                      </button>
+                    </div> 
+                  </div>
+                </div>  
+              <div class="col-md-11 mb-3">
+                <div class="card dossier-card">
+                  <div class="card-body">
+                    <h5 class="card-title mb-0">Type D'entreprise</h5>
+                    <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+  
+                    <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                      <div class="mb-3 d-flex">
+                        <div class="me-3" style="width: 150px;">
+                          <label for="rs" class="label rs"> Nom Type :</label>
+                        </div>
+                        <div style="width: 400px;">
+                          <input type="text" class="form-control custom-sinput" [(ngModel)]="selectedData.nom" [ngModelOptions]="{standalone: true}" id="typesociete" >
+                        </div>
+                        <!-- <div
+                        *ngIf="ClientForm.get('rs')?.hasError('required') && (ClientForm.get('rs')?.touched ||ClientForm.get('rs')?.dirty)"
+                        class="text-danger">
+                        Préstation est obligatoire.
+                      </div> -->
+                       </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+   
+  
+             
+  
+             
+            
+            </form>
+          </div>
+       </div> 
+    
+
+    
+   <!-- </main>  -->
+   <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/list-type-societe" style="cursor: pointer;"/>
+
+    </div>
  
       </div>
     
@@ -253,14 +309,14 @@
     <strong class="me-auto"></strong>
     <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
     <div class="toast-body">
-      La mission a été ajoutée avec succès.
+      Le Type D'entreprise a été ajoutée avec succès.
     </div>
   </div>
   <div class="toast toast-success" role="alert" aria-live="assertive" id="toastsuccesModify"  aria-atomic="true" style="text-align: center;">
     <strong class="me-auto"></strong>
     <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
     <div class="toast-body">
-      La mission a été Modifié avec succès.
+      Le Type D'entreprise a été Modifié avec succès.
     </div>
   </div>
   

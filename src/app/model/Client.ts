@@ -25,12 +25,13 @@ export interface Client{
     email:  string,
     cmt:  string,
     etat:  string,
+    displayClient :boolean,
     typesociete:  string,
-    attachment: Attachment;
+    attachmentEntity: Attachment;
      
 }
 
-
+ 
 
 
 

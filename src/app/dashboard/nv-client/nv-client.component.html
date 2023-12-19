@@ -906,10 +906,10 @@
                               <!-- [(ngModel)]="selectedTypeSociete" name="typesociete" *ngFor="let type of typesocietes {{ type.nom }}  [value]="type.id"" -->
                               <div class="mb-3 d-flex" style="margin-top: 12px;">
                                 <div class="me-3" style="width: 150px;">
-                                  <label for="IP" class="label rs me-3">Type Entreprise :</label>
+                                  <label for="typesociete" class="label rs me-3">Type Entreprise :</label>
                                 </div>
                                 <div style="width: 600px;">
-                                  <select id="typesociete" formControlName="typesociete" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                  <select id="typesociete" [(ngModel)]="selectedData.typesociete" [ngModelOptions]="{standalone: true}"  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                     <option  value="" disabled selected>Choose TypeSociete</option>
                                     <option *ngFor="let name of typesocieteNames" [value]="name">{{ name }}</option>
            
@@ -950,7 +950,7 @@
     <strong class="me-auto"></strong>
     <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
     <div class="toast-body">
-      la société a été ajouté avec succès 
+      le  Client a été ajouté avec succès 
     </div>
   </div>
   
@@ -958,6 +958,6 @@
     <strong class="me-auto"></strong>
     <button type="button" class="btn-close" data-bs-dismiss="toast" style="position: absolute; top: 0; right: 0;" aria-label="Close"></button>
     <div class="toast-body">
-      la société a été Modifié avec succès 
+      le Client a été Modifié avec succès 
     </div>
   </div>

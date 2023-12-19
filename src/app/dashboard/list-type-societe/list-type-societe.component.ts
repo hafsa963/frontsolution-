@@ -15,8 +15,16 @@ export class ListTypeSocieteComponent {
   isSidebarOpen = false;
   typesociete: Typesociete[] = [];
   username: any;
+  selectedData: any;
+  element: boolean = false; 
 
   ngOnInit(): void {
+    // if (history.state.element !== undefined) {
+    //   this.element = history.state.element;
+    // }
+    // this.selectedData = history.state.selectedData;
+    // console.log(this.selectedData);
+    
     this.sidebarDetail();
     this.getAll();
     this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
@@ -134,6 +142,18 @@ logout() {
   console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
    window.sessionStorage.clear();  
  }
+
+ TypeModifier(typesociete : Typesociete){
+  console.log(typesociete);
+  if (typesociete && typesociete.id) {  
+    this.router.navigate(['/nv-type'], { state: { selectedData: typesociete,element: true } });
+  } else {
+    console.error("ID is undefined for the selected typesociete");
+  } 
+
+ }
+
+ 
 
 
 }

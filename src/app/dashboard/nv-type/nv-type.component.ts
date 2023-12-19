@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Typesociete } from 'src/app/model/TypeSociete';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
@@ -21,21 +22,21 @@ export class NvTypeComponent {
   selectedprestation:any;
 
   username: any;
-
+  selectedData: any;
+  TypesocieteForm: FormGroup = new FormGroup({});
+ 
 
   ngOnInit() {
     this.sidebarDetail();
+
     if (history.state.element !== undefined) {
       this.element = history.state.element;
     }
+    this.selectedData = history.state.selectedData;
+    console.log(this.selectedData);
+      console.log(this.typesociete);
+ 
   
-    this.selectedprestation = Array.isArray(history.state.selectedprestation)
-      ? history.state.selectedprestation[0]
-      : history.state.selectedprestation;
-  
-    ;
-  
-    // console.log(this.selectedprestation);
     this.userService.getCurrentUserResponseEntity().subscribe((response: any) => {
       if (response && response.username) {
         this.username = response.username;
@@ -51,7 +52,12 @@ export class NvTypeComponent {
  
  
   
-  constructor(private appService : GestionClientService, private router : Router, private userService: UserService){}
+  constructor(private appService : GestionClientService, private router : Router, private userService: UserService, private fb: FormBuilder){
+    this.TypesocieteForm = this.fb.group({
+      typesociete: ['', [Validators.required]],
+    });
+   
+  }
 
   onSubmit() {
     this.appService.createTypeSociete(this.typesociete).subscribe(
@@ -94,35 +100,7 @@ export class NvTypeComponent {
  
   
 
-// Example usage:
  
-// OnUpdate(formData: any) {
-//   if (this.selectedprestation && this.selectedprestation.id) {
-//     const id = this.selectedprestation.id;
-//     console.log('ID:', id);
-//     console.log('Form Data:', formData);
-//     console.log('Form Data:', this.selectedprestation);
-
-//     this.appService.updatePrestation(id, this.selectedprestation ).subscribe(
-//       (res) => {
-//         console.log('Data has been successfully modified:', res);
-//         const Modeldiv = document.getElementById('toastsuccesModify');
-//         if (Modeldiv != null) {
-//           Modeldiv.classList.add('show');
-//           setTimeout(() => {
-//             Modeldiv.classList.remove('show');
-//           }, 2000);
-//         }
-      
-//       },
-//       (error) => {
-//         console.error('Error in modified data:', error);
-//       }
-//     );
-//   } else {
-//     console.error('Invalid selectedprestation or missing id.');
-//   }
-// }
 showFixedButton: boolean = false;
 
 @HostListener('window:scroll', ['$event'])
@@ -170,5 +148,31 @@ logout() {
   console.log('SessionStorage data:', window.sessionStorage.getItem('key'));
    window.sessionStorage.clear();  
  }
+ 
+
+ //update Client 
+ OnUpdate(typeUpdate: any) {
+  if (this.selectedData && this.selectedData.id) {
+    console.log('Form submitted:', this.selectedData);   
+    this.appService.updateTypeSociete(this.selectedData.id, this.selectedData).subscribe(
+      (res) => {
+        console.log('Data has been successfully submitted:', res);
+        const Modeldiv = document.getElementById('toastsuccesModify');
+        if (Modeldiv != null) {
+          Modeldiv.classList.add('show');
+          setTimeout(() => {
+            Modeldiv.classList.remove('show');
+          }, 2000);
+        }
+      },
+      (error) => {
+        console.error('An error occurred:', error);
+      }
+    );
+    console.log('Data has been sent for saving');
+  } else {
+    console.error("ID is undefined for the selected Societeupdat");
+  }
+}
 
 }

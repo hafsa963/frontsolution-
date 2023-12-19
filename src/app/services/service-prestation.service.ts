@@ -59,6 +59,9 @@ export class ServicePrestationService {
 associateSocietePrestation(id_client: number,id: number){
   return this.http.put(`${this.baseUrl}/Clients/admin/client/update/${id_client}/${id}`, {})
 }
+getPrestationsClientByID(id: number){
+  return this.http.get(`${this.baseUrl}/prestations/prestation/Client/${id}`)
+}
   
 
 }
