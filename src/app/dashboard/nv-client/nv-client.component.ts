@@ -48,6 +48,7 @@ export class NvClientComponent {
       email: ['', [Validators.required]],
       cmt: new FormControl(''),
       etat: new FormControl(''),
+      displayClient: new FormControl(true),
       typesociete: ['', [Validators.required]],
     });
    
@@ -155,6 +156,7 @@ export class NvClientComponent {
         email: this.ClientForm.value.email,
         cmt: this.ClientForm.value.cmt,
         typesociete: this.ClientForm.value.typesociete,
+        displayClient :true,
        };
 
       this.appService.createClient(client).subscribe(
@@ -265,6 +267,7 @@ OnUpdate(clientupdate: any) {
       email: this.selectedData.email,
       cmt: this.selectedData.cmt,
       typesociete: this.selectedData.typesociete,
+      displayClient :true,
     };
     console.log('Form submitted:', client);
     this.appService.updateClient(this.selectedData.id, client).subscribe(

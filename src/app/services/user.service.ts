@@ -52,7 +52,10 @@ export class UserService {
   update(id:number ,updateColab : any ): (Observable<any>) {
     return this.http.put(`${this.baseUrl}/Admin/admin/updateColab/${id}`,updateColab)
   }
-
+   
+  getUsername(searchInput :string){
+    return this.http.get(`${this.baseUrl}/auth/getUserName/${searchInput}`)
+  }
 
 
   

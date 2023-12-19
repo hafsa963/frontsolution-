@@ -22,14 +22,19 @@ export class ListColabsComponent {
         console.log('Username:', this.username);
       }
     });
-    this.appService.getAllUsers()
-      .subscribe((response: any) => {  
-      this.colab = Array.isArray(response) ? response : [response];
-      console.log(this.colab);
-      });
+    this.LoadColab();
  
       this.sidebarDetail();
   }
+
+  LoadColab(){
+    this.appService.getAllUsers()
+    .subscribe((response: any) => {  
+    this.colab = Array.isArray(response) ? response : [response];
+    console.log(this.colab);
+    });
+}
+  
   logout() {     
        
     this.router.navigate(["/"]); 
@@ -92,7 +97,47 @@ displaydatauser() {
 toggleSidebar() {
   this.isSidebarOpen = !this.isSidebarOpen;
 }
+onInputChange(event: Event) {
+  const inputValue = (event.target as HTMLInputElement).value;
  
+  if (!inputValue.trim()) {
+    
+    this.LoadColab();
+  }
+}
+ 
+
+SearchByNames(searchInput: string){
+  debugger;
+  const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
+ 
+  if (isNumeric) {
+
+    this.LoadColab();
+     
+  } 
+  else {
+
+    this.callApi(this.appService.getUsername,searchInput);
+ 
+   
+  }
+}
+ 
+
+private callApi(apiFunction: Function, value: any) {
+  apiFunction.call(this.appService, value).subscribe(
+    (response: any) => {
+      this.colab = Array.isArray(response) ? response : [response];
+      console.log(this.colab);
+   
+    },
+    (error: any) => {
+      console.error('Error while fetching data:', error);
+    }
+  );
+
+}
 
 showFixedButton: boolean = false;
 

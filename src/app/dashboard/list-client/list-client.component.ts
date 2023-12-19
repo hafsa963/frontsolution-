@@ -127,7 +127,7 @@ export class ListClientComponent {
 }
 
 SearchBy(searchInput: string) {
-  debugger;
+  // debugger;
   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
 
   if (isNumeric) {

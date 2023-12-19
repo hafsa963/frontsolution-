@@ -165,10 +165,11 @@
           </div>
         </nav>
       </header>
+      
       <div style="margin-top: 30px;" >
         <form class="d-flex" style="width: 33%; margin-left: 350px; margin-top: 90px;">
-          <input class="form-control me-2" type="search" placeholder="identifiant" aria-label="Search">
-          <button class="btn btn-outline-warning" type="submit">Rechercher</button>
+          <input class="form-control me-2" type="search" #searchInput type="search" placeholder="Nom utilisateur" aria-label="Search" (input)="onInputChange($event)">
+          <button class="btn btn-outline-warning" (click)="SearchByNames(searchInput.value)" type="submit">Rechercher</button>
         </form>
         <div style="margin-left: 100px;margin-top: 0px;">
           <button class="btn btn-outline-primary mx-3 mt-2 d-" [routerLink]="['/nv-colab']">Ajouter Colaborateur</button>
