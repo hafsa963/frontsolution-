@@ -85,14 +85,22 @@ export class PrestationComponent  {
   SearchBynameprestation(nameManager: string) {
     this.appService.getbymission(nameManager).subscribe(
       (response: any) => {
-       
-        console.log("ID of the namePrestation:", response);
-    
+        this.prestation = Array.isArray(response) ? response : [response];
+        console.log(this.prestation);
       },
+    
       (error: any) => {
         console.error('An error occurred:', error);
       }
     );
+  }
+  onInputChange(event: Event) {
+    const inputValue = (event.target as HTMLInputElement).value;
+   
+    if (!inputValue.trim()) {
+      
+      this.getAllPrestations();
+    }
   }
   
 

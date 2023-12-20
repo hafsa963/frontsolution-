@@ -95,7 +95,7 @@ displaydatauser() {
 }
 
 toggleSidebar() {
-  this.isSidebarOpen = !this.isSidebarOpen;
+  this.isSidebarOpen = !this.isSidebarOpen;  
 }
 onInputChange(event: Event) {
   const inputValue = (event.target as HTMLInputElement).value;
@@ -108,7 +108,7 @@ onInputChange(event: Event) {
  
 
 SearchByNames(searchInput: string){
-  debugger;
+ 
   const isNumeric = !isNaN(parseFloat(searchInput)) && isFinite(+searchInput);
  
   if (isNumeric) {
@@ -130,13 +130,11 @@ private callApi(apiFunction: Function, value: any) {
     (response: any) => {
       this.colab = Array.isArray(response) ? response : [response];
       console.log(this.colab);
-   
     },
     (error: any) => {
       console.error('Error while fetching data:', error);
     }
   );
-
 }
 
 showFixedButton: boolean = false;

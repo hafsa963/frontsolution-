@@ -7,6 +7,8 @@ import { AttachmentService } from 'src/app/services/attachment.service';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
 import { UserService } from 'src/app/services/user.service';
 import { Attachment } from 'src/app/model/attachment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Block } from '@angular/compiler';
 
 @Component({
   selector: 'app-list-client',
@@ -21,8 +23,8 @@ export class ListClientComponent {
   selectedData: any; 
   isSidebarExpanded: boolean = true;
   attachments: Attachment[] = [];
-
-  
+  isRightClicked: boolean = false;
+  @ViewChild('modelaction') modelaction: any;
   
   @ViewChild('sidebar') sidebarElement!: ElementRef;
   isSidebarOpen = false;
@@ -36,7 +38,13 @@ export class ListClientComponent {
   pageSize = 10;
   currentPage = 1;
   page: any;
-  constructor(private appService: GestionClientService, private userService: UserService, private router: Router, private attachment:AttachmentService,private http:HttpClient) {
+
+  rightPanelStyle :  any = {};   
+  currentRecord: any;
+  // currentClientId: number | null = null;
+   
+
+  constructor(private appService: GestionClientService,private modalService: NgbModal, private userService: UserService, private router: Router, private attachment:AttachmentService,private http:HttpClient) {
  
   }
   logout() {     
@@ -77,6 +85,7 @@ export class ListClientComponent {
       });
      
       this.sidebarDetail();
+      this.CloseContextMenu();
 
   }
 
@@ -87,13 +96,7 @@ export class ListClientComponent {
       });
   }
 
- 
-  onPageChange(event: any) {
-    // event.pageIndex is zero-based, so add 1 to make it one-based
-    this.page = event.pageIndex + 1;
-    this.pageSize = event.pageSize;
-    this.ngOnInit();
-  }
+  
 
   onDelete(id:any) {
   
@@ -165,6 +168,35 @@ private callApi(apiFunction: Function, value: any) {
   );
 }
 
+//panel action
+
+// onRightClick(event: any) {
+  
+  
+// }
+detecteRightMouseClick(event: MouseEvent, client: any) {
+  event.preventDefault();  
+  event.stopPropagation();
+
+  this.id = client.id;
+
+  this.rightPanelStyle = {
+    'display': 'block',
+    'position': 'absolute',
+    'left.px': event.clientX + window.pageXOffset,
+    'top.px': event.clientY + window.pageYOffset,
+  };
+  
+
+  this.currentRecord = client;
+ 
+}
+CloseContextMenu(){
+   this.rightPanelStyle = {
+    'display' : 'none'
+   };
+   this.id = null;
+ }
 
  
  
@@ -172,16 +204,13 @@ onInputChange(event: Event) {
   const inputValue = (event.target as HTMLInputElement).value;
  
   if (!inputValue.trim()) {
-    // this.appService.getAllClient().subscribe((response: any) => {  
-    //   this.client = Array.isArray(response) ? response : [response];
-    // });
     this.loadDataClient();
   }
 }
 
 passData(client: Client){
   console.log(client);
-  if (client && client.id) {
+  if (client && client.id !== undefined) {
     this.router.navigate(['/dataclient'], { state: { selectedData: client} });
   } else {
     
@@ -328,21 +357,7 @@ downloadFileById(attachment: Attachment): void {
     console.error('Invalid attachment ID');
   }
 }
-
-
-
-
-// uploadFile(event: any) {
-//   const file = event.target.files[0];
-//   const formData = new FormData();
-//   formData.append('file', file);
-//   // Perform the HTTP request
-//   this.http.post('http://localhost:8080/client/upload/1', formData).subscribe((response) => {
-//   console.log('File uploaded successfully');
-//   },(error) => {
-//   console.error('Error uploading file:', error);
-//   });
-//   }
+ 
 onSubmit(event?: Event) {
   if (event) {
     event.preventDefault();

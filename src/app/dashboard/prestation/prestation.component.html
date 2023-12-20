@@ -170,7 +170,7 @@
         <div class="col-md-12">
           <button [routerLink]="['/ajout-prestation']" type="button" class="btn addButton" ><i class="bi bi-building-add"></i> Ajouter une Mission</button>
           <form class="d-flex" style="width: 33%; margin-left: 450px; margin-top: 90px; ">
-            <input class="form-control me-2"  #nameManager type="search" type="search" placeholder="Mission" aria-label="Search">
+            <input class="form-control me-2"  #nameManager type="search" type="search" placeholder="Mission" aria-label="Search"  (input)="onInputChange($event)">
             <button class="btn btn-outline-success"  (click)="SearchBynameprestation(nameManager.value)"  type="submit">Rechercher</button>
           </form>
           

@@ -39,9 +39,9 @@ export class ServicePrestationService {
 
   getbymission(nameprestation: string): Observable<any> {
     
-    return this.http.get(`${this.baseUrl}/prestation/nameprestation/${nameprestation}`);
+    return this.http.get(`${this.baseUrl}/prestations/prestation/nameprestation/${nameprestation}`);
   }
-
+ 
   
   deletePrestation(id : number){
     return this.http.delete(`${this.baseUrl}/prestations/prestation/${id}`);

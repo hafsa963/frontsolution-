@@ -53,8 +53,10 @@ export class UserService {
     return this.http.put(`${this.baseUrl}/Admin/admin/updateColab/${id}`,updateColab)
   }
    
-  getUsername(searchInput :string){
-    return this.http.get(`${this.baseUrl}/auth/getUserName/${searchInput}`)
+  getUsername(searchInput: string) {
+    return this.http.get(`${this.baseUrl}/auth/getUserName`, {
+      params: { username: searchInput }  
+    });
   }
 
 

@@ -112,16 +112,16 @@
           </li>
          <!-- <li class="nav-item">
             <div  style="margin-left: 500px; margin-top: 6px;">
-          <input [class.disabled]="!id" type="file" id="upload" name="file" class=" btn btn-outline-primary mx-3 mt-2 d-" (change)="changeUpload($event)">
+          <input [disabled]="!id" type="file" id="upload" name="file" class=" btn btn-outline-primary mx-3 mt-2 d-" (change)="changeUpload($event)">
             </div>
           </li> -->
 
 
           
-          <!-- name="file-input" id="file-input"   -->
-          <li class="nav-item"  style="margin-left: 913px; margin-top: 14px;">
+        
+          <li class="nav-item"  style="margin-left: 953px; margin-top: 14px;">
             <div class="file-input">        
-              <input [class.disabled]="!id"  type="file" id="upload" name="file"  class="file-input__input" (change)="changeUpload($event)" />
+              <input [disabled]="!id"  type="file" id="upload" name="file"  class="file-input__input" (change)="changeUpload($event)" />
               <label class="file-input__label" for="upload">
                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="upload" class="svg-inline--fa fa-upload fa-w-16"role="img"
                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -233,12 +233,11 @@
             <th class="small-column" scope="col">CNSS</th>
             <th class="small-column" scope="col">état</th> 
             <th class="small-column" scope="col">Actions</th>
-
-
-          </tr>
+            <!-- (click) ="listclick(client.id)" -->
+           </tr>
         </thead>
         <tbody> 
-          <tr    *ngFor="let client  of client" (click) ="listclick(client.id)" class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+          <tr    *ngFor="let client  of client"   class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)"  (mouseup)="detecteRightMouseClick($event,client)" >
 
             <td style="padding-top: 12px; padding-bottom: 6px;">{{client.rs}} </td>
             <td  style="padding-top: 12px; padding-bottom: 6px;">{{client.rc}}</td>
@@ -251,7 +250,7 @@
             <td style="padding-top: 12px; padding-bottom: 6px;">{{client.cnss}}</td>
             <td style="padding-top: 12px; padding-bottom: 6px;"> <span class="badge bg-info px-2 py-2"> {{client.etat}}</span></td>
                 
-              <td class="Actions">
+              <td class="Actions" style="    cursor: pointer">
                 
 
                 <a   class="text-decoration-none text-primary me-2"  *ngIf="client.id"  (click)="passDataModifier(client)"  data-toggle="tooltip" title="modifier">
@@ -277,22 +276,37 @@
   <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page"></mat-paginator>
 
 </div>
-<!-- <mat-paginator
-[length]="client?.length"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="[5, 10, 25, 100]"
-  (page)="onPageChange($event)"
-></mat-paginator> -->
+ 
   
     </div> 
 <img width="48" height="48" src="https://img.icons8.com/color/48/undo.png" class="bottom-link"alt="undo"  routerLink="/dashboard" style="cursor: pointer;"/>
 
   </div>
+ 
+
+  <!-- panel action -->
+   <div id="contextmenu" class="contextmenu" [ngStyle]="rightPanelStyle" (clickOutside)="CloseContextMenu()" (mouseleave)="CloseContextMenu()">
+    <ul>
+      <li class="nav-item" style="background-color: white; width:180px;border-radius: 5px;
+      border: 1px solid #dbd6d6;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);margin-top: 12px;margin-bottom: 12px;">
+        <div aria-labelledby="drop2">
+          <div class="message-body">
+            <a class="btn btn-outline-primary mx-3 mt-2 d-block" style="margin-left: 18px;"  >modifier</a>
+            <a style="margin-bottom: 12px;" (click)="passData(client)"   class="btn btn-outline-primary mx-3 mt-2 d-block">visualiser</a>
+            <a style="margin-bottom: 12px;" class="btn btn-outline-primary mx-3 mt-2 d-block" (click)="openModal(client?.id)"  >Archiver</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  
 
 </body> 
 
 <!-- Archivage -->
-<div class="modal" tabindex="-1" id="modelarchive">
+<div class="modal" tabindex="-1" id="modelaction">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -309,6 +323,7 @@
     </div>
   </div>
 </div>
+ 
 
 <!-- detail files telecharger -->
 
@@ -376,3 +391,6 @@
   Le dossier a été archivé avec succès.
 </div>
 </div>
+
+ 
+  

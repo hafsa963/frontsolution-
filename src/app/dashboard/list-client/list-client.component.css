@@ -36,15 +36,6 @@
     padding: 0;
     background-color: #fff;
   }
-/* body{
-    display: block; min-height: 100vh; position: none;
-    zoom: 90%;
-       width: 100%;  
-    height: 100%;  
- } */
-   
- 
- 
   
  .table-responsive {
   margin-top: 10px;
@@ -95,29 +86,21 @@
    .bi-pencil-square{
      font-size: 1.5rem;
      color: blue; 
+     cursor: pointer;
    }
    .bi-eye{
      font-size: 1.8rem;
      /* margin-left: 2px;  */
      color: blue;  
+     cursor: pointer;
      
    }
    .bi-file-earmark-fill {
     font-size: 1.4rem;
-    color: blue;  
+    color: blue; 
+    cursor: pointer; 
   }
-   /* .addButton{
-     text-align: center;
-     font-family: Arial, Helvetica, sans-serif;
-     border-radius:  22px;
-     background-color:#006400;
-     padding:10px 17px;
-     color:#fff;
-     position: absolute; 
-     right: 0;
-     margin-right: 107px;
-     margin-top: 90px;
-   } */
+ 
    button.btn.btn-outline-primary.mx-3.mt-2.d- {
     margin-left: 80px;
     padding: 8px;
@@ -127,17 +110,20 @@
      font-size: 1rem;
      color:#fff;
      margin-left: 5px;
+     cursor: pointer;
    }
  .bi-caret-right-fill{
      font-size: 1rem;
      color: blue; 
-     margin-left: 8px; 
+     margin-left: 8px;
+     cursor: pointer; 
  }
  .bi-caret-down-fill{
      padding: 2px;
      margin-left: 29px;
      font-size: 1rem;
      color: blue;
+     cursor: pointer;
  
  }
  .btnbtn{
@@ -162,19 +148,19 @@
  }
 .bi-plus-circle{
     font-size: 1.5rem;
-    
+    cursor: pointer;
     margin-left: 8px;
     color: blue;
 }
 .bi-download{
   font-size: 1.5rem;
-    
+  cursor: pointer;
   margin-left: 8px;
   color: blue;
 }
 .bi-download{ 
   font-size: 1.4rem;
-    
+  cursor: pointer;
   margin-left: 8px;
   color: blue;
 }
@@ -362,73 +348,7 @@
   border-color: #0056b3;  
   background-color: transparent; 
 }
-/* file*/
-.inp__file{
-  width: 419px;
-  height: 56px;
-  border: 0px;
-  overflow: visible;
-  background: 0;
-  text-indent: -1000000px;
-  color: transparent;
-  box-sizing: border-box;
-  position: absolute;
-  left: 60%;
-  top: 44%;
-  padding: 4px 0px 0px 8px;
-  transform: translate(-50%,-50%);
-}
-.inp__file::before {
-  content: " select";
-  position: absolute;
-  text-indent: 10px;
-  color: #fff;
-  opacity: 1;
-  font-size: 130%;
-  padding: 12px 0px 0px 5px;
-  border: solid 2px #09ace6;
-  text-shadow: 1px 1px 1px #999;
-  box-sizing: border-box;
-  background-image: linear-gradient(#0971e6, #0971e6);
-  border-radius: 40px;
-  display: block;
-  width: 406px;
-  height: 50px;
-  left: 0px;
-}
-.inp__file::after {
-  padding-top: 4px;
-  content: attr(data-name);
-  color: #999;
-  box-sizing: border-box;
-  /* padding: 8px 0px 0px 8px; */
-  position: absolute;
-  display: block;
-  width: 300px;
-  height: 30px;
-  text-indent: 8px;
-  border-radius: 6px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background: #e5f9fe;
-  border-top: solid 1px #228db2;
-  border-left: solid 1px #228db2;
-  border-right: solid 1px #ccc;
-  border-bottom: solid 1px #ccc;
-  right: 30px;
-  bottom: 11px;
-}
-.inp__file:hover{
-  cursor:pointer;
-}
-
-.inp__file:hover::before {
-  box-shadow: 1px 1px 1px #ccc;
-  cursor: pointer;
-  background-image: linear-gradient(#09ace6, #63d9f3);
-  transition: all 0.1s ease;
-}
-
+ 
 
 /* TOASTER */
 .toast {
@@ -482,11 +402,13 @@
   border-radius: 7px;
   padding: 10px;
   text-align: center;
+  cursor: pointer;
 }
 
 .bottom-link a {
   text-decoration: none;
-  color: #fff;  
+  color: #fff; 
+  cursor: pointer; 
 }
 input{
   padding: 8px;
@@ -533,6 +455,7 @@ button.btn.btn-secondary {
 }
 /* choose file */
 .file-input__input {
+  cursor: pointer;
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -542,6 +465,8 @@ button.btn.btn-secondary {
 }
 
 .file-input__label {
+  
+  width: 121px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -551,7 +476,7 @@ button.btn.btn-secondary {
   color: #fff;
   font-size: 14px;
   padding: 10px 12px;
-  background-color: #4245a8;
+  background-color: #007bff;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
 }
 
