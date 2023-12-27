@@ -24,7 +24,6 @@
 
   <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
     <div class="logo_details">
-      <!-- <i class="bx bxl-audible icon"></i> -->
       <div class="logo_name"> </div>
       <i class="bx bx-menu" id="btn"></i>
     </div>
@@ -35,7 +34,7 @@
          <span class="tooltip">Search</span>
       </li>
       <li>
-        <a  [routerLink]="['/dashboard']" >
+        <a  [routerLink]="['/testmenu']" >
           <i class="bx bx-grid-alt"></i>
           <span class="link_name">Dashboard</span>
         </a>
@@ -77,11 +76,11 @@
         <span class="tooltip">Colaborateur</span>
       </li>
       <li>
-        <a href="#">
-          <i class="bx bx-cart-alt"></i>
-          <span class="link_name">Order</span>
+        <a [routerLink]="['/listmanager']">
+          <i class="bx bxs-group"></i>
+          <span class="link_name">Associé</span>
         </a>
-        <span class="tooltip">Order</span>
+        <span class="tooltip">Associé</span>
       </li>
       <li>
         <a href="#">

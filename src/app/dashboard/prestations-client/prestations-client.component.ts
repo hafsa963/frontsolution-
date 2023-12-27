@@ -2,7 +2,9 @@ import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/model/Client';
+import { Etape } from 'src/app/model/etape';
 import { GestionClientService } from 'src/app/services/gestion-client.service';
+import { ServicePrestationService } from 'src/app/services/service-prestation.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,8 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PrestationsClientComponent {
   isSidebarOpen = false;
-  element: boolean = false;
   selectedData: any; 
+  element: boolean = false;
 
  // client: any[] = [];
   rechercheForm: FormGroup = new FormGroup({});
@@ -22,8 +24,12 @@ export class PrestationsClientComponent {
   clientrc: number[] = [];
   clientpropriete: string[] = [];
   username: any;
+  prestationClient : string[] = [];
+  result : any;
+  etape  : Etape[] = [];  
+  prestationEtape: any[] = [];
 
-  constructor(private appService : GestionClientService, private router : Router, private userService :UserService , private fb: FormBuilder){
+   constructor(private appService : GestionClientService, private router : Router, private userService :UserService , private fb: FormBuilder , private prestationservice : ServicePrestationService){
     
       
     this.rechercheForm = this.fb.group({
@@ -91,6 +97,125 @@ export class PrestationsClientComponent {
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
+
+  selectByRs(event: any) {
+    const rs = event.target?.value;  
+    if (rs) {
+      this.prestationservice.findByRS(rs).subscribe(
+        (response: any) => {
+       
+          this.prestationClient = response;
+          console.log(this.prestationClient);
+        },
+        (error) => {
+          console.error('Error fetching rs data:', error);
+        }
+      );
+    }
+  }
+  selectByRC(event: any){
+    const rc = event.target?.value;  
+    if (rc) {
+      this.prestationservice.findByUniqueRC(rc).subscribe(
+        (response: any) => {
+          if (Array.isArray(response)) {
+            this.prestationClient = response;
+            console.log(this.prestationClient);
+          } else {
+            console.error('Invalid response format:', response);
+          }
+        },
+        (error) => {
+          console.error('Error fetching rs data:', error);
+        }
+      );
+    }
+
+  }
+
+  selectByPropriete(event: any){
+    const propriete = event.target?.value;  
+    if (propriete) {
+      this.prestationservice.findByPropriete(propriete).subscribe(
+        (response: any) => {
+       
+          this.prestationClient = response;
+          console.log(this.prestationClient);
+        },
+        (error) => {
+          console.error('Error fetching rs data:', error);
+        }
+      );
+    }
+
+
+     
+  }
+
+
+  SearchALL() {
+    const rc = this.rechercheForm.get('rc')?.value;
+    const rs = this.rechercheForm.get('rs')?.value;
+    const propriete = this.rechercheForm.get('propriete')?.value;
+  
+    if (rc && rs && propriete) {
+      this.prestationservice.findByRcAndRsAndPropriete(rc, rs, propriete).subscribe(
+        (response: any) => {
+          this.prestationClient = response;
+          console.log(this.prestationClient);
+        },
+        (error) => {
+          console.error('Error fetching data:', error);
+        }
+      );
+    }
+  }
+ 
+
+  // findByEtape(value : string) {
+     
+  //   const id = parseInt(value);
+  //     this.prestationservice.findByEtape(id).subscribe(
+  //       (response: any) => {
+  //         this.prestationEtape = response;
+  //         console.log(this.prestationEtape);
+  //         if (id !== null) {  
+  //           state: {id , this.element = !this.element; } ;
+            
+  //         } else {
+  //           console.error("ID is undefined for the selected etape prestation");
+  //         } 
+  //       },
+  //       (error) => {
+  //         console.error('Error fetching data:', error);
+  //       }
+  //     );
+    
+  // }
+
+  findByEtape(value: string) {
+    const id = parseInt(value, 10);
+    console.log(id);
+    this.prestationservice.findByEtape(id).subscribe(
+      (response: any) => {
+        this.prestationEtape = response;
+        console.log(this.prestationEtape);
+        if (!isNaN(id)) {  
+          this.element = !this.element;
+          this.router.navigateByUrl(this.router.url, { state: { selectedDataid: id } });
+        } else {
+          console.error("ID is undefined for the selected etape prestation");
+        } 
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+  }
+  
+  
+
+
    
  
 

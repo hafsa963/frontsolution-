@@ -66,6 +66,8 @@ export class DataclientComponent {
     );
     
   }
+
+
   logout() {     
        
     this.router.navigate(["Login"]); 
@@ -101,6 +103,28 @@ export class DataclientComponent {
           }, 2000);
          
         }
+        this.serviceprestation.getAll().subscribe(
+          (response: any) => {
+            this.prestation = response as Prestation[];  
+            this.prestationNames = this.prestation.map(prestation => prestation.namePrestation);
+          },
+          (error) => {
+            console.error('Error fetching prestation data:', error);
+          }
+        );
+        console.log('Selected Data ID:', this.selectedData.id);
+    
+        this.serviceprestation.getPrestationsClientByID(this.selectedData.id).subscribe(
+          (res: any) => {
+            this.prestations = res.map((prestationName: string) => ({
+              name: prestationName,
+            
+            }));
+          },
+          (error) => {
+            console.error('Error fetching prestation data:', error);
+          }
+        );
 
         console.log('Data has been successfully submitted:', res);
       },

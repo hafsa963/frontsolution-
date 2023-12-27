@@ -39,7 +39,6 @@
  
     <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
       <div class="logo_details">
-        <!-- <i class="bx bxl-audible icon"></i> -->
         <div class="logo_name"> </div>
         <i class="bx bx-menu" id="btn"></i>
       </div>
@@ -50,7 +49,7 @@
            <span class="tooltip">Search</span>
         </li>
         <li>
-          <a  [routerLink]="['/dashboard']" >
+          <a  [routerLink]="['/testmenu']" >
             <i class="bx bx-grid-alt"></i>
             <span class="link_name">Dashboard</span>
           </a>
@@ -92,11 +91,11 @@
           <span class="tooltip">Colaborateur</span>
         </li>
         <li>
-          <a href="#">
-            <i class="bx bx-cart-alt"></i>
-            <span class="link_name">Order</span>
+          <a [routerLink]="['/listmanager']">
+            <i class="bx bxs-group"></i>
+            <span class="link_name">Associé</span>
           </a>
-          <span class="tooltip">Order</span>
+          <span class="tooltip">Associé</span>
         </li>
         <li>
           <a href="#">
@@ -203,12 +202,15 @@
                   <div class="card dossier-card">
                     <div class="card-body">
                       <h5 class="card-title mb-0">Préstation</h5>
-                      <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
-    
-                      <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
+                       <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+                       <div   style="float: right;margin-right: 20px;">
+                        <a [routerLink]="['/prestations-client']">détails</a>
+                      </div>
+                      <div class="mb-3" style="margin-top: 30px;">
                         <div class="mb-3 d-flex">
+                          
                           <div class="me-3" style="width: 250px;">
-                            <label for="rs" class="label rs" style="margin-top: 10px;margin-left: 20px;">Choisir une Prestation:</label>
+                             <label for="rs" class="label rs" style="margin-top: 10px;margin-left: 20px;">Choisir une Prestation:</label>
                           </div>
                           <div style="width: 400px;">
                             <select  [(ngModel)]="selectedPrestationId" [ngModelOptions]="{standalone: true}" (change)="selectedPrestation(selectedPrestationId)" class="form-select w-100" style="padding: 10px;">
@@ -219,21 +221,9 @@
                             <input type="text" class="form-control custom-sinput" id="id" [(ngModel)]="selectedData.id" [ngModelOptions]="{standalone: true}" hidden>
 
                           </div>
-                          <button type="button"   class="btn btn-primary" style="padding: 6px;width: 170px;margin-left: 30px;" (click)="affectedprestation()">Confirmer</button> 
-                        </div>
+                         </div>
 
-                        <div class="flex-wrap mb-3" style="margin-top: 30px;">
-      
-                          <!-- <div *ngFor="let presta of prestation; let i = index">
-                         
-                            <label for="presta" class="label rs"
-                              style="margin-left: 8px; padding: 4px; font-size: 18px;margin-top:6px; width: 150px;margin-right: 50px;">Prestation{{i + 1}}</label>
-                         
-                            <div style="padding: 4px; font-size: 20px;width: 400px; margin-top: -52px;margin-left: 110px;">
-                              <input type="text"   class="form-control custom-sinput"  name="namePrestation" [(ngModel)]="namesprestation" id="prestation{{i + 1}}" [ngModelOptions]="{standalone: true}"/>
-                               
-                            </div>
-                          </div>  -->
+                        <div class="flex-wrap mb-6" style="margin-top: 30px;">
                           <div *ngFor="let prestation of prestations; let i = index">
                             <label for="presta" class="label rs"
                               style="margin-left: 8px; padding: 4px; font-size: 18px; margin-top: 6px; width: 150px; margin-right: 50px;">
@@ -244,16 +234,14 @@
                                 id="namePrestation{{i + 1}}" [ngModelOptions]="{ standalone: true }"    />  
                             </div>
                           </div>
-          
-       
-      
-      
                         </div>
-                        
-
-                        
+                        <div class="flex-wrap" style="float: right;margin-right: 20px;">
+                          <button type="button" id="btn"  class="btn btn-primary" style="padding: 6px;width: 170px;margin-left: 30px;" (click)="affectedprestation()">Confirmer</button> 
+                        </div>
                       </div>
+ 
                     </div>
+                 
                   </div>
                 </div>
               <div class="col-md-12 mb-3">

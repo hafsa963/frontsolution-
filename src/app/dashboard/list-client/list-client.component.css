@@ -138,7 +138,7 @@
  .bi-archive{
    font-size: 1.5rem;
      color:blue;  
-     margin-left: 8px;
+     margin-left: 0px;
  
  }
  .bi-archive-fill{
@@ -421,6 +421,49 @@ span.badge.bg-info.px-2.py-2 {
   cursor: pointer;
   padding: 10px;
 }
+ 
+/* choose file */
+.file-input__input {
+  cursor: pointer;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-input__label {
+  
+  width: 121px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 12px;
+  background-color: #007bff;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}
+.disabled-label {
+  background-color: #ccc;  
+  cursor: not-allowed;
+}
+
+.file-input__label svg {
+  height: 16px;
+  margin-right: 4px;
+}
+/* .btn-primary-actionb{
+  width: 38px;
+  height: 35px;
+ padding-top: 5px;
+ padding-bottom: 25px;
+
+} */
 /* model of delete */
 div#modelarchive {
   margin-left: 521px;
@@ -453,36 +496,10 @@ button.btn.btn-secondary {
   padding-top: 4px;
   width: 889px;
 }
-/* choose file */
-.file-input__input {
-  cursor: pointer;
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.file-input__label {
-  
-  width: 121px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  font-size: 14px;
-  padding: 10px 12px;
-  background-color: #007bff;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
-}
-
-.file-input__label svg {
-  height: 16px;
-  margin-right: 4px;
-}
-
- 
+/* .modal-content[_ngcontent-ng-c2520968314] {
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-bottom: 10px;
+  padding-top: 4px;
+  width: 889px;
+} */

@@ -1,10 +1,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link
-    rel="stylesheet"
-    href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-  />
+   
     <style>
  
     </style>
@@ -16,7 +12,6 @@
  
     <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
       <div class="logo_details">
-        <!-- <i class="bx bxl-audible icon"></i> -->
         <div class="logo_name"> </div>
         <i class="bx bx-menu" id="btn"></i>
       </div>
@@ -27,7 +22,7 @@
            <span class="tooltip">Search</span>
         </li>
         <li>
-          <a  [routerLink]="['/dashboard']" >
+          <a  [routerLink]="['/testmenu']" >
             <i class="bx bx-grid-alt"></i>
             <span class="link_name">Dashboard</span>
           </a>
@@ -69,11 +64,11 @@
           <span class="tooltip">Colaborateur</span>
         </li>
         <li>
-          <a href="#">
-            <i class="bx bx-cart-alt"></i>
-            <span class="link_name">Order</span>
+          <a [routerLink]="['/listmanager']">
+            <i class="bx bxs-group"></i>
+            <span class="link_name">Associé</span>
           </a>
-          <span class="tooltip">Order</span>
+          <span class="tooltip">Associé</span>
         </li>
         <li>
           <a href="#">
@@ -172,36 +167,27 @@
           </nav>
         </header>
         <div style="background-color: #ffff;margin-left: 100px;margin-top: 90px;" >
-          
-        
 
-          <!-- form of update  *ngIf="selectedData" #clientupdate="ngForm" (ngSubmit)="OnUpdate(clientupdate.value)"  (click)="OnSubmit()"  -->
-          <div class="container" *ngIf="!element">
+           <div class="container" *ngIf="!element">
             <div class="row">
                 <form [formGroup]="rechercheForm" > 
                   <div class="row justify-content-center align-items-center" style="margin-left: 600px; margin-top: 0px;
                   margin-bottom: 2px;">
                     <div class="col-6">
-                      <!-- <div class="action text-center" [ngClass]="{'fixed-button': showFixedButton}" style="display: flex; gap: 10px; font-size: 18px;">
-                        <a class="btn btn-outline-primary mx-4 mt-6 d-block" id="btnannuler" [routerLink]="['/list-client']">Annuler</a>
-                        <button type="submit" class="btn btn-outline-primary mx-4 mt-6 d-block-clt" id="btncloturer"   style="padding-left: 12px;padding-right: 10px;padding-top: 2px;">
-                          <i class="bi bi-check-circle"></i> Modifier Client
-                        </button>
-                      </div>  -->
                     </div>
                   </div>
                 <div class="col-md-12 mb-3">
                   <div class="card dossier-card">
                     <div class="card-body">
                       <h5 class="card-title mb-0">Recherche des prestations</h5>
-                      <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+                       <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
                       <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
                         <div class="mb-3 d-flex" style="margin-top: 12px;">
                             <div class="me-3" style="width: 150px;">
-                              <label for="IP" class="label rs me-3">Société:</label>
+                              <label for="rs" class="label rs me-3" name="rs">Société:</label>
                             </div>
                             <div style="width: 350px;">
-                              <select id="rs" formControlName="rs" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                              <select id="rs" formControlName="rs" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"  (change)="selectByRs($event)" >
                                 <option  value="" disabled selected>Choose Société</option>
                                 <option *ngFor="let rs of clientrs" [value]="rs">{{ rs }}</option>
        
@@ -211,10 +197,10 @@
                           </div>
                           <div class="mb-3 d-flex" style="margin-top: 12px;">
                             <div class="me-3" style="width: 250px;">
-                              <label for="IP" class="label rs me-3" style="margin-left: 10px;">Registre De Commerce   :</label>
+                              <label for="rc" name="rc" class="label rs me-3" style="margin-left: 10px;">Registre De Commerce   :</label>
                             </div>
                             <div style="width: 350px;">
-                              <select id="rc" formControlName="rc" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px ;margin-left: -52px;">
+                              <select id="rc" formControlName="rc" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px ;margin-left: -52px;"(change)="selectByRC($event)" >
                                 <option  value="" disabled selected>Choose rc</option>
                                 <option *ngFor="let rc of clientrc" [value]="rc">{{ rc }}</option>
        
@@ -225,12 +211,13 @@
                           <div class="mb-3 d-flex" style="margin-top: 12px;margin-left: -81px;">
                             
                             <div style="width: 30px;" >
-                                <!-- <a  data-toggle="tooltip" title="visualiser" > <i class="bx bx-search"></i> </a> -->
+                              
                                 <div class="input-box">
-                                    <!-- <input type="text" placeholder="Search..." /> -->
+                                    
                                     <span class="search">
                                        
-                                      <a> <i class="uil uil-search search-icon"></i> </a>
+                                      <a (click)="SearchALL()"> <i class="uil uil-search search-icon"></i> </a>
+ 
                                     </span>
                                     
                                   </div>
@@ -239,10 +226,10 @@
                           </div>
                           <div class="mb-3 d-flex" style="margin-top: 12px;">
                             <div class="me-3" style="width: 150px;">
-                              <label for="IP" class="label rs me-3">Proprietaire :</label>
+                              <label for="propriete"  name="propriete" class="label rs me-3">Proprietaire :</label>
                             </div>
                             <div style="width: 350px;">
-                              <select id="propriete" formControlName="propriete" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                              <select id="propriete" formControlName="propriete" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" (change)="selectByPropriete($event)">
                                 <option  value="" disabled selected>Choose Proprietaire</option>
                                 <option *ngFor="let propriete of clientpropriete" [value]="propriete">{{ propriete }}</option>
        
@@ -257,7 +244,7 @@
                      <div class="table-responsive bg-white" style="margin-bottom: 30px;">
                         <table class="table mb-0">
                           <thead>  
-                            <tr>
+                            <tr  >
                               <th class="large-column" scope="col">Prestation</th>
                               <th class="small-column" scope="col">Etat</th>
                                
@@ -266,16 +253,15 @@
                           </thead>
                           <tbody> 
                             <tbody> 
-                            <tr    class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
-                              <td>création societe</td>
-                              <td>en cours de traitment</td>
+                            <tr   *ngFor="let result of prestationClient"  class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+                              <td *ngIf="result">{{ result.split(',')[1] }}</td>
+                              <td *ngIf="result">{{ result.split(',')[2] }}</td>
                               <td class="Actions">
                                 <div class="d-flex justify-content-center">
                                
-                                <a  data-toggle="tooltip" title="visualiser" >details </a>
-                                </div>                  
-                                <!--  *ngFor="let manager of manager"(click)="openModal()"(click)="passData(colab)"  -->
-                              </td>
+                                  <a *ngIf="result.split(',')[0]" (click)="findByEtape(result.split(',')[0])" data-toggle="tooltip" title="visualiser">Voir plus</a>
+                                </div>                   
+                               </td>
                             </tr>
                           </tbody>
                         </table>
@@ -299,7 +285,71 @@
               
               </form>
             </div>
-         </div> 
+         </div>
+         
+         
+         <div class="container" *ngIf="element" style="min-height: 30vh">
+          <div class="row">
+              <form [formGroup]="rechercheForm" > 
+                <div class="row justify-content-center align-items-center" style="margin-left: 600px; margin-top: 0px;
+                margin-bottom: 2px;">
+                  <div class="col-6">
+                  </div>
+                </div>
+              <div class="col-md-12 mb-3">
+                <div class="card dossier-card">
+                  <div class="card-body">
+                    <h5 class="card-title mb-0">Liste Des Etapes</h5>
+                     <hr class="flex-grow-1" style="border-top: 1px solid #ccc;margin-top: -9px;">
+                     
+                   <div class="table-responsive bg-white"style="margin-top: 60px;">
+                      <table class="table mb-0">
+                        <thead>  
+                          <tr  >
+                            <th class="large-column" scope="col">Etape </th>
+                            <th class="small-column" scope="col">document</th>
+                            <th class="small-column" scope="col">remarque</th>
+                             
+                            <th class="small-column" scope="col" style="text-align: center;">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody> 
+                          <tbody>  
+                          <tr   *ngFor="let etape of prestationEtape"  class="cursor-pointer" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)" >
+                            <td>{{etape.nomEtape}}</td>
+                            <td> </td>
+                            <td></td>
+                             <!-- <td *ngIf="result">{Etape.nomEtape}</td> -->
+                            <td class="Actions">
+                              <div class="d-flex justify-content-center">
+                             
+                              <a [routerLink]="['/prestations-client']" data-toggle="tooltip" title="visualiser" >Voir plus</a>
+                              </div>                  
+                             </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+
+
+
+                    <br/>
+                    
+                  </div>
+                </div>
+              </div>
+  
+  
+             
+  
+             
+  
+             
+            
+            </form>
+          </div>
+       </div>
 
 
 

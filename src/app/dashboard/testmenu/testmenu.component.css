@@ -1,31 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import '../../../assets/css/style.css';
 
-.sidebar{
-  /* --color-default:#004f83; */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "../../../assets/css/icons/tabler-icons/tabler-icons.css";
  
-  --color-default: #94d2fc;
-  --color-second:#0067ac;
-  --color-white:#fff;
-  --color-body:#e4e9f7;
-  --color-light:#e0e0e0;
-}
 .sidebar{
   width: 69px;
-} 
-
-
-*{
-  padding: 0%;
-  margin: 0%;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  
+}   
+   
+ 
+@media (min-width: 992px){
+  .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+}
+}
+ body {
+  display: block;
+    min-height: 100vh;
+    position: none;
+    width: 100%;
+    height: 100%;
+ 
 }
 
-body{
-  min-height: 100vh;
-}
+  /* .navbar {
+    position: fixed;
+    width: 90%;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+    left: 0;
+  } */
+  @media (max-width: 800px) {
+    .table-responsive {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+  input{
+    padding: 8px;
+  }
 
-.sidebar{
+/* .sidebar{
   min-height: 100vh;
   width: 78px;
   padding: 6px 14px;
@@ -307,44 +326,29 @@ body{
   width: calc(100% - 250px);
 }
 .sidebar {
-  /* Sidebar styles... */
+ 
   width: 90px;
   transition: width 0.3s ease;
 }
 
 .sidebar.open {
-  width: 200px; /* Adjust the width as needed */
-}
-
-/* //header */
-.app-header{
-  /* position:relative; */
+  width: 200px;  
+} */
+ /* position:relative; */
   /* z-index:50; */
+/* //header */
+/* .app-header{
+  
   width:100%;
   background:#fff;
    position: fixed; 
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* z-index: 1000; */
+   
   padding:0 25px}
   
 
  
-/* .app-header.navbar{
-  min-height: 70px;
-  padding: 0;
-}
-.navbar{
-  position: fixed;
-  width: 97%;
-  top: 0;
-  z-index: 1000;
-  margin: 0;
-  padding: 0;
-}
-.navbar-light{
-  background-color: rgb(196, 196, 247);
-} */
 .nav-list {
   padding: 0;
   list-style: none;
@@ -479,7 +483,8 @@ body{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
     margin-top: 70px;
-}
+} 
+*/
 /* .dossier-card {
   background-color: #fff;
   border-radius: 10px;
@@ -488,7 +493,7 @@ body{
   margin-top: 70px;
 } */
 
-.dossier-card:hover {
+/* .dossier-card:hover {
   transform: scale(1.05);
 }
 
@@ -521,9 +526,59 @@ body{
     font-weight: bold;  
     color: #28a745;  
     
+  } */
+  .dossier-card{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-top: 70px;
+} 
+ 
+  .dossier-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  margin-top: 70px;
+}  
+
+ .dossier-card:hover {
+  transform: scale(1.05);
+}
+
+.dossier-card .card-title {
+  color: #007bff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dossier-card .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.dossier-card .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+  .mb-3{
+    margin-top: 28px;
+    margin-left: 42px;
   }
-  /* //users status  */
-  .avatar-2xl {
+  .card{
+ 
+    background: linear-gradient(to bottom, #ffffff, rgb(245, 250, 255));
+  }
+  
+  .custom-number {
+    font-weight: bold;  
+    color: #28a745;  
+    
+  } 
+  /* users status  */
+  /* .avatar-2xl {
     height: 2.5rem;
     width: 2.5rem;
 }
@@ -541,7 +596,7 @@ body{
    .avatar img {
     width: 50px;
     height: 50px;
-}
+} */
 .card-body{
   flex: 1 1 auto;
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);

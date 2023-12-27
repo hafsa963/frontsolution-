@@ -9,7 +9,6 @@
 
   <div class="sidebar" [class.open]="isSidebarOpen" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
     <div class="logo_details">
-      <!-- <i class="bx bxl-audible icon"></i> -->
       <div class="logo_name"> </div>
       <i class="bx bx-menu" id="btn"></i>
     </div>
@@ -17,24 +16,24 @@
       <li>
         <i class="bx bx-search"></i>
         <input type="text" placeholder="Search...">
-        <span class="tooltip">Search</span>
+         <span class="tooltip">Search</span>
       </li>
       <li>
-        <a [routerLink]="['/dashboard']">
+        <a  [routerLink]="['/testmenu']" >
           <i class="bx bx-grid-alt"></i>
           <span class="link_name">Dashboard</span>
         </a>
         <span class="tooltip">Dashboard</span>
       </li>
       <li>
-        <a [routerLink]="['/list-client']">
+        <a [routerLink]="['/list-client']" >
           <i class="bx bx-user"></i>
           <span class="link_name">Client</span>
         </a>
         <span class="tooltip">Client</span>
       </li>
       <li>
-        <a [routerLink]="['/Prestation']">
+        <a  [routerLink]="['/Prestation']" >
           <i class="bx bx-chat"></i>
           <span class="link_name">Préstation</span>
         </a>
@@ -48,25 +47,25 @@
         <span class="tooltip">Tache</span>
       </li>
       <li>
-        <a [routerLink]="['/list-type-societe']">
+        <a [routerLink]="['/list-type-societe']" >
           <i class="bx bx-folder"></i>
           <span class="link_name">Types société</span>
         </a>
         <span class="tooltip">Types D'entreprises</span>
       </li>
       <li>
-        <a [routerLink]="['/list-colabs']">
+        <a [routerLink]="['/list-colabs']" >
           <i class='bx bx-user-plus'></i>
           <span class="link_name">Colaborateur</span>
         </a>
         <span class="tooltip">Colaborateur</span>
       </li>
       <li>
-        <a href="#">
-          <i class="bx bx-cart-alt"></i>
-          <span class="link_name">Order</span>
+        <a [routerLink]="['/listmanager']">
+          <i class="bx bxs-group"></i>
+          <span class="link_name">Associé</span>
         </a>
-        <span class="tooltip">Order</span>
+        <span class="tooltip">Associé</span>
       </li>
       <li>
         <a href="#">

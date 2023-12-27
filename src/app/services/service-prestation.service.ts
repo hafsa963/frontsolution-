@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Prestation } from '../model/prestation';
 import { Observable } from 'rxjs';
@@ -62,6 +62,38 @@ associateSocietePrestation(id_client: number,id: number){
 getPrestationsClientByID(id: number){
   return this.http.get(`${this.baseUrl}/prestations/prestation/Client/${id}`)
 }
-  
+
+ 
+
+findByRcAndRsAndPropriete(rc: number, rs: string, propriete: string): Observable<string[]> {
+  const params = new HttpParams()
+    .set('rc', rc.toString())
+    .set('rs', rs)
+    .set('propriete', propriete);
+
+  return this.http.get<string[]>(`${this.baseUrl}/prestations/prestation/Client/presta`, { params });
+}
+findByUniqueRC(rc: number){
+  return this.http.get(`${this.baseUrl}/prestations/prestation/Clientpresta/${rc}`)
+}
+ 
+ 
+findByRS(rs: string) : Observable<any> {
+  const params = new HttpParams()
+  .set('rs', rs);
+  return this.http.get(`${this.baseUrl}/prestations/prestation/Client/RS`,{ params });
+}
+
+findByPropriete(propriete: string) {
+  const params = new HttpParams()
+  .set('propriete' , propriete);
+  return this.http.get(`${this.baseUrl}/prestations/prestation/Client/propriete`,{params});
+
+}
+findByEtape(id: number){
+  const params = new HttpParams()
+  .set('id' , id);
+  return this.http.get(`${this.baseUrl}/prestations/prestation/Client/Etape`,{params});
+}
 
 }

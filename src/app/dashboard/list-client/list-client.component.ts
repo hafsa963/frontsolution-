@@ -253,7 +253,7 @@ toggleDropdown1() {
 
 openModal(clientId: any){
   this.selectedclientId = clientId;
-  const Modeldiv = document.getElementById('modelarchive');
+  const Modeldiv = document.getElementById('archivemodel');
   if(Modeldiv != null){
     console.log(this.client);
    console.log(clientId);
@@ -263,7 +263,7 @@ openModal(clientId: any){
 }
 
 CloseModel(){
-const Modeldiv = document.getElementById('modelarchive');
+const Modeldiv = document.getElementById('archivemodel');
 if(Modeldiv != null){
 
   Modeldiv.style.display = 'none';
@@ -422,6 +422,18 @@ loadData(attachmentId: number): void {
     }
   );
 }
- 
+
+dropaction(){
+  const Modeldivview = document.getElementById('contextmenu');
+  if (Modeldivview != null) {
+    if (Modeldivview.style.display === 'block') {
+      Modeldivview.style.display = 'none';
+    } else {
+      Modeldivview.style.display = 'block';
+    }
+  }
 
 }
+
+}
+ 
