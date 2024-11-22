@@ -304,7 +304,7 @@
                   <div class="d-flex flex-wrap mb-3" style="margin-top: 30px;">
                     <div class="mb-3 d-flex">
                       <div class="me-3" style="width: 150px;">
-                        <label for="nameManager" class="label rs">Nom Complet:</label>
+                        <label for="nameManager" class="label rs" name="nameManager">Nom Complet:</label>
                       </div>
                       <div style="width: 400px;">
                         <input type="text" class="form-control custom-sinput" id="nameManager"
@@ -322,40 +322,40 @@
                     <!-- Nom d'utilisateur est obligatoire. -->
                     <div class="mb-3 d-flex">
                       <div class="me-3" style="width: 150px;">
-                        <label for="datedebut" class="label rs" style="margin-left: 44px;">Date Début :</label>
+                        <label for="datedebut" name="datedebut" class="label rs" style="margin-left: 44px;">Date Début :</label>
                       </div>
                       <div style="width: 400px;">
                         <input type="date" class="form-control custom-sinput" id="datedebut"
                         [(ngModel)]="selectedData.datedebut" [ngModelOptions]="{standalone: true}">
                       </div>
-                      <div *ngIf="ManagerForm.get('datedebut')?.hasError('required') && (ManagerForm.get('datedebut')?.touched || ManagerForm.get('datedebut')?.dirty)"
+                      <!-- <div *ngIf="ManagerForm.get('datedebut')?.hasError('required') && (ManagerForm.get('datedebut')?.touched || ManagerForm.get('datedebut')?.dirty)"
                       class="text-danger">
                       *
-                    </div>
+                    </div> -->
                     </div>
 
                     <div class="mb-3 d-flex" style="margin-top: 12px;">
                       <div class="me-3" style="width: 150px;">
-                        <label for="DateFin" class="label rs me-3">Date Fin :</label>
+                        <label for="DateFin" name="DateFin" class="label rs me-3">Date Fin :</label>
                       </div>
                       <div style="width: 400px;">
                         <input type="date" class="form-control custom-sinput" id="dateFin"   [(ngModel)]="selectedData.dateFin" [ngModelOptions]="{standalone: true}">
                       </div>
-                      <div
+                      <!-- <div
                         *ngIf="ManagerForm.get('dateFin')?.hasError('required') && (ManagerForm.get('dateFin')?.touched ||ManagerForm.get('dateFin')?.dirty)"
                         class="text-danger">
                         *
 
-                      </div>
+                      </div> -->
 
                     </div>
                     <div class="mb-3 d-flex" style="margin-top: 12px;">
                       <div class="me-3" style="width: 200px;">
-                        <label for="client" class="label rs me-3">Choisir La Société :</label>
+                        <label for="client" class="label rs me-3" name="societe">Choisir La Société :</label>
                       </div>
-                      <div style="width: 600px;">
+                      <div style="width: 600px;">   
                         <div>
-                          <select id="societe" id="idsociete" formControlName="selectedSociete"
+                          <select id="societe" id="idsociete" [(ngModel)]="selectedSociete" [ngModelOptions]="{standalone: true}" 
                             style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                             <option value="" disabled selected>Select a Société</option>
                             <option *ngFor="let client of clients" [value]="client.rs">{{client.rs}}</option>
@@ -363,15 +363,15 @@
                         </div>
                       </div>
 
-                      <div
+                      <!-- <div
                         *ngIf="ManagerForm.get('dateFin')?.hasError('required') && (ManagerForm.get('dateFin')?.touched ||ManagerForm.get('dateFin')?.dirty)"
                         class="text-danger">
                         *
 
-                      </div>
+                      </div> -->
 
                     </div>
-
+            
 
 
 

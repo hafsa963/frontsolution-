@@ -21,7 +21,7 @@ export class NvmanagerComponent {
   manager:any;
   selectedSociete : any;
   clients: Client[] = [];
-  
+   
   //  client: any[] = [];
   societeNames: string[] = [];
   constructor(private router : Router, private appService: GestionClientService, private userService :UserService , private fb: FormBuilder)
@@ -46,11 +46,7 @@ export class NvmanagerComponent {
       datedebut : ['',[Validators.required]],
       dateFin : ['',[Validators.required]],
       selectedSociete: ['', [Validators.required]],
-      //  mandatGerance: [''],
-
-      
-
-
+     
     },
 
     );
@@ -144,48 +140,105 @@ export class NvmanagerComponent {
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
   }
+ 
    
   OnUpdate(updateManager: any) {
     if (this.selectedData && this.selectedData.id) {
-      // if (this.selectedData.client) {
-      //   this.ManagerForm.patchValue({
-      //     selectedSociete: this.selectedData.client.rs,
-      //   });
-      // }
+      const selectedSocieteName = this.ManagerForm.value.selectedSociete;
+      const selectedClient = this.clients.find((client) => client.rs === selectedSocieteName);
+      
+      console.log(this.selectedData);
   
-      const manager = {
-        nameManager: this.ManagerForm.value.nameManager,
-        datedebut: this.ManagerForm.value.datedebut,
-        dateFin: this.ManagerForm.value.dateFin,
-        mandatGerance: '',
-        id: this.selectedData.id,
-        selectedSociete: this.ManagerForm.value.selectedSociete,
-      };
-  
-      console.log('Form submitted:', manager);
-  
-      this.appService.updatemanager(this.selectedData.id, manager).subscribe(
-        (res) => {
-          console.log('Data has been successfully submitted:', res);
-          const Modeldiv = document.getElementById('toastsuccesModify');
-          if (Modeldiv != null) {
-            Modeldiv.classList.add('show');
-            setTimeout(() => {
-              Modeldiv.classList.remove('show');
-            }, 2000);
+      if (this.selectedData && selectedClient) {
+        console.log('Selected Client:', selectedClient);
+        const manager: Manager = {
+          id: this.selectedData.id,
+          nameManager: this.ManagerForm.value.nameManager,
+          datedebut: this.ManagerForm.value.datedebut,
+          dateFin: this.ManagerForm.value.dateFin,
+          mandatGerance: '',
+          client: selectedClient.id,  // Use the selectedClient.id
+        };
+        
+        console.log('Updated Manager:', manager);
+    
+        console.log('Form submitted:', this.selectedData);
+    
+        this.appService.updatemanager(this.selectedData.id, manager).subscribe(
+          (res) => {
+            console.log('Data has been successfully submitted:', res);
+            const Modeldiv = document.getElementById('toastsuccesModify');
+            if (Modeldiv != null) {
+              Modeldiv.classList.add('show');
+              setTimeout(() => {
+                Modeldiv.classList.remove('show');
+              }, 2000);
+            }
+          },
+          (error) => {
+            console.error('An error occurred:', error);
           }
-        },
-        (error) => {
-          console.error('An error occurred:', error);
-        }
-      );
-  
-      console.log('Data has been sent for saving');
-    } 
-    else {
+        );
+    
+        console.log('Data has been sent for saving');
+      } else {
+        console.error("Selected client not found or ID is undefined for the selected Societeupdat");
+      }
+    } else {
       console.error("ID is undefined for the selected Societeupdat");
     }
   }
+  
+
+  // OnUpdate(updateManager: any) {
+  //   if (this.selectedData && this.selectedData.id) {
+  //     const selectedSocieteName = this.ManagerForm.value.selectedSociete || ''; // Use an empty string if it's undefined
+  //     console.log('Selected Société Name:', selectedSocieteName);
+  
+  //     const selectedClient = this.clients.find((client) => client.rs === selectedSocieteName);
+  //     console.log('Selected Client:', selectedClient);
+  
+  //     console.log('Selected Data:', this.selectedData);
+  
+  //     if (selectedClient) {
+  //       const updatedManager: Manager = {
+  //         id: this.selectedData.id,
+  //         nameManager: this.ManagerForm.value.nameManager,
+  //         datedebut: this.ManagerForm.value.datedebut,
+  //         dateFin: this.ManagerForm.value.dateFin,
+  //         mandatGerance: '',
+  //         client: selectedClient.id,
+  //       };
+  
+  //       console.log('Updated Manager:', updatedManager);
+  
+  //       // Call your update service or perform other necessary actions here
+  //       this.appService.updatemanager(this.selectedData.id, updatedManager).subscribe(
+  //         (res) => {
+  //           console.log('Data has been successfully updated:', res);
+  //           const successToast = document.getElementById('toastsuccesModify');
+  //           if (successToast != null) {
+  //             successToast.classList.add('show');
+  //             setTimeout(() => {
+  //               successToast.classList.remove('show');
+  //             }, 2000);
+  //           }
+  //         },
+  //         (error) => {
+  //           console.error('An error occurred while updating:', error);
+  //         }
+  //       );
+  
+  //       console.log('Data has been sent for updating');
+  //     } else {
+  //       console.error('Selected client not found:', selectedSocieteName);
+  //     }
+  //   } else {
+  //     console.error('ID is undefined for the selected Societeupdat');
+  //   }
+  // }
+  
+  
   
 
   displaydatauser() {
